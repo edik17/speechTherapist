@@ -24,11 +24,11 @@ exports.handler = async (event) => {
     });
 
     const info = await transporter.sendMail({
-      from: process.env.MAIL_FROM || process.env.SMTP_USER,
-      to: process.env.MAIL_TO || process.env.SMTP_USER,
-      replyTo: email,
-      subject: `Nuovo messaggio dal sito – ${name}`,
-      text: `Nome: ${name}
+  from: process.env.MAIL_FROM || process.env.SMTP_USER,
+  to: "mariotti.eleonora14@gmail.com", 
+  replyTo: email,
+  subject: `Nuovo messaggio dal sito – ${name}`,
+  text: `Nome: ${name}
 Email: ${email}
 Telefono: ${phone || '-'}
 

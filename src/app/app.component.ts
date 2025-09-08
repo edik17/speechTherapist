@@ -3,11 +3,12 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule, CommonModule],
   template: `
   <div class="app-container">
     <mat-toolbar color="primary" class="toolbar">
@@ -42,8 +43,8 @@ import { MatIconModule } from '@angular/material/icon';
 
     <footer class="footer">
       © {{year}} Studio di Logopedia — Provincia di Ancona ·
-      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a> ·
-      <a href="mailto:info@studio-logopedia.it">info&#64;studio-logopedia.it</a>
+      <a href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="mailto:mariotti.eleonora14@gmail.com">mariotti.eleonora14&#64;gmail.com</a>
     </footer>
   </div>
   `,

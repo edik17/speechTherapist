@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   standalone: true,
   selector: 'app-services',
-  imports: [MatIconModule, MatChipsModule],
+  imports: [MatIconModule, MatChipsModule, CommonModule],
   template: `
   <section class="card">
     <h1>Servizi di Logopedia</h1>

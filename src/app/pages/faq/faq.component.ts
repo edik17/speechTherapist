@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-faq',
-  imports: [MatExpansionModule],
+  imports: [MatExpansionModule, CommonModule],
   template: `
   <section class="card">
     <h1>Domande frequenti</h1>

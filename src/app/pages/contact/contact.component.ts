@@ -5,11 +5,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ContactService } from '../../core/services/contact.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, CommonModule],
   template: `
   <section class="card">
     <h1>Contatti</h1>
@@ -17,10 +18,15 @@ import { ContactService } from '../../core/services/contact.service';
 
     <form [formGroup]="form" (ngSubmit)="submit()" class="form">
       <mat-form-field appearance="outline">
-        <mat-label>Nome e cognome</mat-label>
-        <input matInput formControlName="name" required>
-        <mat-error *ngIf="form.controls.name.invalid">Inserisci il nome</mat-error>
-      </mat-form-field>
+  <mat-label>Nome e cognome</mat-label>
+  <input matInput formControlName="name" required>
+
+  <!-- ⬇️ qui subito sotto l’input -->
+  <mat-error *ngIf="form.controls.name.touched && form.controls.name.invalid">
+    Inserisci il nome
+  </mat-error>
+</mat-form-field>
+
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
@@ -47,13 +53,11 @@ import { ContactService } from '../../core/services/contact.service';
     <div class="map card" style="margin-top:16px">
       <h3>Dove siamo</h3>
       <!-- Semplice embed mappa; sostituisci con la posizione reale -->
-      <iframe
-        title="Mappa"
-        width="100%" height="280" style="border:0"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed?pb=!1m18!...">
-      </iframe>
+<iframe
+  width="100%" height="280" style="border:0" loading="lazy"
+  src="https://www.google.com/maps?q=Via+Roma,+Ancona&output=embed">
+</iframe>
+
     </div>
   </section>
   `,
