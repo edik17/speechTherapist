@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+$brand-primary: mat.m2-define-palette(mat.$m2-light-blue-palette, 300);
+$brand-accent:  mat.m2-define-palette(mat.$m2-teal-palette, 200);
+$brand-warn:    mat.m2-define-palette(mat.$m2-red-palette);
+
+$light-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $brand-primary,
+    accent:  $brand-accent, // ⬅️ era "secondary": va cambiato in "accent"
+    warn:    $brand-warn,
+  ),
+  typography: mat.m2-define-typography-config(
+    $font-family: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
+    $headline-4: (font-weight: 600),
+    $headline-5: (font-weight: 600),
+    $subtitle-1: (font-weight: 500),
+  ),
+  density: 0
+));
+
+@include mat.all-component-themes($light-theme);
+
+:root {
+  --bg-soft: #f7fbff;
+  --card-bg: #ffffff;
+  --ink: #24414d;
+  --muted: #5b7a86;
+  --ring: #{mat.m2-get-color-from-palette($brand-accent, 200)};
+}

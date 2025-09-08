@@ -1,0 +1,73 @@
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule],
+  template: `
+  <div class="app-container">
+    <mat-toolbar color="primary" class="toolbar">
+      <button class="brand" routerLink="/">
+        <mat-icon>hearing</mat-icon>
+        <span>Studio di Logopedia</span>
+      </button>
+      <span class="spacer"></span>
+      <nav class="nav">
+        <a mat-button routerLink="/chi-sono">Chi sono</a>
+        <a mat-button routerLink="/servizi">Servizi</a>
+        <a mat-button routerLink="/faq">FAQ</a>
+        <a mat-button routerLink="/testimonianze">Testimonianze</a>
+        <a mat-raised-button color="accent" routerLink="/contatti">Contatti</a>
+      </nav>
+      <button class="mobile-menu" mat-icon-button aria-label="Menu" (click)="open = !open">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <nav class="mobile-drawer" *ngIf="open">
+      <a routerLink="/chi-sono" (click)="open=false">Chi sono</a>
+      <a routerLink="/servizi" (click)="open=false">Servizi</a>
+      <a routerLink="/faq" (click)="open=false">FAQ</a>
+      <a routerLink="/testimonianze" (click)="open=false">Testimonianze</a>
+      <a routerLink="/contatti" (click)="open=false">Contatti</a>
+    </nav>
+
+    <main class="main-content">
+      <router-outlet/>
+    </main>
+
+    <footer class="footer">
+      © {{year}} Studio di Logopedia — Provincia di Ancona ·
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="mailto:info@studio-logopedia.it">info&#64;studio-logopedia.it</a>
+    </footer>
+  </div>
+  `,
+  styles: [`
+    .toolbar { position: sticky; top:0; z-index:10; }
+    .brand { display:flex; align-items:center; gap:8px; color:white; background:none; border:0; cursor:pointer; }
+    .spacer { flex:1; }
+    .nav { display:flex; gap:8px; }
+    .mobile-menu { display:none; }
+    .mobile-drawer {
+      display:none;
+      background:#fff; border-bottom:1px solid rgba(0,0,0,0.06);
+      padding: 8px 16px;
+    }
+    .mobile-drawer a { display:block; padding:12px 6px; color: var(--ink); text-decoration:none; }
+
+    @media (max-width: 800px) {
+      .nav { display:none; }
+      .mobile-menu { display:inline-flex; }
+      .mobile-drawer { display:block; }
+    }
+  `]
+})
+export class AppComponent {
+  year = new Date().getFullYear();
+  open = false;
+}

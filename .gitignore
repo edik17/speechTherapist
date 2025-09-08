@@ -1,0 +1,28 @@
+# Compilati Angular
+/dist
+/.angular
+/out-tsc
+
+# Dipendenze
+/node_modules
+
+# IDE / Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Log / cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Ambiente
+.env
+.env.local

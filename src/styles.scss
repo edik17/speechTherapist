@@ -1,0 +1,35 @@
+@use 'theme';
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+.app-container {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main-content {
+  padding: clamp(16px, 2vw, 32px);
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.footer {
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  padding: clamp(16px, 2vw, 24px);
+}
