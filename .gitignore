@@ -26,3 +26,6 @@ pnpm-debug.log*
 # Ambiente
 .env
 .env.local
+
+# Local Netlify folder
+.netlify

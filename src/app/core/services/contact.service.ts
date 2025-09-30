@@ -5,10 +5,16 @@ import { HttpClient } from '@angular/common/http';
 export class ContactService {
   constructor(private http: HttpClient) {}
 
-  // Esempio: POST verso un endpoint serverless (Netlify/Firebase) che invia email
-  send(payload: {name:string; email:string; phone?:string; message:string}) {
-    // Per ora mock: restituisco una Promise risolta
-    // Sostituisci con: return this.http.post('https://.../api/contact', payload).toPromise();
-    return Promise.resolve({ ok:true });
-  }
+send(payload: {name:string; email:string; phone?:string; message:string}) {
+  return fetch('/.netlify/functions/contact', {
+    method: 'POST',
+    headers: { 'Content-Type':'application/json' },
+    body: JSON.stringify(payload)
+  }).then(async r => {
+    const txt = await r.text();
+    if (!r.ok) throw new Error(txt || `HTTP ${r.status}`);
+    try { return JSON.parse(txt) } catch { return { ok:true } }
+  });
+}
+
 }

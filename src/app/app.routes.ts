@@ -7,11 +7,11 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, title: 'Home – Logopedista' },
-  { path: 'chi-sono', component: AboutComponent, title: 'Chi sono – Logopedista' },
-  { path: 'servizi', component: ServicesComponent, title: 'Servizi – Logopedia' },
-  { path: 'faq', component: FaqComponent, title: 'FAQ – Logopedia' },
-  { path: 'contatti', component: ContactComponent, title: 'Contatti' },
-  { path: 'testimonianze', component: TestimonialsComponent, title: 'Testimonianze' },
+  { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent), title: 'Home – Logopedista' },
+  { path: 'chi-sono', loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent), title: 'Chi sono – Logopedista' },
+  { path: 'servizi', loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesComponent), title: 'Servizi – Logopedia' },
+  { path: 'faq', loadComponent: () => import('./pages/faq/faq.component').then(m => m.FaqComponent), title: 'FAQ – Logopedia' },
+  { path: 'contatti', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent), title: 'Contatti' },
+  { path: 'testimonianze', loadComponent: () => import('./pages/testimonials/testimonials.component').then(m => m.TestimonialsComponent), title: 'Testimonianze' },
   { path: '**', redirectTo: '' }
 ];

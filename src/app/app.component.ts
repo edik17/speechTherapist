@@ -13,17 +13,17 @@ import { CommonModule } from '@angular/common';
   <div class="app-container">
     <mat-toolbar color="primary" class="toolbar">
       <button class="brand" routerLink="/">
-        <mat-icon>hearing</mat-icon>
+        <mat-icon style="font-size: 20px;">🏠</mat-icon>
         <span>Studio di Logopedia</span>
       </button>
       <span class="spacer"></span>
       <nav class="nav">
-        <a mat-button routerLink="/chi-sono">Chi sono</a>
-        <a mat-button routerLink="/servizi">Servizi</a>
-        <a mat-button routerLink="/faq">FAQ</a>
-        <a mat-button routerLink="/testimonianze">Testimonianze</a>
-        <a mat-raised-button color="accent" routerLink="/contatti">Contatti</a>
-      </nav>
+  <a mat-button routerLink="/chi-sono" routerLinkActive="active">Chi sono</a>
+  <a mat-button routerLink="/servizi" routerLinkActive="active">Servizi</a>
+  <a mat-button routerLink="/faq" routerLinkActive="active">FAQ</a>
+  <a mat-button routerLink="/testimonianze" routerLinkActive="active">Testimonianze</a>
+  <a mat-raised-button color="accent" routerLink="/contatti" routerLinkActive="active">Contatti</a>
+</nav>
       <button class="mobile-menu" mat-icon-button aria-label="Menu" (click)="open = !open">
         <mat-icon>menu</mat-icon>
       </button>
