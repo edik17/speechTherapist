@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
   <section class="card">
-    <h1>Testimonianze</h1>
+    <h1>Recensioni</h1>
     <blockquote *ngFor="let t of testimonials" class="quote">
       “{{t.text}}”
       <footer>— <strong>{{t.author}}</strong><span *ngIf="t.role">, {{t.role}}</span></footer>
