@@ -1,0 +1,49 @@
+/* src/app/pages/contatti/contatti.component.scss */
+
+.contact-container {
+  max-width: 1200px; // Larghezza massima
+  margin: 24px auto; // Centrato con un po' di margine
+  padding: 16px;
+}
+
+// Griglia per affiancare le due card
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; // Il form è 1.5 volte più largo delle info
+  gap: 24px;
+}
+
+// Stile del form
+.form-card {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  // I campi del form devono occupare tutta la larghezza
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    width: 100%; // Pulsante a larghezza piena
+    padding: 16px 0;
+    font-size: 1.1em;
+  }
+}
+
+// Stile delle info
+.info-card {
+  mat-icon {
+    margin-right: 12px; // Spazio tra icona e testo
+  }
+}
+
+// --- Responsive per Mobile ---
+@media (max-width: 800px) {
+  .contact-grid {
+    // Su mobile, le card vanno una sotto l'altra
+    grid-template-columns: 1fr;
+  }
+}

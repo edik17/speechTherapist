@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   <div class="app-container">
     <mat-toolbar color="primary" class="toolbar">
       <button class="brand" routerLink="/">
-        <mat-icon style="font-size: 20px;">🏠</mat-icon>
+        <mat-icon style="font-size: 20px;">🏠</mat-icon> 
         <span>Studio di Logopedia</span>
       </button>
       <span class="spacer"></span>

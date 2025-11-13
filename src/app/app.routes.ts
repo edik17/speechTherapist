@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'chi-sono', loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent), title: 'Chi sono – Logopedista' },
   { path: 'servizi', loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesComponent), title: 'Servizi – Logopedia' },
   { path: 'faq', loadComponent: () => import('./pages/faq/faq.component').then(m => m.FaqComponent), title: 'FAQ – Logopedia' },
-  { path: 'contatti', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent), title: 'Contatti' },
+  { path: 'contatti', loadComponent: () => import('./pages/contatti/contatti.component').then(m => m.ContattiComponent)},
   { path: 'testimonianze', loadComponent: () => import('./pages/testimonials/testimonials.component').then(m => m.TestimonialsComponent), title: 'Testimonianze' },
   { path: '**', redirectTo: '' }
 ];

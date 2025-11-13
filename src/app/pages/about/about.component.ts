@@ -10,7 +10,7 @@ import { PageHeroComponent } from '../../shared/components/page-hero/page-hero.c
     <section class="card">
       <h2>Formazione</h2>
       <ul>
-        <li>Laurea in Logopedia — Università …</li>
+        <li>Laurea in Logopedia — Università Politecnica delle Marche con valutazione 100/100 e Lode</li>
         <li>Master/Corso di perfezionamento in …</li>
       </ul>
       <h2>Approccio clinico</h2>

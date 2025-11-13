@@ -34,3 +34,5 @@ body {
   padding: clamp(16px, 2vw, 24px);
 }
 a.active { text-decoration: underline; }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

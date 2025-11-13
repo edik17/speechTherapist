@@ -1,0 +1,76 @@
+<div class="contact-container">
+  <h1>Contatti</h1>
+  <p>Hai domande o vuoi prenotare un appuntamento? Compila il modulo o usa i recapiti qui sotto.</p>
+
+  <div class="contact-grid">
+
+    <mat-card class="info-card">
+      <mat-card-header>
+        <mat-card-title>Informazioni</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>phone</mat-icon>
+            <span matListItemTitle>+39 123 456789</span>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>email</mat-icon>
+            <span matListItemTitle>mariotti.eleonora14&#64;gmail.com</span>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <mat-icon matListItemIcon>location_on</mat-icon>
+            <span matListItemTitle>Via Roma 1, 00100 Roma (RM)</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="form-card">
+      <mat-card-header>
+        <mat-card-title>Scrivimi un messaggio</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Il tuo nome</mat-label>
+            <input matInput formControlName="nome" placeholder="Mario Rossi">
+            <mat-error *ngIf="nome?.invalid && nome?.touched">
+              Il nome è obbligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>La tua email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="mario.rossi@email.com">
+            <mat-error *ngIf="email?.errors?.['required'] && email?.touched">
+              L'email è obbligatoria
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email'] && email?.touched">
+              Inserisci un'email valida
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Messaggio</mat-label>
+            <textarea matInput formControlName="messaggio" rows="5" placeholder="Di cosa hai bisogno?"></textarea>
+            <mat-error *ngIf="messaggio?.errors?.['required'] && messaggio?.touched">
+              Il messaggio è obbligatorio
+            </mat-error>
+             <mat-error *ngIf="messaggio?.errors?.['minlength'] && messaggio?.touched">
+              Il messaggio è troppo corto (min. 10 caratteri)
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">
+            Invia Messaggio
+          </button>
+          
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>
