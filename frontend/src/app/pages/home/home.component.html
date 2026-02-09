@@ -1,0 +1,60 @@
+<app-page-hero
+  title="Ritrova il piacere di comunicare"
+  subtitle="Logopedia per bambini, ragazzi e adulti. Un approccio empatico e scientifico nel cuore della provincia di Ancona.">
+  <div class="hero-actions" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center center">
+    <a mat-raised-button color="primary" routerLink="/contatti">Prenota una Valutazione</a>
+    <a mat-stroked-button class="secondary-btn" routerLink="/chi-sono">Scopri chi sono</a>
+  </div>
+</app-page-hero>
+
+<div class="container">
+  
+  <section class="intro-section">
+    <div class="intro-text">
+      <h2 class="section-title">Il mio approccio terapeutico</h2>
+      <p class="lead">Ogni percorso è unico, come la persona che lo intraprende.</p>
+      <p>
+        Il mio lavoro non si limita alla riabilitazione tecnica: costruiamo insieme un percorso 
+        che coinvolge la famiglia, la scuola e gli specialisti. L'obiettivo è il benessere 
+        comunicativo a 360 gradi, basato su evidenze scientifiche e accoglienza emotiva.
+      </p>
+    </div>
+    <div class="intro-image">
+      <img src="assets/images/EleLogopedista.jpg" alt="Dottoressa" onerror="this.style.display='none'">
+    </div>
+  </section>
+
+  <section class="services-section">
+    <h2 class="section-title center">Di cosa mi occupo</h2>
+    <div class="grid">
+      <mat-card class="service-card" *ngFor="let service of services">
+        <mat-card-header>
+          <div mat-card-avatar class="service-icon">
+            <mat-icon>{{ service.icon }}</mat-icon>
+          </div>
+          <mat-card-title>{{ service.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ service.desc }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="center-btn">
+      <a mat-button color="primary" routerLink="/servizi">Vedi tutti i servizi <mat-icon>arrow_forward</mat-icon></a>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <mat-card class="cta-card">
+      <mat-card-content>
+        <h3>Hai dubbi sullo sviluppo linguistico di tuo figlio?</h3>
+        <p>Non aspettare che il problema si risolva da solo. Una consulenza precoce può fare la differenza.</p>
+        <div class="cta-actions">
+          <a mat-raised-button color="accent" routerLink="/contatti">Scrivimi un messaggio</a>
+          <a mat-button routerLink="/faq">Leggi le domande frequenti</a>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+</div>

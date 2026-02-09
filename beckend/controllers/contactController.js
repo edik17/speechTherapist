@@ -1,11 +1,6 @@
 const nodemailer = require("nodemailer");
-console.log("--- DEBUG CREDENZIALI ---");
-console.log("Email:", process.env.SMTP_USER);
-console.log("Password:", process.env.SMTP_PASS); // Vediamo cosa legge davvero!
-console.log("-------------------------");
-
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com", // Scrivilo a mano
+  host: process.env.SMTP_HOST, // Scrivilo a mano
   port: 465,
   secure: true,
   auth: {
@@ -16,8 +11,6 @@ const transporter = nodemailer.createTransport({
 
 // 2. La funzione che invia (PULITA DA DATABASE)
 exports.addContact = async (req, res) => {
-  console.log("--- NUOVA RICHIESTA ---");
-  console.log("Dati ricevuti:", req.body);
 
   const { nome, email, messaggio } = req.body;
 
@@ -42,7 +35,6 @@ exports.addContact = async (req, res) => {
     res.status(200).json({ message: "Messaggio inviato correttamente!" });
   } catch (error) {
     console.error("❌ ERRORE NODEMAILER:", error);
-    // Se qui vedi ancora 535, è colpa della password nel .env
     res.status(500).json({ message: "Errore durante l'invio", error: error.message });
   }
 };
