@@ -9,8 +9,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "mariotti.eleonora14@gmail.com", // SCRIVILO A MANO TRA VIRGOLETTE
-    pass: "pqnfuynsaofzoaoy" // INCOLLA QUI LA TUA PASSWORD APP (quella di 16 lettere)
+    user: process.env.SMTP_USER, // SCRIVILO A MANO TRA VIRGOLETTE
+    pass: process.env.SMTP_PASS // INCOLLA QUI LA TUA PASSWORD APP (quella di 16 lettere)
   }
 });
 

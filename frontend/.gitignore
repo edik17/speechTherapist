@@ -2,7 +2,6 @@
 /dist
 /.angular
 /out-tsc
-
 # Dipendenze
 /node_modules
 
@@ -11,7 +10,7 @@
 .idea
 *.swp
 *.swo
-
+.env
 # OS
 .DS_Store
 Thumbs.db
