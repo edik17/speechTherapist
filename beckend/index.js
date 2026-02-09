@@ -1,40 +1,40 @@
+require('dotenv').config(); // 1. Sempre per primo!
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const hpp = require("hpp");
-const routes = require("./routes");
-const db = require("./models");
 const { rateLimit } = require('express-rate-limit');
-const path = require('path');
 
+// Configurazione App
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
+// Configurazione Sicurezza e CORS
 app.use(cors({
-  origin: 'http://localhost:4200'
+  origin: 'http://localhost:4200' // L'indirizzo di Angular
 }));
-
-app.use(rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.'
-}));
-
-db.sequelize.authenticate().then(() => {
-  console.log("Connection has been established successfully.");
-}).catch((error) => {
-  console.error("Unable to connect to the database: ", error);
-});
-db.sequelize.sync();
-
-app.use(express.json());
 
 app.use(helmet());
 app.use(hpp());
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use("/api", routes);
+app.use(rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minuti
+  max: 100, // massimo 100 richieste per IP
+  message: 'Too many requests from this IP, please try again later.'
+}));
 
+// Configurazione Dati
+app.use(express.json());
+
+// --- ROTTE ---
+// ATTENZIONE: Controlla che il file nella cartella 'routes' abbia QUESTO nome esatto!
+const contactRoutes = require("./routes/contactRoutes"); 
+// Se il tuo file si chiama 'contactRoutes.js', cambia la riga sopra in "./routes/contactRoutes"
+
+app.use("/api/contacts", contactRoutes);
+
+// Avvio Server
 app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`);
+  console.log(`Server attivo su: http://localhost:${port}`);
 });

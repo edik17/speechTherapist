@@ -1,20 +1,20 @@
 const { body, query, param } = require('express-validator');
 const { validationErrorHandler } = require("../middlewares/validationResultMiddleware");
 
-const getRecipesValidator = [
+const getContactsValidator = [
     query('page')
         .optional()
         .isInt({ min: 1 }).withMessage("Page number must be a positive integer"),
     validationErrorHandler
 ];
 
-const getRecipeValidator = [
+const getContactValidator = [
     param('id')
-        .isInt({ min: 1 }).withMessage("recipe id must be a positive integer"),
+        .isInt({ min: 1 }).withMessage("contact id must be a positive integer"),
     validationErrorHandler
 ];
 
-const addRecipeValidator = [
+const addContactValidator = [
     body('title')
         .isString().withMessage('Title must be string')
         .trim()
@@ -51,10 +51,10 @@ const addRecipeValidator = [
     validationErrorHandler
 ];
 
-const deleteRecipeValidator = [
+const deleteContactValidator = [
     param('id')
-        .isInt({ min: 1 }).withMessage("recipe id must be a positive integer"),
+        .isInt({ min: 1 }).withMessage("contact id must be a positive integer"),
     validationErrorHandler
 ];
 
-module.exports = { getRecipesValidator, getRecipeValidator, addRecipeValidator, deleteRecipeValidator };
+module.exports = { getContactsValidator, getContactValidator, addContactValidator, deleteContactValidator };

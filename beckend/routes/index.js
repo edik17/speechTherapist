@@ -1,10 +1,10 @@
 const express = require('express');
-const recipeRoutes = require('./recipeRoutes');
+const contactRoutes = require('./contactRoutes');
 const userRoutes = require('./userRoutes');
 
 const router = express.Router();
 
-router.use('/recipes', recipeRoutes);
+router.use('/contact', contactRoutes);
 router.use('/user', userRoutes);
 
 module.exports = router;

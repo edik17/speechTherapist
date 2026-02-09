@@ -26,12 +26,12 @@ db.sequelize = sequelize;
 
 //Tables
 db.users = require("./userModel.js")(sequelize, DataTypes);
-db.recipes = require("./recipeModel.js")(sequelize, DataTypes);
+db.contact = require("./contactModel.js")(sequelize, DataTypes);
 
 //Relations
 
-//One to many, user has recipes
-db.users.hasMany(db.recipes);
-db.recipes.belongsTo(db.users);
+//One to many, user has contact
+db.users.hasMany(db.contact);
+db.contact.belongsTo(db.users);
 
 module.exports = db;
