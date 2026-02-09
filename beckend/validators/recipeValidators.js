@@ -1,60 +1,30 @@
-const { body, query, param } = require('express-validator');
+const { body } = require('express-validator');
 const { validationErrorHandler } = require("../middlewares/validationResultMiddleware");
 
-const getContactsValidator = [
-    query('page')
-        .optional()
-        .isInt({ min: 1 }).withMessage("Page number must be a positive integer"),
+const contactValidator = [
+    // 1. Validazione del NOME
+    body('nome')
+        .trim() // Toglie spazi all'inizio e alla fine
+        .notEmpty().withMessage('Il nome è obbligatorio')
+        .isLength({ min: 2, max: 100 }).withMessage('Il nome deve avere tra 2 e 100 caratteri')
+        .escape(), // Pulisce caratteri pericolosi (sicurezza anti-XSS)
+
+    // 2. Validazione dell'EMAIL
+    body('email')
+        .trim()
+        .notEmpty().withMessage("L'email è obbligatoria")
+        .isEmail().withMessage("Inserisci un indirizzo email valido")
+        .normalizeEmail(), // Converte tutto in minuscolo per uniformità
+
+    // 3. Validazione del MESSAGGIO
+    body('messaggio')
+        .trim()
+        .notEmpty().withMessage('Il messaggio è obbligatorio')
+        .isLength({ min: 10 }).withMessage('Il messaggio è troppo corto (minimo 10 caratteri)')
+        .escape(),
+
+    // 4. Middleware che blocca tutto se trova errori
     validationErrorHandler
 ];
 
-const getContactValidator = [
-    param('id')
-        .isInt({ min: 1 }).withMessage("contact id must be a positive integer"),
-    validationErrorHandler
-];
-
-const addContactValidator = [
-    body('title')
-        .isString().withMessage('Title must be string')
-        .trim()
-        .notEmpty().withMessage('Title cannot be empty')
-        .isLength({ max: 255 }).withMessage('Title cannot exceed 255 characters')
-        .escape(),
-    body('description')
-        .isString().withMessage('Description must be string')
-        .trim()
-        .notEmpty().withMessage('Description cannot be empty')
-        .escape(),
-    body('instructions')
-        .isString().withMessage('Instructions must be string')
-        .trim()
-        .notEmpty().withMessage('Instructions cannot be empty')
-        .escape(),
-    body('ingredients')
-        .isArray().withMessage('Ingredients must be an array'),
-    body('ingredients.*')
-        .isObject().withMessage('Ingredients items must be objects'),
-    body('ingredients.*.name')
-        .isString().withMessage('Ingredient name must be string')
-        .trim()
-        .notEmpty().withMessage('Ingredient name cannot be empty')
-        .escape(),
-    body('ingredients.*.quantity')
-        .isInt({ min: 1 }).withMessage('Missing or invalid ingredient quantity (positive integer)'),
-    body('prepTime')
-        .isInt({ min: 1 }).withMessage('Missing or invalid preparation time (positive integer)'),
-    body('cookTime')
-        .isInt({ min: 1 }).withMessage('Missing or invalid cooking time (positive integer)'),
-    body('servingSize')
-        .isInt({ min: 1 }).withMessage('Missing or invalid serving size (positive integer)r'),
-    validationErrorHandler
-];
-
-const deleteContactValidator = [
-    param('id')
-        .isInt({ min: 1 }).withMessage("contact id must be a positive integer"),
-    validationErrorHandler
-];
-
-module.exports = { getContactsValidator, getContactValidator, addContactValidator, deleteContactValidator };
+module.exports = { contactValidator };
