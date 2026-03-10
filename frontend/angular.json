@@ -17,7 +17,10 @@
             "main": "src/main.ts",
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss",
@@ -46,14 +49,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-logopedia:build"
+            "buildTarget": "my-logopedia:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-logopedia:build:production"
+              "buildTarget": "my-logopedia:build:production"
             },
             "development": {
-              "browserTarget": "my-logopedia:build:development"
+              "buildTarget": "my-logopedia:build:development"
             }
           },
           "defaultConfiguration": "development"

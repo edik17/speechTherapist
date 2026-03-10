@@ -43,8 +43,8 @@ import { CommonModule } from '@angular/common';
 
     <footer class="footer">
       © {{year}} Studio di Logopedia — Provincia di Ancona ·
-      <a href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm" target="_blank" rel="noopener">Instagram</a> ·
-      <a href="mailto:mariotti.eleonora14@gmail.com">mariotti.eleonora14&#64;gmail.com</a>
+      <a href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm" target="_blank" rel="noopener"><img src="assets/images/instagram.png" alt="Instagram" width="20" height="20"></a> ·
+      <a href="mailto:mariotti.eleonora14@gmail.com"><img src="assets/images/gmail.png" alt="Email" width="20" height="20"></a>
     </footer>
   </div>
   `,
