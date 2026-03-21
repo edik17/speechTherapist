@@ -8,14 +8,14 @@
 </app-page-hero>
 
 <div class="container">
-  
+
   <section class="intro-section">
     <div class="intro-text">
       <h2 class="section-title">Il mio approccio terapeutico</h2>
       <p class="lead">Ogni percorso è unico, come la persona che lo intraprende.</p>
       <p>
-        Il mio lavoro non si limita alla riabilitazione tecnica: costruiamo insieme un percorso 
-        che coinvolge la famiglia, la scuola e gli specialisti. L'obiettivo è il benessere 
+        Il mio lavoro non si limita alla riabilitazione tecnica: costruiamo insieme un percorso
+        che coinvolge la famiglia, la scuola e gli specialisti. L'obiettivo è il benessere
         comunicativo a 360 gradi, basato su evidenze scientifiche e accoglienza emotiva.
       </p>
     </div>
@@ -27,17 +27,19 @@
   <section class="services-section">
     <h2 class="section-title center">Di cosa mi occupo</h2>
     <div class="grid">
-      <mat-card class="service-card" *ngFor="let service of services">
-        <mat-card-header>
-          <div mat-card-avatar class="service-icon">
-            <mat-icon>{{ service.icon }}</mat-icon>
-          </div>
-          <mat-card-title>{{ service.title }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>{{ service.desc }}</p>
-        </mat-card-content>
-      </mat-card>
+      @for (service of services; track service) {
+        <mat-card class="service-card">
+          <mat-card-header>
+            <div mat-card-avatar class="service-icon">
+              <mat-icon>{{ service.icon }}</mat-icon>
+            </div>
+            <mat-card-title>{{ service.title }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ service.desc }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
     </div>
     <div class="center-btn">
       <a mat-button color="primary" routerLink="/servizi">Vedi tutti i servizi <mat-icon>arrow_forward</mat-icon></a>

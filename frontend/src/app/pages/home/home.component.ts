@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Serve per *ngFor
+ // Serve per *ngFor
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card'; // Nuovo
 import { MatIconModule } from '@angular/material/icon'; // Nuovo
@@ -9,13 +9,12 @@ import { PageHeroComponent } from '../../shared/components/page-hero/page-hero.c
 @Component({
     selector: 'app-home',
     imports: [
-        CommonModule,
-        RouterLink,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        PageHeroComponent
-    ],
+    RouterLink,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    PageHeroComponent
+],
     templateUrl: './home.component.html', // Spostiamo l'HTML in un file separato
     styleUrls: ['./home.component.scss'] // Spostiamo il CSS in un file separato
 })

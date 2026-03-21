@@ -1,5 +1,5 @@
-<app-page-hero 
-  title="Chi sono" 
+<app-page-hero
+  title="Chi sono"
   subtitle="Passione, formazione continua e cura della persona.">
 </app-page-hero>
 
@@ -9,23 +9,23 @@
     <div class="bio-image">
       <img src="assets/images/EleLogopedista.jpg" alt="Dott.ssa Logopedista" class="profile-img">
     </div>
-    
+
     <div class="bio-text">
       <h2 class="section-title">La mia storia professionale</h2>
       <p>
-        Benvenuti. Sono una Logopedista specializzata nella prevenzione, valutazione e trattamento 
+        Benvenuti. Sono una Logopedista specializzata nella prevenzione, valutazione e trattamento
         delle patologie del linguaggio e della comunicazione.
       </p>
       <p>
-        Ho scelto questa professione perché credo fermamente nel **potere della comunicazione** come strumento fondamentale per la qualità della vita. Il mio approccio non guarda solo 
-        al "difetto" da correggere, ma alla persona nella sua interezza, valorizzandone le risorse 
+        Ho scelto questa professione perché credo fermamente nel **potere della comunicazione** come strumento fondamentale per la qualità della vita. Il mio approccio non guarda solo
+        al "difetto" da correggere, ma alla persona nella sua interezza, valorizzandone le risorse
         e le potenzialità.
       </p>
       <p>
-        Svolgo la mia attività clinica in provincia di Ancona, accogliendo bambini, adulti e anziani 
+        Svolgo la mia attività clinica in provincia di Ancona, accogliendo bambini, adulti e anziani
         in un percorso costruito su misura.
       </p>
-      
+
       <div class="signature">Dott.ssa Mariotti</div>
     </div>
   </section>
@@ -33,13 +33,15 @@
   <section class="values-section">
     <h2 class="section-title center">Il mio approccio clinico</h2>
     <div class="values-grid">
-      <mat-card class="value-card" *ngFor="let val of values">
-        <div class="icon-circle">
-          <mat-icon>{{ val.icon }}</mat-icon>
-        </div>
-        <h3>{{ val.title }}</h3>
-        <p>{{ val.text }}</p>
-      </mat-card>
+      @for (val of values; track val) {
+        <mat-card class="value-card">
+          <div class="icon-circle">
+            <mat-icon>{{ val.icon }}</mat-icon>
+          </div>
+          <h3>{{ val.title }}</h3>
+          <p>{{ val.text }}</p>
+        </mat-card>
+      }
     </div>
   </section>
 
@@ -50,14 +52,16 @@
     <p class="subtitle">La logopedia è una scienza in continua evoluzione. Ecco il mio percorso:</p>
 
     <div class="timeline">
-      <div class="timeline-item" *ngFor="let item of education">
-        <div class="timeline-year">{{ item.year }}</div>
-        <div class="timeline-content">
-          <h3>{{ item.title }}</h3>
-          <span class="institute">{{ item.institute }}</span>
-          <p class="description">{{ item.desc }}</p>
+      @for (item of education; track item) {
+        <div class="timeline-item">
+          <div class="timeline-year">{{ item.year }}</div>
+          <div class="timeline-content">
+            <h3>{{ item.title }}</h3>
+            <span class="institute">{{ item.institute }}</span>
+            <p class="description">{{ item.desc }}</p>
+          </div>
         </div>
-      </div>
+      }
     </div>
   </section>
 

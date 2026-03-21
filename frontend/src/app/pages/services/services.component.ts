@@ -1,25 +1,31 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
-import { CommonModule } from '@angular/common'; 
+ 
 
 @Component({
     selector: 'app-services',
-    imports: [MatIconModule, MatChipsModule, CommonModule],
+    imports: [MatIconModule, MatChipsModule],
     template: `
   <section class="card">
     <h1>Servizi di Logopedia</h1>
     <div class="services">
-      <article *ngFor="let s of services" class="service">
-        <mat-icon aria-hidden="true">{{s.icon || 'spa'}}</mat-icon>
-        <div>
-          <h3>{{s.title}}</h3>
-          <p>{{s.description}}</p>
-          <mat-chip-set *ngIf="s.tags?.length">
-            <mat-chip *ngFor="let t of s.tags">{{t}}</mat-chip>
-          </mat-chip-set>
-        </div>
-      </article>
+      @for (s of services; track s) {
+        <article class="service">
+          <mat-icon aria-hidden="true">{{s.icon || 'spa'}}</mat-icon>
+          <div>
+            <h3>{{s.title}}</h3>
+            <p>{{s.description}}</p>
+            @if (s.tags?.length) {
+              <mat-chip-set>
+                @for (t of s.tags; track t) {
+                  <mat-chip>{{t}}</mat-chip>
+                }
+              </mat-chip-set>
+            }
+          </div>
+        </article>
+      }
     </div>
   </section>
   `,

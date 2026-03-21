@@ -9,25 +9,25 @@
     "test": "ng test"
   },
   "dependencies": {
-    "@angular/animations": "^19.2.20",
+    "@angular/animations": "^20.3.18",
     "@angular/cdk": "^18.2.0",
-    "@angular/common": "^19.2.20",
-    "@angular/compiler": "^19.2.20",
-    "@angular/core": "^19.2.20",
-    "@angular/forms": "^19.2.20",
+    "@angular/common": "^20.3.18",
+    "@angular/compiler": "^20.3.18",
+    "@angular/core": "^20.3.18",
+    "@angular/forms": "^20.3.18",
     "@angular/material": "^18.2.0",
-    "@angular/platform-browser": "^19.2.20",
-    "@angular/platform-browser-dynamic": "^19.2.20",
-    "@angular/router": "^19.2.20",
+    "@angular/platform-browser": "^20.3.18",
+    "@angular/platform-browser-dynamic": "^20.3.18",
+    "@angular/router": "^20.3.18",
     "rxjs": "^7.8.1",
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "^19.2.22",
-    "@angular/cli": "^19.2.22",
-    "@angular/compiler-cli": "^19.2.20",
+    "@angular/build": "^20.3.21",
+    "@angular/cli": "^20.3.21",
+    "@angular/compiler-cli": "^20.3.18",
     "netlify-cli": "^17.38.1",
     "nodemailer": "^6.10.1",
-    "typescript": "~5.5.4"
+    "typescript": "~5.9.3"
   }
 }

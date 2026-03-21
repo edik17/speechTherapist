@@ -1,7 +1,7 @@
 // src/app/pages/contatti/contatti.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,17 +17,15 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
     selector: 'app-contatti',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        // Moduli Material
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatSnackBarModule
-    ],
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatSnackBarModule
+],
     templateUrl: './contatti.component.html',
     styleUrls: ['./contatti.component.scss']
 })
