@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
     <mat-toolbar color="primary" class="toolbar">
       <button class="brand" routerLink="/">
         <mat-icon style="font-size: 20px;">🏠</mat-icon>
-        <span>Studio di Logopedia</span>
+        <span>Esprimi te stesso</span>
       </button>
       <span class="spacer"></span>
       <nav class="nav">
