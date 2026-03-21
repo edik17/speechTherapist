@@ -3,10 +3,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
-  selector: 'app-faq',
-  imports: [MatExpansionModule, CommonModule],
-  template: `
+    selector: 'app-faq',
+    imports: [MatExpansionModule, CommonModule],
+    template: `
   <section class="card">
     <h1>Domande frequenti</h1>
     <mat-accordion multi>

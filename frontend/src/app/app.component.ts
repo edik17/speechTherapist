@@ -6,10 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule, CommonModule],
-  template: `
+    selector: 'app-root',
+    imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule, CommonModule],
+    template: `
   <div class="app-container">
     <mat-toolbar color="primary" class="toolbar">
       <button class="brand" routerLink="/">
@@ -48,7 +47,7 @@ import { CommonModule } from '@angular/common';
     </footer>
   </div>
   `,
-  styles: [`
+    styles: [`
     .toolbar { position: sticky; top:0; z-index:10; }
     .brand { display:flex; align-items:center; gap:8px; color:white; background:none; border:0; cursor:pointer; }
     .spacer { flex:1; }

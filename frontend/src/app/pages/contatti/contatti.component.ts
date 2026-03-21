@@ -15,22 +15,21 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-contatti',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    // Moduli Material
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatSnackBarModule
-  ],
-  templateUrl: './contatti.component.html',
-  styleUrls: ['./contatti.component.scss']
+    selector: 'app-contatti',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        // Moduli Material
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+        MatSnackBarModule
+    ],
+    templateUrl: './contatti.component.html',
+    styleUrls: ['./contatti.component.scss']
 })
 export class ContattiComponent implements OnInit {
 
