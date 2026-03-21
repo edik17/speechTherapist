@@ -8,19 +8,18 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [
-    CommonModule,
-    PageHeroComponent,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule,
-    RouterLink
-  ],
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+    selector: 'app-about',
+    imports: [
+        CommonModule,
+        PageHeroComponent,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDividerModule,
+        RouterLink
+    ],
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
   // Dati strutturati per la formazione (facili da aggiornare)

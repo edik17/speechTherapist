@@ -3,10 +3,9 @@ import { TestimonialsService } from '../../core/services/testimonials.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
-  selector: 'app-testimonials',
-  imports: [CommonModule],
-  template: `
+    selector: 'app-testimonials',
+    imports: [CommonModule],
+    template: `
   <section class="card">
     <h1>Recensioni</h1>
     <blockquote *ngFor="let t of testimonials" class="quote">
@@ -15,7 +14,7 @@ import { CommonModule } from '@angular/common';
     </blockquote>
   </section>
   `,
-  styles:[`
+    styles: [`
     .quote { margin: 0 0 16px; padding: 12px 16px; border-left: 4px solid var(--ring); background:#fff; }
     .quote footer { color: var(--muted); margin-top: 8px; }
   `]

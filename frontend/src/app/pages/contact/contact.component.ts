@@ -8,10 +8,9 @@ import { ContactService } from '../../core/services/contact.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: true,
-  selector: 'app-contact',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, CommonModule],
-  template: `
+    selector: 'app-contact',
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, CommonModule],
+    template: `
   <section class="card">
     <h1>Contatti</h1>
     <p>Compila il modulo e ti risponderò al più presto.</p>
@@ -61,7 +60,7 @@ import { CommonModule } from '@angular/common';
     </div>
   </section>
   `,
-  styles:[`
+    styles: [`
     .form {
       display:grid; gap:16px;
       grid-template-columns: repeat(2, 1fr);

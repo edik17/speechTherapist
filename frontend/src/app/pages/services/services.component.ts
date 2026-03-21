@@ -4,10 +4,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { CommonModule } from '@angular/common'; 
 
 @Component({
-  standalone: true,
-  selector: 'app-services',
-  imports: [MatIconModule, MatChipsModule, CommonModule],
-  template: `
+    selector: 'app-services',
+    imports: [MatIconModule, MatChipsModule, CommonModule],
+    template: `
   <section class="card">
     <h1>Servizi di Logopedia</h1>
     <div class="services">
@@ -24,7 +23,7 @@ import { CommonModule } from '@angular/common';
     </div>
   </section>
   `,
-  styles:[`
+    styles: [`
     .services { display:grid; gap:16px; grid-template-columns: 1fr 1fr; }
     .service { display:flex; gap:16px; align-items:flex-start; }
     .service mat-icon { font-size: 36px; width:36px; height:36px; color: var(--muted); }

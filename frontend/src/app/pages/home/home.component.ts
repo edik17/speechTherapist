@@ -7,18 +7,17 @@ import { MatIconModule } from '@angular/material/icon'; // Nuovo
 import { PageHeroComponent } from '../../shared/components/page-hero/page-hero.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink, 
-    MatButtonModule, 
-    MatCardModule, 
-    MatIconModule, 
-    PageHeroComponent
-  ],
-  templateUrl: './home.component.html', // Spostiamo l'HTML in un file separato
-  styleUrls: ['./home.component.scss']   // Spostiamo il CSS in un file separato
+    selector: 'app-home',
+    imports: [
+        CommonModule,
+        RouterLink,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        PageHeroComponent
+    ],
+    templateUrl: './home.component.html', // Spostiamo l'HTML in un file separato
+    styleUrls: ['./home.component.scss'] // Spostiamo il CSS in un file separato
 })
 export class HomeComponent {
   // Dati per le card dei servizi (facile da modificare in futuro)
