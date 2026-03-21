@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { TestimonialsService } from '../../core/services/testimonials.service';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'app-testimonials',
-    imports: [CommonModule],
+    imports: [],
     template: `
   <section class="card">
     <h1>Recensioni</h1>
-    <blockquote *ngFor="let t of testimonials" class="quote">
-      “{{t.text}}”
-      <footer>— <strong>{{t.author}}</strong><span *ngIf="t.role">, {{t.role}}</span></footer>
+    @for (t of testimonials; track t) {
+      <blockquote class="quote">
+        “{{t.text}}”
+        <footer>— <strong>{{t.author}}</strong>@if (t.role) {
+        <span>, {{t.role}}</span>
+      }</footer>
     </blockquote>
+  }
   </section>
   `,
     styles: [`

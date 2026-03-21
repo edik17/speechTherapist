@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'app-faq',
-    imports: [MatExpansionModule, CommonModule],
+    imports: [MatExpansionModule],
     template: `
   <section class="card">
     <h1>Domande frequenti</h1>
     <mat-accordion multi>
-      <mat-expansion-panel *ngFor="let f of faqs">
-        <mat-expansion-panel-header>
-          <span>{{f.q}}</span>
-        </mat-expansion-panel-header>
-        <p>{{f.a}}</p>
-      </mat-expansion-panel>
+      @for (f of faqs; track f) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <span>{{f.q}}</span>
+          </mat-expansion-panel-header>
+          <p>{{f.a}}</p>
+        </mat-expansion-panel>
+      }
     </mat-accordion>
   </section>
   `
