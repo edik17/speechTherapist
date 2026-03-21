@@ -1,13 +1,6 @@
 @use "sass:color";
-// ==========================================
-// 1. VARIABILI (DEVONO STARE IN CIMA!)
-// ==========================================
-$primary-color: #3f51b5; 
+$primary-color: #314098; 
 $bg-light: #f9fafb;
-
-// ==========================================
-// 2. STILI GLOBALI BOTTONI
-// ==========================================
 
 // Selezioniamo tutti i tipi di bottoni Material usati nella pagina
 [mat-raised-button], [mat-flat-button], [mat-stroked-button] {
@@ -36,16 +29,10 @@ $bg-light: #f9fafb;
   
   &:hover {
     transform: translateY(-2px); 
-    // ORA FUNZIONA PERCHÉ LA VARIABILE È STATA DEFINITA SOPRA 👇
     background-color: rgba($primary-color, 0.05); 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 }
-
-// ==========================================
-// 3. IL TUO CODICE ESISTENTE
-// ==========================================
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
