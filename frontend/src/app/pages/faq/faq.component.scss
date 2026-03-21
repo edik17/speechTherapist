@@ -1,0 +1,111 @@
+// Variabili colore (usa quelle del tuo tema, queste sono di esempio in base agli screenshot precedenti)
+$primary-color: #3f51b5; 
+$accent-color: #009688; // Verde acqua / Azzurro
+$bg-light: #f9fafb;
+$text-dark: #2c3e50;
+$text-light: #546e7a;
+
+.faq-container {
+  max-width: 800px; // Non troppo largo, facilita la lettura
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    font-size: 2rem;
+    color: $text-dark;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: $text-light;
+    font-size: 1.1rem;
+  }
+}
+
+// STILE ACCORDION MATERIAL CUSTOM
+.custom-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // Spazio tra una domanda e l'altra (Effetto "Card separate")
+}
+
+// Per sovrascrivere bene gli stili di Material usiamo ::ng-deep se necessario, 
+// ma spesso basta puntare la classe corretta.
+::ng-deep .faq-panel {
+  border-radius: 12px !important; // Angoli morbidi
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important; // Ombra leggera
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  background-color: white;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
+    transform: translateY(-2px);
+  }
+
+  // Header del pannello (La riga della domanda)
+  .mat-expansion-panel-header {
+    padding: 16px 24px;
+    height: auto !important; // Permette al testo di andare a capo se lungo su mobile
+    min-height: 64px;
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: $text-dark;
+    line-height: 1.4;
+  }
+
+  // Corpo del pannello (La risposta)
+  .mat-expansion-panel-body {
+    padding: 0 24px 24px 24px;
+  }
+
+  .faq-answer {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px solid #eee; // Una riga leggerissima che separa domanda e risposta
+  }
+}
+
+// STILE BOX CHIAMATA ALL'AZIONE (CTA)
+.faq-cta-box {
+  margin-top: 60px;
+  background-color: #e8eaf6; // Azzurrino chiaro / Indaco chiaro
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .cta-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    color: $primary-color;
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: $text-dark;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: $text-light;
+    margin-bottom: 24px;
+    max-width: 500px;
+  }
+}

@@ -1,0 +1,36 @@
+<app-page-hero 
+  title="Domande Frequenti" 
+  subtitle="Tutto quello che c'è da sapere prima di iniziare un percorso insieme.">
+</app-page-hero>
+
+<div class="faq-container">
+  
+  <div class="faq-content">
+    <div class="faq-header">
+      <h2>Hai dei dubbi?</h2>
+      <p>Qui ho raccolto le risposte alle domande che mi vengono fatte più spesso in studio.</p>
+    </div>
+
+    <mat-accordion class="custom-accordion" multi="false">
+      <mat-expansion-panel *ngFor="let faq of faqs" class="faq-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="faq-question">
+            {{ faq.question }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <p class="faq-answer">
+          {{ faq.answer }}
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="faq-cta-box">
+    <mat-icon class="cta-icon">help_outline</mat-icon>
+    <h3>Non hai trovato quello che cercavi?</h3>
+    <p>Nessun problema. Scrivimi direttamente e sarò felice di risponderti nel minor tempo possibile.</p>
+    <a mat-raised-button color="accent" routerLink="/contatti">Contattami ora</a>
+  </div>
+
+</div>

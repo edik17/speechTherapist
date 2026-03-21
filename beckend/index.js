@@ -1,4 +1,4 @@
-require('dotenv').config(); // 1. Sempre per primo!
+require('dotenv').config();
 
 const express = require("express");
 const cors = require("cors");
@@ -27,10 +27,7 @@ app.use(rateLimit({
 // Configurazione Dati
 app.use(express.json());
 
-// --- ROTTE ---
-// ATTENZIONE: Controlla che il file nella cartella 'routes' abbia QUESTO nome esatto!
 const contactRoutes = require("./routes/contactRoutes"); 
-// Se il tuo file si chiama 'contactRoutes.js', cambia la riga sopra in "./routes/contactRoutes"
 
 app.use("/api/contacts", contactRoutes);
 
