@@ -69,7 +69,7 @@ import {
         <h3>Hai bisogno di una valutazione specialistica?</h3>
         <p>Prenota un primo colloquio per analizzare le esigenze specifiche e definire gli obiettivi terapeutici.</p>
       </div>
-      <a mat-raised-button color="primary" routerLink="/contatti" class="cta-btn">
+      <a mat-raised-button routerLink="/contatti" class="cta-btn">
         <span>Richiedi un Appuntamento</span>
         <svg lucideArrowRight [size]="18"></svg>
       </a>
@@ -203,10 +203,10 @@ import {
       }
 
       .cta-btn {
-        background: #fff !important;
+        background: #ffffff !important;
         color: var(--primary) !important;
-        font-weight: 600 !important;
-        padding: 12px 24px !important;
+        font-weight: 700 !important;
+        padding: 12px 26px !important;
         border-radius: 999px !important;
         display: inline-flex !important;
         align-items: center !important;
@@ -214,9 +214,14 @@ import {
         flex-shrink: 0;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
 
+        span, .mdc-button__label, svg {
+          color: var(--primary) !important;
+        }
+
         &:hover {
           transform: translateY(-2px);
           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+          background: #f4f7f6 !important;
         }
       }
 

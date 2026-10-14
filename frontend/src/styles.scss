@@ -23,6 +23,16 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
 }
 
+// Assicura che il testo di TUTTI i bottoni erediti sempre il colore corretto impostato sul pulsante
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  .mdc-button__label {
+    color: inherit !important;
+  }
+}
+
 .app-container {
   min-height: 100dvh;
   display: grid;
