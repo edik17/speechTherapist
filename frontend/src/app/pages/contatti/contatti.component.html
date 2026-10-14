@@ -1,12 +1,85 @@
 <div class="contact-container">
-  <div class="contact-header">
-    <h1>Contatti & Appuntamenti</h1>
-    <p>Hai domande o vuoi prenotare una prima consulenza? Compila il modulo o utilizza i recapiti diretti.</p>
-  </div>
+  
+  <header class="contact-header">
+    <h1>Contatti, Sedi & Orari</h1>
+    <p>Ricevo su appuntamento nelle tre sedi di <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>. Scopri la disponibilità settimanale e richiedi una consulenza.</p>
+  </header>
 
+  <!-- SEZIONE 1: CALENDARIO SETTIMANALE DEGLI ORARI -->
+  <section class="schedule-section card">
+    <div class="section-title-row">
+      <svg lucideCalendar [size]="24" class="title-icon"></svg>
+      <div>
+        <h2>Orari & Sedi per Giorno</h2>
+        <span class="section-subtitle">Presenza programmata durante la settimana lavorativa</span>
+      </div>
+    </div>
+
+    <div class="schedule-grid">
+      @for (item of weeklySchedule; track item.day) {
+        <div class="day-card" [class.is-today]="isToday(item.dayIndex)">
+          @if (isToday(item.dayIndex)) {
+            <span class="today-badge">📍 OGGI</span>
+          }
+          <div class="day-header">
+            <span class="day-name">{{ item.day }}</span>
+          </div>
+          <div class="day-body">
+            <div class="location-badge">{{ item.location }}</div>
+            <div class="hours-row">
+              <svg lucideClock [size]="14"></svg>
+              <span>{{ item.hours }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: LE 3 MAPPE INDIPENDENTI PER OGNI STUDIO -->
+  <section class="studios-section">
+    <div class="studios-header">
+      <h2>Le Mie Sedi di Ricevimento</h2>
+      <p>Ogni studio è attrezzato per valutazioni logopediche e trattamenti su misura. Trova la sede più comoda per te.</p>
+    </div>
+
+    <div class="studios-grid">
+      @for (studio of studios; track studio.id) {
+        <article class="studio-card card">
+          <div class="studio-header">
+            <div class="studio-title-badge">
+              <span class="studio-days">{{ studio.days }}</span>
+            </div>
+            <h3>{{ studio.name }}</h3>
+            <div class="studio-info-row">
+              <svg lucideMapPin [size]="16" class="meta-icon"></svg>
+              <span>{{ studio.city }}</span>
+            </div>
+            <div class="studio-info-row">
+              <svg lucideClock [size]="16" class="meta-icon"></svg>
+              <span>{{ studio.hours }} (su appuntamento)</span>
+            </div>
+          </div>
+
+          <!-- Mappa Leaflet dedicata per questo singolo studio -->
+          <div [id]="'map-' + studio.id" class="studio-map"></div>
+
+          <div class="studio-footer">
+            <a [href]="studio.gmapsUrl" target="_blank" rel="noopener noreferrer" class="directions-btn" mat-stroked-button>
+              <svg lucideNavigation [size]="16"></svg>
+              <span>Calcola Itinerario</span>
+              <svg lucideExternalLink [size]="14" class="ext-icon"></svg>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- SEZIONE 3: MODULO CONTATTI & RECAPITI DIRETTI -->
   <div class="contact-grid">
 
-    <!-- Card Informazioni e Orari -->
+    <!-- Card Informazioni Dirette -->
     <mat-card class="info-card card">
       <mat-card-header>
         <mat-card-title>Recapiti Diretti</mat-card-title>
@@ -15,7 +88,7 @@
         <div class="info-list">
           <div class="info-item">
             <div class="icon-wrapper">
-              <svg lucidePhone [size]="20" class="icon-lucide"></svg>
+              <svg lucidePhone [size]="20"></svg>
             </div>
             <div>
               <span class="label">Telefono & WhatsApp</span>
@@ -25,7 +98,7 @@
 
           <div class="info-item">
             <div class="icon-wrapper">
-              <svg lucideMail [size]="20" class="icon-lucide"></svg>
+              <svg lucideMail [size]="20"></svg>
             </div>
             <div>
               <span class="label">Email di contatto</span>
@@ -35,31 +108,31 @@
 
           <div class="info-item">
             <div class="icon-wrapper">
-              <svg lucideMapPin [size]="20" class="icon-lucide"></svg>
+              <svg lucideMapPin [size]="20"></svg>
             </div>
             <div>
-              <span class="label">Indirizzo Studio</span>
-              <span class="value">Provincia di Ancona (AN)</span>
+              <span class="label">Copertura Territoriale</span>
+              <span class="value">Sassoferrato • Ancona • Jesi</span>
             </div>
           </div>
 
           <div class="info-item">
             <div class="icon-wrapper">
-              <svg lucideClock [size]="20" class="icon-lucide"></svg>
+              <svg lucideClock [size]="20"></svg>
             </div>
             <div>
-              <span class="label">Orari di ricevimento</span>
-              <span class="value">Lun - Ven: 09:00 - 19:30 (su appuntamento)</span>
+              <span class="label">Disponibilità</span>
+              <span class="value">Lun - Ven: 09:00 - 19:30</span>
             </div>
           </div>
         </div>
       </mat-card-content>
     </mat-card>
 
-    <!-- Card Modulo Contatto -->
+    <!-- Card Modulo con Scelta della Sede -->
     <mat-card class="form-card card">
       <mat-card-header>
-        <mat-card-title>Scrivimi un messaggio</mat-card-title>
+        <mat-card-title>Richiedi una Valutazione o Informazioni</mat-card-title>
       </mat-card-header>
       <mat-card-content>
 
@@ -85,7 +158,17 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Come posso aiutarti? (età del paziente, richiesta...)</mat-label>
+            <mat-label>In quale sede preferisci la visita?</mat-label>
+            <mat-select formControlName="sede">
+              <mat-option value="Sassoferrato">Sede di Sassoferrato (Lunedì e Giovedì)</mat-option>
+              <mat-option value="Ancona">Sede di Ancona (Martedì e Venerdì)</mat-option>
+              <mat-option value="Jesi">Sede di Jesi (Mercoledì)</mat-option>
+              <mat-option value="Online / Da concordare">Valutazione iniziale Online / Da concordare</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Come posso aiutarti? (età, tipo di richiesta...)</mat-label>
             <textarea matInput formControlName="messaggio" rows="4" placeholder="Descrivi brevemente la tua richiesta o per chi richiedi la valutazione..."></textarea>
             @if (messaggio?.errors?.['required'] && messaggio?.touched) {
               <mat-error>Il messaggio è obbligatorio</mat-error>
@@ -101,17 +184,5 @@
     </mat-card>
 
   </div>
-
-  <!-- Sezione Mappa Leaflet Studio -->
-  <section class="map-section card">
-    <div class="map-header">
-      <div class="map-title-row">
-        <svg lucideMapPin [size]="24" class="map-title-icon"></svg>
-        <h2>Dove trovarmi</h2>
-      </div>
-      <p>Studio privato facilmente accessibile. Mappa interattiva per visualizzare la posizione esatta e calcolare l'itinerario.</p>
-    </div>
-    <div id="map-container" class="map-element"></div>
-  </section>
 
 </div>

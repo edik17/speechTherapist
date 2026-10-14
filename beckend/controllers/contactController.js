@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 // 2. La funzione che invia il messaggio
 exports.addContact = async (req, res) => {
-  const { nome, email, messaggio } = req.body;
+  const { nome, email, messaggio, sede } = req.body;
 
   // Validazione
   if (!nome || !email || !messaggio) {
@@ -23,8 +23,8 @@ exports.addContact = async (req, res) => {
     from: `"${nome}" <${process.env.SMTP_USER}>`, 
     replyTo: email, 
     to: process.env.MAIL_TO, 
-    subject: `Messaggio dal sito web: ${nome}`,
-    text: `Hai ricevuto un nuovo contatto.\n\nNome: ${nome}\nEmail Paziente: ${email}\n\nMessaggio:\n${messaggio}`
+    subject: `Messaggio dal sito web (${sede || 'Generale'}): ${nome}`,
+    text: `Hai ricevuto un nuovo contatto dal sito web.\n\nNome: ${nome}\nEmail Paziente: ${email}\nSede preferita: ${sede || 'Non specificata'}\n\nMessaggio:\n${messaggio}`
   };
 
   // Invio effettivo
