@@ -57,14 +57,16 @@ import { createTimeline } from 'animejs';
       margin: 0 0 16px; 
       font-size: clamp(2rem, 5vw, 3.5rem);
       line-height: 1.1;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      color: #ffffff !important;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
     
     .hero-subtitle { 
       margin: 0 auto 32px; 
       font-size: clamp(1rem, 2vw, 1.25rem);
-      color: rgba(255,255,255,0.9);
+      color: #ffffff !important;
       line-height: 1.6;
+      opacity: 0.95;
     }
 
     .hero-slot {

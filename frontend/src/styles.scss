@@ -16,6 +16,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--ink-light);
 }
 
+.hero h1, .hero h2, .hero h3,
+.hero-title, .hero-subtitle,
+.toolbar h1, .toolbar h2, .toolbar h3,
+.toolbar span, .toolbar a {
+  color: #ffffff !important;
+}
+
 .app-container {
   min-height: 100dvh;
   display: grid;
