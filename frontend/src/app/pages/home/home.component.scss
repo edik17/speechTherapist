@@ -249,13 +249,43 @@ $bg-light: #f9fafb;
       gap: 16px;
       flex-wrap: wrap;
 
-      a[mat-raised-button] {
-        background-color: white !important;
-        color: var(--ink-light) !important;
+      .banner-btn-primary {
+        background-color: #ffffff !important;
+        color: var(--primary) !important;
+        --mdc-protected-button-label-text-color: var(--primary) !important;
+        font-weight: 700 !important;
+        border-radius: 999px !important;
+        padding: 12px 28px !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+
+        span, .mdc-button__label {
+          color: var(--primary) !important;
+        }
+
+        &:hover {
+          background-color: #f4f7f6 !important;
+          transform: translateY(-2px);
+        }
       }
       
-      a[mat-button] {
-        color: white !important;
+      .banner-btn-secondary {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        --mdc-outlined-button-label-text-color: #ffffff !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(8px);
+        border-radius: 999px !important;
+        padding: 12px 24px !important;
+        font-weight: 600 !important;
+
+        span, .mdc-button__label {
+          color: #ffffff !important;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.3) !important;
+          transform: translateY(-2px);
+        }
       }
     }
   }
