@@ -13,7 +13,7 @@ import { LucideStar, LucideHeart, LucideQuote } from '@lucide/angular';
         <svg lucideHeart [size]="16" class="badge-icon"></svg>
         <span>Feedback & Esperienze</span>
       </div>
-      <h1>Dicono del Mio Studio</h1>
+      <h1>Cosa dicono di me</h1>
       <p>La soddisfazione e i progressi di bambini, genitori e adulti che hanno intrapreso un percorso di crescita comunicativa insieme a me.</p>
     </div>
 
