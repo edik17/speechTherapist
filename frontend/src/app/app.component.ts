@@ -43,28 +43,61 @@ import { MatIconModule } from '@angular/material/icon';
     </main>
   
     <footer class="footer">
-      © {{year}} Studio di Logopedia — Provincia di Ancona ·
-      <a href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm" target="_blank" rel="noopener"><img src="assets/images/instagram.png" alt="Instagram" width="20" height="20"></a> ·
-      <a href="mailto:mariotti.eleonora14@gmail.com"><img src="assets/images/gmail.png" alt="Email" width="20" height="20"></a>
+      <div class="footer-content">
+        © {{year}} Studio di Logopedia — Provincia di Ancona
+      </div>
+      <div class="footer-icons">
+        <a href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="assets/images/instagram.png" alt="Instagram" width="24" height="24">
+        </a>
+        <a href="mailto:mariotti.eleonora14@gmail.com" aria-label="Email">
+          <img src="assets/images/gmail.png" alt="Email" width="24" height="24">
+        </a>
+      </div>
     </footer>
   </div>
   `,
     styles: [`
-    .toolbar { position: sticky; top:0; z-index:10; }
+    .toolbar { 
+      position: sticky; top:0; z-index:100;
+      background: rgba(15, 76, 92, 0.9) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: white;
+    }
     .brand { display:flex; align-items:center; gap:8px; color:white; background:none; border:0; cursor:pointer; }
+    .brand span { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px; }
     .spacer { flex:1; }
     .nav { display:flex; gap:8px; }
+    .nav a { font-family: 'Inter', sans-serif; font-weight: 500; transition: color 0.3s ease; }
+    .nav a:hover { color: var(--ring); }
     .mobile-menu { display:none; }
     .mobile-drawer {
       display:none;
-      background:#fff; border-bottom:1px solid rgba(0,0,0,0.06);
+      background: #fff; border-bottom:1px solid rgba(0,0,0,0.06);
       padding: 8px 16px;
     }
-    .mobile-drawer a { display:block; padding:12px 6px; color: var(--ink); text-decoration:none; }
+    .mobile-drawer a { display:block; padding:12px 6px; color: var(--ink); text-decoration:none; font-family: 'Inter', sans-serif; font-weight: 500; }
+
+    .footer {
+      background: var(--ink);
+      color: #e8f0ef;
+      border-top: none;
+      padding: 32px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-content { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .footer-icons { display: flex; gap: 16px; }
+    .footer-icons img { filter: brightness(0) invert(1); opacity: 0.8; transition: opacity 0.3s; }
+    .footer-icons a:hover img { opacity: 1; }
 
     @media (max-width: 800px) {
       .nav { display:none; }
-      .mobile-menu { display:inline-flex; }
+      .mobile-menu { display:inline-flex; color: white; }
       .mobile-drawer { display:block; }
     }
   `]

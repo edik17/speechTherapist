@@ -1,1 +1,5 @@
 beckend/.env
+node_modules/
+beckend/node_modules/
+frontend/dist/
+.angular/
