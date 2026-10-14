@@ -2,13 +2,13 @@
 
 .contact-container {
   max-width: 1100px;
-  margin: 0 auto 40px;
+  margin: 0 auto 50px;
   padding: 0 16px;
 }
 
 .contact-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 
   h1 {
     font-size: clamp(2rem, 4vw, 2.75rem);
@@ -19,16 +19,239 @@
   p {
     color: var(--muted);
     font-size: 1.1rem;
-    max-width: 650px;
+    max-width: 700px;
     margin: 0 auto;
+    line-height: 1.6;
+
+    strong {
+      color: var(--primary);
+    }
   }
 }
 
+/* 1. SEZIONE CALENDARIO SETTIMANALE DEGLI ORARI */
+.schedule-section {
+  padding: 24px;
+  margin-bottom: 40px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(15, 76, 92, 0.08);
+
+  .section-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+
+    .title-icon {
+      color: var(--primary);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+  }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+
+  .day-card {
+    position: relative;
+    padding: 18px 16px;
+    border-radius: 16px;
+    background: #f8faf9;
+    border: 1px solid rgba(15, 76, 92, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(15, 76, 92, 0.06);
+    }
+
+    &.is-today {
+      background: linear-gradient(135deg, rgba(15, 76, 92, 0.08) 0%, rgba(231, 111, 81, 0.12) 100%);
+      border: 2px solid var(--primary);
+    }
+
+    .today-badge {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: #e76f51;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    .day-header {
+      margin-bottom: 10px;
+
+      .day-name {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--ink);
+      }
+    }
+
+    .day-body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .location-badge {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .hours-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+    }
+  }
+}
+
+/* 2. SEZIONE DELLE 3 SEDI CON MAPPE DEDICATE */
+.studios-section {
+  margin-bottom: 48px;
+
+  .studios-header {
+    text-align: center;
+    margin-bottom: 28px;
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+  }
+
+  .studios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 24px;
+  }
+
+  .studio-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(15, 76, 92, 0.08);
+    box-shadow: 0 8px 24px rgba(15, 76, 92, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(15, 76, 92, 0.1);
+    }
+
+    .studio-header {
+      margin-bottom: 14px;
+
+      .studio-title-badge {
+        margin-bottom: 6px;
+
+        .studio-days {
+          display: inline-block;
+          background: rgba(15, 76, 92, 0.08);
+          color: var(--primary);
+          padding: 3px 10px;
+          border-radius: 999px;
+          font-size: 0.75rem;
+          font-weight: 700;
+        }
+      }
+
+      h3 {
+        margin: 4px 0 8px;
+        font-size: 1.25rem;
+        color: var(--primary);
+      }
+
+      .studio-info-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #555;
+        font-size: 0.88rem;
+        margin-bottom: 4px;
+
+        .meta-icon {
+          color: var(--primary);
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .studio-map {
+      height: 220px;
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      margin-bottom: 16px;
+      z-index: 1;
+    }
+
+    .studio-footer {
+      margin-top: auto;
+
+      .directions-btn {
+        width: 100%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 999px !important;
+        border-color: rgba(15, 76, 92, 0.25) !important;
+        color: var(--primary) !important;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: rgba(15, 76, 92, 0.06);
+        }
+
+        .ext-icon {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+/* 3. SEZIONE RECAPITI & MODULO */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 28px;
-  margin-bottom: 32px;
 }
 
 .info-card {
@@ -147,54 +370,8 @@
   }
 }
 
-/* Sezione Mappa Leaflet */
-.map-section {
-  padding: 24px;
-  margin-top: 16px;
-
-  .map-header {
-    margin-bottom: 18px;
-
-    .map-title-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
-
-      .map-title-icon {
-        color: var(--primary);
-      }
-
-      h2 {
-        margin: 0;
-        font-size: 1.5rem;
-        color: var(--primary);
-      }
-    }
-
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-  }
-
-  .map-element {
-    height: 380px;
-    width: 100%;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    z-index: 1; // Mantiene Leaflet sotto eventuali header sticky
-  }
-}
-
 @media (max-width: 850px) {
   .contact-grid {
     grid-template-columns: 1fr;
-  }
-
-  .map-section .map-element {
-    height: 300px;
   }
 }
