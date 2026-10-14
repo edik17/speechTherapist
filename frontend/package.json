@@ -19,13 +19,22 @@
     "@angular/platform-browser": "^21.2.5",
     "@angular/platform-browser-dynamic": "^21.2.5",
     "@angular/router": "^21.2.5",
+    "@lucide/angular": "^1.56.0",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/leaflet": "^1.9.22",
+    "animejs": "^4.5.0",
+    "canvas-confetti": "^1.9.4",
+    "leaflet": "^1.9.4",
     "rxjs": "^7.8.1",
+    "swiper": "^14.3.0",
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
     "@angular/build": "^21.2.3",
     "@angular/cli": "^21.2.3",
     "@angular/compiler-cli": "^21.2.5",
+    "@types/animejs": "^3.1.13",
+    "@types/node": "^26.1.1",
     "netlify-cli": "^17.38.1",
     "nodemailer": "^6.10.1",
     "typescript": "~5.9.3"

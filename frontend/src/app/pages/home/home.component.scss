@@ -149,7 +149,7 @@ $bg-light: #f9fafb;
       border-radius: 50%;
       transition: transform 0.3s ease; 
       
-      mat-icon {
+      mat-icon, .lucide-service-svg {
         font-size: 24px;
         width: 24px;
         height: 24px;
@@ -183,24 +183,56 @@ $bg-light: #f9fafb;
   margin-bottom: 60px;
   
   .cta-card {
-    background-color: #e8eaf6; 
+    background: var(--accent-gradient); 
+    color: white;
     text-align: center;
-    padding: 32px; 
+    padding: 48px 32px; 
     border: none;
-    box-shadow: none;
-    border-radius: 16px; 
+    box-shadow: 0 15px 35px rgba(16, 163, 130, 0.2);
+    border-radius: 24px; 
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+    }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 16px;
+      font-family: 'Outfit', sans-serif;
+      color: white;
+    }
+
+    p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
     
     .cta-actions {
-      margin-top: 24px;
+      margin-top: 32px;
       display: flex;
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
+
+      a[mat-raised-button] {
+        background-color: white !important;
+        color: var(--ink-light) !important;
+      }
+      
+      a[mat-button] {
+        color: white !important;
+      }
     }
   }
 }

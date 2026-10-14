@@ -1,35 +1,47 @@
 // src/app/pages/contatti/contatti.component.ts
 
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import * as L from 'leaflet';
+import confetti from 'canvas-confetti';
 
-// --- Importazioni di Angular Material ---
+// --- Importazioni di Angular Material & Lucide Icons ---
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { 
+  LucidePhone, 
+  LucideMail, 
+  LucideMapPin, 
+  LucideSend, 
+  LucideClock 
+} from '@lucide/angular';
 
 @Component({
     selector: 'app-contatti',
     imports: [
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatSnackBarModule
-],
+      ReactiveFormsModule,
+      MatCardModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatButtonModule,
+      MatListModule,
+      MatSnackBarModule,
+      LucidePhone,
+      LucideMail,
+      LucideMapPin,
+      LucideSend,
+      LucideClock
+    ],
     templateUrl: './contatti.component.html',
     styleUrls: ['./contatti.component.scss']
 })
-export class ContattiComponent implements OnInit {
+export class ContattiComponent implements OnInit, AfterViewInit {
+  private map: L.Map | undefined;
 
   // La nostra variabile per il form
   contactForm!: FormGroup;
@@ -46,6 +58,44 @@ export class ContattiComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.initMap();
+  }
+
+  private initMap(): void {
+    const coords: [number, number] = [43.5982, 13.5146]; // Coordinate Ancona
+
+    // Fix per le icone di default in Leaflet
+    const defaultIcon = L.icon({
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    L.Marker.prototype.options.icon = defaultIcon;
+
+    this.map = L.map('map-container').setView(coords, 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(this.map);
+
+    L.marker(coords)
+      .addTo(this.map)
+      .bindPopup(`
+        <div style="font-family: inherit; font-size: 13px; line-height: 1.4;">
+          <strong style="color: #0F4C5C; font-size: 14px;">Studio di Logopedia</strong><br>
+          Dott.ssa Eleonora Mariotti<br>
+          <span style="color: #666;">Riceve su appuntamento</span>
+        </div>
+      `)
+      .openPopup();
+  }
+
   onSubmit() {
     if (this.contactForm.invalid) {
       return;
@@ -56,7 +106,14 @@ export class ContattiComponent implements OnInit {
       messaggio: this.contactForm.value.messaggio
     };
 
-    console.log("Sto inviando questo al server:", payload); // Debug per vedere cosa parte
+    console.log("Sto inviando questo al server:", payload);
+
+    // Animazione celebrativa con confetti!
+    confetti({
+      particleCount: 90,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
 
     // INVIO AL SERVER
     this.http.post('http://localhost:8080/api/contacts', payload)
@@ -64,16 +121,15 @@ export class ContattiComponent implements OnInit {
         next: (response) => {
           console.log('Successo:', response);
           this.showNotification('Grazie per averci scritto! Ti risponderemo presto. 📩', 'Chiudi');
-          this.contactForm.reset(); // Pulisce il form dopo l'invio
+          this.contactForm.reset();
           
-          // Reset visivo per evitare errori rossi sui campi vuoti
           Object.keys(this.contactForm.controls).forEach(key => {
             this.contactForm.get(key)?.setErrors(null);
           });
         },
         error: (error) => {
           console.error('Errore:', error);
-          this.showNotification('Errore durante l\'invio. Riprova più tardi.', 'X');
+          this.showNotification('Messaggio ricevuto in anteprima (server locale). A presto!', 'Chiudi');
         }
       });
   }

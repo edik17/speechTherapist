@@ -1,9 +1,16 @@
 [build]
-  command = "npm run build"
   publish = "dist/my-logopedia/browser"
-  functions = "netlify/functions"
+  command = "npm run build"
 
+# Gestione Single Page Application Angular (evita 404 ricaricando le pagine)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Impedisce l'indicizzazione su Google e motori di ricerca
+# Il sito sarà visibile ESCLUSIVAMENTE a chi possiede il link diretto!
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

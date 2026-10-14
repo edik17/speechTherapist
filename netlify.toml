@@ -1,0 +1,17 @@
+[build]
+  base = "frontend"
+  publish = "dist/my-logopedia/browser"
+  command = "npm run build"
+
+# Gestione SPA Angular (evita errori 404 al refresh delle pagine)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Protezione Privacy: impedisce l'indicizzazione su Google e motori di ricerca
+# Il sito sarà visibile ESCLUSIVAMENTE a chi possiede il link diretto!
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

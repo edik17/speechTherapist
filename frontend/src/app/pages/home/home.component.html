@@ -27,11 +27,17 @@
   <section class="services-section">
     <h2 class="section-title center">Di cosa mi occupo</h2>
     <div class="grid">
-      @for (service of services; track service) {
+      @for (service of services; track service.title) {
         <mat-card class="service-card">
           <mat-card-header>
             <div mat-card-avatar class="service-icon">
-              <mat-icon>{{ service.icon }}</mat-icon>
+              @if (service.iconType === 'mic') {
+                <svg lucideMic [size]="24" class="lucide-service-svg"></svg>
+              } @else if (service.iconType === 'book') {
+                <svg lucideBookOpen [size]="24" class="lucide-service-svg"></svg>
+              } @else {
+                <svg lucideActivity [size]="24" class="lucide-service-svg"></svg>
+              }
             </div>
             <mat-card-title>{{ service.title }}</mat-card-title>
           </mat-card-header>
@@ -42,7 +48,10 @@
       }
     </div>
     <div class="center-btn">
-      <a mat-button color="primary" routerLink="/servizi">Vedi tutti i servizi <mat-icon>arrow_forward</mat-icon></a>
+      <a mat-button color="primary" routerLink="/servizi" class="view-all-btn">
+        <span>Vedi tutti i servizi</span>
+        <svg lucideArrowRight [size]="18" class="arrow-icon"></svg>
+      </a>
     </div>
   </section>
 
