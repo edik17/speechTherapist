@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
         <a mat-button routerLink="/chi-sono" routerLinkActive="active">Chi sono</a>
         <a mat-button routerLink="/servizi" routerLinkActive="active">Servizi</a>
         <a mat-button routerLink="/faq" routerLinkActive="active">FAQ</a>
-        <a mat-button routerLink="/testimonianze" routerLinkActive="active">Recensioni</a>
+        <a mat-button routerLink="/testimonianze" routerLinkActive="active">Cosa dicono di me</a>
         <a mat-raised-button class="contact-btn" routerLink="/contatti" routerLinkActive="active">Contatti</a>
       </nav>
       <button class="mobile-menu" mat-icon-button aria-label="Menu" (click)="open = !open">
@@ -33,7 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
         <a routerLink="/chi-sono" (click)="open=false">Chi sono</a>
         <a routerLink="/servizi" (click)="open=false">Servizi</a>
         <a routerLink="/faq" (click)="open=false">FAQ</a>
-        <a routerLink="/testimonianze" (click)="open=false">Recensioni</a>
+        <a routerLink="/testimonianze" (click)="open=false">Cosa dicono di me</a>
         <a routerLink="/contatti" (click)="open=false" class="mobile-contact-link">Contatti</a>
       </nav>
     }
