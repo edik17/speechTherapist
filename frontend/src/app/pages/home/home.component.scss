@@ -58,23 +58,47 @@ $bg-light: #f9fafb;
   gap: 16px;
   justify-content: center;
   
+  .cta-primary-btn {
+    background: #e76f51 !important;
+    color: #ffffff !important;
+    --mdc-filled-button-label-text-color: #ffffff !important;
+    border-radius: 999px !important;
+    padding: 12px 28px !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    box-shadow: 0 4px 18px rgba(231, 111, 81, 0.45) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+
+    &:hover {
+      background: #d65f42 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(231, 111, 81, 0.55) !important;
+    }
+  }
+
+  .cta-secondary-btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    --mdc-outlined-button-label-text-color: #ffffff !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(8px);
+    border-radius: 999px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.28) !important;
+      border-color: #ffffff !important;
+      color: #ffffff !important;
+      transform: translateY(-2px);
+    }
+  }
+
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: stretch;
-  }
-}
-
-// Bottone secondario trasparente
-.secondary-btn {
-  background: rgba(255, 255, 255, 0.85); 
-  color: $primary-color;
-  backdrop-filter: blur(4px); 
-  border: 1px solid white;
-
-  &:hover {
-    background: #fff; 
-    color: color.adjust($primary-color, $lightness: -10%);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
   }
 }
 
