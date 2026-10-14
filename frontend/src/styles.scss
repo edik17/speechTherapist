@@ -9,6 +9,7 @@ body {
   color: var(--ink);
   font-family: 'Inter', "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,8 +47,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer {
-  background: #fff;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  background: var(--footer-bg);
+  border-top: 1px solid rgba(255,255,255,0.05);
   padding: 24px;
   color: var(--muted);
   font-size: 14px;
@@ -57,9 +58,298 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--card-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   padding: clamp(16px, 2vw, 24px);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 a.active { text-decoration: underline; }
+
+// ============================================
+// MODALITÀ SCURA (DARK MODE) REFINEMENTS
+// ============================================
+body.dark-mode {
+  .card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  // Contatti: orari settimanali & sedi
+  .schedule-section {
+    background: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+
+    .day-card {
+      background: #142833 !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+
+      .day-name {
+        color: #ffffff !important;
+      }
+      .location-badge {
+        color: #38bdf8 !important;
+      }
+      .hours-row {
+        color: #94a3b8 !important;
+      }
+
+      &.is-today {
+        background: linear-gradient(135deg, rgba(14, 61, 72, 0.6) 0%, rgba(231, 111, 81, 0.25) 100%) !important;
+        border-color: #e76f51 !important;
+      }
+    }
+  }
+
+  .studios-section {
+    .studio-card {
+      background: var(--card-bg) !important;
+      border-color: var(--card-border) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+
+      .studio-days {
+        background: rgba(56, 189, 248, 0.15) !important;
+        color: #38bdf8 !important;
+      }
+      h3 {
+        color: #38bdf8 !important;
+      }
+      .studio-info-row {
+        color: #cbd5e1 !important;
+        .meta-icon {
+          color: #38bdf8 !important;
+        }
+      }
+      .directions-btn {
+        border-color: rgba(56, 189, 248, 0.4) !important;
+        color: #38bdf8 !important;
+
+        &:hover {
+          background: rgba(56, 189, 248, 0.1) !important;
+        }
+      }
+    }
+  }
+
+  .info-item {
+    .icon-wrapper {
+      background: rgba(56, 189, 248, 0.15) !important;
+      color: #38bdf8 !important;
+    }
+    .value {
+      color: #e2eff1 !important;
+      &[href]:hover {
+        color: #38bdf8 !important;
+      }
+    }
+  }
+
+  // Material Form Fields in dark mode
+  .mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+      background: rgba(14, 29, 38, 0.8) !important;
+    }
+    .mat-mdc-input-element {
+      color: #ffffff !important;
+      caret-color: #38bdf8 !important;
+    }
+    .mat-mdc-floating-label {
+      color: #94a3b8 !important;
+    }
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    &.mat-focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: #38bdf8 !important;
+      }
+      .mat-mdc-floating-label {
+        color: #38bdf8 !important;
+      }
+    }
+  }
+
+  // FAQ Accordion
+  .faq-panel {
+    background-color: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+
+    .faq-question {
+      color: #f0f6f6 !important;
+    }
+    .faq-answer {
+      color: #cbd5e1 !important;
+      border-top-color: rgba(255, 255, 255, 0.08) !important;
+    }
+  }
+  .faq-cta-box {
+    background-color: #142833 !important;
+    h3 {
+      color: #f0f6f6 !important;
+    }
+    p {
+      color: #94a3b8 !important;
+    }
+  }
+
+  // Chi sono / About
+  .bio-text {
+    color: #cbd5e1 !important;
+    p {
+      color: #cbd5e1 !important;
+    }
+    strong {
+      color: #38bdf8 !important;
+    }
+    .signature {
+      color: #38bdf8 !important;
+    }
+  }
+  .values-section .value-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    h3 {
+      color: #f0f6f6 !important;
+    }
+    p {
+      color: #94a3b8 !important;
+    }
+    .icon-circle {
+      background: rgba(56, 189, 248, 0.15) !important;
+      mat-icon {
+        color: #38bdf8 !important;
+      }
+    }
+  }
+  .timeline {
+    border-left-color: rgba(56, 189, 248, 0.3) !important;
+  }
+  .timeline-item {
+    &::before {
+      background: #0a1922 !important;
+      border-color: #38bdf8 !important;
+    }
+    .timeline-year {
+      color: #38bdf8 !important;
+    }
+    .timeline-content {
+      h3 {
+        color: #f0f6f6 !important;
+      }
+      .institute {
+        color: #94a3b8 !important;
+      }
+      .description {
+        color: #cbd5e1 !important;
+      }
+    }
+  }
+  .cta-section {
+    background: #142833 !important;
+    color: #f0f6f6 !important;
+    h3 {
+      color: #f0f6f6 !important;
+    }
+  }
+
+  // Home Intro & Service cards
+  .intro-section {
+    .intro-text {
+      .section-title {
+        color: #f0f6f6 !important;
+      }
+      .lead {
+        color: #38bdf8 !important;
+      }
+      p {
+        color: #cbd5e1 !important;
+      }
+    }
+  }
+  .services-section {
+    .section-title {
+      color: #f0f6f6 !important;
+    }
+    .service-card {
+      background: var(--card-bg) !important;
+      border: 1px solid var(--card-border) !important;
+      mat-card-title {
+        color: #f0f6f6 !important;
+      }
+      p {
+        color: #94a3b8 !important;
+      }
+      .service-icon {
+        background-color: rgba(56, 189, 248, 0.15) !important;
+        color: #38bdf8 !important;
+      }
+    }
+    .view-all-btn {
+      color: #38bdf8 !important;
+      --mdc-text-button-label-text-color: #38bdf8 !important;
+    }
+  }
+
+  // Services page
+  .service-card {
+    background: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+    h3 {
+      color: #f0f6f6 !important;
+    }
+    p {
+      color: #94a3b8 !important;
+    }
+    .service-icon-wrapper {
+      background: rgba(56, 189, 248, 0.15) !important;
+      color: #38bdf8 !important;
+    }
+    .service-chip {
+      background: rgba(56, 189, 248, 0.12) !important;
+      color: #38bdf8 !important;
+      border-color: rgba(56, 189, 248, 0.25) !important;
+    }
+  }
+
+  // Testimonials page
+  .testimonial-card {
+    background: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+    .quote-text {
+      color: #e2eff1 !important;
+    }
+    .quote-icon {
+      color: #38bdf8 !important;
+      opacity: 0.3 !important;
+    }
+    .author-name {
+      color: #ffffff !important;
+    }
+    .author-role {
+      color: #94a3b8 !important;
+    }
+    .tag-chip {
+      background: rgba(56, 189, 248, 0.15) !important;
+      color: #38bdf8 !important;
+    }
+  }
+  .custom-nav-btn {
+    background: #142833 !important;
+    color: #38bdf8 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  // Mobile drawer
+  .mobile-drawer {
+    background: #0a1922 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    a {
+      color: #e2eff1 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+  }
+}
