@@ -4,36 +4,74 @@ $brand-primary: mat.m2-define-palette(mat.$m2-cyan-palette, 800, 700, 900); // D
 $brand-accent:  mat.m2-define-palette(mat.$m2-teal-palette, A400, A200, A700); // Vibrant Teal
 $brand-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
+$typography-config: mat.m2-define-typography-config(
+  $font-family: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
+  $headline-1: (font-family: 'Outfit, sans-serif', font-weight: 700),
+  $headline-2: (font-family: 'Outfit, sans-serif', font-weight: 600),
+  $headline-3: (font-family: 'Outfit, sans-serif', font-weight: 600),
+  $headline-4: (font-family: 'Outfit, sans-serif', font-weight: 600),
+  $headline-5: (font-family: 'Outfit, sans-serif', font-weight: 600),
+  $headline-6: (font-family: 'Outfit, sans-serif', font-weight: 500),
+  $subtitle-1: (font-weight: 500),
+  $button: (font-family: 'Outfit, sans-serif', font-weight: 500)
+);
+
 $light-theme: mat.m2-define-light-theme((
   color: (
     primary: $brand-primary,
     accent:  $brand-accent,
     warn:    $brand-warn,
   ),
-  typography: mat.m2-define-typography-config(
-    $font-family: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
-    $headline-1: (font-family: 'Outfit, sans-serif', font-weight: 700),
-    $headline-2: (font-family: 'Outfit, sans-serif', font-weight: 600),
-    $headline-3: (font-family: 'Outfit, sans-serif', font-weight: 600),
-    $headline-4: (font-family: 'Outfit, sans-serif', font-weight: 600),
-    $headline-5: (font-family: 'Outfit, sans-serif', font-weight: 600),
-    $headline-6: (font-family: 'Outfit, sans-serif', font-weight: 500),
-    $subtitle-1: (font-weight: 500),
-    $button: (font-family: 'Outfit, sans-serif', font-weight: 500)
+  typography: $typography-config,
+  density: 0
+));
+
+$dark-primary: mat.m2-define-palette(mat.$m2-cyan-palette, 300, 200, 400);
+$dark-accent:  mat.m2-define-palette(mat.$m2-teal-palette, A200, A100, A400);
+
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent:  $dark-accent,
+    warn:    $brand-warn,
   ),
+  typography: $typography-config,
   density: 0
 ));
 
 @include mat.all-component-themes($light-theme);
 
+body.dark-mode {
+  @include mat.all-component-colors($dark-theme);
+}
+
 :root {
   --bg-soft: #f4f7f6;
   --bg-gradient: linear-gradient(135deg, #f4f7f6 0%, #e8f0ef 100%);
   --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(255, 255, 255, 0.4);
   --ink: #1a333c;
   --ink-light: #0F4C5C;
   --muted: #647b85;
+  --primary: #0F4C5C;
   --primary-gradient: linear-gradient(135deg, #0F4C5C 0%, #083d4a 100%);
   --accent-gradient: linear-gradient(135deg, #1bd2aa 0%, #10a382 100%);
   --ring: #{mat.m2-get-color-from-palette($brand-accent, A200)};
+  --toolbar-bg: rgba(15, 76, 92, 0.95);
+  --footer-bg: #1a333c;
+}
+
+body.dark-mode {
+  --bg-soft: #08141a;
+  --bg-gradient: linear-gradient(135deg, #0a1922 0%, #061017 100%);
+  --card-bg: rgba(16, 33, 43, 0.92);
+  --card-border: rgba(56, 189, 248, 0.15);
+  --ink: #f0f6f6;
+  --ink-light: #38bdf8;
+  --muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-gradient: linear-gradient(135deg, #0e3d48 0%, #07252c 100%);
+  --accent-gradient: linear-gradient(135deg, #1bd2aa 0%, #10a382 100%);
+  --toolbar-bg: rgba(8, 22, 30, 0.95);
+  --footer-bg: #050d12;
 }
