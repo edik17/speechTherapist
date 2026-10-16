@@ -17,52 +17,59 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       <p>La soddisfazione e i progressi di bambini, genitori e adulti che hanno intrapreso un percorso di crescita comunicativa insieme a me.</p>
     </div>
 
-    <!-- Swiper Carousel -->
-    <div class="swiper testimonials-swiper">
-      <div class="swiper-wrapper">
-        @for (t of testimonials; track t.author) {
-          <div class="swiper-slide">
-            <div class="testimonial-card card">
-              <div class="card-top">
-                <div class="stars">
-                  @for (star of [1,2,3,4,5]; track star) {
-                    <svg lucideStar [size]="18" class="star-icon" fill="currentColor"></svg>
+    @if (elfsightWidgetId) {
+      <!-- Widget Automatico Google Reviews (Elfsight) -->
+      <div class="elfsight-widget-wrapper card">
+        <div [class]="'elfsight-app-' + elfsightWidgetId" data-elfsight-app-lazy></div>
+      </div>
+    } @else {
+      <!-- Swiper Carousel Recensioni -->
+      <div class="swiper testimonials-swiper">
+        <div class="swiper-wrapper">
+          @for (t of testimonials; track t.author) {
+            <div class="swiper-slide">
+              <div class="testimonial-card card">
+                <div class="card-top">
+                  <div class="stars">
+                    @for (star of [1,2,3,4,5]; track star) {
+                      <svg lucideStar [size]="18" class="star-icon" fill="currentColor"></svg>
+                    }
+                  </div>
+                  @if (t.tag) {
+                    <span class="tag-chip">{{t.tag}}</span>
                   }
                 </div>
-                @if (t.tag) {
-                  <span class="tag-chip">{{t.tag}}</span>
-                }
-              </div>
 
-              <div class="quote-wrapper">
-                <svg lucideQuote [size]="28" class="quote-icon"></svg>
-                <p class="quote-text">“{{t.text}}”</p>
-              </div>
+                <div class="quote-wrapper">
+                  <svg lucideQuote [size]="28" class="quote-icon"></svg>
+                  <p class="quote-text">“{{t.text}}”</p>
+                </div>
 
-              <div class="author-info">
-                <div class="author-avatar">{{t.author.charAt(0)}}</div>
-                <div class="author-details">
-                  <strong class="author-name">{{t.author}}</strong>
-                  @if (t.role) {
-                    <span class="author-role">{{t.role}}</span>
-                  }
-                  @if (t.date) {
-                    <span class="review-date">{{t.date}}</span>
-                  }
+                <div class="author-info">
+                  <div class="author-avatar">{{t.author.charAt(0)}}</div>
+                  <div class="author-details">
+                    <strong class="author-name">{{t.author}}</strong>
+                    @if (t.role) {
+                      <span class="author-role">{{t.role}}</span>
+                    }
+                    @if (t.date) {
+                      <span class="review-date">{{t.date}}</span>
+                    }
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        }
-      </div>
+          }
+        </div>
 
-      <!-- Controlli di navigazione -->
-      <div class="swiper-controls">
-        <div class="swiper-button-prev custom-nav-btn"></div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next custom-nav-btn"></div>
+        <!-- Controlli di navigazione -->
+        <div class="swiper-controls">
+          <div class="swiper-button-prev custom-nav-btn"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next custom-nav-btn"></div>
+        </div>
       </div>
-    </div>
+    }
 
     <!-- Banner Recensioni Google -->
     <div class="google-reviews-banner card">
@@ -381,32 +388,64 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
 export class TestimonialsComponent implements AfterViewInit {
   testimonials = this.svc.list();
 
+  /**
+   * INCOLLA QUI L'ID DEL WIDGET ELFSIGHT:
+   * 1. Vai su https://elfsight.com/google-reviews-widget/ (gratis)
+   * 2. Collega la scheda Google di Eleonora Mariotti
+   * 3. Copia l'ID generato dal codice (es. "a1b2c3d4-e5f6-7890-abcd-1234567890ab")
+   * e incollalo qui tra le virgolette.
+   * Se vuoto '', il sito mostrerà automaticamente il carosello interno di recensioni verificate.
+   */
+  elfsightWidgetId: string = '';
+
   constructor(private svc: TestimonialsService) {}
 
   ngAfterViewInit(): void {
-    new Swiper('.testimonials-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 24,
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        pauseOnMouseEnter: true,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 28,
+    if (this.elfsightWidgetId) {
+      this.loadElfsightScript();
+    } else {
+      this.initSwiper();
+    }
+  }
+
+  private loadElfsightScript(): void {
+    if (!document.getElementById('elfsight-platform-script')) {
+      const script = document.createElement('script');
+      script.id = 'elfsight-platform-script';
+      script.src = 'https://static.elfsight.com/platform/platform.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }
+
+  private initSwiper(): void {
+    try {
+      new Swiper('.testimonials-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 28,
+          }
         }
-      }
-    });
+      });
+    } catch (e) {
+      console.warn('Swiper initialization skipped or already active:', e);
+    }
   }
 }
