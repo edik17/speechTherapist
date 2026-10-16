@@ -1,11 +1,11 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { TestimonialsService } from '../../core/services/testimonials.service';
 import Swiper from 'swiper/bundle';
-import { LucideStar, LucideHeart, LucideQuote } from '@lucide/angular';
+import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucide/angular';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [LucideStar, LucideHeart, LucideQuote],
+  imports: [LucideStar, LucideHeart, LucideQuote, LucideExternalLink],
   template: `
   <section class="testimonials-container">
     <div class="testimonials-header">
@@ -61,6 +61,39 @@ import { LucideStar, LucideHeart, LucideQuote } from '@lucide/angular';
         <div class="swiper-button-prev custom-nav-btn"></div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next custom-nav-btn"></div>
+      </div>
+    </div>
+
+    <!-- Banner Recensioni Google -->
+    <div class="google-reviews-banner card">
+      <div class="google-badge-left">
+        <div class="google-icon-wrapper">
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+        </div>
+        <div class="google-text">
+          <div class="google-score">
+            <strong>5.0</strong>
+            <div class="stars">
+              @for (star of [1,2,3,4,5]; track star) {
+                <svg lucideStar [size]="16" class="star-icon" fill="currentColor"></svg>
+              }
+            </div>
+            <span>su Google Maps</span>
+          </div>
+          <p class="google-sub">Recensioni verificate lasciate spontaneamente dai genitori e pazienti seguiti in studio.</p>
+        </div>
+      </div>
+
+      <div class="google-cta">
+        <a href="https://www.google.com/maps/search/?api=1&query=Logopedista+Eleonora+Mariotti" target="_blank" rel="noopener noreferrer" class="google-review-btn">
+          <span>Lascia una recensione su Google</span>
+          <svg lucideExternalLink [size]="16"></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -251,6 +284,95 @@ import { LucideStar, LucideHeart, LucideQuote } from '@lucide/angular';
         &:hover {
           background: var(--primary);
           color: #fff !important;
+        }
+      }
+    }
+
+    .google-reviews-banner {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 32px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      flex-wrap: wrap;
+
+      .google-badge-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .google-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        background: #ffffff;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+
+      .google-score {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.1rem;
+
+        strong {
+          font-size: 1.3rem;
+          color: var(--ink);
+        }
+
+        .stars {
+          display: flex;
+          color: #ffb703;
+        }
+
+        span {
+          color: var(--muted);
+          font-weight: 500;
+        }
+      }
+
+      .google-sub {
+        margin: 4px 0 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .google-review-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #4285F4;
+        color: #ffffff !important;
+        padding: 12px 24px;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 14px rgba(66, 133, 244, 0.35);
+
+        &:hover {
+          background: #3367d6;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(66, 133, 244, 0.45);
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .google-reviews-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        .google-review-btn {
+          width: 100%;
+          justify-content: center;
         }
       }
     }

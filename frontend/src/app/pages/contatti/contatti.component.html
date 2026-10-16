@@ -175,9 +175,9 @@
             }
           </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit" class="submit-btn" [disabled]="contactForm.invalid">
+          <button mat-raised-button color="primary" type="submit" class="submit-btn" [disabled]="isSubmitting">
             <svg lucideSend [size]="18" class="btn-icon"></svg>
-            <span>Invia Richiesta</span>
+            <span>{{ isSubmitting ? 'Invio in corso...' : 'Invia Richiesta' }}</span>
           </button>
         </form>
       </mat-card-content>

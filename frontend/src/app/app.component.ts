@@ -119,13 +119,14 @@ import { LucideMoon, LucideSun } from '@lucide/angular';
       --mdc-text-button-label-text-color: #ffffff !important;
       transition: all 0.25s ease;
       border-radius: 8px;
+      cursor: pointer !important;
 
       &:hover { 
         background: rgba(255, 255, 255, 0.15) !important; 
         color: #ffffff !important;
       }
 
-      &.active { 
+      &.active:not(.contact-btn) { 
         background: rgba(255, 255, 255, 0.22) !important; 
         color: #ffffff !important;
         text-decoration: none !important;
@@ -140,10 +141,21 @@ import { LucideMoon, LucideSun } from '@lucide/angular';
       font-weight: 700 !important;
       box-shadow: 0 4px 14px rgba(231, 111, 81, 0.4) !important;
       padding: 0 20px !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
 
       &:hover {
         background: #d65f42 !important;
         transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(231, 111, 81, 0.5) !important;
+      }
+
+      &.active {
+        background: #d65f42 !important;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(231, 111, 81, 0.6) !important;
+        text-decoration: none !important;
       }
     }
 
