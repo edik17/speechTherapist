@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
@@ -55,8 +55,10 @@ export interface Studio {
   templateUrl: './contatti.component.html',
   styleUrls: ['./contatti.component.scss']
 })
-export class ContattiComponent implements OnInit, AfterViewInit {
+export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
   contactForm!: FormGroup;
+  isSubmitting = false;
+  private maps: L.Map[] = [];
 
   // Calendario settimanale suddiviso per giorno
   weeklySchedule = [
@@ -120,7 +122,20 @@ export class ContattiComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initStudioMaps();
+    setTimeout(() => {
+      this.initStudioMaps();
+    }, 100);
+  }
+
+  ngOnDestroy(): void {
+    this.maps.forEach(m => {
+      try {
+        m.remove();
+      } catch (e) {
+        console.warn('Error removing map:', e);
+      }
+    });
+    this.maps = [];
   }
 
   isToday(dayIndex: number): boolean {
@@ -142,55 +157,71 @@ export class ContattiComponent implements OnInit, AfterViewInit {
     this.studios.forEach(studio => {
       const container = document.getElementById(`map-${studio.id}`);
       if (container) {
-        const map = L.map(container, {
-          scrollWheelZoom: false
-        }).setView(studio.coords, 14);
+        if ((container as any)._leaflet_id) {
+          try {
+            delete (container as any)._leaflet_id;
+          } catch (e) {}
+        }
+        try {
+          const map = L.map(container, {
+            scrollWheelZoom: false
+          }).setView(studio.coords, 14);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '&copy; OpenStreetMap'
-        }).addTo(map);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap'
+          }).addTo(map);
 
-        L.marker(studio.coords)
-          .addTo(map)
-          .bindPopup(`
-            <div style="font-family: inherit; font-size: 13px; line-height: 1.4;">
-              <strong style="color: #0F4C5C; font-size: 14px;">${studio.name}</strong><br>
-              <span>${studio.city}</span><br>
-              <b style="color: #E76F51;">${studio.days}</b><br>
-              <span style="color: #666; font-size: 12px;">${studio.hours}</span>
-            </div>
-          `);
+          L.marker(studio.coords)
+            .addTo(map)
+            .bindPopup(`
+              <div style="font-family: inherit; font-size: 13px; line-height: 1.4;">
+                <strong style="color: #0F4C5C; font-size: 14px;">${studio.name}</strong><br>
+                <span>${studio.city}</span><br>
+                <b style="color: #E76F51;">${studio.days}</b><br>
+                <span style="color: #666; font-size: 12px;">${studio.hours}</span>
+              </div>
+            `);
 
-        setTimeout(() => map.invalidateSize(), 400);
+          this.maps.push(map);
+          setTimeout(() => {
+            try { map.invalidateSize(); } catch (e) {}
+          }, 400);
+        } catch (err) {
+          console.warn('Map initialization failed for', studio.id, err);
+        }
       }
     });
   }
 
   onSubmit() {
     if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      this.showNotification('Per favore compila tutti i campi obbligatori contrassegnati.', 'OK');
       return;
     }
-    const payload = {
-      nome: this.contactForm.value.nome,
-      email: this.contactForm.value.email,
-      sede: this.contactForm.value.sede,
-      messaggio: this.contactForm.value.messaggio
-    };
+
+    this.isSubmitting = true;
+    const { nome, email, sede, messaggio } = this.contactForm.value;
+    const payload = { nome, email, sede, messaggio };
 
     console.log("Invio messaggio:", payload);
 
-    confetti({
-      particleCount: 90,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+    try {
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    } catch (e) {}
 
+    // Invia al backend locale o esegue fallback immediato
     this.http.post('http://localhost:8080/api/contacts', payload)
       .subscribe({
         next: (response) => {
+          this.isSubmitting = false;
           console.log('Successo:', response);
-          this.showNotification('Grazie per averci scritto! Ti risponderemo presto. 📩', 'Chiudi');
+          this.showNotification('Grazie per averci scritto! Ti risponderemo al più presto. 📩', 'Chiudi');
           this.contactForm.reset({ sede: 'Ancona' });
           
           Object.keys(this.contactForm.controls).forEach(key => {
@@ -198,15 +229,26 @@ export class ContattiComponent implements OnInit, AfterViewInit {
           });
         },
         error: (error) => {
-          console.error('Errore:', error);
-          this.showNotification('Messaggio registrato! Ti contatteremo al più presto.', 'Chiudi');
+          this.isSubmitting = false;
+          console.warn('Backend offline o errore di rete. Avvio fallback email:', error);
+          this.showNotification('Grazie! Se preferisci, ti abbiamo preparato anche l\'email precompilata.', 'OK');
+          
+          // Prepara email precompilata di fallback
+          const subject = encodeURIComponent(`Richiesta di contatto da ${nome} - Sede: ${sede}`);
+          const body = encodeURIComponent(`Nome e Cognome: ${nome}\nEmail: ${email}\nSede scelta: ${sede}\n\nMessaggio:\n${messaggio}`);
+          window.open(`mailto:mariotti.eleonora14@gmail.com?subject=${subject}&body=${body}`, '_blank');
+
+          this.contactForm.reset({ sede: 'Ancona' });
+          Object.keys(this.contactForm.controls).forEach(key => {
+            this.contactForm.get(key)?.setErrors(null);
+          });
         }
       });
   }
 
   private showNotification(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 3500, 
+      duration: 4000, 
       horizontalPosition: 'center', 
       verticalPosition: 'bottom',
       panelClass: ['custom-snackbar'] 
