@@ -1,71 +1,283 @@
-<app-page-hero
-  title="Ritrova il piacere di comunicare"
-  subtitle="Logopedia per bambini, ragazzi e adulti. Un approccio empatico e scientifico nel cuore della provincia di Ancona.">
-  <div class="hero-actions" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="center center">
-    <a mat-raised-button class="cta-primary-btn" routerLink="/contatti">Prenota una Valutazione</a>
-    <a mat-stroked-button class="cta-secondary-btn" routerLink="/chi-sono">Scopri chi sono</a>
-  </div>
-</app-page-hero>
+<div class="home-page">
 
-<div class="container">
+  <!-- ============================================ -->
+  <!-- HERO SECTION ASIMMETRICA (7fr 5fr)           -->
+  <!-- ============================================ -->
+  <section class="hero-asymmetric" appFadeUp>
+    <div class="hero-grid">
+      
+      <!-- Colonna Testo (7fr) -->
+      <div class="hero-text-col">
+        <div class="trust-badge">
+          <svg lucideSparkles [size]="16" class="trust-icon"></svg>
+          <span>Approccio Clinico Basato su Evidenze ed Empatia</span>
+        </div>
 
-  <section class="intro-section">
-    <div class="intro-text">
-      <h2 class="section-title">Il mio approccio terapeutico</h2>
-      <p class="lead">Ogni percorso è unico, come la persona che lo intraprende.</p>
-      <p>
-        Il mio lavoro non si limita alla riabilitazione tecnica: costruiamo insieme un percorso
-        che coinvolge la famiglia, la scuola e gli specialisti. L'obiettivo è il benessere
-        comunicativo a 360 gradi, basato su evidenze scientifiche e accoglienza emotiva.
-      </p>
-    </div>
-    <div class="intro-image">
-      <img src="assets/images/EleLogopedista.jpg" alt="Dottoressa" onerror="this.style.display='none'">
+        <h1 class="hero-h1">Ritrovare la gioia di comunicare, ad ogni età.</h1>
+
+        <p class="hero-lead">
+          Percorsi di riabilitazione e potenziamento logopedico per bambini, ragazzi e adulti. Dalla valutazione precoce del linguaggio ai disturbi dell'apprendimento e della deglutizione, nelle tre sedi di <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>.
+        </p>
+
+        <!-- Doppia CTA (Primaria solida Terracotta, Secondaria Ghost) -->
+        <div class="hero-actions">
+          <a mat-raised-button routerLink="/contatti" class="btn-primary-terracotta">
+            <svg lucideCalendarCheck [size]="18"></svg>
+            <span>Prenota una Valutazione</span>
+          </a>
+          <a mat-stroked-button routerLink="/chi-sono" class="btn-secondary-ghost">
+            <span>Scopri il mio metodo</span>
+            <svg lucideArrowRight [size]="16"></svg>
+          </a>
+        </div>
+
+        <!-- Micro-punti di fiducia -->
+        <div class="hero-trust-list">
+          <div class="trust-item">
+            <svg lucideMapPin [size]="16"></svg>
+            <span>3 Sedi (Sassoferrato, Ancona, Jesi)</span>
+          </div>
+          <div class="trust-item">
+            <svg lucideShieldCheck [size]="16"></svg>
+            <span>Iscritta all'Albo TSRM-PSTRP</span>
+          </div>
+          <div class="trust-item">
+            <svg lucideHeart [size]="16"></svg>
+            <span>Alleanza con Famiglia e Scuola</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonna Immagine con Cornice Organica (5fr) -->
+      <div class="hero-media-col">
+        <div class="organic-frame-wrapper">
+          <!-- Decorazione SVG minimale di sfondo -->
+          <div class="backdrop-organic-shape" aria-hidden="true"></div>
+          
+          <div class="photo-organic-frame">
+            <img 
+              src="assets/images/EleLogopedista.jpg" 
+              alt="Dott.ssa Eleonora Mariotti Logopedista" 
+              class="hero-doctor-img"
+              loading="eager">
+          </div>
+
+          <!-- Floating Pill Badge sul frame -->
+          <div class="floating-credentials-pill">
+            <div class="pill-dot"></div>
+            <div>
+              <strong>Dott.ssa Eleonora Mariotti</strong>
+              <span>Logopedista Clinica</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="services-section">
-    <h2 class="section-title center">Di cosa mi occupo</h2>
-    <div class="grid">
-      @for (service of services; track service.title) {
-        <mat-card class="service-card">
-          <mat-card-header>
-            <div mat-card-avatar class="service-icon">
-              @if (service.iconType === 'mic') {
-                <svg lucideMic [size]="24" class="lucide-service-svg"></svg>
-              } @else if (service.iconType === 'book') {
-                <svg lucideBookOpen [size]="24" class="lucide-service-svg"></svg>
-              } @else {
-                <svg lucideActivity [size]="24" class="lucide-service-svg"></svg>
-              }
-            </div>
-            <mat-card-title>{{ service.title }}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{ service.desc }}</p>
-          </mat-card-content>
-        </mat-card>
-      }
+  <!-- ============================================ -->
+  <!-- SEZIONE METODO & APPROCCIO                   -->
+  <!-- ============================================ -->
+  <section class="method-section editorial-section" appFadeUp>
+    <div class="section-intro-header">
+      <span class="badge-evidence">Filosofia di Cura</span>
+      <h2>Un percorso costruito attorno alla persona</h2>
+      <p class="section-intro-p">
+        La logopedia non si riduce alla correzione di un sintomo: è un cammino condiviso che valorizza le risorse uniche di ciascun individuo, integrando la pratica basata sulle prove di efficacia (EBP) con una costante accoglienza emotiva.
+      </p>
     </div>
-    <div class="center-btn">
-      <a mat-button color="primary" routerLink="/servizi" class="view-all-btn">
-        <span>Vedi tutti i servizi</span>
-        <svg lucideArrowRight [size]="18" class="arrow-icon"></svg>
+
+    <div class="pillars-grid">
+      <div class="pillar-card card" appFadeUp [fadeDelay]="100">
+        <div class="pillar-icon-wrap">
+          <svg lucideHeart [size]="24"></svg>
+        </div>
+        <h3>Ascolto & Accoglienza</h3>
+        <p>Uno spazio protetto dove l'errore non è mai un fallimento, ma il punto di partenza per sperimentare nuove strategie comunicative senza ansia da prestazione.</p>
+      </div>
+
+      <div class="pillar-card card" appFadeUp [fadeDelay]="200">
+        <div class="pillar-icon-wrap">
+          <svg lucideShieldCheck [size]="24"></svg>
+        </div>
+        <h3>Rigore Scientifico (EBP)</h3>
+        <p>Valutazioni standardizzate e protocolli riabilitativi costantemente aggiornati secondo le linee guida nazionali e internazionali più recenti.</p>
+      </div>
+
+      <div class="pillar-card card" appFadeUp [fadeDelay]="300">
+        <div class="pillar-icon-wrap">
+          <svg lucideBookOpen [size]="24"></svg>
+        </div>
+        <h3>Lavoro di Rete</h3>
+        <p>Collaborazione attiva e continuativa con genitori, insegnanti, pediatri, neuropsichiatri e ortodontisti per un beneficio tangibile nella vita quotidiana.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- BENTO GRID SERVIZI E AREE DI INTERVENTO       -->
+  <!-- ============================================ -->
+  <section class="services-bento-section editorial-section" appFadeUp>
+    <div class="section-intro-header">
+      <span class="badge-evidence">Aree di Intervento</span>
+      <h2>Ambiti di intervento specialistico</h2>
+      <p class="section-intro-p">
+        Dall'età evolutiva all'età adulta: interventi mirati per sostenere il benessere comunicativo, cognitivo e funzionale.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      
+      <!-- Bento Item 1: Linguaggio nei bambini (Largo, 2 Colonne) -->
+      <article class="bento-card bento-wide card" appFadeUp [fadeDelay]="100">
+        <div class="bento-header">
+          <div class="bento-icon speech-icon">
+            <svg lucideMic [size]="28"></svg>
+          </div>
+          <span class="bento-tag">Età Prescolare & Scolare</span>
+        </div>
+        <div class="bento-body">
+          <h3>Disturbi del Linguaggio & Articolazione</h3>
+          <p>
+            Valutazione e riabilitazione per bambini parlatori tardivi (Late Talkers), disturbi fonetico-fonologici, ritardi espressivi e comprensione verbale. L'intervento precoce sfrutta la massima neuroplasticità infantile.
+          </p>
+          <ul class="bento-checklist">
+            <li><svg lucideCheckCircle2 [size]="16"></svg> Ritardi di linguaggio (2-4 anni)</li>
+            <li><svg lucideCheckCircle2 [size]="16"></svg> Difficoltà di pronuncia e fonologia</li>
+            <li><svg lucideCheckCircle2 [size]="16"></svg> Coinvolgimento attivo della famiglia</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Bento Item 2: DSA & Apprendimento (1 Colonna) -->
+      <article class="bento-card card" appFadeUp [fadeDelay]="200">
+        <div class="bento-header">
+          <div class="bento-icon dsa-icon">
+            <svg lucideBookOpen [size]="26"></svg>
+          </div>
+          <span class="bento-tag">Scuola & Metodo</span>
+        </div>
+        <div class="bento-body">
+          <h3>Disturbi dell'Apprendimento (DSA)</h3>
+          <p>
+            Percorsi mirati su Dislessia, Disortografia, Disgrafia e Discalculia con strategie metacognitive e uso autonomo degli strumenti compensativi.
+          </p>
+        </div>
+      </article>
+
+      <!-- Bento Item 3: Deglutizione & Terapia Miofunzionale (1 Colonna) -->
+      <article class="bento-card card" appFadeUp [fadeDelay]="300">
+        <div class="bento-header">
+          <div class="bento-icon myofunc-icon">
+            <svg lucideActivity [size]="26"></svg>
+          </div>
+          <span class="bento-tag">Ortodonzia & Fisiologia</span>
+        </div>
+        <div class="bento-body">
+          <h3>Deglutizione & Miofunzionale (SMOF)</h3>
+          <p>
+            Rieducazione della postura linguale a riposo e della deglutizione atipica/deviata, in stretta sinergia con i trattamenti ortodontici.
+          </p>
+        </div>
+      </article>
+
+      <!-- Bento Item 4: Voce, Disfonia & Fluenza (Largo, 2 Colonne) -->
+      <article class="bento-card bento-wide card" appFadeUp [fadeDelay]="400">
+        <div class="bento-header">
+          <div class="bento-icon voice-icon">
+            <svg lucideAudioWaveform [size]="28"></svg>
+          </div>
+          <span class="bento-tag">Adulti & Professionisti della Voce</span>
+        </div>
+        <div class="bento-body">
+          <h3>Voce, Disfonia & Gestione della Fluenza</h3>
+          <p>
+            Igiene vocale, riabilitazione del timbro e del controllo pneumo-fonico per noduli, polipi, affaticamento da insegnamento, nonché strategie cliniche per la balbuzie e l'ansia comunicativa.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="bento-cta-row">
+      <a mat-button routerLink="/servizi" class="view-all-services-link">
+        <span>Esplora tutti i servizi in dettaglio</span>
+        <svg lucideArrowRight [size]="18"></svg>
       </a>
     </div>
   </section>
 
-  <section class="cta-banner">
-    <mat-card class="cta-card">
-      <mat-card-content>
-        <h3>Hai dubbi sullo sviluppo linguistico di tuo figlio?</h3>
-        <p>Non aspettare che il problema si risolva da solo. Una consulenza precoce può fare la differenza.</p>
-        <div class="cta-actions">
-          <a mat-raised-button routerLink="/contatti" class="banner-btn-primary">Scrivimi un messaggio</a>
-          <a mat-stroked-button routerLink="/faq" class="banner-btn-secondary">Leggi le domande frequenti</a>
+  <!-- ============================================ -->
+  <!-- SEZIONE BLOG & RICERCA (STILE MAGAZINE)      -->
+  <!-- ============================================ -->
+  <section class="blog-preview-section editorial-section" appFadeUp>
+    <div class="section-intro-header">
+      <span class="badge-evidence">Divulgazione Scientifica</span>
+      <h2>Dalla clinica alla ricerca</h2>
+      <p class="section-intro-p">
+        Articoli, riflessioni cliniche e approfondimenti per supportare famiglie, insegnanti e pazienti con informazioni chiare e attendibili.
+      </p>
+    </div>
+
+    <div class="blog-preview-grid">
+      @for (art of recentArticles; track art.id) {
+        <article class="preview-card card" appFadeUp>
+          <div class="preview-meta">
+            <span [class]="art.category === 'Evidenza Scientifica' ? 'badge-evidence' : 'badge-reflection'">
+              {{ art.category }}
+            </span>
+            <span class="read-pill">
+              <svg lucideClock [size]="13"></svg>
+              {{ art.readTime }}
+            </span>
+          </div>
+          <h3>
+            <a [routerLink]="['/blog', art.slug]">{{ art.title }}</a>
+          </h3>
+          <p class="preview-excerpt">{{ art.excerpt }}</p>
+          <div class="preview-footer">
+            <span class="preview-date">{{ art.publishedAt }}</span>
+            <a [routerLink]="['/blog', art.slug]" class="preview-read-btn">
+              <span>Leggi</span>
+              <svg lucideArrowRight [size]="14"></svg>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+
+    <div class="blog-preview-cta">
+      <a mat-stroked-button routerLink="/blog" class="all-articles-btn">
+        <span>Visualizza tutti gli articoli del blog</span>
+        <svg lucideArrowRight [size]="16"></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- BANNER RASSICURANTE "ZERO-ANSIA"             -->
+  <!-- ============================================ -->
+  <section class="reassuring-cta-section" appFadeUp>
+    <div class="reassuring-banner card">
+      <div class="banner-content">
+        <span class="banner-badge">Un Primo Passo Sereno</span>
+        <h2>Hai un dubbio o desideri un parere professionale?</h2>
+        <p>
+          Non aspettare che una difficoltà si consolidi. Una consulenza precoce permette di chiarire ogni incertezza in un clima accogliente, senza impegno e con la massima cura.
+        </p>
+        <div class="banner-actions">
+          <a mat-raised-button routerLink="/contatti" class="banner-terracotta-btn">
+            <svg lucideCalendarCheck [size]="18"></svg>
+            <span>Contattami o Prenota una Visita</span>
+          </a>
+          <a mat-button routerLink="/faq" class="banner-faq-link">
+            <span>Leggi le domande frequenti (FAQ)</span>
+            <svg lucideArrowRight [size]="16"></svg>
+          </a>
         </div>
-      </mat-card-content>
-    </mat-card>
+      </div>
+    </div>
   </section>
 
 </div>

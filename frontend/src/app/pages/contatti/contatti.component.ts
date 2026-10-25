@@ -21,6 +21,8 @@ import {
   LucideExternalLink
 } from '@lucide/angular';
 
+import { FadeUpDirective } from '../../shared/directives/fade-up.directive';
+
 export interface Studio {
   id: string;
   name: string;
@@ -43,6 +45,7 @@ export interface Studio {
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
+    FadeUpDirective,
     LucidePhone,
     LucideMail,
     LucideMapPin,

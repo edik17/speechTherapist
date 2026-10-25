@@ -1,17 +1,24 @@
-<div class="contact-container">
+<div class="contact-editorial-container">
   
-  <header class="contact-header">
-    <h1>Contatti, Sedi & Orari</h1>
-    <p>Ricevo su appuntamento nelle tre sedi di <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>. Scopri la disponibilità settimanale e richiedi una consulenza.</p>
+  <header class="contact-header" appFadeUp>
+    <span class="badge-evidence">Accoglienza & Contatto Diretto</span>
+    <h1>Contatti, Sedi & Prenotazioni</h1>
+    <p class="contact-lead">
+      Ricevo su appuntamento nelle tre sedi di <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>. Scopri la presenza settimanale o compila il modulo qui sotto per richiedere informazioni o fissare un primo colloquio conoscitivo.
+    </p>
   </header>
 
+  <!-- ============================================ -->
   <!-- SEZIONE 1: CALENDARIO SETTIMANALE DEGLI ORARI -->
-  <section class="schedule-section card">
+  <!-- ============================================ -->
+  <section class="schedule-section card" appFadeUp>
     <div class="section-title-row">
-      <svg lucideCalendar [size]="24" class="title-icon"></svg>
+      <div class="icon-circle">
+        <svg lucideCalendar [size]="22"></svg>
+      </div>
       <div>
-        <h2>Orari & Sedi per Giorno</h2>
-        <span class="section-subtitle">Presenza programmata durante la settimana lavorativa</span>
+        <h2>Orari & Disponibilità Settimanale</h2>
+        <span class="section-subtitle">Presenza programmata nei singoli studi professionali</span>
       </div>
     </div>
 
@@ -19,56 +26,62 @@
       @for (item of weeklySchedule; track item.day) {
         <div class="day-card" [class.is-today]="isToday(item.dayIndex)">
           @if (isToday(item.dayIndex)) {
-            <span class="today-badge">📍 OGGI</span>
+            <span class="today-indicator">📍 OGGI IN SEDE</span>
           }
           <div class="day-header">
             <span class="day-name">{{ item.day }}</span>
           </div>
           <div class="day-body">
-            <div class="location-badge">{{ item.location }}</div>
+            <div class="location-name">{{ item.location }}</div>
             <div class="hours-row">
               <svg lucideClock [size]="14"></svg>
               <span>{{ item.hours }}</span>
             </div>
+            <span class="note-pill">{{ item.note }}</span>
           </div>
         </div>
       }
     </div>
   </section>
 
-  <!-- SEZIONE 2: LE 3 MAPPE INDIPENDENTI PER OGNI STUDIO -->
-  <section class="studios-section">
+  <!-- ============================================ -->
+  <!-- SEZIONE 2: LE 3 MAPPE INDIPENDENTI           -->
+  <!-- ============================================ -->
+  <section class="studios-section" appFadeUp>
     <div class="studios-header">
-      <h2>Le Mie Sedi di Ricevimento</h2>
-      <p>Ogni studio è attrezzato per valutazioni logopediche e trattamenti su misura. Trova la sede più comoda per te.</p>
+      <span class="badge-evidence">Gli Studi</span>
+      <h2>Dove Ricevo</h2>
+      <p>Ogni studio è un ambiente silenzioso, accogliente e studiato per favorire la concentrazione e la serenità dei pazienti.</p>
     </div>
 
     <div class="studios-grid">
       @for (studio of studios; track studio.id) {
-        <article class="studio-card card">
+        <article class="studio-card card" appFadeUp>
           <div class="studio-header">
-            <div class="studio-title-badge">
-              <span class="studio-days">{{ studio.days }}</span>
+            <div class="studio-badge-row">
+              <span class="days-badge">{{ studio.days }}</span>
             </div>
             <h3>{{ studio.name }}</h3>
-            <div class="studio-info-row">
-              <svg lucideMapPin [size]="16" class="meta-icon"></svg>
-              <span>{{ studio.city }}</span>
-            </div>
-            <div class="studio-info-row">
-              <svg lucideClock [size]="16" class="meta-icon"></svg>
-              <span>{{ studio.hours }} (su appuntamento)</span>
+            <div class="studio-meta">
+              <div class="meta-row">
+                <svg lucideMapPin [size]="16" class="meta-icon"></svg>
+                <span>{{ studio.city }}</span>
+              </div>
+              <div class="meta-row">
+                <svg lucideClock [size]="16" class="meta-icon"></svg>
+                <span>{{ studio.hours }}</span>
+              </div>
             </div>
           </div>
 
-          <!-- Mappa Leaflet dedicata per questo singolo studio -->
+          <!-- Mappa Leaflet dedicata -->
           <div [id]="'map-' + studio.id" class="studio-map"></div>
 
           <div class="studio-footer">
-            <a [href]="studio.gmapsUrl" target="_blank" rel="noopener noreferrer" class="directions-btn" mat-stroked-button>
-              <svg lucideNavigation [size]="16"></svg>
-              <span>Calcola Itinerario</span>
-              <svg lucideExternalLink [size]="14" class="ext-icon"></svg>
+            <a [href]="studio.gmapsUrl" target="_blank" rel="noopener noreferrer" class="directions-btn">
+              <svg lucideNavigation [size]="15"></svg>
+              <span>Apri su Google Maps</span>
+              <svg lucideExternalLink [size]="13" class="ext-icon"></svg>
             </a>
           </div>
         </article>
@@ -76,23 +89,27 @@
     </div>
   </section>
 
-  <!-- SEZIONE 3: MODULO CONTATTI & RECAPITI DIRETTI -->
-  <div class="contact-grid">
+  <!-- ============================================ -->
+  <!-- SEZIONE 3: MODULO CONTATTI ZERO-ANSIA        -->
+  <!-- ============================================ -->
+  <section class="contact-form-section" appFadeUp>
+    <div class="contact-grid">
 
-    <!-- Card Informazioni Dirette -->
-    <mat-card class="info-card card">
-      <mat-card-header>
-        <mat-card-title>Recapiti Diretti</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
+      <!-- Colonna Recapiti Diretti -->
+      <div class="info-card card">
+        <div class="info-card-header">
+          <h3>Recapiti Rapidi</h3>
+          <p>Se preferisci un contatto telefonico immediato o un messaggio WhatsApp:</p>
+        </div>
+
         <div class="info-list">
           <div class="info-item">
             <div class="icon-wrapper">
               <svg lucidePhone [size]="20"></svg>
             </div>
             <div>
-              <span class="label">Telefono & WhatsApp</span>
-              <a href="tel:+393661460520" class="value">+39 366 146 0520</a>
+              <span class="info-label">Telefono & WhatsApp</span>
+              <a href="tel:+393661460520" class="info-val">+39 366 146 0520</a>
             </div>
           </div>
 
@@ -101,8 +118,8 @@
               <svg lucideMail [size]="20"></svg>
             </div>
             <div>
-              <span class="label">Email di contatto</span>
-              <a href="mailto:mariotti.eleonora14@gmail.com" class="value">mariotti.eleonora14&#64;gmail.com</a>
+              <span class="info-label">Email Professionale</span>
+              <a href="mailto:mariotti.eleonora14@gmail.com" class="info-val">mariotti.eleonora14&#64;gmail.com</a>
             </div>
           </div>
 
@@ -111,8 +128,8 @@
               <svg lucideMapPin [size]="20"></svg>
             </div>
             <div>
-              <span class="label">Copertura Territoriale</span>
-              <span class="value">Sassoferrato • Ancona • Jesi</span>
+              <span class="info-label">Sedi Principali</span>
+              <span class="info-val">Sassoferrato • Ancona • Jesi</span>
             </div>
           </div>
 
@@ -121,68 +138,83 @@
               <svg lucideClock [size]="20"></svg>
             </div>
             <div>
-              <span class="label">Disponibilità</span>
-              <span class="value">Lun - Ven: 09:00 - 19:30</span>
+              <span class="info-label">Orario di Ricevimento</span>
+              <span class="info-val">Lunedì - Venerdì: 09:00 - 19:30</span>
             </div>
           </div>
         </div>
-      </mat-card-content>
-    </mat-card>
 
-    <!-- Card Modulo con Scelta della Sede -->
-    <mat-card class="form-card card">
-      <mat-card-header>
-        <mat-card-title>Richiedi una Valutazione o Informazioni</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
+        <div class="peace-of-mind-box">
+          <strong>Perché iniziare con un colloquio?</strong>
+          <p>Non richiede prescrizioni vincolanti ed è il modo migliore per analizzare le tue necessità specifiche con il giusto tempo e tutta la cura necessaria.</p>
+        </div>
+      </div>
 
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <!-- Colonna Form "Zero-Ansia" -->
+      <div class="form-card card">
+        <div class="form-header">
+          <h2>Richiedi Informazioni o Prenota</h2>
+          <p>Compila i campi qui sotto. Ti risponderò personalmente con rispetto e precisione.</p>
+        </div>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Il tuo nome e cognome</mat-label>
-            <input matInput formControlName="nome" placeholder="es. Maria Rossi">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+          <mat-form-field appearance="outline" class="reassuring-field">
+            <mat-label>Nome e Cognome *</mat-label>
+            <input matInput formControlName="nome" placeholder="es. Maria Rossi" autocomplete="name">
             @if (nome?.invalid && nome?.touched) {
-              <mat-error>Il nome è obbligatorio</mat-error>
+              <mat-error>Inserisci il tuo nome e cognome per poterti rispondere</mat-error>
             }
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>La tua email</mat-label>
-            <input matInput formControlName="email" type="email" placeholder="es. maria.rossi@email.com">
+          <mat-form-field appearance="outline" class="reassuring-field">
+            <mat-label>Indirizzo Email *</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="es. maria.rossi@email.com" autocomplete="email">
             @if (email?.errors?.['required'] && email?.touched) {
-              <mat-error>L'email è obbligatoria</mat-error>
+              <mat-error>L'email è necessaria per poterti ricontattare</mat-error>
             }
             @if (email?.errors?.['email'] && email?.touched) {
-              <mat-error>Inserisci un'email valida</mat-error>
+              <mat-error>Inserisci un indirizzo email valido (es. nome@dominio.it)</mat-error>
             }
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>In quale sede preferisci la visita?</mat-label>
+          <mat-form-field appearance="outline" class="reassuring-field">
+            <mat-label>In quale sede preferisci la visita? *</mat-label>
             <mat-select formControlName="sede">
-              <mat-option value="Sassoferrato">Sede di Sassoferrato (Lunedì e Giovedì)</mat-option>
-              <mat-option value="Ancona">Sede di Ancona (Martedì e Venerdì)</mat-option>
-              <mat-option value="Jesi">Sede di Jesi (Mercoledì)</mat-option>
-              <mat-option value="Online / Da concordare">Valutazione iniziale Online / Da concordare</mat-option>
+              <mat-option value="Sassoferrato">Studio di Sassoferrato (Lunedì & Giovedì)</mat-option>
+              <mat-option value="Ancona">Studio di Ancona (Martedì & Venerdì)</mat-option>
+              <mat-option value="Jesi">Studio di Jesi (Mercoledì)</mat-option>
+              <mat-option value="Online / Da concordare">Primo colloquio online / Da concordare</mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Come posso aiutarti? (età, tipo di richiesta...)</mat-label>
-            <textarea matInput formControlName="messaggio" rows="4" placeholder="Descrivi brevemente la tua richiesta o per chi richiedi la valutazione..."></textarea>
+          <mat-form-field appearance="outline" class="reassuring-field">
+            <mat-label>Come posso aiutarti? (età, tipo di richiesta...) *</mat-label>
+            <textarea matInput formControlName="messaggio" rows="4" placeholder="Descrivi con parole tue le difficoltà o il motivo della richiesta. Non preoccuparti dei termini tecnici: spiegami semplicemente la situazione."></textarea>
             @if (messaggio?.errors?.['required'] && messaggio?.touched) {
-              <mat-error>Il messaggio è obbligatorio</mat-error>
+              <mat-error>Scrivi brevemente due righe sulla tua richiesta</mat-error>
             }
           </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit" class="submit-btn" [disabled]="isSubmitting">
-            <svg lucideSend [size]="18" class="btn-icon"></svg>
-            <span>{{ isSubmitting ? 'Invio in corso...' : 'Invia Richiesta' }}</span>
-          </button>
-        </form>
-      </mat-card-content>
-    </mat-card>
+          <div class="submit-row">
+            <button mat-raised-button type="submit" class="submit-terracotta-btn" [disabled]="isSubmitting">
+              <svg lucideSend [size]="18" class="btn-icon"></svg>
+              <span>{{ isSubmitting ? 'Invio del messaggio...' : 'Invia la Richiesta' }}</span>
+            </button>
+          </div>
 
-  </div>
+          <!-- Micro-nota sulla privacy e tempi di risposta (Zero-Ansia) -->
+          <div class="privacy-reassurance-note">
+            <span class="lock-icon">🔒</span>
+            <span>
+              I tuoi dati sono protetti e trattati con la massima riservatezza secondo il GDPR. Riceverai risposta personalmente entro <strong>24-48 ore lavorative</strong>.
+            </span>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
 
 </div>

@@ -1,19 +1,20 @@
 @use '@angular/material' as mat;
 
-$brand-primary: mat.m2-define-palette(mat.$m2-cyan-palette, 800, 700, 900); // Deep Teal/Blue
-$brand-accent:  mat.m2-define-palette(mat.$m2-teal-palette, A400, A200, A700); // Vibrant Teal
+// Healthcare Editorial Palette
+$brand-primary: mat.m2-define-palette(mat.$m2-teal-palette, 900, 800, 900);
+$brand-accent:  mat.m2-define-palette(mat.$m2-deep-orange-palette, 600, 400, 800);
 $brand-warn:    mat.m2-define-palette(mat.$m2-red-palette);
 
 $typography-config: mat.m2-define-typography-config(
-  $font-family: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
-  $headline-1: (font-family: 'Outfit, sans-serif', font-weight: 700),
-  $headline-2: (font-family: 'Outfit, sans-serif', font-weight: 600),
-  $headline-3: (font-family: 'Outfit, sans-serif', font-weight: 600),
-  $headline-4: (font-family: 'Outfit, sans-serif', font-weight: 600),
-  $headline-5: (font-family: 'Outfit, sans-serif', font-weight: 600),
-  $headline-6: (font-family: 'Outfit, sans-serif', font-weight: 500),
+  $font-family: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+  $headline-1: (font-family: "'Fraunces', Georgia, serif", font-weight: 600),
+  $headline-2: (font-family: "'Fraunces', Georgia, serif", font-weight: 600),
+  $headline-3: (font-family: "'Fraunces', Georgia, serif", font-weight: 600),
+  $headline-4: (font-family: "'Fraunces', Georgia, serif", font-weight: 600),
+  $headline-5: (font-family: "'Fraunces', Georgia, serif", font-weight: 600),
+  $headline-6: (font-family: "'Fraunces', Georgia, serif", font-weight: 500),
   $subtitle-1: (font-weight: 500),
-  $button: (font-family: 'Outfit, sans-serif', font-weight: 500)
+  $button: (font-family: "'Plus Jakarta Sans', sans-serif", font-weight: 600)
 );
 
 $light-theme: mat.m2-define-light-theme((
@@ -26,8 +27,8 @@ $light-theme: mat.m2-define-light-theme((
   density: 0
 ));
 
-$dark-primary: mat.m2-define-palette(mat.$m2-cyan-palette, 300, 200, 400);
-$dark-accent:  mat.m2-define-palette(mat.$m2-teal-palette, A200, A100, A400);
+$dark-primary: mat.m2-define-palette(mat.$m2-teal-palette, 300, 200, 400);
+$dark-accent:  mat.m2-define-palette(mat.$m2-deep-orange-palette, 300, 200, 400);
 
 $dark-theme: mat.m2-define-dark-theme((
   color: (
@@ -46,32 +47,60 @@ body.dark-mode {
 }
 
 :root {
-  --bg-soft: #f4f7f6;
-  --bg-gradient: linear-gradient(135deg, #f4f7f6 0%, #e8f0ef 100%);
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(255, 255, 255, 0.4);
-  --ink: #1a333c;
-  --ink-light: #0F4C5C;
-  --muted: #647b85;
-  --primary: #0F4C5C;
-  --primary-gradient: linear-gradient(135deg, #0F4C5C 0%, #083d4a 100%);
-  --accent-gradient: linear-gradient(135deg, #1bd2aa 0%, #10a382 100%);
-  --ring: #{mat.m2-get-color-from-palette($brand-accent, A200)};
-  --toolbar-bg: rgba(15, 76, 92, 0.95);
-  --footer-bg: #1a333c;
+  // Editorial Healthcare Design Tokens
+  --bg-primary: #FAF7F2;
+  --bg-surface: #F2ECE4;
+  --bg-elevated: #FFFFFF;
+  --text-primary: #1B3B36;
+  --text-secondary: #4A635E;
+  --accent-primary: #D46A4E;
+  --accent-primary-hover: #BC563B;
+  --accent-secondary: #7C9D8E;
+  --border-subtle: rgba(27, 59, 54, 0.08);
+  --shadow-soft: 0 12px 32px -8px rgba(27, 59, 54, 0.07);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+
+  // Semantic Bridge Variables
+  --bg-soft: #F2ECE4;
+  --bg-gradient: linear-gradient(180deg, #FAF7F2 0%, #F5EFE7 100%);
+  --card-bg: #FFFFFF;
+  --card-border: rgba(27, 59, 54, 0.08);
+  --ink: #1B3B36;
+  --ink-light: #1B3B36;
+  --muted: #4A635E;
+  --primary: #1B3B36;
+  --primary-gradient: linear-gradient(145deg, #1B3B36 0%, #132A26 100%);
+  --accent-gradient: linear-gradient(135deg, #D46A4E 0%, #BC563B 100%);
+  --ring: rgba(124, 157, 142, 0.4);
+  --toolbar-bg: rgba(250, 247, 242, 0.88);
+  --footer-bg: #122623;
 }
 
 body.dark-mode {
-  --bg-soft: #08141a;
-  --bg-gradient: linear-gradient(135deg, #0a1922 0%, #061017 100%);
-  --card-bg: rgba(16, 33, 43, 0.92);
-  --card-border: rgba(56, 189, 248, 0.15);
-  --ink: #f0f6f6;
-  --ink-light: #38bdf8;
-  --muted: #94a3b8;
-  --primary: #38bdf8;
-  --primary-gradient: linear-gradient(135deg, #0e3d48 0%, #07252c 100%);
-  --accent-gradient: linear-gradient(135deg, #1bd2aa 0%, #10a382 100%);
-  --toolbar-bg: rgba(8, 22, 30, 0.95);
-  --footer-bg: #050d12;
+  --bg-primary: #0F1E1B;
+  --bg-surface: #152B27;
+  --bg-elevated: #1D3731;
+  --text-primary: #FAF7F2;
+  --text-secondary: #A0BDB5;
+  --accent-primary: #E27D60;
+  --accent-primary-hover: #D46A4E;
+  --accent-secondary: #8EAF9F;
+  --border-subtle: rgba(250, 247, 242, 0.08);
+  --shadow-soft: 0 12px 32px -8px rgba(0, 0, 0, 0.45);
+
+  --bg-soft: #152B27;
+  --bg-gradient: linear-gradient(180deg, #0F1E1B 0%, #152B27 100%);
+  --card-bg: #1D3731;
+  --card-border: rgba(250, 247, 242, 0.08);
+  --ink: #FAF7F2;
+  --ink-light: #FAF7F2;
+  --muted: #A0BDB5;
+  --primary: #8EAF9F;
+  --primary-gradient: linear-gradient(145deg, #152B27 0%, #0F1E1B 100%);
+  --accent-gradient: linear-gradient(135deg, #E27D60 0%, #C8644A 100%);
+  --ring: rgba(142, 175, 159, 0.4);
+  --toolbar-bg: rgba(15, 30, 27, 0.9);
+  --footer-bg: #091311;
 }

@@ -1,105 +1,82 @@
-import { Component, Input, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { createTimeline } from 'animejs';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-page-hero',
   standalone: true,
   template: `
-  <section class="hero card" #heroSection>
-    <div class="hero-content" #heroContent>
-      <h1 class="hero-title">{{title}}</h1>
-      <p class="hero-subtitle">{{subtitle}}</p>
+  <section class="page-hero">
+    <div class="hero-inner">
+      @if (badge) {
+        <span class="hero-badge">{{ badge }}</span>
+      }
+      <h1 class="hero-title">{{ title }}</h1>
+      @if (subtitle) {
+        <p class="hero-subtitle">{{ subtitle }}</p>
+      }
       <div class="hero-slot">
-        <ng-content/>
+        <ng-content></ng-content>
       </div>
     </div>
   </section>
   `,
   styles: [`
-    .hero {
-      position: relative;
+    .page-hero {
       text-align: center;
-      padding: clamp(40px, 6vw, 80px) 24px;
-      background: var(--primary-gradient);
-      color: white;
-      border-radius: 0 0 32px 32px;
-      margin: -clamp(16px, 2vw, 32px) -clamp(16px, 2vw, 32px) 40px -clamp(16px, 2vw, 32px);
-      box-shadow: 0 20px 40px rgba(15, 76, 92, 0.15);
-      border: none;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
-      animation: rotate 20s linear infinite;
-      pointer-events: none;
+      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem clamp(2rem, 4vw, 3rem);
+      background: radial-gradient(circle at 50% 20%, rgba(124, 157, 142, 0.12) 0%, transparent 70%);
+      border-radius: var(--radius-lg);
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-subtle);
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
+    .hero-inner {
       max-width: 800px;
       margin: 0 auto;
     }
 
-    .hero-title { 
-      margin: 0 0 16px; 
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.1;
-      color: #ffffff !important;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    }
-    
-    .hero-subtitle { 
-      margin: 0 auto 32px; 
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: #ffffff !important;
-      line-height: 1.6;
-      opacity: 0.95;
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124, 157, 142, 0.15);
+      color: #2D5A4C;
+      border: 1px solid rgba(124, 157, 142, 0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
     }
 
-    .hero-slot {
-      opacity: 0;
+    .hero-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin: 0 0 16px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-slot:empty {
+      display: none;
+    }
+
+    body.dark-mode {
+      .hero-badge {
+        color: #A8D5C2;
+        background: rgba(142, 175, 159, 0.2);
+      }
     }
   `]
 })
-export class PageHeroComponent implements AfterViewInit {
+export class PageHeroComponent {
+  @Input() badge?: string;
   @Input() title = '';
   @Input() subtitle = '';
-
-  @ViewChild('heroContent') heroContent!: ElementRef;
-
-  ngAfterViewInit() {
-    const el = this.heroContent.nativeElement;
-    
-    createTimeline()
-    .add(el.querySelector('.hero-title'), {
-      translateY: [30, 0],
-      opacity: [0, 1],
-      duration: 1000,
-      delay: 200,
-      ease: 'easeOutExpo'
-    })
-    .add(el.querySelector('.hero-subtitle'), {
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: 800
-    }, '-=600')
-    .add(el.querySelector('.hero-slot'), {
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: 800
-    }, '-=600');
-  }
 }

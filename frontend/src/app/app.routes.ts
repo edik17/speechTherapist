@@ -12,6 +12,8 @@ export const routes: Routes = [
   { path: 'servizi', loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesComponent), title: 'Servizi – Logopedia' },
   { path: 'faq', loadComponent: () => import('./pages/faq/faq.component').then(m => m.FaqComponent), title: 'FAQ – Logopedia' },
   { path: 'contatti', loadComponent: () => import('./pages/contatti/contatti.component').then(m => m.ContattiComponent), title: 'Contatti & Sedi – Logopedista' },
+  { path: 'blog', loadComponent: () => import('./pages/blog/blog.component').then(m => m.BlogComponent), title: 'Blog & Divulgazione – Logopedia' },
+  { path: 'blog/:slug', loadComponent: () => import('./pages/blog/blog.component').then(m => m.BlogComponent), title: 'Articolo – Logopedia' },
   { path: 'testimonianze', loadComponent: () => import('./pages/testimonials/testimonials.component').then(m => m.TestimonialsComponent), title: 'Cosa dicono di me – Logopedista' },
   { path: '**', redirectTo: '' }
 ];

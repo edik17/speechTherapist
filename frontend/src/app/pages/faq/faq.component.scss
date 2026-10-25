@@ -1,111 +1,142 @@
-// Variabili colore (usa quelle del tuo tema, queste sono di esempio in base agli screenshot precedenti)
-$primary-color: #3f51b5; 
-$accent-color: #009688; // Verde acqua / Azzurro
-$bg-light: #f9fafb;
-$text-dark: #2c3e50;
-$text-light: #546e7a;
+.faq-page {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
 
 .faq-container {
-  max-width: 800px; // Non troppo largo, facilita la lettura
-  margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding-block: 20px 40px;
 }
 
-.faq-header {
+.faq-intro-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 
   h2 {
-    font-size: 2rem;
-    color: $text-dark;
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--text-primary);
+    margin: 12px 0 10px;
   }
-  
+
   p {
-    color: $text-light;
-    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 }
 
-// STILE ACCORDION MATERIAL CUSTOM
 .custom-accordion {
   display: flex;
   flex-direction: column;
-  gap: 16px; // Spazio tra una domanda e l'altra (Effetto "Card separate")
+  gap: 16px;
 }
 
-// Per sovrascrivere bene gli stili di Material usiamo ::ng-deep se necessario, 
-// ma spesso basta puntare la classe corretta.
 ::ng-deep .faq-panel {
-  border-radius: 12px !important; // Angoli morbidi
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important; // Ombra leggera
-  border: 1px solid rgba(0,0,0,0.03);
-  transition: all 0.3s ease;
-  background-color: white;
+  border-radius: var(--radius-sm) !important;
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-soft) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
     transform: translateY(-2px);
+    box-shadow: 0 12px 28px -6px rgba(27, 59, 54, 0.1) !important;
   }
 
-  // Header del pannello (La riga della domanda)
   .mat-expansion-panel-header {
-    padding: 16px 24px;
-    height: auto !important; // Permette al testo di andare a capo se lungo su mobile
+    padding: 20px 24px;
+    height: auto !important;
     min-height: 64px;
+
+    .mat-expansion-indicator::after {
+      color: var(--accent-secondary);
+    }
   }
 
   .faq-question {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: $text-dark;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
     line-height: 1.4;
   }
 
-  // Corpo del pannello (La risposta)
   .mat-expansion-panel-body {
     padding: 0 24px 24px 24px;
   }
 
+  .faq-answer-wrap {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 16px;
+  }
+
   .faq-answer {
-    color: #555;
-    line-height: 1.6;
-    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1rem;
     margin: 0;
-    padding-top: 8px;
-    border-top: 1px solid #eee; // Una riga leggerissima che separa domanda e risposta
   }
 }
 
-// STILE BOX CHIAMATA ALL'AZIONE (CTA)
 .faq-cta-box {
-  margin-top: 60px;
-  background-color: #e8eaf6; // Azzurrino chiaro / Indaco chiaro
-  border-radius: 16px;
-  padding: 40px 30px;
+  margin-top: 50px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 40px 32px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .cta-icon {
-    font-size: 40px;
-    width: 40px;
-    height: 40px;
-    color: $primary-color;
+  .cta-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: rgba(124, 157, 142, 0.15);
+    color: #2D5A4C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 16px;
   }
 
   h3 {
-    font-size: 1.5rem;
-    color: $text-dark;
-    margin-bottom: 12px;
+    font-size: 1.45rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
   }
 
   p {
-    color: $text-light;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 520px;
+    line-height: 1.6;
     margin-bottom: 24px;
-    max-width: 500px;
+  }
+
+  .faq-cta-btn {
+    background: var(--accent-primary) !important;
+    color: #FAF7F2 !important;
+    padding: 12px 28px !important;
+    border-radius: 999px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 14px rgba(212, 106, 78, 0.3) !important;
+
+    &:hover {
+      background: var(--accent-primary-hover) !important;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+body.dark-mode {
+  .faq-cta-box .cta-icon-wrap {
+    background: rgba(142, 175, 159, 0.2);
+    color: #A8D5C2;
   }
 }
