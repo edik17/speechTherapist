@@ -1,11 +1,13 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { TestimonialsService } from '../../core/services/testimonials.service';
+import { Testimonial, GoogleReviewsSummary } from '../../core/models/testimonial.model';
 import Swiper from 'swiper/bundle';
 import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucide/angular';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [LucideStar, LucideHeart, LucideQuote, LucideExternalLink],
+  imports: [LucideStar, LucideHeart, LucideQuote, LucideExternalLink, DecimalPipe],
   template: `
   <section class="testimonials-container">
     <div class="testimonials-header">
@@ -23,10 +25,10 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
         <div [class]="'elfsight-app-' + elfsightWidgetId" data-elfsight-app-lazy></div>
       </div>
     } @else {
-      <!-- Swiper Carousel Recensioni -->
+      <!-- Swiper Carousel Recensioni Reali da Google -->
       <div class="swiper testimonials-swiper">
         <div class="swiper-wrapper">
-          @for (t of testimonials; track t.author) {
+          @for (t of testimonials; track (t.author + t.text)) {
             <div class="swiper-slide">
               <div class="testimonial-card card">
                 <div class="card-top">
@@ -37,6 +39,8 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
                   </div>
                   @if (t.tag) {
                     <span class="tag-chip">{{t.tag}}</span>
+                  } @else if (t.isGoogleVerified) {
+                    <span class="google-chip">Recensione Google</span>
                   }
                 </div>
 
@@ -46,14 +50,30 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
                 </div>
 
                 <div class="author-info">
-                  <div class="author-avatar">{{t.author.charAt(0)}}</div>
+                  <div class="author-avatar" [class.has-photo]="!!t.authorPhotoUrl">
+                    @if (t.authorPhotoUrl) {
+                      <img [src]="t.authorPhotoUrl" [alt]="t.author" class="google-avatar-img" (error)="t.authorPhotoUrl = ''" />
+                    } @else {
+                      <span>{{t.author.charAt(0)}}</span>
+                    }
+                  </div>
                   <div class="author-details">
-                    <strong class="author-name">{{t.author}}</strong>
+                    <div class="author-name-row">
+                      <strong class="author-name">{{t.author}}</strong>
+                      @if (t.isGoogleVerified) {
+                        <span class="google-verified-badge" title="Recensione verificata su Google">
+                          <svg viewBox="0 0 24 24" width="13" height="13">
+                            <path fill="#4285F4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                          </svg>
+                          <span>Google</span>
+                        </span>
+                      }
+                    </div>
                     @if (t.role) {
                       <span class="author-role">{{t.role}}</span>
                     }
-                    @if (t.date) {
-                      <span class="review-date">{{t.date}}</span>
+                    @if (t.relativeTime || t.date) {
+                      <span class="review-date">{{t.relativeTime || t.date}}</span>
                     }
                   </div>
                 </div>
@@ -71,7 +91,7 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       </div>
     }
 
-    <!-- Banner Recensioni Google -->
+    <!-- Banner Recensioni Google con Dati Live e CTA -->
     <div class="google-reviews-banner card">
       <div class="google-badge-left">
         <div class="google-icon-wrapper">
@@ -84,20 +104,20 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
         </div>
         <div class="google-text">
           <div class="google-score">
-            <strong>5.0</strong>
+            <strong>{{summary.rating | number:'1.1-1'}}</strong>
             <div class="stars">
               @for (star of [1,2,3,4,5]; track star) {
                 <svg lucideStar [size]="16" class="star-icon" fill="currentColor"></svg>
               }
             </div>
-            <span>su Google Maps</span>
+            <span>({{summary.totalReviews}} recensioni su Google Maps)</span>
           </div>
-          <p class="google-sub">Recensioni verificate lasciate spontaneamente dai genitori e pazienti seguiti in studio.</p>
+          <p class="google-sub">Recensioni verificate lasciate spontaneamente dai pazienti e dalle famiglie seguite.</p>
         </div>
       </div>
 
       <div class="google-cta">
-        <a href="https://www.google.com/maps/search/?api=1&query=Logopedista+Eleonora+Mariotti" target="_blank" rel="noopener noreferrer" class="google-review-btn">
+        <a [href]="summary.writeReviewUrl || summary.placeUrl" target="_blank" rel="noopener noreferrer" class="google-review-btn">
           <span>Lascia una recensione su Google</span>
           <svg lucideExternalLink [size]="16"></svg>
         </a>
@@ -194,6 +214,16 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       letter-spacing: 0.02em;
     }
 
+    .google-chip {
+      background: rgba(66, 133, 244, 0.1);
+      color: #1a73e8;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
     .quote-wrapper {
       position: relative;
       margin-bottom: 24px;
@@ -238,11 +268,26 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       font-weight: 700;
       font-size: 1.1rem;
       box-shadow: 0 4px 10px rgba(15, 76, 92, 0.2);
+      overflow: hidden;
+      flex-shrink: 0;
+
+      .google-avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     .author-details {
       display: flex;
       flex-direction: column;
+
+      .author-name-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
 
       .author-name {
         font-size: 1rem;
@@ -257,6 +302,23 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       .review-date {
         font-size: 0.75rem;
         color: rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    .google-verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(66, 133, 244, 0.1);
+      color: #1a73e8;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+
+      svg path {
+        fill: #1a73e8;
       }
     }
 
@@ -343,6 +405,7 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
         span {
           color: var(--muted);
           font-weight: 500;
+          font-size: 0.95rem;
         }
       }
 
@@ -385,26 +448,47 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
     }
   `]
 })
-export class TestimonialsComponent implements AfterViewInit {
-  testimonials = this.svc.list();
+export class TestimonialsComponent implements OnInit, AfterViewInit, OnDestroy {
+  testimonials: Testimonial[] = [];
+  summary: GoogleReviewsSummary = {
+    rating: 5.0,
+    totalReviews: 4,
+    placeUrl: 'https://www.google.com/maps/search/?api=1&query=Logopedista+Eleonora+Mariotti',
+    writeReviewUrl: 'https://www.google.com/maps/search/?api=1&query=Logopedista+Eleonora+Mariotti'
+  };
 
   /**
-   * INCOLLA QUI L'ID DEL WIDGET ELFSIGHT:
-   * 1. Vai su https://elfsight.com/google-reviews-widget/ (gratis)
-   * 2. Collega la scheda Google di Eleonora Mariotti
-   * 3. Copia l'ID generato dal codice (es. "a1b2c3d4-e5f6-7890-abcd-1234567890ab")
-   * e incollalo qui tra le virgolette.
-   * Se vuoto '', il sito mostrerà automaticamente il carosello interno di recensioni verificate.
+   * INCOLLA QUI L'ID DEL WIDGET ELFSIGHT (Opzione facoltativa se si preferisce Elfsight):
+   * Se vuoto '', il sito usa in automatico le recensioni live integrate con la grafica nativa.
    */
   elfsightWidgetId: string = '';
 
+  private swiperInstance?: Swiper;
+
   constructor(private svc: TestimonialsService) {}
+
+  ngOnInit(): void {
+    this.testimonials = this.svc.list();
+    this.svc.getReviews().subscribe(res => {
+      if (res && res.reviews) {
+        this.testimonials = res.reviews;
+        this.summary = res.summary;
+        setTimeout(() => this.initSwiper(), 150);
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     if (this.elfsightWidgetId) {
       this.loadElfsightScript();
     } else {
-      this.initSwiper();
+      setTimeout(() => this.initSwiper(), 200);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.swiperInstance) {
+      this.swiperInstance.destroy(true, true);
     }
   }
 
@@ -420,10 +504,14 @@ export class TestimonialsComponent implements AfterViewInit {
 
   private initSwiper(): void {
     try {
-      new Swiper('.testimonials-swiper', {
+      if (this.swiperInstance) {
+        this.swiperInstance.destroy(true, true);
+      }
+
+      this.swiperInstance = new Swiper('.testimonials-swiper', {
         slidesPerView: 1,
         spaceBetween: 24,
-        loop: true,
+        loop: this.testimonials.length > 2,
         autoplay: {
           delay: 5000,
           pauseOnMouseEnter: true,
