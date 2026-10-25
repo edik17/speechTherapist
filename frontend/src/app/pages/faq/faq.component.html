@@ -1,36 +1,46 @@
-<app-page-hero 
-  title="Domande Frequenti" 
-  subtitle="Tutto quello che c'è da sapere prima di iniziare un percorso insieme.">
-</app-page-hero>
+<div class="faq-page">
 
-<div class="faq-container">
-  
-  <div class="faq-content">
-    <div class="faq-header">
-      <h2>Hai dei dubbi?</h2>
-      <p>Qui ho raccolto le risposte alle domande che mi vengono fatte più spesso in studio.</p>
+  <app-page-hero 
+    badge="Chiarezza & Trasparenza"
+    title="Domande Frequenti" 
+    subtitle="Tutto quello che è utile sapere prima di iniziare un percorso logopedico insieme.">
+  </app-page-hero>
+
+  <div class="faq-container" appFadeUp>
+    <div class="faq-intro-header">
+      <span class="badge-evidence">Risposte Rapide</span>
+      <h2>Hai dei dubbi sul percorso?</h2>
+      <p>Ecco le risposte alle domande che genitori e pazienti pongono più frequentemente prima di fissare un primo appuntamento.</p>
     </div>
 
     <mat-accordion class="custom-accordion" multi="false">
-      <mat-expansion-panel *ngFor="let faq of faqs" class="faq-panel">
-        <mat-expansion-panel-header>
-          <mat-panel-title class="faq-question">
-            {{ faq.question }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        
-        <p class="faq-answer">
-          {{ faq.answer }}
-        </p>
-      </mat-expansion-panel>
+      @for (faq of faqs; track faq.question) {
+        <mat-expansion-panel class="faq-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="faq-question">
+              {{ faq.question }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          
+          <div class="faq-answer-wrap">
+            <p class="faq-answer">{{ faq.answer }}</p>
+          </div>
+        </mat-expansion-panel>
+      }
     </mat-accordion>
-  </div>
 
-  <div class="faq-cta-box">
-    <mat-icon class="cta-icon">help_outline</mat-icon>
-    <h3>Non hai trovato quello che cercavi?</h3>
-    <p>Nessun problema. Scrivimi direttamente e sarò felice di risponderti nel minor tempo possibile.</p>
-    <a mat-raised-button color="accent" routerLink="/contatti">Contattami ora</a>
+    <div class="faq-cta-box card" appFadeUp>
+      <div class="cta-icon-wrap">
+        <svg lucideHelpCircle [size]="30"></svg>
+      </div>
+      <h3>Non hai trovato risposta alla tua situazione?</h3>
+      <p>Ogni persona è unica. Scrivimi un messaggio descrivendo la tua esigenza: sarò felice di darti un primo orientamento gratuito.</p>
+      <a mat-raised-button routerLink="/contatti" class="faq-cta-btn">
+        <svg lucideMessageSquare [size]="16"></svg>
+        <span>Scrivimi direttamente</span>
+      </a>
+    </div>
+
   </div>
 
 </div>

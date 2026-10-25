@@ -2,49 +2,53 @@ import { Component } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { FadeUpDirective } from '../../shared/directives/fade-up.directive';
 import { 
-  LucideSpeech, 
-  LucideBookOpen, 
   LucideMic, 
+  LucideBookOpen, 
   LucideActivity, 
   LucideAudioWaveform, 
-  LucideArrowRight 
+  LucideMessageCircle,
+  LucideCalendarCheck
 } from '@lucide/angular';
 
 @Component({
   selector: 'app-services',
+  standalone: true,
   imports: [
     MatChipsModule, 
     MatButtonModule, 
     RouterLink,
-    LucideSpeech, 
-    LucideBookOpen, 
+    FadeUpDirective,
     LucideMic, 
+    LucideBookOpen, 
     LucideActivity, 
     LucideAudioWaveform,
-    LucideArrowRight
+    LucideMessageCircle,
+    LucideCalendarCheck
   ],
   template: `
-  <section class="services-page">
-    <div class="services-header">
-      <h1>Aree di Intervento & Servizi</h1>
-      <p>Percorsi riabilitativi personalizzati e basati sulle più recenti evidenze scientifiche per ogni fascia d'età.</p>
-    </div>
+  <section class="services-page" appFadeUp>
+    <header class="services-header">
+      <span class="badge-evidence">Aree di Intervento Clinico</span>
+      <h1>I Nostri Servizi & Metodologia</h1>
+      <p>Percorsi terapeutici personalizzati, basati sulle evidenze scientifiche e progettati nel rispetto dei tempi e dei bisogni di ogni persona.</p>
+    </header>
 
     <div class="services-grid">
       @for (s of services; track s.title) {
-        <article class="service-card card">
+        <article class="service-card card" appFadeUp>
           <div class="service-icon-wrapper">
             @if (s.iconType === 'speech') {
-              <svg lucideSpeech [size]="30" class="service-icon"></svg>
+              <svg lucideMessageCircle [size]="28" class="service-icon"></svg>
             } @else if (s.iconType === 'book') {
-              <svg lucideBookOpen [size]="30" class="service-icon"></svg>
+              <svg lucideBookOpen [size]="28" class="service-icon"></svg>
             } @else if (s.iconType === 'mic') {
-              <svg lucideMic [size]="30" class="service-icon"></svg>
+              <svg lucideMic [size]="28" class="service-icon"></svg>
             } @else if (s.iconType === 'activity') {
-              <svg lucideActivity [size]="30" class="service-icon"></svg>
+              <svg lucideActivity [size]="28" class="service-icon"></svg>
             } @else {
-              <svg lucideAudioWaveform [size]="30" class="service-icon"></svg>
+              <svg lucideAudioWaveform [size]="28" class="service-icon"></svg>
             }
           </div>
 
@@ -64,14 +68,15 @@ import {
       }
     </div>
 
-    <div class="services-cta card">
+    <!-- CTA Finale -->
+    <div class="services-cta card" appFadeUp>
       <div class="cta-text">
-        <h3>Hai bisogno di una valutazione specialistica?</h3>
-        <p>Prenota un primo colloquio per analizzare le esigenze specifiche e definire gli obiettivi terapeutici.</p>
+        <h3>Desideri una valutazione o un consiglio specialistico?</h3>
+        <p>Durante il primo colloquio analizzeremo le necessità specifiche e definiremo insieme gli obiettivi del percorso.</p>
       </div>
       <a mat-raised-button routerLink="/contatti" class="cta-btn">
-        <span>Richiedi un Appuntamento</span>
-        <svg lucideArrowRight [size]="18"></svg>
+        <svg lucideCalendarCheck [size]="18"></svg>
+        <span>Prenota un Colloquio</span>
       </a>
     </div>
   </section>
@@ -79,68 +84,67 @@ import {
   styles: [`
     .services-page {
       max-width: 1100px;
-      margin: 0 auto 40px;
-      padding: 0 16px;
+      margin: 0 auto 50px;
     }
 
     .services-header {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 44px;
 
       h1 {
-        font-size: clamp(2rem, 4vw, 2.75rem);
-        color: var(--ink);
-        margin-bottom: 10px;
+        font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+        color: var(--text-primary);
+        margin: 12px 0 14px;
       }
 
       p {
-        color: var(--muted);
-        font-size: 1.1rem;
+        color: var(--text-secondary);
+        font-size: 1.15rem;
         max-width: 650px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.65;
       }
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 40px;
+      gap: 28px;
+      margin-bottom: 48px;
     }
 
     .service-card {
       display: flex;
       gap: 20px;
-      padding: 24px;
-      border-radius: 20px;
-      background: #ffffff;
-      border: 1px solid rgba(15, 76, 92, 0.08);
-      box-shadow: 0 8px 24px rgba(15, 76, 92, 0.05);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
       &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 14px 32px rgba(15, 76, 92, 0.1);
+        box-shadow: 0 16px 36px -8px rgba(27, 59, 54, 0.12);
+
+        .service-icon-wrapper {
+          background: var(--accent-primary);
+          color: #FAF7F2;
+          transform: scale(1.05);
+        }
       }
 
       .service-icon-wrapper {
-        width: 56px;
-        height: 56px;
+        width: 54px;
+        height: 54px;
         border-radius: 16px;
-        background: rgba(15, 76, 92, 0.08);
-        color: var(--primary);
+        background: rgba(124, 157, 142, 0.15);
+        color: #2D5A4C;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-      }
-
-      &:hover .service-icon-wrapper {
-        background: var(--primary);
-        color: #ffffff;
-        transform: scale(1.05);
+        transition: all 0.3s ease;
       }
 
       .service-body {
@@ -149,15 +153,15 @@ import {
         flex-grow: 1;
 
         h3 {
-          margin: 0 0 8px;
-          font-size: 1.25rem;
-          color: var(--primary);
+          margin: 0 0 10px;
+          font-size: 1.35rem;
+          color: var(--text-primary);
         }
 
         p {
-          color: #555;
-          line-height: 1.5;
-          margin: 0 0 14px;
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin: 0 0 16px;
           font-size: 0.95rem;
         }
 
@@ -169,12 +173,12 @@ import {
         }
 
         .service-chip {
-          background: rgba(15, 76, 92, 0.06);
-          color: var(--primary);
+          background: var(--bg-surface);
+          color: var(--text-secondary);
           padding: 4px 10px;
           border-radius: 999px;
-          font-size: 0.75rem;
-          font-weight: 500;
+          font-size: 0.78rem;
+          font-weight: 600;
         }
       }
     }
@@ -183,45 +187,42 @@ import {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      padding: 32px;
-      background: var(--primary-gradient);
-      color: #fff;
-      border-radius: 24px;
+      gap: 28px;
+      padding: clamp(28px, 4vw, 40px);
+      background: radial-gradient(circle at right, rgba(212, 106, 78, 0.15), transparent 70%), var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
 
       .cta-text {
         h3 {
-          margin: 0 0 6px;
-          font-size: 1.5rem;
-          color: #fff;
+          margin: 0 0 8px;
+          font-size: 1.55rem;
+          color: var(--text-primary);
         }
         p {
           margin: 0;
-          opacity: 0.9;
-          font-size: 1rem;
+          color: var(--text-secondary);
+          font-size: 1.05rem;
+          max-width: 580px;
         }
       }
 
       .cta-btn {
-        background: #ffffff !important;
-        color: var(--primary) !important;
+        background: var(--accent-primary) !important;
+        color: #FAF7F2 !important;
         font-weight: 700 !important;
-        padding: 12px 26px !important;
+        padding: 12px 28px !important;
         border-radius: 999px !important;
         display: inline-flex !important;
         align-items: center !important;
         gap: 8px !important;
         flex-shrink: 0;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-
-        span, .mdc-button__label, svg {
-          color: var(--primary) !important;
-        }
+        box-shadow: 0 4px 14px rgba(212, 106, 78, 0.35) !important;
 
         &:hover {
+          background: var(--accent-primary-hover) !important;
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
-          background: #f4f7f6 !important;
+          box-shadow: 0 6px 18px rgba(212, 106, 78, 0.45) !important;
         }
       }
 
@@ -235,37 +236,44 @@ import {
         }
       }
     }
+
+    body.dark-mode {
+      .service-card .service-icon-wrapper {
+        background: rgba(142, 175, 159, 0.2);
+        color: #A8D5C2;
+      }
+    }
   `]
 })
 export class ServicesComponent {
   services = [
     { 
-      title: 'Disturbi del Linguaggio', 
-      description: 'Valutazione e trattamento di ritardi di linguaggio, disturbi fonetico-fonologici e difficoltà di comprensione in età evolutiva.', 
+      title: 'Disturbi del Linguaggio & Parola', 
+      description: 'Valutazione e trattamento di ritardi di linguaggio, parlatori tardivi (Late Talkers), disturbi fonetico-fonologici e difficoltà di comprensione in età evolutiva.', 
       iconType: 'speech', 
       tags: ['Bambini', 'Età Prescolare', 'Scolari'] 
     },
     { 
       title: 'Apprendimento (DSA)', 
-      description: 'Interventi personalizzati su lettura, scrittura, ortografia e calcolo (Dislessia, Disortografia, Discalculia) con potenziamento delle strategie di studio.', 
+      description: 'Interventi personalizzati su lettura, scrittura, ortografia e calcolo (Dislessia, Disortografia, Disgrafia, Discalculia) con potenziamento delle strategie di studio e autonomia con strumenti compensativi.', 
       iconType: 'book', 
       tags: ['DSA', 'Scuola Primaria', 'Adolescenti'] 
     },
     { 
       title: 'Voce e Disfonia', 
-      description: 'Igiene vocale, educazione e riabilitazione della voce per noduli, polipi, sforzo fonatorio o supporto specifico a insegnanti e cantanti.', 
+      description: 'Igiene vocale, educazione e riabilitazione della voce per noduli, polipi, sforzo fonatorio o supporto specifico a insegnanti, cantanti e professionisti della voce.', 
       iconType: 'mic', 
       tags: ['Adulti', 'Insegnanti', 'Professionisti'] 
     },
     { 
-      title: 'Deglutizione e Miofunzionale', 
-      description: 'Valutazione e terapia degli squilibri muscolari orofacciali (SMOF), deglutizione atipica/deviata in sinergia con l\'ortodonzia.', 
+      title: 'Deglutizione & Miofunzionale (SMOF)', 
+      description: 'Valutazione e terapia degli squilibri muscolari orofacciali, deglutizione atipica/deviata, respirazione orale e postura linguale in stretta sinergia con l\'ortodonzia.', 
       iconType: 'activity', 
       tags: ['Bambini', 'Adulti', 'Ortodonzia'] 
     },
     { 
       title: 'Fluenza e Balbuzie', 
-      description: 'Percorsi mirati alla gestione dell\'eloquio e dell\'ansia da prestazione comunicativa, con coinvolgimento attivo di famiglia e scuola.', 
+      description: 'Percorsi mirati alla gestione dell\'eloquio e dell\'ansia da prestazione comunicativa, con coinvolgimento attivo di famiglia e scuola per un clima sereno.', 
       iconType: 'waves', 
       tags: ['Bambini', 'Adolescenti', 'Adulti'] 
     },

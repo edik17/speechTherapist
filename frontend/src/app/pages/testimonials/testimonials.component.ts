@@ -2,19 +2,21 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { TestimonialsService } from '../../core/services/testimonials.service';
 import { Testimonial, GoogleReviewsSummary } from '../../core/models/testimonial.model';
+import { FadeUpDirective } from '../../shared/directives/fade-up.directive';
 import Swiper from 'swiper/bundle';
 import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucide/angular';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [LucideStar, LucideHeart, LucideQuote, LucideExternalLink, DecimalPipe],
+  standalone: true,
+  imports: [LucideStar, LucideHeart, LucideQuote, LucideExternalLink, DecimalPipe, FadeUpDirective],
   template: `
-  <section class="testimonials-container">
+  <section class="testimonials-container" appFadeUp>
     <div class="testimonials-header">
-      <div class="subtitle-badge">
-        <svg lucideHeart [size]="16" class="badge-icon"></svg>
-        <span>Feedback & Esperienze</span>
-      </div>
+      <span class="badge-evidence">
+        <svg lucideHeart [size]="14"></svg>
+        Esperienze & Valutazioni
+      </span>
       <h1>Cosa dicono di me</h1>
       <p>La soddisfazione e i progressi di bambini, genitori e adulti che hanno intrapreso un percorso di crescita comunicativa insieme a me.</p>
     </div>
@@ -32,7 +34,7 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
             <div class="swiper-slide">
               <div class="testimonial-card card">
                 <div class="card-top">
-                  <div class="stars">
+                  <div class="stars" aria-label="5 stelle su 5">
                     @for (star of [1,2,3,4,5]; track star) {
                       <svg lucideStar [size]="18" class="star-icon" fill="currentColor"></svg>
                     }
@@ -84,15 +86,15 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
 
         <!-- Controlli di navigazione -->
         <div class="swiper-controls">
-          <div class="swiper-button-prev custom-nav-btn"></div>
+          <div class="swiper-button-prev custom-nav-btn" aria-label="Recensione precedente"></div>
           <div class="swiper-pagination"></div>
-          <div class="swiper-button-next custom-nav-btn"></div>
+          <div class="swiper-button-next custom-nav-btn" aria-label="Recensione successiva"></div>
         </div>
       </div>
     }
 
     <!-- Banner Recensioni Google con Dati Live e CTA -->
-    <div class="google-reviews-banner card">
+    <div class="google-reviews-banner card" appFadeUp>
       <div class="google-badge-left">
         <div class="google-icon-wrapper">
           <svg viewBox="0 0 24 24" width="28" height="28">
@@ -110,9 +112,9 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
                 <svg lucideStar [size]="16" class="star-icon" fill="currentColor"></svg>
               }
             </div>
-            <span>({{summary.totalReviews}} recensioni su Google Maps)</span>
+            <span>({{summary.totalReviews}} recensioni verificate su Google)</span>
           </div>
-          <p class="google-sub">Recensioni verificate lasciate spontaneamente dai pazienti e dalle famiglie seguite.</p>
+          <p class="google-sub">Recensioni autentiche lasciate spontaneamente dai pazienti e dalle loro famiglie.</p>
         </div>
       </div>
 
@@ -134,37 +136,20 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
 
     .testimonials-header {
       text-align: center;
-      margin-bottom: 36px;
-
-      .subtitle-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(15, 76, 92, 0.1);
-        color: var(--primary);
-        padding: 6px 16px;
-        border-radius: 999px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin-bottom: 12px;
-
-        .badge-icon {
-          color: var(--accent, #e76f51);
-        }
-      }
+      margin-bottom: 40px;
 
       h1 {
-        font-size: clamp(2rem, 4vw, 2.75rem);
-        color: var(--ink);
-        margin: 0 0 12px;
+        font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+        color: var(--text-primary);
+        margin: 12px 0 14px;
       }
 
       p {
-        color: var(--muted);
-        font-size: 1.1rem;
+        color: var(--text-secondary);
+        font-size: 1.15rem;
         max-width: 650px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.65;
       }
     }
 
@@ -174,20 +159,21 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
 
     .testimonial-card {
       height: 100%;
-      min-height: 280px;
+      min-height: 290px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 28px;
-      background: #ffffff;
-      border-radius: 24px;
-      border: 1px solid rgba(15, 76, 92, 0.08);
-      box-shadow: 0 12px 32px rgba(15, 76, 92, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 32px;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 
       &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(15, 76, 92, 0.1);
+        box-shadow: 0 16px 36px -8px rgba(27, 59, 54, 0.12);
       }
     }
 
@@ -201,17 +187,16 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
     .stars {
       display: flex;
       gap: 3px;
-      color: #ffb703;
+      color: #E5A93C;
     }
 
     .tag-chip {
-      background: rgba(15, 76, 92, 0.08);
-      color: var(--primary);
+      background: rgba(124, 157, 142, 0.12);
+      color: #2D5A4C;
       padding: 4px 12px;
       border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
     }
 
     .google-chip {
@@ -221,7 +206,6 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
     }
 
     .quote-wrapper {
@@ -230,7 +214,7 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       flex-grow: 1;
 
       .quote-icon {
-        color: rgba(15, 76, 92, 0.12);
+        color: rgba(124, 157, 142, 0.2);
         position: absolute;
         top: -8px;
         left: -4px;
@@ -239,12 +223,13 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       .quote-text {
         position: relative;
         z-index: 1;
+        font-family: 'Fraunces', Georgia, serif;
         font-size: 1.05rem;
         line-height: 1.7;
-        color: var(--ink);
+        color: var(--text-primary);
         font-style: italic;
         margin: 0;
-        padding-left: 12px;
+        padding-left: 14px;
       }
     }
 
@@ -252,8 +237,8 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       display: flex;
       align-items: center;
       gap: 14px;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 18px;
     }
 
     .author-avatar {
@@ -261,13 +246,13 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       height: 44px;
       border-radius: 50%;
       background: var(--primary-gradient);
-      color: #fff;
+      color: #FAF7F2;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
+      font-family: 'Fraunces', serif;
       font-size: 1.1rem;
-      box-shadow: 0 4px 10px rgba(15, 76, 92, 0.2);
       overflow: hidden;
       flex-shrink: 0;
 
@@ -290,18 +275,19 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       }
 
       .author-name {
-        font-size: 1rem;
-        color: var(--ink);
+        font-size: 0.98rem;
+        color: var(--text-primary);
       }
 
       .author-role {
-        font-size: 0.85rem;
-        color: var(--muted);
+        font-size: 0.82rem;
+        color: var(--text-secondary);
       }
 
       .review-date {
         font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.35);
+        color: var(--text-secondary);
+        opacity: 0.7;
       }
     }
 
@@ -315,7 +301,6 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 999px;
-      letter-spacing: 0.02em;
 
       svg path {
         fill: #1a73e8;
@@ -338,21 +323,26 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       .custom-nav-btn {
         position: static !important;
         margin: 0 !important;
-        width: 38px !important;
-        height: 38px !important;
+        width: 40px !important;
+        height: 40px !important;
         border-radius: 50%;
-        background: #fff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        color: var(--primary) !important;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-soft);
+        color: var(--text-primary) !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &::after {
-          font-size: 14px !important;
+          font-size: 13px !important;
           font-weight: 700;
         }
 
         &:hover {
-          background: var(--primary);
-          color: #fff !important;
+          background: var(--accent-primary);
+          color: #FAF7F2 !important;
+          border-color: var(--accent-primary);
         }
       }
     }
@@ -363,10 +353,10 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 24px 32px;
-      background: var(--card-bg);
-      border-radius: 20px;
-      border: 1px solid var(--card-border);
+      padding: 28px 36px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
       flex-wrap: wrap;
 
       .google-badge-left {
@@ -376,14 +366,14 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
       }
 
       .google-icon-wrapper {
-        width: 48px;
-        height: 48px;
-        background: #ffffff;
-        border-radius: 12px;
+        width: 50px;
+        height: 50px;
+        background: var(--bg-elevated);
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 12px rgba(27, 59, 54, 0.06);
       }
 
       .google-score {
@@ -393,26 +383,26 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
         font-size: 1.1rem;
 
         strong {
-          font-size: 1.3rem;
-          color: var(--ink);
+          font-size: 1.35rem;
+          color: var(--text-primary);
         }
 
         .stars {
           display: flex;
-          color: #ffb703;
+          color: #E5A93C;
         }
 
         span {
-          color: var(--muted);
-          font-weight: 500;
-          font-size: 0.95rem;
+          color: var(--text-secondary);
+          font-weight: 600;
+          font-size: 0.92rem;
         }
       }
 
       .google-sub {
         margin: 4px 0 0;
-        font-size: 0.9rem;
-        color: var(--muted);
+        font-size: 0.88rem;
+        color: var(--text-secondary);
       }
 
       .google-review-btn {
@@ -424,6 +414,7 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
         padding: 12px 24px;
         border-radius: 999px;
         font-weight: 600;
+        font-size: 0.95rem;
         text-decoration: none;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         box-shadow: 0 4px 14px rgba(66, 133, 244, 0.35);
@@ -457,12 +448,7 @@ export class TestimonialsComponent implements OnInit, AfterViewInit, OnDestroy {
     writeReviewUrl: 'https://www.google.com/maps/search/?api=1&query=Logopedista+Eleonora+Mariotti'
   };
 
-  /**
-   * INCOLLA QUI L'ID DEL WIDGET ELFSIGHT (Opzione facoltativa se si preferisce Elfsight):
-   * Se vuoto '', il sito usa in automatico le recensioni live integrate con la grafica nativa.
-   */
   elfsightWidgetId: string = '';
-
   private swiperInstance?: Swiper;
 
   constructor(private svc: TestimonialsService) {}

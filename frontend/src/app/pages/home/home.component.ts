@@ -1,60 +1,56 @@
-import { Component, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card'; 
-import { PageHeroComponent } from '../../shared/components/page-hero/page-hero.component';
-import { animate, utils } from 'animejs';
+import { BlogService } from '../../core/services/blog.service';
+import { Article } from '../../core/models/article.model';
+import { FadeUpDirective } from '../../shared/directives/fade-up.directive';
 import { 
+  LucideSparkles, 
+  LucideArrowRight, 
+  LucideCalendarCheck, 
+  LucideHeart, 
   LucideMic, 
   LucideBookOpen, 
   LucideActivity, 
-  LucideArrowRight, 
-  LucideSparkles 
+  LucideAudioWaveform,
+  LucideMapPin,
+  LucideClock,
+  LucideCheckCircle2,
+  LucideShieldCheck
 } from '@lucide/angular';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [
+    CommonModule,
     RouterLink,
     MatButtonModule,
-    MatCardModule,
-    PageHeroComponent,
+    FadeUpDirective,
+    LucideSparkles,
+    LucideArrowRight,
+    LucideCalendarCheck,
+    LucideHeart,
     LucideMic,
     LucideBookOpen,
     LucideActivity,
-    LucideArrowRight
+    LucideAudioWaveform,
+    LucideMapPin,
+    LucideClock,
+    LucideCheckCircle2,
+    LucideShieldCheck
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterViewInit {
-  services = [
-    {
-      title: 'Linguaggio e Parola',
-      desc: 'Ritardi di linguaggio, disturbi fonetico-fonologici e balbuzie.',
-      iconType: 'mic'
-    },
-    {
-      title: 'Apprendimento (DSA)',
-      desc: 'Valutazione e trattamento per Dislessia, Disortografia, Disgrafia e Discalculia.',
-      iconType: 'book'
-    },
-    {
-      title: 'Deglutizione e Voce',
-      desc: 'Terapia miofunzionale, disfonia e deglutizione atipica in età evolutiva e adulta.',
-      iconType: 'activity'
-    }
-  ];
+export class HomeComponent implements OnInit {
+  private blogService = inject(BlogService);
+  recentArticles: Article[] = [];
 
-  constructor(private el: ElementRef) {}
-
-  ngAfterViewInit() {
-    animate(this.el.nativeElement.querySelectorAll('.service-card'), {
-      translateY: [40, 0],
-      opacity: [0, 1],
-      delay: utils.stagger(150, { start: 500 }),
-      easing: 'easeOutQuint',
-      duration: 1200
+  ngOnInit(): void {
+    this.blogService.getRecentArticles(3).subscribe(articles => {
+      this.recentArticles = articles;
     });
   }
 }

@@ -1,73 +1,102 @@
-<app-page-hero
-  title="Chi sono"
-  subtitle="Passione, formazione continua e cura della persona.">
-</app-page-hero>
+<div class="about-page">
 
-<div class="container">
+  <app-page-hero
+    badge="Biografia & Percorso Professionale"
+    title="La passione di dare voce alle persone"
+    subtitle="Formazione continua, rigore scientifico e una profonda dedizione all'ascolto e all'empatia.">
+  </app-page-hero>
 
-  <section class="bio-section">
-    <div class="bio-image">
-      <img src="assets/images/EleLogopedista.jpg" alt="Dott.ssa Logopedista" class="profile-img">
+  <!-- SEZIONE BIOGRAFIA -->
+  <section class="bio-section" appFadeUp>
+    <div class="bio-image-col">
+      <div class="bio-frame">
+        <img src="assets/images/EleLogopedista.jpg" alt="Dott.ssa Eleonora Mariotti" class="profile-img">
+      </div>
     </div>
 
-    <div class="bio-text">
-      <h2 class="section-title">La mia storia professionale</h2>
+    <div class="bio-text-col reading-prose">
+      <span class="badge-evidence">La Mia Visione</span>
+      <h2>Oltre la tecnica: il valore dell'espressione autentica</h2>
       <p>
-        Benvenuti. Sono una Logopedista specializzata nella prevenzione, valutazione e trattamento
-        delle patologie del linguaggio e della comunicazione.
+        Mi chiamo Eleonora Mariotti e sono una logopedista operante in provincia di Ancona, nelle sedi di Sassoferrato, Ancona e Jesi. Ho scelto questa professione mossa dalla profonda convinzione che la comunicazione sia il pilastro essenziale per la qualità di vita, la sicurezza e la realizzazione personale.
       </p>
       <p>
-        Ho scelto questa professione perché credo fermamente nel **potere della comunicazione** come strumento fondamentale per la qualità della vita. Il mio approccio non guarda solo
-        al "difetto" da correggere, ma alla persona nella sua interezza, valorizzandone le risorse
-        e le potenzialità.
+        Nel mio lavoro quotidiano con bambini in età prescolare, studenti, adolescenti e adulti, non mi concentro semplicemente sulla rieducazione di un singolo suono o di una difficoltà funzionale: accolgo l'intera storia di vita della persona e della sua famiglia.
       </p>
       <p>
-        Svolgo la mia attività clinica in provincia di Ancona, accogliendo bambini, adulti e anziani
-        in un percorso costruito su misura.
+        Credo in una terapia accogliente, stimolante e fondata su prove di efficacia clinica, in cui il paziente sperimenta fiducia e serenità in ogni seduta.
       </p>
 
-      <div class="signature">Dott.ssa Mariotti</div>
+      <div class="signature-box">
+        <span class="signature-name">Dott.ssa Eleonora Mariotti</span>
+        <span class="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP</span>
+      </div>
     </div>
   </section>
 
-  <section class="values-section">
-    <h2 class="section-title center">Il mio approccio clinico</h2>
+  <!-- VALORI E APPROCCIO -->
+  <section class="values-section editorial-section" appFadeUp>
+    <div class="section-intro">
+      <span class="badge-evidence">I Miei Valori Guida</span>
+      <h2>I tre pilastri del mio operato clinico</h2>
+    </div>
+
     <div class="values-grid">
-      @for (val of values; track val) {
-        <mat-card class="value-card">
-          <div class="icon-circle">
-            <mat-icon>{{ val.icon }}</mat-icon>
+      @for (val of values; track val.title) {
+        <div class="value-card card" appFadeUp>
+          <div class="value-icon-circle">
+            @if (val.type === 'heart') {
+              <svg lucideHeart [size]="26"></svg>
+            } @else if (val.type === 'science') {
+              <svg lucideShieldCheck [size]="26"></svg>
+            } @else {
+              <svg lucideUsers [size]="26"></svg>
+            }
           </div>
           <h3>{{ val.title }}</h3>
           <p>{{ val.text }}</p>
-        </mat-card>
-      }
-    </div>
-  </section>
-
-  <mat-divider></mat-divider>
-
-  <section class="education-section">
-    <h2 class="section-title">Formazione e Aggiornamento</h2>
-    <p class="subtitle">La logopedia è una scienza in continua evoluzione. Ecco il mio percorso:</p>
-
-    <div class="timeline">
-      @for (item of education; track item) {
-        <div class="timeline-item">
-          <div class="timeline-year">{{ item.year }}</div>
-          <div class="timeline-content">
-            <h3>{{ item.title }}</h3>
-            <span class="institute">{{ item.institute }}</span>
-            <p class="description">{{ item.desc }}</p>
-          </div>
         </div>
       }
     </div>
   </section>
 
-  <section class="cta-section">
-    <h3>Vuoi saperne di più o prenotare un appuntamento?</h3>
-    <a mat-raised-button color="primary" routerLink="/contatti">Contattami ora</a>
+  <!-- TIMELINE FORMAZIONE -->
+  <section class="education-section editorial-section" appFadeUp>
+    <div class="section-intro">
+      <span class="badge-evidence">Competenze Certificate</span>
+      <h2>Formazione accademica & aggiornamento costante</h2>
+      <p class="section-intro-sub">La scienza logopedica richiede uno studio continuo per garantire trattamenti all'avanguardia.</p>
+    </div>
+
+    <div class="timeline-container">
+      <div class="timeline">
+        @for (item of education; track item.title) {
+          <div class="timeline-item" appFadeUp>
+            <div class="timeline-marker">
+              <svg lucideGraduationCap [size]="18"></svg>
+            </div>
+            <div class="timeline-content card">
+              <span class="timeline-year">{{ item.year }}</span>
+              <h3>{{ item.title }}</h3>
+              <span class="timeline-institute">{{ item.institute }}</span>
+              <p>{{ item.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINALE -->
+  <section class="about-cta-section" appFadeUp>
+    <div class="about-cta-card card">
+      <h2>Iniziamo un percorso insieme</h2>
+      <p>Se hai dubbi sullo sviluppo del linguaggio o desideri una consulenza per te o per tuo figlio, sono a tua disposizione.</p>
+      <a mat-raised-button routerLink="/contatti" class="about-btn-cta">
+        <svg lucideCalendarCheck [size]="18"></svg>
+        <span>Contattami o Prenota una Valutazione</span>
+      </a>
+    </div>
   </section>
 
 </div>
