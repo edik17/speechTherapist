@@ -2,6 +2,13 @@
   base = "frontend"
   publish = "dist/my-logopedia/browser"
   command = "npm run build"
+  functions = "../netlify/functions"
+
+# Reindirizza le chiamate API alla Netlify Serverless Function
+[[redirects]]
+  from = "/api/reviews"
+  to = "/.netlify/functions/reviews"
+  status = 200
 
 # Gestione SPA Angular (evita errori 404 al refresh delle pagine)
 [[redirects]]

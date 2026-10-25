@@ -12,7 +12,7 @@ const port = process.env.PORT || 8080;
 
 // Configurazione Sicurezza e CORS
 app.use(cors({
-  origin: 'http://localhost:4200' // L'indirizzo di Angular
+  origin: '*' // Permette sia chiamate locali che da Netlify / frontend
 }));
 
 app.use(helmet());
@@ -28,8 +28,10 @@ app.use(rateLimit({
 app.use(express.json());
 
 const contactRoutes = require("./routes/contactRoutes"); 
+const reviewRoutes = require("./routes/reviewRoutes");
 
 app.use("/api/contacts", contactRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 // Avvio Server
 app.listen(port, () => {
