@@ -1,41 +1,136 @@
 <div class="about-page">
 
   <app-page-hero
-    title="La passione di dare voce alle persone"
-    subtitle="Formazione continua, rigore scientifico e una profonda dedizione all'ascolto e all'empatia.">
+    title="Dare voce alle persone: tra scienza medica, ascolto ed empatia"
+    subtitle="Dalla formazione accademica con Lode al Master in motricità orofacciale: il mio percorso clinico per accompagnare bambini, famiglie e adulti verso la serenità e la gioia di comunicare.">
   </app-page-hero>
 
-  <!-- SEZIONE BIOGRAFIA -->
+  <!-- ============================================ -->
+  <!-- 1. BIOGRAFIA DISCORSIVA PERSONALE            -->
+  <!-- ============================================ -->
   <section class="bio-section" appFadeUp>
     <div class="bio-image-col">
       <div class="bio-frame">
-        <img src="assets/images/EleLogopedista.jpg" alt="Dott.ssa Eleonora Mariotti" class="profile-img">
+        <img 
+          src="assets/images/EleLogopedista.jpg" 
+          alt="Dott.ssa Eleonora Mariotti Logopedista" 
+          class="profile-img">
+        <div class="bio-quote-overlay">
+          <svg lucideHeart [size]="18" class="quote-icon"></svg>
+          <span>La cura comincia sempre dall'ascolto autentico della persona.</span>
+        </div>
       </div>
     </div>
 
     <div class="bio-text-col reading-prose">
       <h2>Oltre la tecnica: il valore dell'espressione autentica</h2>
+      
       <p>
-        Mi chiamo Eleonora Mariotti e sono una logopedista operante in provincia di Ancona, nelle sedi di Sassoferrato, Ancona e Jesi. Ho scelto questa professione mossa dalla profonda convinzione che la comunicazione sia il pilastro essenziale per la qualità di vita, la sicurezza e la realizzazione personale.
+        Mi chiamo <strong>Eleonora Mariotti</strong> e sono una logopedista clinica attiva nella provincia di Ancona, con studi a <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>. La mia passione per la comunicazione umana affonda le radici negli anni del <em>Liceo Classico a indirizzo Scienze Umane "Vittorio Emanuele II"</em> di Jesi, dove ho conseguito la maturità con il massimo dei voti (<strong>100/100</strong>): è lì che ho maturato il desiderio profondo di dedicare il mio futuro alla cura della persona, alla comprensione delle dinamiche relazionali e al sostegno dell'individuo nelle sue tappe evolutive.
       </p>
+
       <p>
-        Nel mio lavoro quotidiano con bambini in età prescolare, studenti, adolescenti e adulti, non mi concentro semplicemente sulla rieducazione di un singolo suono o di una difficoltà funzionale: accolgo l'intera storia di vita della persona e della sua famiglia.
+        Ho proseguito la mia formazione presso la Facoltà di Medicina e Chirurgia dell'<strong>Università Politecnica delle Marche</strong>, conseguendo la <em>Laurea Triennale delle Professioni Sanitarie in Logopedia</em> con la votazione di <strong>110/110 e LODE</strong>. In sede di tesi sperimentale ho indagato il rapporto tra malocclusioni scheletriche, terapia miofunzionale e qualità della vita percepita (QOL): questo studio mi ha aperto gli occhi su quanto la coordinazione muscolare orofacciale, la respirazione e la deglutizione incidano profondamente non solo sulla corretta articolazione verbale, ma sulla sicurezza e sulla serenità quotidiana di bambini e adulti.
       </p>
+
       <p>
-        Credo in una terapia accogliente, stimolante e fondata su prove di efficacia clinica, in cui il paziente sperimenta fiducia e serenità in ogni seduta.
+        Guidata dalla volontà di offrire risposte sempre più mirate, ho conseguito il <strong>Master Universitario di I Livello in Motricità Orofacciale</strong> con la votazione di <strong>110/110</strong>. La mia tesi di ricerca è stata interamente dedicata allo <em>"Stress genitoriale nel percorso di terapia miofunzionale"</em>: un'indagine che ha segnato profondamente la mia filosofia terapeutica. Ho compreso in modo inequivocabile che nessuna riabilitazione infantile può prescindere dall'accoglienza, dal supporto emotivo e dalla de-colpevolizzazione dei genitori, che devono essere accompagnati come alleati preziosi e mai sovraccaricati di ansia o aspettative frustranti.
+      </p>
+
+      <p>
+        Parallelamente al tirocinio accademico e territoriale, l'esperienza professionale specialistica svolta presso la struttura di riabilitazione intensiva <strong>"Villa Adria Santo Stefano"</strong> a Torrette di Ancona mi ha permesso di confrontarmi con quadri clinici complessi e riabilitazione funzionale, consolidando la mia attitudine al lavoro d'equipe multidisciplinare insieme a medici specialisti, foniatri, fisioterapisti e colleghi dell'area sanitaria.
       </p>
 
       <div class="signature-box">
         <span class="signature-name">Dott.ssa Eleonora Mariotti</span>
-        <span class="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP</span>
+        <span class="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP della Provincia di Ancona</span>
       </div>
     </div>
   </section>
 
-  <!-- VALORI E APPROCCIO -->
+  <!-- ============================================ -->
+  <!-- 2. I TRE PRESIDI SUL TERRITORIO              -->
+  <!-- ============================================ -->
+  <section class="territory-section editorial-section" appFadeUp>
+    <div class="section-intro">
+      <h2>Presenza Radicata & Continuità di Cura nelle Marche</h2>
+      <p class="section-intro-sub">
+        Credo fermamente in una sanità di prossimità: per questo ho scelto di accogliere pazienti e famiglie in tre centri specialistici complementari sul territorio anconetano.
+      </p>
+    </div>
+
+    <div class="territory-grid">
+      @for (loc of locations; track loc.city) {
+        <article class="territory-card card" appFadeUp>
+          <div class="card-top">
+            <div class="city-badge">
+              <svg lucideMapPin [size]="16"></svg>
+              <span>{{ loc.city }}</span>
+            </div>
+            <span class="role-badge">{{ loc.role }}</span>
+          </div>
+          <h3>{{ loc.facility }}</h3>
+          <h4 class="focus-title">{{ loc.focus }}</h4>
+          <p>{{ loc.desc }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 3. AMBITI DI ALTA SPECIALIZZAZIONE CLINICA    -->
+  <!-- ============================================ -->
+  <section class="specializations-section editorial-section" appFadeUp>
+    <div class="section-intro">
+      <h2>Ambiti di Approfondimento & Metodologia Clinica</h2>
+      <p class="section-intro-sub">
+        La logopedia richiede competenze verticali costantemente aggiornate: ecco i settori in cui ho investito anni di studio specialistico e pratica clinica.
+      </p>
+    </div>
+
+    <div class="specializations-grid">
+      @for (spec of specializations; track spec.title) {
+        <article class="spec-card card" appFadeUp>
+          <div class="spec-header">
+            <div class="spec-icon-box">
+              @if (spec.type === 'activity') {
+                <svg lucideActivity [size]="26"></svg>
+              } @else if (spec.type === 'book') {
+                <svg lucideBookOpen [size]="26"></svg>
+              } @else if (spec.type === 'heart') {
+                <svg lucideHeart [size]="26"></svg>
+              } @else {
+                <svg lucideSparkles [size]="26"></svg>
+              }
+            </div>
+            <div class="spec-titles">
+              <h3>{{ spec.title }}</h3>
+              <span class="spec-subtitle">{{ spec.subtitle }}</span>
+            </div>
+          </div>
+          
+          <p class="spec-desc">{{ spec.desc }}</p>
+
+          <div class="spec-tags">
+            @for (tag of spec.tags; track tag) {
+              <span class="tag-chip">
+                <svg lucideCheckCircle2 [size]="13"></svg>
+                {{ tag }}
+              </span>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 4. I TRE PILASTRI VALORIALI                   -->
+  <!-- ============================================ -->
   <section class="values-section editorial-section" appFadeUp>
     <div class="section-intro">
-      <h2>I tre pilastri del mio operato clinico</h2>
+      <h2>I Tre Pilastri del Mio Operato Clinico</h2>
+      <p class="section-intro-sub">Cosa guida ogni mia singola seduta, dalla prima valutazione alla conclusione del percorso.</p>
     </div>
 
     <div class="values-grid">
@@ -57,25 +152,69 @@
     </div>
   </section>
 
-  <!-- TIMELINE FORMAZIONE -->
+  <!-- ============================================ -->
+  <!-- 5. FORMAZIONE ACCADEMICA & CONTINUA (ECM)     -->
+  <!-- ============================================ -->
   <section class="education-section editorial-section" appFadeUp>
     <div class="section-intro">
-      <h2>Formazione accademica & aggiornamento costante</h2>
-      <p class="section-intro-sub">La scienza logopedica richiede uno studio continuo per garantire trattamenti all'avanguardia.</p>
+      <h2>Formazione Accademica & Ricerca Clinica</h2>
+      <p class="section-intro-sub">Il percorso di studio certificato che garantisce il rigore scientifico di ogni intervento.</p>
     </div>
 
     <div class="timeline-container">
       <div class="timeline">
-        @for (item of education; track item.title) {
+        @for (item of milestones; track item.title) {
           <div class="timeline-item" appFadeUp>
             <div class="timeline-marker">
               <svg lucideGraduationCap [size]="18"></svg>
             </div>
             <div class="timeline-content card">
-              <span class="timeline-year">{{ item.year }}</span>
+              <div class="timeline-top">
+                <span class="timeline-year">{{ item.year }}</span>
+                <span class="badge-type">{{ item.badge }}</span>
+              </div>
+              
               <h3>{{ item.title }}</h3>
               <span class="timeline-institute">{{ item.institute }}</span>
-              <p>{{ item.desc }}</p>
+              
+              @if (item.grade) {
+                <div class="grade-highlight">
+                  <svg lucideAward [size]="16"></svg>
+                  <span>Votazione Conseguita: <strong>{{ item.grade }}</strong></span>
+                </div>
+              }
+
+              @if (item.thesis) {
+                <div class="thesis-box">
+                  <span class="thesis-label">Progetto di Ricerca & Tesi</span>
+                  <p class="thesis-text">{{ item.thesis }}</p>
+                </div>
+              }
+
+              <p class="timeline-desc">{{ item.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Corsi Specialistici & Convegni ECM -->
+    <div class="trainings-wrap" appFadeUp>
+      <div class="trainings-header">
+        <h3>Alta Formazione Specialistica Continua (ECM)</h3>
+        <p>Seminari intensivi, protocolli clinici e aggiornamento metodologico costante con i massimi docenti ed esperti del settore:</p>
+      </div>
+
+      <div class="trainings-grid">
+        @for (t of trainings; track t.title) {
+          <div class="training-card card">
+            <div class="training-icon">
+              <svg lucideCheckCircle2 [size]="18"></svg>
+            </div>
+            <div class="training-info">
+              <h4>{{ t.title }}</h4>
+              <span class="training-docente">Docente / Ente: {{ t.docente }}</span>
+              <p class="training-focus">{{ t.focus }}</p>
             </div>
           </div>
         }
@@ -83,11 +222,15 @@
     </div>
   </section>
 
-  <!-- CTA FINALE -->
+  <!-- ============================================ -->
+  <!-- 6. CTA FINALE RASSICURANTE                    -->
+  <!-- ============================================ -->
   <section class="about-cta-section" appFadeUp>
     <div class="about-cta-card card">
-      <h2>Iniziamo un percorso insieme</h2>
-      <p>Se hai dubbi sullo sviluppo del linguaggio o desideri una consulenza per te o per tuo figlio, sono a tua disposizione.</p>
+      <h2>Iniziamo un Percorso Sereno Insieme</h2>
+      <p>
+        Se noti una difficoltà nel linguaggio, nella deglutizione, nella voce o negli apprendimenti scolastici, o se desideri un parere professionale per te o per tuo figlio, contattami con serenità. Saremo felici di valutare insieme la situazione.
+      </p>
       <a mat-raised-button routerLink="/contatti" class="about-btn-cta">
         <svg lucideCalendarCheck [size]="18"></svg>
         <span>Contattami o Prenota una Valutazione</span>
