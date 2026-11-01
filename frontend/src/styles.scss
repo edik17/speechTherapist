@@ -136,8 +136,65 @@ select:focus-visible,
               border-color 0.3s ease;
 }
 
-// In White Mode: Riquadri in stile Sfumature di Vetro (Glassmorphism satinato)
+// In White Mode: Riquadri in stile Sfumature di Vetro (Glassmorphism satinato con rifrazioni)
 body:not(.dark-mode) {
+  .page-hero,
+  .contact-header,
+  .services-header,
+  .magazine-hero,
+  .testimonials-header {
+    position: relative;
+    background: linear-gradient(
+      135deg, 
+      rgba(255, 255, 255, 0.88) 0%, 
+      rgba(250, 246, 240, 0.65) 45%, 
+      rgba(240, 248, 245, 0.8) 100%
+    ) !important;
+    backdrop-filter: blur(24px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+    border: 1.5px solid rgba(124, 157, 142, 0.35) !important;
+    outline: 1.5px solid rgba(255, 255, 255, 0.95);
+    outline-offset: -3px;
+    border-radius: 28px !important;
+    box-shadow: 
+      0 24px 50px -12px rgba(27, 59, 54, 0.12),
+      0 8px 24px -4px rgba(212, 106, 78, 0.08),
+      inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -2px 4px 0 rgba(124, 157, 142, 0.08) !important;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -15%;
+      width: 65%;
+      height: 140%;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 157, 142, 0.32) 0%, rgba(124, 157, 142, 0.1) 50%, transparent 75%);
+      pointer-events: none;
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -15%;
+      width: 65%;
+      height: 140%;
+      background: radial-gradient(circle at 70% 70%, rgba(212, 106, 78, 0.25) 0%, rgba(226, 125, 96, 0.08) 50%, transparent 75%);
+      pointer-events: none;
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
   .card,
   .bento-card,
   .step-card,
@@ -149,23 +206,23 @@ body:not(.dark-mode) {
   .review-card,
   .timeline-content,
   .cv-download-box {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.62) 100%);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.65) 100%) !important;
+    backdrop-filter: blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    border: 1px solid rgba(124, 157, 142, 0.2) !important;
     box-shadow: 0 14px 34px -10px rgba(27, 59, 54, 0.07),
                 0 2px 6px rgba(27, 59, 54, 0.02),
                 inset 0 1px 2px rgba(255, 255, 255, 0.95),
-                inset 0 -1px 2px rgba(124, 157, 142, 0.04);
+                inset 0 -1px 2px rgba(124, 157, 142, 0.04) !important;
   }
 
   .google-summary-bar {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.52) 100%);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.58) 100%) !important;
+    backdrop-filter: blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    border: 1px solid rgba(124, 157, 142, 0.22) !important;
     box-shadow: 0 14px 34px -10px rgba(27, 59, 54, 0.07),
-                inset 0 1px 2px rgba(255, 255, 255, 0.95);
+                inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
   }
 }
 
