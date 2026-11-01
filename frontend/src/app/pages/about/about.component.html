@@ -20,25 +20,38 @@
           <span>La cura comincia sempre dall'ascolto autentico della persona.</span>
         </div>
       </div>
+
+      <!-- Azione Download CV -->
+      <div class="cv-download-box">
+        <a 
+          href="assets/cv-eleonora-mariotti.pdf" 
+          target="_blank" 
+          rel="noopener" 
+          class="download-cv-btn"
+          title="Scarica il Curriculum Vitae in formato europeo (PDF)">
+          <svg lucideDownload [size]="17"></svg>
+          <span>Scarica il Curriculum Vitae (PDF)</span>
+        </a>
+      </div>
     </div>
 
     <div class="bio-text-col reading-prose">
       <h2>Oltre la tecnica: il valore dell'espressione autentica</h2>
       
       <p>
-        Mi chiamo <strong>Eleonora Mariotti</strong> e sono una logopedista clinica attiva nella provincia di Ancona, con studi a <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>. La mia passione per la comunicazione umana affonda le radici negli anni del <em>Liceo Classico a indirizzo Scienze Umane "Vittorio Emanuele II"</em> di Jesi, dove ho conseguito la maturità con il massimo dei voti (<strong>100/100</strong>): è lì che ho maturato il desiderio profondo di dedicare il mio futuro alla cura della persona, alla comprensione delle dinamiche relazionali e al sostegno dell'individuo nelle sue tappe evolutive.
+        Mi chiamo <strong>Eleonora Mariotti</strong> e sono una logopedista clinica attiva nella provincia di Ancona, con studi professionali a <strong>Sassoferrato</strong>, <strong>Ancona</strong> e <strong>Jesi</strong>. La mia passione per la comunicazione e le relazioni umane affonda le radici negli anni del <em>Liceo Classico a indirizzo Scienze Umane "Vittorio Emanuele II"</em> di Jesi, dove ho conseguito il diploma con il massimo dei voti (<strong>100/100</strong>): è lì che ho compreso di voler dedicare il mio futuro professionale al sostegno della persona, all'ascolto delle fragilità espressive e alla valorizzazione del potenziale comunicativo di ciascuno.
       </p>
 
       <p>
-        Ho proseguito la mia formazione presso la Facoltà di Medicina e Chirurgia dell'<strong>Università Politecnica delle Marche</strong>, conseguendo la <em>Laurea Triennale delle Professioni Sanitarie in Logopedia</em> con la votazione di <strong>110/110 e LODE</strong>. In sede di tesi sperimentale ho indagato il rapporto tra malocclusioni scheletriche, terapia miofunzionale e qualità della vita percepita (QOL): questo studio mi ha aperto gli occhi su quanto la coordinazione muscolare orofacciale, la respirazione e la deglutizione incidano profondamente non solo sulla corretta articolazione verbale, ma sulla sicurezza e sulla serenità quotidiana di bambini e adulti.
+        Ho proseguito la mia formazione presso la Facoltà di Medicina e Chirurgia dell'<strong>Università Politecnica delle Marche</strong>, conseguendo la <em>Laurea Triennale delle Professioni Sanitarie in Logopedia</em> con la votazione di <strong>110/110 e LODE</strong>. In sede di tesi sperimentale ho approfondito il legame tra malocclusioni scheletriche, terapia miofunzionale e qualità della vita (QOL): questo lavoro mi ha insegnato quanto le disfunzioni orofacciali e respiratorie non riguardino unicamente la precisione dei suoni, ma influenzino direttamente il benessere psicologico e l'autostima nel quotidiano.
       </p>
 
       <p>
-        Guidata dalla volontà di offrire risposte sempre più mirate, ho conseguito il <strong>Master Universitario di I Livello in Motricità Orofacciale</strong> con la votazione di <strong>110/110</strong>. La mia tesi di ricerca è stata interamente dedicata allo <em>"Stress genitoriale nel percorso di terapia miofunzionale"</em>: un'indagine che ha segnato profondamente la mia filosofia terapeutica. Ho compreso in modo inequivocabile che nessuna riabilitazione infantile può prescindere dall'accoglienza, dal supporto emotivo e dalla de-colpevolizzazione dei genitori, che devono essere accompagnati come alleati preziosi e mai sovraccaricati di ansia o aspettative frustranti.
+        Spinta dal desiderio di un'alta specializzazione, ho conseguito il <strong>Master Universitario di I Livello in Motricità Orofacciale</strong> con la votazione di <strong>110/110</strong>. Il mio lavoro di ricerca è stato dedicato allo <em>"Stress genitoriale nel percorso terapeutico di terapia miofunzionale"</em>: una consapevolezza che orienta ogni giorno la mia pratica. Ho compreso che nessun percorso con un bambino può funzionare se i genitori si sentono sotto esame o colpevolizzati; il mio compito è accoglierli, rassicurarli e trasformarli in alleati consapevoli e sereni.
       </p>
 
       <p>
-        Parallelamente al tirocinio accademico e territoriale, l'esperienza professionale specialistica svolta presso la struttura di riabilitazione intensiva <strong>"Villa Adria Santo Stefano"</strong> a Torrette di Ancona mi ha permesso di confrontarmi con quadri clinici complessi e riabilitazione funzionale, consolidando la mia attitudine al lavoro d'equipe multidisciplinare insieme a medici specialisti, foniatri, fisioterapisti e colleghi dell'area sanitaria.
+        Nel mio percorso ho unito la libera professione all'attività clinica in strutture sanitarie d'eccellenza, come l'esperienza riabilitativa intensiva presso <strong>"Villa Adria Santo Stefano"</strong> a Torrette di Ancona, dove ho collaborato quotidianamente in equipe multidisciplinare con foniatri, fisiatri e fisioterapisti. Oggi mi dedico con dedizione all'età evolutiva e all'adulto nelle tre sedi territoriali, collaborando con le scuole per progetti di screening e con gli specialisti medici per percorsi integrati.
       </p>
 
       <div class="signature-box">
@@ -49,7 +62,25 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- 2. I TRE PRESIDI SUL TERRITORIO              -->
+  <!-- 2. MANIFESTO CLINICO (CITAZIONE AUTENTICA)   -->
+  <!-- ============================================ -->
+  <section class="manifesto-section" appFadeUp>
+    <div class="manifesto-card card">
+      <div class="manifesto-icon">
+        <svg lucideQuote [size]="34"></svg>
+      </div>
+      <blockquote class="manifesto-text">
+        « {{ manifestoQuote.text }} »
+      </blockquote>
+      <div class="manifesto-author">
+        <strong>{{ manifestoQuote.author }}</strong>
+        <span>{{ manifestoQuote.role }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 3. I TRE PRESIDI SUL TERRITORIO              -->
   <!-- ============================================ -->
   <section class="territory-section editorial-section" appFadeUp>
     <div class="section-intro">
@@ -70,6 +101,7 @@
             <span class="role-badge">{{ loc.role }}</span>
           </div>
           <h3>{{ loc.facility }}</h3>
+          <span class="facility-address">{{ loc.address }}</span>
           <h4 class="focus-title">{{ loc.focus }}</h4>
           <p>{{ loc.desc }}</p>
         </article>
@@ -78,13 +110,13 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- 3. AMBITI DI ALTA SPECIALIZZAZIONE CLINICA    -->
+  <!-- 4. AMBITI DI ALTA SPECIALIZZAZIONE CLINICA    -->
   <!-- ============================================ -->
   <section class="specializations-section editorial-section" appFadeUp>
     <div class="section-intro">
       <h2>Ambiti di Approfondimento & Metodologia Clinica</h2>
       <p class="section-intro-sub">
-        La logopedia richiede competenze verticali costantemente aggiornate: ecco i settori in cui ho investito anni di studio specialistico e pratica clinica.
+        Dall'età evolutiva all'età adulta: interventi specialistici basati sulle evidenze per il distretto fono-articolatorio, miofunzionale e cognitivo.
       </p>
     </div>
 
@@ -125,7 +157,32 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- 4. I TRE PILASTRI VALORIALI                   -->
+  <!-- 5. SCUOLA, SCREENING & SUPPORTO GENITORIALE  -->
+  <!-- ============================================ -->
+  <section class="school-projects-section editorial-section" appFadeUp>
+    <div class="section-intro">
+      <h2>Prevenzione, Screening nelle Scuole & Cura della Famiglia</h2>
+      <p class="section-intro-sub">
+        La prevenzione è la prima forma di tutela: progetti attivi sul territorio per sostenere insegnanti, bambini e genitori prima che le difficoltà si consolidino.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      @for (proj of schoolProjects; track proj.title) {
+        <div class="project-card card" appFadeUp>
+          <div class="project-icon-circle">
+            <svg lucideSchool [size]="24"></svg>
+          </div>
+          <h3>{{ proj.title }}</h3>
+          <span class="project-sub">{{ proj.subtitle }}</span>
+          <p>{{ proj.desc }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 6. I TRE PILASTRI VALORIALI                   -->
   <!-- ============================================ -->
   <section class="values-section editorial-section" appFadeUp>
     <div class="section-intro">
@@ -153,7 +210,7 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- 5. FORMAZIONE ACCADEMICA & CONTINUA (ECM)     -->
+  <!-- 7. FORMAZIONE ACCADEMICA & CONTINUA (ECM)     -->
   <!-- ============================================ -->
   <section class="education-section editorial-section" appFadeUp>
     <div class="section-intro">
@@ -223,7 +280,7 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- 6. CTA FINALE RASSICURANTE                    -->
+  <!-- 8. CTA FINALE RASSICURANTE                    -->
   <!-- ============================================ -->
   <section class="about-cta-section" appFadeUp>
     <div class="about-cta-card card">
@@ -231,10 +288,20 @@
       <p>
         Se noti una difficoltà nel linguaggio, nella deglutizione, nella voce o negli apprendimenti scolastici, o se desideri un parere professionale per te o per tuo figlio, contattami con serenità. Saremo felici di valutare insieme la situazione.
       </p>
-      <a mat-raised-button routerLink="/contatti" class="about-btn-cta">
-        <svg lucideCalendarCheck [size]="18"></svg>
-        <span>Contattami o Prenota una Valutazione</span>
-      </a>
+      <div class="about-cta-actions">
+        <a mat-raised-button routerLink="/contatti" class="about-btn-cta">
+          <svg lucideCalendarCheck [size]="18"></svg>
+          <span>Contattami o Prenota una Valutazione</span>
+        </a>
+        <a 
+          href="assets/cv-eleonora-mariotti.pdf" 
+          target="_blank" 
+          rel="noopener" 
+          class="about-btn-ghost">
+          <svg lucideFileText [size]="18"></svg>
+          <span>Visualizza CV Ufficiale (PDF)</span>
+        </a>
+      </div>
     </div>
   </section>
 

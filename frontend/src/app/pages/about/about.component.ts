@@ -14,7 +14,11 @@ import {
   LucideActivity,
   LucideBookOpen,
   LucideCheckCircle2,
-  LucideSparkles
+  LucideSparkles,
+  LucideDownload,
+  LucideFileText,
+  LucideSchool,
+  LucideQuote
 } from '@lucide/angular';
 
 export interface Milestone {
@@ -37,6 +41,7 @@ export interface TrainingItem {
 export interface ClinicalLocation {
   city: string;
   facility: string;
+  address: string;
   role: string;
   focus: string;
   desc: string;
@@ -48,6 +53,12 @@ export interface SpecializationArea {
   subtitle: string;
   desc: string;
   tags: string[];
+}
+
+export interface SchoolProject {
+  title: string;
+  subtitle: string;
+  desc: string;
 }
 
 @Component({
@@ -68,31 +79,45 @@ export interface SpecializationArea {
     LucideActivity,
     LucideBookOpen,
     LucideCheckCircle2,
-    LucideSparkles
+    LucideSparkles,
+    LucideDownload,
+    LucideFileText,
+    LucideSchool,
+    LucideQuote
   ],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
+  // Citazione manifesto ufficiale di Eleonora
+  manifestoQuote = {
+    text: 'Ogni percorso inizia con una valutazione personalizzata. Il mio interesse non è solo "risolvere" un disturbo, ma valorizzare le potenzialità di ogni individuo, creando un clima di fiducia e collaborazione con la famiglia e la scuola.',
+    author: 'Dott.ssa Eleonora Mariotti',
+    role: 'Logopedista — Master in Motricità Orofacciale'
+  };
+
   // Sedi cliniche attive sul territorio marchigiano
   locations: ClinicalLocation[] = [
     {
       city: 'Ancona',
       facility: 'Centro Multispecialistico "DSA e non SOLO"',
+      address: 'Via Guido Rossa 8, 60131 Ancona',
       role: 'Logopedista in Equipe Multidisciplinare',
-      focus: 'Apprendimento (DSA), Linguaggio & Fonologia',
-      desc: 'Valutazione e potenziamento clinico integrato a stretto contatto con neuropsichiatri infantili e psicologi, supportando studenti e famiglie nella sfera scolastica ed evolutiva.'
+      focus: 'Apprendimento (DSA), Linguaggio & Motricità Orofacciale',
+      desc: 'Valutazione e potenziamento clinico integrato a stretto contatto con neuropsichiatri infantili e psicologi, supportando studenti e famiglie nella sfera scolastica, fono-articolatoria ed evolutiva.'
     },
     {
       city: 'Jesi',
       facility: 'Cooperativa Sociale E-movere',
+      address: 'Jesi (AN)',
       role: 'Logopedista Clinica Referente',
-      focus: 'Età Evolutiva, Linguaggio & Motricità Orofacciale',
+      focus: 'Età Evolutiva, Linguaggio & Rieducazione Miofunzionale',
       desc: 'Presa in carico personalizzata per bambini e ragazzi con disturbi di linguaggio, squilibri miofunzionali e balbuzie, valorizzando anche le precedenti esperienze con Logopedia for Heart e Centro Contatto.'
     },
     {
       city: 'Sassoferrato',
       facility: 'Studio Polifunzionale "A modo mio"',
+      address: 'Sassoferrato (AN)',
       role: 'Logopedista Titolare del Servizio',
       focus: 'Cura del Linguaggio, Voce & Deglutizione nell\'Entroterra',
       desc: 'Presidio riabilitativo essenziale per le comunità dell\'entroterra anconetano, per garantire a famiglie, bambini e adulti cure specialistiche vicine e senza lunghi spostamenti.'
@@ -104,30 +129,49 @@ export class AboutComponent {
     {
       type: 'activity',
       title: 'Motricità Orofacciale & Terapia Miofunzionale (SMOF)',
-      subtitle: 'Master Universitario di I Livello con Votazione 110/110',
-      desc: 'Rieducazione delle disfunzioni muscolari orofacciali: deglutizione atipica, respirazione orale primaria, incompetenza labiale e vizi di postura linguale. Lavoro in costante sinergia con odontoiatri e ortodontisti per favorire il successo delle terapie occlusali e prevenire recidive, con una cura meticolosa verso il vissuto emotivo e lo stress della famiglia.',
-      tags: ['Deglutizione Atipica', 'Respirazione Orale', 'Malocclusioni', 'Sinergia Ortodontica']
+      subtitle: 'Specializzazione con Master Universitario (110/110)',
+      desc: 'Valutazione e rieducazione delle funzioni orali nel bambino e nell\'adulto: deglutizione atipica/disfunzionale, respirazione orale primaria, difficoltà masticatorie e parafunzioni. Lavoro in costante sinergia con odontoiatri, ortodontisti e ORL per favorire la stabilità dei trattamenti occlusali, con particolare cura verso la riduzione dello stress genitoriale durante l\'iter terapeutico.',
+      tags: ['Deglutizione Disfunzionale', 'Respirazione Orale', 'Difficoltà Masticatorie', 'Sinergia Ortodontica', 'Pazienti Adulti']
     },
     {
       type: 'book',
-      title: 'Disordini Fonologici & Metodica ARM Clinica',
-      subtitle: 'Formazione specialistica avanzata (1° e 2° Livello)',
-      desc: 'Trattamento dei disturbi del linguaggio e delle difficoltà articolatorie attraverso l\'approccio sillabico, la metodica ARM Clinica e l\'analisi dei tratti motori orali e verbali. Il bambino è guidato con strumenti giocosi e motivanti a superare le difficoltà fonotattiche senza ansia da prestazione.',
-      tags: ['ARM Clinica', 'Approccio Sillabico', 'Tratti Motori Verbali', 'Rotacismo & Sibilanti']
+      title: 'Disordini Fonologici & Metodo ARM (I e II Livello)',
+      subtitle: 'Approccio Ritmico Motorio per l\'Apprendimento e il Linguaggio',
+      desc: 'Presa in carico specialistica dei disturbi fono-articolatori e dei ritardi di linguaggio attraverso il Metodo ARM (Approccio Ritmico Motorio), l\'approccio sillabico e l\'analisi dei tratti motori verbali. Attraverso il canale ritmico e corporeo, il bambino sperimenta il successo comunicativo senza fatica né frustrazione.',
+      tags: ['Metodo ARM', 'Approccio Ritmico Motorio', 'Approccio Sillabico', 'Tratti Motori Verbali', 'Rotacismo & Sibilanti']
     },
     {
       type: 'heart',
       title: 'Fluenza Verbale: Balbuzie & Cluttering',
       subtitle: 'Intervento integrato sugli aspetti Overt e Covert',
-      desc: 'Un percorso fondato sugli insegnamenti specialistici della Dott.ssa Maria Silvia Mazzocchi per l\'età evolutiva. Non ci si limita alle manifestazioni manifeste (blocchi, ripetizioni), ma si accoglie l\'iceberg emotivo: l\'ansia anticipatoria, la paura del giudizio e l\'evitamento, ristabilendo la libertà e la gioia di comunicare.',
-      tags: ['Balbuzie Infantile', 'Cluttering', 'Componente Emotiva Covert', 'Supporto alla Famiglia']
+      desc: 'Trattamento della balbuzie infantile e dell\'adulto secondo il modello avanzato della Dott.ssa Maria Silvia Mazzocchi. L\'intervento non si focalizza unicamente sulla superficie del blocco (overt), ma accoglie l\'iceberg emotivo sommerso (covert): l\'ansia da prestazione, il timore del giudizio e l\'evitamento delle parole.',
+      tags: ['Balbuzie Infantile', 'Cluttering', 'Componente Emotiva Covert', 'Alleanza Genitoriale']
     },
     {
       type: 'sparkles',
       title: 'Voce Parlata, Cantata & Protocollo Miovocale',
       subtitle: 'Igiene e riabilitazione pneumo-fono-articolatoria',
-      desc: 'Prevenzione e cura delle disfonie organiche e funzionali (noduli, polipi, affaticamento da surmenage) per adulti, professionisti della voce (insegnanti, formatori) e bambini, integrando respirazione costodiaframmatica, risonanza e coordinazione muscolare.',
+      desc: 'Prevenzione e cura delle disfonie organiche e funzionali (noduli, corditi, affaticamento da surmenage vocale) per bambini, adulti e professionisti della voce (insegnanti, formatori, attori) tramite il Protocollo Miovocale, integrando postura, dinamica respiratoria e risonanza.',
       tags: ['Protocollo Miovocale', 'Disfonia Professionale', 'Igiene Vocale', 'Controllo Pneumo-Fonico']
+    }
+  ];
+
+  // Progetti di prevenzione, screening scolastici e supporto genitoriale
+  schoolProjects: SchoolProject[] = [
+    {
+      title: 'Screening nelle Scuole dell\'Infanzia e Primarie',
+      subtitle: 'Identificazione precoce dei fattori di rischio',
+      desc: 'Attività di osservazione e screening condotta direttamente negli istituti scolastici per individuare precocemente indicatori di fragilità fonologica, comunicativa e motorio-articolatoria, prevenendo difficoltà più strutturate.'
+    },
+    {
+      title: 'Potenziamento dei Prerequisiti Scolastici',
+      subtitle: 'Accompagnare l\'ingresso alla scuola primaria',
+      desc: 'Laboratori e percorsi individuali dedicati ai bambini in età prescolare (5-6 anni) per consolidare le competenze metafonologiche, l\'orientamento visuo-spaziale e il ritmo, basi irrinunciabili per l\'apprendimento sereno di lettura e scrittura.'
+    },
+    {
+      title: 'Incontri di Sensibilizzazione per Genitori',
+      subtitle: 'Condivisione, ascolto e strategie pratiche a casa',
+      desc: 'Momenti formativi e serate a tema per mamme e papà, mirati a chiarire i dubbi più frequenti sulle tappe di sviluppo del linguaggio, sulle abitudini viziate (ciuccio, biberon, respirazione a bocca aperta) e sul come stimolare la parola nella vita quotidiana.'
     }
   ];
 
@@ -171,10 +215,10 @@ export class AboutComponent {
   // Corsi specialistici e convegni ECM
   trainings: TrainingItem[] = [
     {
-      title: 'ARM CLINICA (1° e 2° Livello)',
+      title: 'Metodo ARM (Approccio Ritmico Motorio) — 1° e 2° Livello',
       docente: 'Dott. Lorenzo Coccia',
       year: '2026',
-      focus: 'Rieducazione e stimolazione articolatoria neuromotoria'
+      focus: 'Rieducazione e stimolazione articolatoria neuromotoria per DSA e linguaggio'
     },
     {
       title: 'Il disordine fonologico: gli approcci di intervento',
@@ -191,7 +235,7 @@ export class AboutComponent {
     {
       title: 'Valutazione e trattamento degli aspetti Covert della Balbuzie',
       docente: 'Dott.ssa Maria Silvia Mazzocchi',
-      focus: 'Presa in carico della sofferenza emotiva e delle strategie di evitamento'
+      focus: 'Presa in carico della sofferenza emotiva e delle strategie di evitamento in età evolutiva'
     },
     {
       title: 'Protocollo Miovocale per la voce parlata e cantata',

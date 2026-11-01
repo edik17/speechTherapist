@@ -135,7 +135,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       </div>
 
       <div class="footer-bottom">
-        <span>© {{year}} Dott.ssa Eleonora Mariotti — Tutti i diritti riservati</span>
+        <span>© {{year}} Dott.ssa Eleonora Mariotti — P.IVA 02062460429 — Tutti i diritti riservati</span>
         <div class="social-links">
           <a href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm" target="_blank" rel="noopener" aria-label="Segui su Instagram">
             <img src="assets/images/instagram.png" alt="Instagram" width="20" height="20">

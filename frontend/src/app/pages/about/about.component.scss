@@ -40,7 +40,9 @@
 
   .bio-image-col {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 
     .bio-frame {
       position: relative;
@@ -81,6 +83,41 @@
         .quote-icon {
           color: var(--accent-primary);
           flex-shrink: 0;
+        }
+      }
+    }
+
+    .cv-download-box {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      justify-content: center;
+
+      .download-cv-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-soft);
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+
+        svg {
+          color: var(--accent-primary);
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          background: var(--bg-surface);
+          border-color: var(--accent-primary);
         }
       }
     }
@@ -136,7 +173,61 @@
 }
 
 // ============================================
-// 2. TERRITORIO (3 SEDI)
+// 2. MANIFESTO CLINICO
+// ============================================
+.manifesto-section {
+  margin-block: clamp(2rem, 4vw, 3.5rem);
+
+  .manifesto-card {
+    background: radial-gradient(circle at 10% 20%, rgba(124, 157, 142, 0.15) 0%, transparent 60%), var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: clamp(32px, 5vw, 48px);
+    text-align: center;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+
+    .manifesto-icon {
+      color: var(--accent-primary);
+      opacity: 0.35;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .manifesto-text {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin: 0 auto 24px;
+      max-width: 760px;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .manifesto-author {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      strong {
+        font-size: 1.05rem;
+        color: var(--text-primary);
+      }
+
+      span {
+        font-size: 0.86rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// ============================================
+// 3. TERRITORIO (3 SEDI)
 // ============================================
 .territory-section {
   .territory-grid {
@@ -163,7 +254,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 12px;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         flex-wrap: wrap;
 
         .city-badge {
@@ -188,13 +279,21 @@
       h3 {
         font-size: 1.25rem;
         color: var(--text-primary);
-        margin: 0 0 6px;
+        margin: 0 0 4px;
+      }
+
+      .facility-address {
+        font-size: 0.84rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        margin-bottom: 12px;
+        display: block;
       }
 
       .focus-title {
         font-size: 0.92rem;
         color: var(--accent-primary);
-        font-weight: 600;
+        font-weight: 700;
         margin: 0 0 14px;
         line-height: 1.4;
       }
@@ -211,7 +310,7 @@
 }
 
 // ============================================
-// 3. AREE DI SPECIALIZZAZIONE
+// 4. AREE DI SPECIALIZZAZIONE
 // ============================================
 .specializations-section {
   .specializations-grid {
@@ -302,7 +401,67 @@
 }
 
 // ============================================
-// 4. VALORI GUIDA
+// 5. PROGETTI SCUOLA & SUPPORTO GENITORIALE
+// ============================================
+.school-projects-section {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+
+    .project-card {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px -8px rgba(27, 59, 54, 0.12);
+      }
+
+      .project-icon-circle {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(212, 106, 78, 0.12);
+        color: var(--accent-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        color: var(--text-primary);
+        margin: 0 0 6px;
+        line-height: 1.3;
+      }
+
+      .project-sub {
+        font-size: 0.84rem;
+        color: var(--accent-secondary);
+        font-weight: 700;
+        margin-bottom: 14px;
+        display: block;
+      }
+
+      p {
+        color: var(--text-secondary);
+        font-size: 0.94rem;
+        line-height: 1.65;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// ============================================
+// 6. VALORI GUIDA
 // ============================================
 .values-section {
   .values-grid {
@@ -356,7 +515,7 @@
 }
 
 // ============================================
-// 5. TIMELINE FORMAZIONE & ECM
+// 7. TIMELINE FORMAZIONE & ECM
 // ============================================
 .education-section {
   .timeline-container {
@@ -574,7 +733,7 @@
 }
 
 // ============================================
-// 6. CTA FINALE
+// 8. CTA FINALE
 // ============================================
 .about-cta-section {
   margin-top: 50px;
@@ -600,21 +759,55 @@
       line-height: 1.65;
     }
 
-    .about-btn-cta {
-      background: var(--accent-primary) !important;
-      color: #FAF7F2 !important;
-      padding: 12px 28px !important;
-      border-radius: 999px !important;
-      font-weight: 700 !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      box-shadow: 0 4px 14px rgba(212, 106, 78, 0.35) !important;
-      transition: background 0.2s ease, transform 0.2s ease !important;
+    .about-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
 
-      &:hover {
-        background: var(--accent-primary-hover) !important;
-        transform: translateY(-2px);
+      .about-btn-cta {
+        background: var(--accent-primary) !important;
+        color: #FAF7F2 !important;
+        padding: 12px 28px !important;
+        border-radius: 999px !important;
+        font-weight: 700 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        box-shadow: 0 4px 14px rgba(212, 106, 78, 0.35) !important;
+        transition: background 0.2s ease, transform 0.2s ease !important;
+
+        &:hover {
+          background: var(--accent-primary-hover) !important;
+          transform: translateY(-2px);
+        }
+      }
+
+      .about-btn-ghost {
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.92rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-soft);
+        transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+        svg {
+          color: var(--accent-primary);
+        }
+
+        &:hover {
+          background: var(--bg-surface);
+          border-color: var(--accent-primary);
+          transform: translateY(-2px);
+        }
       }
     }
   }
@@ -634,6 +827,14 @@
   .education-section .trainings-wrap .trainings-grid {
     grid-template-columns: 1fr;
   }
+
+  .manifesto-section .manifesto-card {
+    padding: 24px 20px;
+
+    .manifesto-text {
+      font-size: 1.15rem;
+    }
+  }
 }
 
 // Dark Mode Overrides
@@ -642,6 +843,10 @@ body.dark-mode {
     background: rgba(30, 48, 44, 0.92);
     border-color: rgba(255, 255, 255, 0.1);
     color: #FAF7F2;
+  }
+
+  .manifesto-section .manifesto-card {
+    background: radial-gradient(circle at 10% 20%, rgba(142, 175, 159, 0.15) 0%, transparent 60%), var(--bg-surface);
   }
 
   .values-section .values-grid .value-card .value-icon-circle {
@@ -667,5 +872,10 @@ body.dark-mode {
   .specializations-section .specializations-grid .spec-card .spec-header .spec-icon-box {
     background: rgba(142, 175, 159, 0.2);
     color: #D3EAE1;
+  }
+
+  .school-projects-section .projects-grid .project-card .project-icon-circle {
+    background: rgba(226, 125, 96, 0.2);
+    color: #F8B4A2;
   }
 }

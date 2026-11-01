@@ -76,7 +76,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
   studios: Studio[] = [
     {
       id: 'sassoferrato',
-      name: 'Studio di Sassoferrato',
+      name: 'Studio di Sassoferrato — "A modo mio"',
       city: 'Sassoferrato (AN)',
       days: 'Lunedì & Giovedì',
       hours: '09:00 - 20:00',
@@ -87,18 +87,18 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: 'ancona',
-      name: 'Studio di Ancona',
+      name: 'Studio di Ancona — Centro "DSA e non SOLO"',
       city: 'Ancona (AN)',
       days: 'Martedì & Venerdì',
       hours: '09:00 - 20:00',
-      address: 'Ancona (AN)',
-      coords: [43.6158, 13.5189],
-      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Ancona+AN',
+      address: 'Via Guido Rossa 8, 60131 Ancona (AN)',
+      coords: [43.5932, 13.5048],
+      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Guido+Rossa+8+Ancona',
       badgeColor: '#E76F51'
     },
     {
       id: 'jesi',
-      name: 'Studio di Jesi',
+      name: 'Studio di Jesi — Cooperativa E-movere',
       city: 'Jesi (AN)',
       days: 'Mercoledì',
       hours: '09:00 - 20:00',
