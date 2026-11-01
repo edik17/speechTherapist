@@ -100,23 +100,23 @@ export class AboutComponent {
   locations: ClinicalLocation[] = [
     {
       city: 'Ancona',
-      facility: 'Centro Multispecialistico "DSA e non SOLO"',
-      address: 'Via Guido Rossa 8, 60131 Ancona',
+      facility: 'Centro multispecialistico DSA E NON SOLO',
+      address: 'Via Rossa Guido, 8, 60131 Ancona AN',
       role: 'Logopedista in Equipe Multidisciplinare',
       focus: 'Apprendimento (DSA), Linguaggio & Motricità Orofacciale',
       desc: 'Valutazione e potenziamento clinico integrato a stretto contatto con neuropsichiatri infantili e psicologi, supportando studenti e famiglie nella sfera scolastica, fono-articolatoria ed evolutiva.'
     },
     {
       city: 'Jesi',
-      facility: 'Cooperativa Sociale E-movere',
-      address: 'Viale Gallodoro 70/A, 60035 Jesi (AN)',
+      facility: 'e-Movere, Centro Pedagogico Ludico Formativo',
+      address: 'Viale Gallodoro, 70/a, 60035 Jesi AN',
       role: 'Logopedista Clinica Referente',
       focus: 'Età Evolutiva, Linguaggio & Rieducazione Miofunzionale',
       desc: 'Presa in carico personalizzata per bambini e ragazzi con disturbi di linguaggio, squilibri miofunzionali e balbuzie, valorizzando anche le precedenti esperienze con Logopedia for Heart e Centro Contatto.'
     },
     {
       city: 'Sassoferrato',
-      facility: 'Studio Polifunzionale "A modo mio"',
+      facility: 'Studio a Modo Mio',
       address: 'Via Roma 39, 60041 Sassoferrato (AN)',
       role: 'Logopedista Titolare del Servizio',
       focus: 'Cura del Linguaggio, Voce & Deglutizione nell\'Entroterra',

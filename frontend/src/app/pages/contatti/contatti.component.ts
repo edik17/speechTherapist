@@ -66,11 +66,11 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Calendario settimanale suddiviso per giorno con sedi e indirizzi reali
   weeklySchedule = [
-    { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 1, note: 'Studio "A modo mio" — Via Roma 39' },
-    { day: 'Martedì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 2, note: 'Centro "DSA e non SOLO" — Via Guido Rossa 8' },
-    { day: 'Mercoledì', location: 'Jesi', hours: '09:00 - 20:00', dayIndex: 3, note: 'Coop. E-movere — Viale Gallodoro 70/A' },
-    { day: 'Giovedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 4, note: 'Studio "A modo mio" — Via Roma 39' },
-    { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 5, note: 'Centro "DSA e non SOLO" — Via Guido Rossa 8' },
+    { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 1, note: 'Studio a Modo Mio — Via Roma 39' },
+    { day: 'Martedì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 2, note: 'DSA E NON SOLO — Via Rossa Guido, 8' },
+    { day: 'Mercoledì', location: 'Jesi', hours: '09:00 - 20:00', dayIndex: 3, note: 'e-Movere — Viale Gallodoro, 70/a' },
+    { day: 'Giovedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 4, note: 'Studio a Modo Mio — Via Roma 39' },
+    { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 5, note: 'DSA E NON SOLO — Via Rossa Guido, 8' },
   ];
 
   // Le 3 Sedi con rispettive coordinate e indirizzi reali per le mappe indipendenti
@@ -78,7 +78,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       id: 'sassoferrato',
       name: 'Studio di Sassoferrato',
-      facility: 'Studio Polifunzionale "A modo mio"',
+      facility: 'Studio a Modo Mio',
       city: 'Sassoferrato (AN)',
       days: 'Lunedì & Giovedì',
       hours: '09:00 - 20:00',
@@ -90,25 +90,25 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       id: 'ancona',
       name: 'Studio di Ancona',
-      facility: 'Centro Multispecialistico "DSA e non SOLO"',
+      facility: 'Centro multispecialistico DSA E NON SOLO',
       city: 'Ancona (AN)',
       days: 'Martedì & Venerdì',
       hours: '09:00 - 20:00',
-      address: 'Via Guido Rossa 8, 60131 Ancona (AN)',
+      address: 'Via Rossa Guido, 8, 60131 Ancona AN',
       coords: [43.5679, 13.5070],
-      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Guido+Rossa+8+Ancona+AN',
+      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Rossa+Guido+8+60131+Ancona+AN',
       badgeColor: '#E76F51'
     },
     {
       id: 'jesi',
       name: 'Studio di Jesi',
-      facility: 'Cooperativa Sociale E-movere',
+      facility: 'e-Movere, Centro Pedagogico Ludico Formativo',
       city: 'Jesi (AN)',
       days: 'Mercoledì',
       hours: '09:00 - 20:00',
-      address: 'Viale Gallodoro 70/A, 60035 Jesi (AN)',
+      address: 'Viale Gallodoro, 70/a, 60035 Jesi AN',
       coords: [43.5182, 13.2434],
-      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70A+Jesi+AN',
+      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70a+60035+Jesi+AN',
       badgeColor: '#2A9D8F'
     }
   ];
