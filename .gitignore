@@ -1,5 +1,32 @@
+# Environment variables and secrets
+.env
+.env.*
+*.env
+*.env.*
 beckend/.env
+beckend/.env.*
+frontend/.env
+frontend/.env.*
+
+# Dependencies
 node_modules/
 beckend/node_modules/
+frontend/node_modules/
+
+# Production builds
 frontend/dist/
+dist/
 .angular/
+
+# Scratch and debug files
+scratch/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { 
   LucidePhone, 
@@ -45,6 +46,7 @@ export interface Studio {
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatSnackBarModule,
     FadeUpDirective,
     LucidePhone,
@@ -124,7 +126,9 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       sede: ['Ancona', Validators.required],
-      messaggio: ['', Validators.required]
+      messaggio: ['', Validators.required],
+      privacyAccepted: [false, Validators.requiredTrue],
+      website: [''] // Honeypot anti-spam invisibile per i bot
     });
   }
 
@@ -209,8 +213,8 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this.isSubmitting = true;
-    const { nome, email, sede, messaggio } = this.contactForm.value;
-    const payload = { nome, email, sede, messaggio };
+    const { nome, email, sede, messaggio, website } = this.contactForm.value;
+    const payload = { nome, email, sede, messaggio, website };
 
     console.log("Invio messaggio:", payload);
 
@@ -222,14 +226,17 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     } catch (e) {}
 
-    // Invia al backend locale o esegue fallback immediato
-    this.http.post('http://localhost:8080/api/contacts', payload)
+    // In ambiente locale usa la porta 8080 del backend Express, in produzione usa la rotta serverless /api/contacts
+    const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    const apiUrl = isLocal ? 'http://localhost:8080/api/contacts' : '/api/contacts';
+
+    this.http.post(apiUrl, payload)
       .subscribe({
         next: (response) => {
           this.isSubmitting = false;
           console.log('Successo:', response);
           this.showNotification('Grazie per averci scritto! Ti risponderemo al più presto. 📩', 'Chiudi');
-          this.contactForm.reset({ sede: 'Ancona' });
+          this.contactForm.reset({ sede: 'Ancona', privacyAccepted: false, website: '' });
           
           Object.keys(this.contactForm.controls).forEach(key => {
             this.contactForm.get(key)?.setErrors(null);
@@ -245,7 +252,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
           const body = encodeURIComponent(`Nome e Cognome: ${nome}\nEmail: ${email}\nSede scelta: ${sede}\n\nMessaggio:\n${messaggio}`);
           window.open(`mailto:mariotti.eleonora14@gmail.com?subject=${subject}&body=${body}`, '_blank');
 
-          this.contactForm.reset({ sede: 'Ancona' });
+          this.contactForm.reset({ sede: 'Ancona', privacyAccepted: false, website: '' });
           Object.keys(this.contactForm.controls).forEach(key => {
             this.contactForm.get(key)?.setErrors(null);
           });
@@ -266,4 +273,5 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
   get email() { return this.contactForm.get('email'); }
   get sede() { return this.contactForm.get('sede'); }
   get messaggio() { return this.contactForm.get('messaggio'); }
+  get privacyAccepted() { return this.contactForm.get('privacyAccepted'); }
 }

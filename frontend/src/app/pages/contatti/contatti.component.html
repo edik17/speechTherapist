@@ -194,6 +194,24 @@
             }
           </mat-form-field>
 
+          <!-- Honeypot anti-bot invisibile -->
+          <div style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden;" aria-hidden="true">
+            <label for="website-hp">Lascia vuoto questo campo</label>
+            <input id="website-hp" type="text" formControlName="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Consenso Privacy GDPR -->
+          <div class="privacy-consent-row">
+            <mat-checkbox formControlName="privacyAccepted" color="primary">
+              <span class="privacy-label">
+                Dichiaro di aver letto l'informativa e acconsento al trattamento dei dati personali secondo il <strong>GDPR</strong> per la gestione della richiesta. *
+              </span>
+            </mat-checkbox>
+            @if (privacyAccepted?.invalid && privacyAccepted?.touched) {
+              <div class="privacy-error">È necessario esprimere il consenso al trattamento dati per procedere.</div>
+            }
+          </div>
+
           <div class="submit-row">
             <button mat-raised-button type="submit" class="submit-terracotta-btn" [disabled]="isSubmitting">
               <svg lucideSend [size]="18" class="btn-icon"></svg>

@@ -439,6 +439,31 @@ body.dark-mode .contact-header {
     }
   }
 
+  .privacy-consent-row {
+    margin: 8px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .privacy-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      white-space: normal;
+
+      strong {
+        color: var(--text-primary);
+      }
+    }
+
+    .privacy-error {
+      color: #D32F2F;
+      font-size: 0.78rem;
+      margin-left: 32px;
+      font-weight: 500;
+    }
+  }
+
   .submit-row {
     margin-top: 8px;
 
