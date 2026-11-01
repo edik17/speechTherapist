@@ -6,7 +6,6 @@ import { BlogService } from '../../core/services/blog.service';
 import { Article } from '../../core/models/article.model';
 import { FadeUpDirective } from '../../shared/directives/fade-up.directive';
 import { 
-  LucideSparkles, 
   LucideArrowRight, 
   LucideCalendarCheck, 
   LucideHeart, 
@@ -28,7 +27,6 @@ import {
     RouterLink,
     MatButtonModule,
     FadeUpDirective,
-    LucideSparkles,
     LucideArrowRight,
     LucideCalendarCheck,
     LucideHeart,

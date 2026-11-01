@@ -23,25 +23,6 @@
   flex-direction: column;
   align-items: flex-start;
 
-  .trust-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(124, 157, 142, 0.15);
-    color: #2D5A4C;
-    border: 1px solid rgba(124, 157, 142, 0.3);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin-bottom: 20px;
-
-    .trust-icon {
-      color: var(--accent-secondary);
-    }
-  }
-
   .hero-h1 {
     font-family: 'Fraunces', Georgia, serif;
     font-size: clamp(2.4rem, 4.8vw, 3.85rem);
@@ -176,46 +157,6 @@
 
       &:hover {
         transform: scale(1.03);
-      }
-    }
-  }
-
-  .floating-credentials-pill {
-    position: absolute;
-    bottom: -18px;
-    left: 16px;
-    z-index: 2;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    padding: 10px 18px;
-    border-radius: 999px;
-    box-shadow: 0 8px 24px rgba(27, 59, 54, 0.12);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    .pill-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent-secondary);
-      box-shadow: 0 0 0 3px rgba(124, 157, 142, 0.25);
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-
-      strong {
-        font-family: 'Fraunces', serif;
-        font-size: 0.95rem;
-        color: var(--text-primary);
-        line-height: 1.2;
-      }
-
-      span {
-        font-size: 0.78rem;
-        color: var(--text-secondary);
       }
     }
   }
@@ -625,16 +566,6 @@
 
 // Dark Mode Adjustments
 body.dark-mode {
-  .hero-text-col .trust-badge {
-    color: #A8D5C2;
-    background: rgba(142, 175, 159, 0.2);
-  }
-
-  .hero-media-col .floating-credentials-pill {
-    background: var(--bg-surface);
-    border-color: var(--border-subtle);
-  }
-
   .reassuring-cta-section .reassuring-banner .banner-content .banner-badge {
     color: #F8B4A2;
     background: rgba(226, 125, 96, 0.2);

@@ -26,7 +26,6 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
         
         <!-- Logo / Brand con stile editoriale -->
         <a class="brand-link" routerLink="/" aria-label="Home page Dott.ssa Eleonora Mariotti">
-          <span class="brand-monogram">EM</span>
           <div class="brand-text">
             <span class="brand-name">Dott.ssa Eleonora Mariotti</span>
             <span class="brand-tagline">Logopedista • Sassoferrato • Ancona • Jesi</span>
@@ -177,21 +176,6 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       gap: 12px;
       text-decoration: none;
       color: inherit;
-
-      .brand-monogram {
-        width: 38px;
-        height: 38px;
-        border-radius: 12px;
-        background: var(--primary-gradient);
-        color: #FAF7F2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Fraunces', serif;
-        font-weight: 700;
-        font-size: 1.1rem;
-        box-shadow: 0 4px 10px rgba(27, 59, 54, 0.15);
-      }
 
       .brand-text {
         display: flex;
