@@ -35,16 +35,16 @@ import {
   @if (currentArticle) {
     <!-- VISTA DETTAGLIO ARTICOLO (EDITORIALE CENTRATO 720px) -->
     <article class="article-detail-view" appFadeUp>
-      <nav class="back-nav" aria-label="Torna al blog">
+      <nav class="back-nav" aria-label="Torna a Le mie tesi">
         <a routerLink="/blog" class="back-link">
           <svg lucideArrowLeft [size]="18"></svg>
-          <span>Tutti gli articoli</span>
+          <span>Tutte le tesi & approfondimenti</span>
         </a>
       </nav>
 
       <header class="article-header">
         <div class="category-meta">
-          <span [class]="currentArticle.category === 'Evidenza Scientifica' ? 'badge-evidence' : 'badge-reflection'">
+          <span [class]="getBadgeClass(currentArticle.category)">
             {{ currentArticle.category }}
           </span>
           <span class="meta-item">
@@ -126,9 +126,9 @@ import {
     <!-- VISTA MAGAZINE LISTING -->
     <section class="blog-magazine-container">
       <header class="magazine-hero" appFadeUp>
-        <h1>Quaderni di Logopedia & Divulgazione</h1>
+        <h1>Le Mie Tesi & Approfondimenti Clinici</h1>
         <p class="magazine-subtitle">
-          Riflessioni cliniche, buone pratiche e approfondimenti scientifici su linguaggio, apprendimento, voce e deglutizione nel ciclo di vita.
+          I lavori di ricerca sperimentale di Laurea e Master, uniti a buone pratiche cliniche e approfondimenti scientifici su linguaggio, motricità orofacciale e deglutizione.
         </p>
 
         <!-- FILTRI PER CATEGORIA -->
@@ -138,7 +138,14 @@ import {
             class="filter-tab" 
             [class.active]="selectedCategory === 'ALL'"
             (click)="setCategory('ALL')">
-            Tutti gli articoli
+            Tutti i contenuti
+          </button>
+          <button 
+            type="button"
+            class="filter-tab thesis-tab" 
+            [class.active]="selectedCategory === 'Tesi Accademica'"
+            (click)="setCategory('Tesi Accademica')">
+            Le Mie Tesi
           </button>
           <button 
             type="button"
@@ -162,7 +169,7 @@ import {
         @for (art of filteredArticles; track art.id) {
           <article class="article-card card" appFadeUp>
             <div class="card-meta">
-              <span [class]="art.category === 'Evidenza Scientifica' ? 'badge-evidence' : 'badge-reflection'">
+              <span [class]="getBadgeClass(art.category)">
                 {{ art.category }}
               </span>
               <span class="read-time-pill">
@@ -252,6 +259,10 @@ import {
           background: var(--bg-elevated);
           color: var(--text-primary);
           box-shadow: 0 4px 12px rgba(27, 59, 54, 0.08);
+        }
+
+        &.thesis-tab.active {
+          color: #0F4C5C;
         }
 
         &.evidence-tab.active {
@@ -625,6 +636,15 @@ export class BlogComponent implements OnInit {
         this.currentArticle = undefined;
       }
     });
+  }
+
+  getBadgeClass(category: ArticleCategory): string {
+    switch (category) {
+      case 'Tesi Accademica': return 'badge-thesis';
+      case 'Evidenza Scientifica': return 'badge-evidence';
+      case 'Riflessioni': return 'badge-reflection';
+      default: return 'badge-evidence';
+    }
   }
 
   setCategory(category: 'ALL' | ArticleCategory): void {

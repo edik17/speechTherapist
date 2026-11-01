@@ -142,6 +142,20 @@ select:focus-visible,
 }
 
 // Category Pills / Badges
+.badge-thesis {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(15, 76, 92, 0.12);
+  color: #0F4C5C;
+  border: 1px solid rgba(15, 76, 92, 0.28);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .badge-evidence {
   display: inline-flex;
   align-items: center;
@@ -188,6 +202,12 @@ select:focus-visible,
 // DARK MODE ADAPTATIONS
 // ============================================
 body.dark-mode {
+  .badge-thesis {
+    background-color: rgba(72, 202, 228, 0.18);
+    color: #90E0EF;
+    border-color: rgba(72, 202, 228, 0.35);
+  }
+
   .badge-evidence {
     background-color: rgba(142, 175, 159, 0.2);
     color: #A8D5C2;

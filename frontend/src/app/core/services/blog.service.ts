@@ -8,6 +8,77 @@ import { Article } from '../models/article.model';
 export class BlogService {
   private readonly articles: Article[] = [
     {
+      id: 'tesi-master',
+      slug: 'stress-genitoriale-terapia-miofunzionale',
+      title: 'Stress genitoriale nel percorso terapeutico di terapia miofunzionale',
+      subtitle: 'Tesi di Master Universitario di I Livello in Motricità Orofacciale (110/110) – Dott.ssa Eleonora Mariotti',
+      excerpt: 'Indagine empirica sull\'impatto emotivo e sui livelli di stress dei genitori durante il trattamento delle disfunzioni orofacciali (SMOF). Perché la rassicurazione e il coinvolgimento sereno della famiglia sono la prima garanzia di successo riabilitativo.',
+      category: 'Tesi Accademica',
+      readTime: '6 min di lettura',
+      publishedAt: 'Master Universitario (110/110)',
+      author: 'Dott.ssa Eleonora Mariotti',
+      authorRole: 'Logopedista Clinica • Spec. Motricità Orofacciale',
+      tags: ['Tesi Master', 'Motricità Orofacciale', 'Stress Genitoriale', 'Deglutizione', 'Counseling'],
+      keyPoints: [
+        'La terapia miofunzionale richiede l\'esecuzione quotidiana di esercizi a casa: se percepiti come fonte di conflitto o pressione, l\'aderenza crolla.',
+        'I dati della ricerca evidenziano che i genitori sperimentano spesso un senso di colpa per non aver colto prima le difficoltà orali del figlio (respirazione orale, deglutizione deviata).',
+        'Un approccio di counseling integrato riduce lo stress familiare, trasformando il momento degli esercizi da "compito imposto" a gioco interattivo gratificante.',
+        'La compliance e l\'automatizzazione del nuovo schema neuromotorio risultano significativamente superiori quando la famiglia è rassicurata e non giudicata.'
+      ],
+      content: `
+        <p>Il lavoro di ricerca per il conseguimento del <strong>Master Universitario di I Livello in Motricità Orofacciale</strong> (votazione 110/110) è nato da una constatazione clinica fondamentale: ogni esercizio logopedico prescritto a un bambino entra nel cuore delle dinamiche familiari.</p>
+
+        <h3>L'ipotesi di ricerca</h3>
+        <p>Nella terapia miofunzionale orofacciale (SMOF) per la correzione della deglutizione atipica, della postura linguale e della respirazione orale, l'automatizzazione dei pattern neuromuscolari richiede ripetizioni costanti tra una seduta e l'altra. Frequentemente, tuttavia, questo impegno si trasforma in una fonte di frizione tra genitori e figli, innescando ansia da prestazione e senso di inadeguatezza nel genitore ("Mio figlio non vuole fare gli esercizi, è colpa mia se non migliora").</p>
+
+        <h3>Metodologia ed evidenze emerse</h3>
+        <p>Attraverso questionari somministrati alle famiglie durante le diverse fasi del trattamento, la ricerca ha misurato l'indice di stress genitoriale correlandolo con i progressi miofunzionali ottenuti. I risultati hanno dimostrato in modo inequivocabile che:</p>
+        <ul>
+          <li>L'ansia genitoriale diminuisce drasticamente quando il professionista illustra con chiarezza la neurofisiologia della deglutizione, spiegando che le recidive o i tempi lenti non dipendono da "svogliatezza".</li>
+          <li>Riformulare gli esercizi domiciliari in chiave ludica e progressiva aumenta la compliance di oltre il 40% rispetto all'impostazione prescrittiva rigida.</li>
+        </ul>
+
+        <h3>Conclusioni cliniche</h3>
+        <p>Il logopedista moderno non può limitarsi all'aspetto anatomico e muscolare. Prendersi cura della bocca di un bambino significa prendersi cura della serenità del suo nucleo affettivo, fornendo ai genitori strumenti di rassicurazione e alleanza empatica.</p>
+      `
+    },
+    {
+      id: 'tesi-laurea',
+      slug: 'malocclusioni-seconda-classe-terapia-miofunzionale-qol',
+      title: 'Malocclusioni di II classe: l\'uso della terapia miofunzionale nel paziente adulto e proposta di questionario per la Qualità della Vita (QOL)',
+      subtitle: 'Tesi Sperimentale di Laurea Triennale in Logopedia (110/110 e LODE) – Università Politecnica delle Marche',
+      excerpt: 'Studio clinico sul paziente adulto: come la rieducazione logopedica della deglutizione disfunzionale e della postura linguale consolida la stabilità ortodontica e migliora la qualità di vita percepita.',
+      category: 'Tesi Accademica',
+      readTime: '7 min di lettura',
+      publishedAt: 'Laurea in Logopedia (110/110 e Lode)',
+      author: 'Dott.ssa Eleonora Mariotti',
+      authorRole: 'Logopedista Clinica',
+      tags: ['Tesi di Laurea', 'Paziente Adulto', 'Malocclusioni', 'Terapia Miofunzionale', 'QOL'],
+      keyPoints: [
+        'Nel paziente adulto i compensi muscolari patologici sono instaurati da decenni, ma la neuroplasticità consente comunque una completa riprogrammazione funzionale.',
+        'La spinta linguale scorretta esercita fino a 1-2 kg di forza continua sui denti, vanificando spesso terapie ortodontiche o interventi chirurgici ortognatici.',
+        'Il protocollo di terapia miofunzionale restituisce equilibrio alla catena muscolare cervico-occlusale, con sensibile riduzione di tensioni e cefalee.',
+        'L\'introduzione di un questionario validato sulla Qualità della Vita (QOL) dimostra benefici significativi sulla sicurezza relazionale e il benessere generale.'
+      ],
+      content: `
+        <p>La tesi sperimentale discussa presso la Facoltà di Medicina e Chirurgia dell'<strong>Università Politecnica delle Marche</strong> (conclusa con il massimo dei voti: 110/110 e LODE) ha affrontato un tema ancora poco esplorato: l'intervento logopedico miofunzionale nel paziente adulto affetto da malocclusione scheletrica di II classe.</p>
+
+        <h3>Il problema delle recidive nell'adulto</h3>
+        <p>Spesso gli adulti con malocclusioni o morso aperto riferiscono di aver portato l'apparecchio ortodontico durante l'adolescenza, assistendo tuttavia a una progressiva recidiva dopo la rimozione degli attacchi. Questo fenomeno avviene poiché l'ortodonzia interviene sulla posizione dei denti e delle ossa mascellari, ma non modifica spontaneamente la memoria neuromotoria della lingua, delle labbra e del modo di respirare.</p>
+
+        <h3>Il protocollo terapeutico e la misurazione della QOL</h3>
+        <p>Il lavoro di tesi ha seguito pazienti adulti sottoposti a ciclo di terapia miofunzionale mirata (rieducazione dello spot palatino, deglutizione senza contrazione del mento, ripristino del sigillo labiale passivo e respirazione nasale). Parallelamente, è stato applicato uno strumento di misurazione della <em>Quality of Life</em> (QOL) per valutare l'impatto soggettivo percepito:</p>
+        <ul>
+          <li><strong>Funzionalità masticatoria e digestiva:</strong> masticazione simmetrica e riduzione dell'aerofagia.</li>
+          <li><strong>Benessere miofasciale:</strong> diminuzione del serramento notturno, delle tensioni ai muscoli masseteri e delle cervicalgie correlate.</li>
+          <li><strong>Autopercezione estetica e vocale:</strong> maggiore chiarezza articolatoria e fiducia nelle relazioni sociali e professionali.</li>
+        </ul>
+
+        <h3>Valore per la pratica quotidiana</h3>
+        <p>Questa ricerca ha consolidato la convinzione che la logopedia sia una disciplina medica profondamente olistica, in cui la precisione biomeccanica della funzione orale si traduce direttamente in salute, comfort e serenità della persona a qualsiasi età.</p>
+      `
+    },
+    {
       id: '1',
       slug: 'campanelli-allarme-linguaggio-bambini',
       title: 'Campanelli d\'allarme nello sviluppo del linguaggio: quando consultare il logopedista?',

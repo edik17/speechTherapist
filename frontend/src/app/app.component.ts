@@ -37,7 +37,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">Home</a>
           <a routerLink="/chi-sono" routerLinkActive="active" class="nav-item">Chi sono</a>
           <a routerLink="/servizi" routerLinkActive="active" class="nav-item">Servizi</a>
-          <a routerLink="/blog" routerLinkActive="active" class="nav-item">Blog & Ricerca</a>
+          <a routerLink="/blog" routerLinkActive="active" class="nav-item">Le mie tesi</a>
           <a routerLink="/testimonianze" routerLinkActive="active" class="nav-item">Cosa dicono di me</a>
           <a routerLink="/faq" routerLinkActive="active" class="nav-item">FAQ</a>
 
@@ -96,7 +96,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
           <a routerLink="/" (click)="open=false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
           <a routerLink="/chi-sono" (click)="open=false" routerLinkActive="active">Chi sono</a>
           <a routerLink="/servizi" (click)="open=false" routerLinkActive="active">Servizi & Metodo</a>
-          <a routerLink="/blog" (click)="open=false" routerLinkActive="active">Blog & Divulgazione</a>
+          <a routerLink="/blog" (click)="open=false" routerLinkActive="active">Le mie tesi</a>
           <a routerLink="/testimonianze" (click)="open=false" routerLinkActive="active">Cosa dicono di me</a>
           <a routerLink="/faq" (click)="open=false" routerLinkActive="active">Domande Frequenti</a>
           <a routerLink="/contatti" (click)="open=false" class="mobile-cta-link">
@@ -122,7 +122,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
           <span class="col-title">Navigazione</span>
           <a routerLink="/chi-sono">Chi sono</a>
           <a routerLink="/servizi">Aree di intervento</a>
-          <a routerLink="/blog">Blog & Ricerca</a>
+          <a routerLink="/blog">Le mie tesi</a>
           <a routerLink="/contatti">Sedi e Orari</a>
         </div>
 

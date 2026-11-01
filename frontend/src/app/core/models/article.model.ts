@@ -1,4 +1,4 @@
-export type ArticleCategory = 'Evidenza Scientifica' | 'Riflessioni';
+export type ArticleCategory = 'Tesi Accademica' | 'Evidenza Scientifica' | 'Riflessioni';
 
 export interface Article {
   id: string;
