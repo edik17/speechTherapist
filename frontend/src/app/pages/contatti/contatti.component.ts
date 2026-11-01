@@ -250,7 +250,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
           // Prepara email precompilata di fallback
           const subject = encodeURIComponent(`Richiesta di contatto da ${nome} - Sede: ${sede}`);
           const body = encodeURIComponent(`Nome e Cognome: ${nome}\nEmail: ${email}\nSede scelta: ${sede}\n\nMessaggio:\n${messaggio}`);
-          window.open(`mailto:mariotti.eleonora14@gmail.com?subject=${subject}&body=${body}`, '_blank');
+          window.open(`mailto:mariotti.eleonora14@gmail.com?subject=${subject}&body=${body}`, '_blank', 'noopener,noreferrer');
 
           this.contactForm.reset({ sede: 'Ancona', privacyAccepted: false, website: '' });
           Object.keys(this.contactForm.controls).forEach(key => {

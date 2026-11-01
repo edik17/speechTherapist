@@ -77,6 +77,15 @@ app.use((req, res) => {
 
 // Middleware centralizzato gestione errori
 app.use((err, req, res, next) => {
+  if (err.type === 'entity.too.large') {
+    return res.status(413).json({ message: "Payload troppo grande (massimo 15KB consentiti)." });
+  }
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ message: "Formato JSON non valido." });
+  }
+  if (err.message && err.message.includes('CORS')) {
+    return res.status(403).json({ message: "Origine non autorizzata dalle policy CORS." });
+  }
   console.error("Unhandled error:", err.message);
   res.status(500).json({ message: "Si è verificato un errore interno." });
 });

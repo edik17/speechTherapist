@@ -11,7 +11,9 @@ exports.handler = async function (event, context) {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY'
   };
 
   // Gestione preflight CORS
@@ -24,6 +26,15 @@ exports.handler = async function (event, context) {
       statusCode: 405,
       headers,
       body: JSON.stringify({ message: 'Metodo non consentito. Usa POST.' })
+    };
+  }
+
+  // Protezione Denial of Service: limite payload 15KB
+  if (event.body && event.body.length > 15360) {
+    return {
+      statusCode: 413,
+      headers,
+      body: JSON.stringify({ message: 'Payload troppo grande (massimo 15KB consentiti).' })
     };
   }
 
