@@ -649,10 +649,15 @@ export class BlogComponent implements OnInit {
       if (slug) {
         this.blogService.getArticleBySlug(slug).subscribe(art => {
           this.currentArticle = art;
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
         });
       } else {
         this.currentArticle = undefined;
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
       }
     });
   }
@@ -669,6 +674,9 @@ export class BlogComponent implements OnInit {
   setCategory(category: 'ALL' | ArticleCategory): void {
     this.selectedCategory = category;
     this.filterArticles();
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }
 
   private filterArticles(): void {

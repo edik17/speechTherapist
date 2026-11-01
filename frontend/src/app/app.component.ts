@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,7 +26,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       <nav class="editorial-nav" aria-label="Navigazione principale">
         
         <!-- Logo / Brand con stile editoriale -->
-        <a class="brand-link" routerLink="/" aria-label="Home page Dott.ssa Eleonora Mariotti">
+        <a class="brand-link" routerLink="/" (click)="scrollToTop()" aria-label="Home page Dott.ssa Eleonora Mariotti">
           <div class="brand-text">
             <span class="brand-name">Dott.ssa Eleonora Mariotti</span>
             <span class="brand-tagline">Logopedista • Sassoferrato • Ancona • Jesi</span>
@@ -34,15 +35,15 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
 
         <!-- Menu Desktop -->
         <div class="nav-links">
-          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">Home</a>
-          <a routerLink="/chi-sono" routerLinkActive="active" class="nav-item">Chi sono</a>
-          <a routerLink="/servizi" routerLinkActive="active" class="nav-item">Servizi</a>
-          <a routerLink="/blog" routerLinkActive="active" class="nav-item">Le mie tesi</a>
-          <a routerLink="/testimonianze" routerLinkActive="active" class="nav-item">Cosa dicono di me</a>
-          <a routerLink="/faq" routerLinkActive="active" class="nav-item">FAQ</a>
+          <a routerLink="/" (click)="scrollToTop()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">Home</a>
+          <a routerLink="/chi-sono" (click)="scrollToTop()" routerLinkActive="active" class="nav-item">Chi sono</a>
+          <a routerLink="/servizi" (click)="scrollToTop()" routerLinkActive="active" class="nav-item">Servizi</a>
+          <a routerLink="/blog" (click)="scrollToTop()" routerLinkActive="active" class="nav-item">Le mie tesi</a>
+          <a routerLink="/testimonianze" (click)="scrollToTop()" routerLinkActive="active" class="nav-item">Cosa dicono di me</a>
+          <a routerLink="/faq" (click)="scrollToTop()" routerLinkActive="active" class="nav-item">FAQ</a>
 
           <!-- CTA Prenota un colloquio distinta in Terracotta -->
-          <a routerLink="/contatti" routerLinkActive="active" class="cta-colloquio-btn">
+          <a routerLink="/contatti" (click)="scrollToTop()" routerLinkActive="active" class="cta-colloquio-btn">
             <svg lucideCalendarCheck [size]="16" class="btn-icon"></svg>
             <span>Prenota un colloquio</span>
           </a>
@@ -93,13 +94,13 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       <!-- Mobile drawer con transizione fluida -->
       @if (open) {
         <div class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-label="Menu da mobile">
-          <a routerLink="/" (click)="open=false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-          <a routerLink="/chi-sono" (click)="open=false" routerLinkActive="active">Chi sono</a>
-          <a routerLink="/servizi" (click)="open=false" routerLinkActive="active">Servizi & Metodo</a>
-          <a routerLink="/blog" (click)="open=false" routerLinkActive="active">Le mie tesi</a>
-          <a routerLink="/testimonianze" (click)="open=false" routerLinkActive="active">Cosa dicono di me</a>
-          <a routerLink="/faq" (click)="open=false" routerLinkActive="active">Domande Frequenti</a>
-          <a routerLink="/contatti" (click)="open=false" class="mobile-cta-link">
+          <a routerLink="/" (click)="open=false; scrollToTop()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          <a routerLink="/chi-sono" (click)="open=false; scrollToTop()" routerLinkActive="active">Chi sono</a>
+          <a routerLink="/servizi" (click)="open=false; scrollToTop()" routerLinkActive="active">Servizi & Metodo</a>
+          <a routerLink="/blog" (click)="open=false; scrollToTop()" routerLinkActive="active">Le mie tesi</a>
+          <a routerLink="/testimonianze" (click)="open=false; scrollToTop()" routerLinkActive="active">Cosa dicono di me</a>
+          <a routerLink="/faq" (click)="open=false; scrollToTop()" routerLinkActive="active">Domande Frequenti</a>
+          <a routerLink="/contatti" (click)="open=false; scrollToTop()" class="mobile-cta-link">
             <span>Prenota un colloquio</span>
             <svg lucideCalendarCheck [size]="16"></svg>
           </a>
@@ -120,10 +121,10 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
 
         <div class="footer-links-col">
           <span class="col-title">Navigazione</span>
-          <a routerLink="/chi-sono">Chi sono</a>
-          <a routerLink="/servizi">Aree di intervento</a>
-          <a routerLink="/blog">Le mie tesi</a>
-          <a routerLink="/contatti">Sedi e Orari</a>
+          <a routerLink="/chi-sono" (click)="scrollToTop()">Chi sono</a>
+          <a routerLink="/servizi" (click)="scrollToTop()">Aree di intervento</a>
+          <a routerLink="/blog" (click)="scrollToTop()">Le mie tesi</a>
+          <a routerLink="/contatti" (click)="scrollToTop()">Sedi e Orari</a>
         </div>
 
         <div class="footer-links-col">
@@ -470,8 +471,16 @@ export class AppComponent implements OnInit {
   year = new Date().getFullYear();
   open = false;
   isDarkMode = false; // Default to warm light alabaster for healthcare editorial, but preserves user choice
+  private router = inject(Router);
 
   ngOnInit() {
+    // Riporta sempre la finestra all'inizio esatto su ogni cambio rotta o navigazione
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.scrollToTop();
+    });
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       this.isDarkMode = true;
@@ -480,6 +489,12 @@ export class AppComponent implements OnInit {
       this.isDarkMode = false;
       document.body.classList.remove('dark-mode');
     }
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }
 
   toggleTheme() {

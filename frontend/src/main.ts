@@ -1,7 +1,7 @@
 import { provideZoneChangeDetection } from "@angular/core";
 import 'zone.js';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
@@ -10,7 +10,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideZoneChangeDetection(),provideRouter(routes),
+    provideZoneChangeDetection(),
+    provideRouter(
+      routes,
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',
+        anchorScrolling: 'enabled'
+      }),
+      withRouterConfig({
+        onSameUrlNavigation: 'reload'
+      })
+    ),
     provideHttpClient(),
     ...provideMaterial(), provideAnimationsAsync(),
   ]
