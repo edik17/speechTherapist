@@ -126,7 +126,6 @@ import {
     <!-- VISTA MAGAZINE LISTING -->
     <section class="blog-magazine-container">
       <header class="magazine-hero" appFadeUp>
-        <span class="badge-evidence">Divulgazione & Ricerca</span>
         <h1>Quaderni di Logopedia & Divulgazione</h1>
         <p class="magazine-subtitle">
           Riflessioni cliniche, buone pratiche e approfondimenti scientifici su linguaggio, apprendimento, voce e deglutizione nel ciclo di vita.

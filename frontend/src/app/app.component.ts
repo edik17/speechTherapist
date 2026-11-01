@@ -130,7 +130,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
           <span class="col-title">Contatto Rapido</span>
           <a href="tel:+393661460520">+39 366 146 0520</a>
           <a href="mailto:mariotti.eleonora14@gmail.com">mariotti.eleonora14&#64;gmail.com</a>
-          <span>Lun - Ven: 09:00 - 19:30</span>
+          <span>Lun - Ven: 09:00 - 20:00</span>
         </div>
       </div>
 
@@ -176,6 +176,8 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       gap: 12px;
       text-decoration: none;
       color: inherit;
+      white-space: nowrap;
+      flex-shrink: 0;
 
       .brand-text {
         display: flex;
@@ -184,7 +186,7 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
         .brand-name {
           font-family: 'Fraunces', Georgia, serif;
           font-weight: 600;
-          font-size: 1.1rem;
+          font-size: 1.08rem;
           color: var(--text-primary);
           line-height: 1.2;
         }
@@ -200,16 +202,22 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      flex-shrink: 0;
 
       .nav-item {
         color: var(--text-secondary);
         text-decoration: none;
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         font-weight: 600;
-        padding: 8px 14px;
-        border-radius: 999px;
+        padding: 6px 12px;
+        border-radius: 8px;
         position: relative;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
         transition: color 0.2s ease, background 0.2s ease;
 
         &:hover {
@@ -219,15 +227,15 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
 
         &.active {
           color: var(--text-primary);
-          background: rgba(124, 157, 142, 0.18);
+          background: rgba(124, 157, 142, 0.16);
+          font-weight: 700;
 
           &::after {
             content: '';
             position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 14px;
+            bottom: 3px;
+            left: 10px;
+            right: 10px;
             height: 2px;
             border-radius: 2px;
             background: var(--accent-primary);
@@ -243,11 +251,13 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       background: var(--accent-primary);
       color: #FAF7F2 !important;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
-      padding: 9px 20px;
+      padding: 8px 18px;
       border-radius: 999px;
-      margin-left: 8px;
+      margin-left: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
       box-shadow: 0 4px 14px rgba(212, 106, 78, 0.35);
       transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 
@@ -439,13 +449,16 @@ import { LucideMoon, LucideSun, LucideSparkles, LucideCalendarCheck } from '@luc
       }
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1140px) {
       .nav-links {
         display: none;
       }
       .mobile-actions {
         display: flex;
       }
+    }
+
+    @media (max-width: 860px) {
       .footer .footer-inner {
         grid-template-columns: 1fr;
         gap: 30px;

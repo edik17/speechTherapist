@@ -14,7 +14,6 @@ import {
   LucideActivity, 
   LucideAudioWaveform,
   LucideMapPin,
-  LucideClock,
   LucideCheckCircle2,
   LucideShieldCheck
 } from '@lucide/angular';
@@ -35,7 +34,6 @@ import {
     LucideActivity,
     LucideAudioWaveform,
     LucideMapPin,
-    LucideClock,
     LucideCheckCircle2,
     LucideShieldCheck
   ],

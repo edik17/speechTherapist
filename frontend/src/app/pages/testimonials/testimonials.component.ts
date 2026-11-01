@@ -9,14 +9,10 @@ import { LucideStar, LucideHeart, LucideQuote, LucideExternalLink } from '@lucid
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [LucideStar, LucideHeart, LucideQuote, LucideExternalLink, DecimalPipe, FadeUpDirective],
+  imports: [LucideStar, LucideQuote, LucideExternalLink, DecimalPipe, FadeUpDirective],
   template: `
   <section class="testimonials-container" appFadeUp>
     <div class="testimonials-header">
-      <span class="badge-evidence">
-        <svg lucideHeart [size]="14"></svg>
-        Esperienze & Valutazioni
-      </span>
       <h1>Cosa dicono di me</h1>
       <p>La soddisfazione e i progressi di bambini, genitori e adulti che hanno intrapreso un percorso di crescita comunicativa insieme a me.</p>
     </div>

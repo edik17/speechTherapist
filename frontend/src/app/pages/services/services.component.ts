@@ -30,7 +30,6 @@ import {
   template: `
   <section class="services-page" appFadeUp>
     <header class="services-header">
-      <span class="badge-evidence">Aree di Intervento Clinico</span>
       <h1>I Nostri Servizi & Metodologia</h1>
       <p>Percorsi terapeutici personalizzati, basati sulle evidenze scientifiche e progettati nel rispetto dei tempi e dei bisogni di ogni persona.</p>
     </header>

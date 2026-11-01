@@ -67,7 +67,6 @@
   <!-- ============================================ -->
   <section class="method-section editorial-section" appFadeUp>
     <div class="section-intro-header">
-      <span class="badge-evidence">Filosofia di Cura</span>
       <h2>Un percorso costruito attorno alla persona</h2>
       <p class="section-intro-p">
         La logopedia non si riduce alla correzione di un sintomo: è un cammino condiviso che valorizza le risorse uniche di ciascun individuo, integrando la pratica basata sulle prove di efficacia (EBP) con una costante accoglienza emotiva.
@@ -106,7 +105,6 @@
   <!-- ============================================ -->
   <section class="services-bento-section editorial-section" appFadeUp>
     <div class="section-intro-header">
-      <span class="badge-evidence">Aree di Intervento</span>
       <h2>Ambiti di intervento specialistico</h2>
       <p class="section-intro-p">
         Dall'età evolutiva all'età adulta: interventi mirati per sostenere il benessere comunicativo, cognitivo e funzionale.
@@ -195,59 +193,11 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- SEZIONE BLOG & RICERCA (STILE MAGAZINE)      -->
-  <!-- ============================================ -->
-  <section class="blog-preview-section editorial-section" appFadeUp>
-    <div class="section-intro-header">
-      <span class="badge-evidence">Divulgazione Scientifica</span>
-      <h2>Dalla clinica alla ricerca</h2>
-      <p class="section-intro-p">
-        Articoli, riflessioni cliniche e approfondimenti per supportare famiglie, insegnanti e pazienti con informazioni chiare e attendibili.
-      </p>
-    </div>
-
-    <div class="blog-preview-grid">
-      @for (art of recentArticles; track art.id) {
-        <article class="preview-card card" appFadeUp>
-          <div class="preview-meta">
-            <span [class]="art.category === 'Evidenza Scientifica' ? 'badge-evidence' : 'badge-reflection'">
-              {{ art.category }}
-            </span>
-            <span class="read-pill">
-              <svg lucideClock [size]="13"></svg>
-              {{ art.readTime }}
-            </span>
-          </div>
-          <h3>
-            <a [routerLink]="['/blog', art.slug]">{{ art.title }}</a>
-          </h3>
-          <p class="preview-excerpt">{{ art.excerpt }}</p>
-          <div class="preview-footer">
-            <span class="preview-date">{{ art.publishedAt }}</span>
-            <a [routerLink]="['/blog', art.slug]" class="preview-read-btn">
-              <span>Leggi</span>
-              <svg lucideArrowRight [size]="14"></svg>
-            </a>
-          </div>
-        </article>
-      }
-    </div>
-
-    <div class="blog-preview-cta">
-      <a mat-stroked-button routerLink="/blog" class="all-articles-btn">
-        <span>Visualizza tutti gli articoli del blog</span>
-        <svg lucideArrowRight [size]="16"></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ============================================ -->
   <!-- BANNER RASSICURANTE "ZERO-ANSIA"             -->
   <!-- ============================================ -->
   <section class="reassuring-cta-section" appFadeUp>
     <div class="reassuring-banner card">
       <div class="banner-content">
-        <span class="banner-badge">Un Primo Passo Sereno</span>
         <h2>Hai un dubbio o desideri un parere professionale?</h2>
         <p>
           Non aspettare che una difficoltà si consolidi. Una consulenza precoce permette di chiarire ogni incertezza in un clima accogliente, senza impegno e con la massima cura.

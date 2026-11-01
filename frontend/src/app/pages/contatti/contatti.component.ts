@@ -65,11 +65,11 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Calendario settimanale suddiviso per giorno
   weeklySchedule = [
-    { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 19:30', dayIndex: 1, note: 'Studio Privato' },
-    { day: 'Martedì', location: 'Ancona', hours: '09:00 - 19:30', dayIndex: 2, note: 'Studio Privato' },
-    { day: 'Mercoledì', location: 'Jesi', hours: '09:00 - 19:30', dayIndex: 3, note: 'Studio Privato' },
-    { day: 'Giovedì', location: 'Sassoferrato', hours: '09:00 - 19:30', dayIndex: 4, note: 'Studio Privato' },
-    { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 19:30', dayIndex: 5, note: 'Studio Privato' },
+    { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 1, note: 'Studio Privato' },
+    { day: 'Martedì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 2, note: 'Studio Privato' },
+    { day: 'Mercoledì', location: 'Jesi', hours: '09:00 - 20:00', dayIndex: 3, note: 'Studio Privato' },
+    { day: 'Giovedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 4, note: 'Studio Privato' },
+    { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 5, note: 'Studio Privato' },
   ];
 
   // Le 3 Sedi con rispettive coordinate per le mappe indipendenti
@@ -79,7 +79,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
       name: 'Studio di Sassoferrato',
       city: 'Sassoferrato (AN)',
       days: 'Lunedì & Giovedì',
-      hours: '09:00 - 19:30',
+      hours: '09:00 - 20:00',
       address: 'Sassoferrato (AN)',
       coords: [43.4326, 12.8617],
       gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Sassoferrato+AN',
@@ -90,7 +90,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
       name: 'Studio di Ancona',
       city: 'Ancona (AN)',
       days: 'Martedì & Venerdì',
-      hours: '09:00 - 19:30',
+      hours: '09:00 - 20:00',
       address: 'Ancona (AN)',
       coords: [43.6158, 13.5189],
       gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Ancona+AN',
@@ -101,7 +101,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
       name: 'Studio di Jesi',
       city: 'Jesi (AN)',
       days: 'Mercoledì',
-      hours: '09:00 - 19:30',
+      hours: '09:00 - 20:00',
       address: 'Jesi (AN)',
       coords: [43.5226, 13.2438],
       gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jesi+AN',
