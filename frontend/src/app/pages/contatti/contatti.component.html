@@ -57,10 +57,13 @@
         <article class="studio-card card" appFadeUp>
           <div class="studio-header">
             <h3>{{ studio.name }}</h3>
+            @if (studio.facility) {
+              <div class="studio-facility-name">{{ studio.facility }}</div>
+            }
             <div class="studio-meta">
               <div class="meta-row">
                 <svg lucideMapPin [size]="16" class="meta-icon"></svg>
-                <span>{{ studio.city }}</span>
+                <span class="studio-address-text">{{ studio.address }}</span>
               </div>
               <div class="meta-row">
                 <svg lucideClock [size]="16" class="meta-icon"></svg>

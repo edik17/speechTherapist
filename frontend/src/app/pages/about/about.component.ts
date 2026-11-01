@@ -109,7 +109,7 @@ export class AboutComponent {
     {
       city: 'Jesi',
       facility: 'Cooperativa Sociale E-movere',
-      address: 'Jesi (AN)',
+      address: 'Viale Gallodoro 70/A, 60035 Jesi (AN)',
       role: 'Logopedista Clinica Referente',
       focus: 'Età Evolutiva, Linguaggio & Rieducazione Miofunzionale',
       desc: 'Presa in carico personalizzata per bambini e ragazzi con disturbi di linguaggio, squilibri miofunzionali e balbuzie, valorizzando anche le precedenti esperienze con Logopedia for Heart e Centro Contatto.'
@@ -117,7 +117,7 @@ export class AboutComponent {
     {
       city: 'Sassoferrato',
       facility: 'Studio Polifunzionale "A modo mio"',
-      address: 'Sassoferrato (AN)',
+      address: 'Via Roma 39, 60041 Sassoferrato (AN)',
       role: 'Logopedista Titolare del Servizio',
       focus: 'Cura del Linguaggio, Voce & Deglutizione nell\'Entroterra',
       desc: 'Presidio riabilitativo essenziale per le comunità dell\'entroterra anconetano, per garantire a famiglie, bambini e adulti cure specialistiche vicine e senza lunghi spostamenti.'

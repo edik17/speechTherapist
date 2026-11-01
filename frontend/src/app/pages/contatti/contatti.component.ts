@@ -26,6 +26,7 @@ import { FadeUpDirective } from '../../shared/directives/fade-up.directive';
 export interface Studio {
   id: string;
   name: string;
+  facility: string;
   city: string;
   days: string;
   hours: string;
@@ -63,48 +64,51 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
   isSubmitting = false;
   private maps: L.Map[] = [];
 
-  // Calendario settimanale suddiviso per giorno
+  // Calendario settimanale suddiviso per giorno con sedi e indirizzi reali
   weeklySchedule = [
-    { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 1, note: 'Studio Privato' },
-    { day: 'Martedì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 2, note: 'Studio Privato' },
-    { day: 'Mercoledì', location: 'Jesi', hours: '09:00 - 20:00', dayIndex: 3, note: 'Studio Privato' },
-    { day: 'Giovedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 4, note: 'Studio Privato' },
-    { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 5, note: 'Studio Privato' },
+    { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 1, note: 'Studio "A modo mio" — Via Roma 39' },
+    { day: 'Martedì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 2, note: 'Centro "DSA e non SOLO" — Via Guido Rossa 8' },
+    { day: 'Mercoledì', location: 'Jesi', hours: '09:00 - 20:00', dayIndex: 3, note: 'Coop. E-movere — Viale Gallodoro 70/A' },
+    { day: 'Giovedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 4, note: 'Studio "A modo mio" — Via Roma 39' },
+    { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 5, note: 'Centro "DSA e non SOLO" — Via Guido Rossa 8' },
   ];
 
-  // Le 3 Sedi con rispettive coordinate per le mappe indipendenti
+  // Le 3 Sedi con rispettive coordinate e indirizzi reali per le mappe indipendenti
   studios: Studio[] = [
     {
       id: 'sassoferrato',
-      name: 'Studio di Sassoferrato — "A modo mio"',
+      name: 'Studio di Sassoferrato',
+      facility: 'Studio Polifunzionale "A modo mio"',
       city: 'Sassoferrato (AN)',
       days: 'Lunedì & Giovedì',
       hours: '09:00 - 20:00',
-      address: 'Sassoferrato (AN)',
-      coords: [43.4326, 12.8617],
-      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Sassoferrato+AN',
+      address: 'Via Roma 39, 60041 Sassoferrato (AN)',
+      coords: [43.4262, 12.8564],
+      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Roma+39+Sassoferrato+AN',
       badgeColor: '#0F4C5C'
     },
     {
       id: 'ancona',
-      name: 'Studio di Ancona — Centro "DSA e non SOLO"',
+      name: 'Studio di Ancona',
+      facility: 'Centro Multispecialistico "DSA e non SOLO"',
       city: 'Ancona (AN)',
       days: 'Martedì & Venerdì',
       hours: '09:00 - 20:00',
       address: 'Via Guido Rossa 8, 60131 Ancona (AN)',
-      coords: [43.5932, 13.5048],
-      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Guido+Rossa+8+Ancona',
+      coords: [43.5679, 13.5070],
+      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Guido+Rossa+8+Ancona+AN',
       badgeColor: '#E76F51'
     },
     {
       id: 'jesi',
-      name: 'Studio di Jesi — Cooperativa E-movere',
+      name: 'Studio di Jesi',
+      facility: 'Cooperativa Sociale E-movere',
       city: 'Jesi (AN)',
       days: 'Mercoledì',
       hours: '09:00 - 20:00',
-      address: 'Jesi (AN)',
-      coords: [43.5226, 13.2438],
-      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Jesi+AN',
+      address: 'Viale Gallodoro 70/A, 60035 Jesi (AN)',
+      coords: [43.5182, 13.2434],
+      gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70A+Jesi+AN',
       badgeColor: '#2A9D8F'
     }
   ];
@@ -168,7 +172,7 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
         try {
           const map = L.map(container, {
             scrollWheelZoom: false
-          }).setView(studio.coords, 14);
+          }).setView(studio.coords, 15);
 
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -178,11 +182,11 @@ export class ContattiComponent implements OnInit, AfterViewInit, OnDestroy {
           L.marker(studio.coords)
             .addTo(map)
             .bindPopup(`
-              <div style="font-family: inherit; font-size: 13px; line-height: 1.4;">
-                <strong style="color: #0F4C5C; font-size: 14px;">${studio.name}</strong><br>
-                <span>${studio.city}</span><br>
-                <b style="color: #E76F51;">${studio.days}</b><br>
-                <span style="color: #666; font-size: 12px;">${studio.hours}</span>
+              <div style="font-family: inherit; font-size: 13px; line-height: 1.45; padding: 2px;">
+                <strong style="color: #0F4C5C; font-size: 14px; display: block; margin-bottom: 3px;">${studio.name}</strong>
+                <span style="display: block; color: #555; font-size: 12px; margin-bottom: 4px;">${studio.facility}</span>
+                <span style="display: block; color: #2B2D42; font-size: 12px; margin-bottom: 4px;">📍 ${studio.address}</span>
+                <span style="color: #888; font-size: 11px;">⏰ ${studio.hours}</span>
               </div>
             `);
 
