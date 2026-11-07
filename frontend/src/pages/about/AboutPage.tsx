@@ -13,7 +13,6 @@ import {
   Sparkles,
   Download,
   FileText,
-  School,
   Quote,
   Navigation,
   ExternalLink,
@@ -59,14 +58,8 @@ export interface SpecializationArea {
   tags: string[];
 }
 
-export interface SchoolProject {
-  title: string;
-  subtitle: string;
-  desc: string;
-}
-
 const MANIFESTO_QUOTE = {
-  text: 'Ogni percorso inizia con una valutazione personalizzata. Il mio interesse non è solo "risolvere" un disturbo, ma valorizzare le potenzialità di ogni individuo, creando un clima di fiducia e collaborazione con la famiglia e la scuola.',
+  text: 'Ogni percorso parte da una valutazione attenta e personalizzata. Il mio obiettivo non è semplicemente intervenire sulla difficoltà, ma valorizzare le potenzialità di ogni individuo, in un clima di fiducia e collaborazione.',
   author: 'Dott.ssa Eleonora Mariotti',
   role: 'Logopedista — Master in Motricità Orofacciale',
 };
@@ -135,24 +128,6 @@ const SPECIALIZATIONS: SpecializationArea[] = [
   },
 ];
 
-const SCHOOL_PROJECTS: SchoolProject[] = [
-  {
-    title: 'Screening nelle Scuole dell\'Infanzia e Primarie',
-    subtitle: 'Identificazione precoce dei fattori di rischio',
-    desc: 'Attività di osservazione e screening condotta direttamente negli istituti scolastici per individuare precocemente indicatori di fragilità fonologica, comunicativa e motorio-articolatoria, prevenendo difficoltà più strutturate.',
-  },
-  {
-    title: 'Potenziamento dei Prerequisiti Scolastici',
-    subtitle: 'Accompagnare l\'ingresso alla scuola primaria',
-    desc: 'Laboratori e percorsi individuali dedicati ai bambini in età prescolare (5-6 anni) per consolidare le competenze metafonologiche, l\'orientamento visuo-spaziale e il ritmo, basi irrinunciabili per l\'apprendimento sereno di lettura e scrittura.',
-  },
-  {
-    title: 'Incontri di Sensibilizzazione per Genitori',
-    subtitle: 'Condivisione, ascolto e strategie pratiche a casa',
-    desc: 'Momenti formativi e serate a tema per mamme e papà, mirati a chiarire i dubbi più frequenti sulle tappe di sviluppo del linguaggio, sulle abitudini viziate (ciuccio, biberon, respirazione a bocca aperta) e sul come stimolare la parola nella vita quotidiana.',
-  },
-];
-
 const MILESTONES: Milestone[] = [
   {
     year: 'Febbraio 2024 – Marzo 2025',
@@ -200,7 +175,7 @@ const TRAININGS: TrainingItem[] = [
     title: 'Il disordine fonologico: gli approcci di intervento',
     docente: 'Dott.ssa Caterina Apruzzese',
     year: '2026',
-    focus: 'Metodi evidence-based per i disturbi di comprensione e produzione fonologica',
+    focus: 'Metodi evidence-based per disturbi di comprensione e produzione fonologica, approccio sillabico, tratti motori verbali, rotacismo e interdentalità',
   },
   {
     title: 'Valutazione e terapia dello squilibrio miofunzionale oro-facciale',
@@ -210,13 +185,13 @@ const TRAININGS: TrainingItem[] = [
   },
   {
     title: 'Valutazione e trattamento degli aspetti Covert della Balbuzie',
-    docente: 'Dott.ssa Maria Silvia Mazzocchi',
-    focus: 'Presa in carico della sofferenza emotiva e delle strategie di evitamento in età evolutiva',
+    docente: 'Dott.ssa Maria Silvia Mazzocchi e Dott.ssa Roberta Perosa',
+    focus: 'Presa in carico della sofferenza emotiva e delle strategie di evitamento in età evolutiva e nell\'adulto',
   },
   {
-    title: 'Protocollo Miovocale per la voce parlata e cantata',
+    title: 'Protocollo Miovocale per la voce parlata, cantata e reflusso faringo-laringeo',
     docente: 'Dott.ssa Federica Avolio e Milena D\'Aniello',
-    focus: 'Terapia delle disfonie e coordinazione pneumofonica',
+    focus: 'Terapia delle disfonie, coordinazione pneumofonica e gestione del reflusso faringo-laringeo',
   },
   {
     title: 'Tratti Motori Orali e Verbali',
@@ -305,16 +280,32 @@ export function AboutPage() {
           </p>
 
           <p>
-            Ho proseguito la mia formazione presso la Facoltà di Medicina e Chirurgia dell'<strong>Università Politecnica delle Marche</strong>, conseguendo la <em>Laurea Triennale delle Professioni Sanitarie in Logopedia</em> con la votazione di <strong>110/110 e LODE</strong>.
+            Ho proseguito la mia formazione presso la Facoltà di Medicina e Chirurgia dell'<strong>Università Politecnica delle Marche</strong>, conseguendo nel 2022 la <em>Laurea Triennale delle Professioni Sanitarie in Logopedia</em> con la votazione di <strong>110/110 e LODE</strong>.
           </p>
 
           <p>
-            Spinta dal desiderio di un'alta specializzazione, ho conseguito il <strong>Master Universitario di I Livello in Motricità Orofacciale</strong> con la votazione di <strong>110/110</strong>. Nel mio percorso ho unito la libera professione all'attività clinica in strutture sanitarie d'eccellenza, come l'esperienza riabilitativa intensiva presso <strong>"Villa Adria Santo Stefano"</strong> a Torrette di Ancona, dove ho collaborato quotidianamente in equipe multidisciplinare con foniatri, fisiatri e fisioterapisti. Oggi mi dedico con dedizione all'età evolutiva e all'adulto nelle tre sedi territoriali, collaborando con le scuole per progetti di screening e con gli specialisti medici per percorsi integrati.
+            Spinta dal desiderio di un'alta specializzazione, nel 2025 ho conseguito il <strong>Master Universitario di I Livello in Motricità Oro Facciale: Valutazione e riabilitazione logopedica</strong>, con la votazione di <strong>110/110</strong>.
+          </p>
+
+          <p>
+            Per offrire alle famiglie un supporto sempre aggiornato, efficace e rispondente ai bisogni di ciascuno, amplio costantemente le mie competenze attraverso percorsi formativi specifici. Tra i vari corsi svolti, ho approfondito la valutazione e il trattamento della balbuzie e ho completato il I e II livello del <strong>Metodo ARM (Approccio Ritmico Motorio)</strong>, uno strumento mirato per l'intervento sui Disturbi Specifici dell'Apprendimento (DSA).
+          </p>
+
+          <p>
+            La mia attività clinica si rivolge prevalentemente all'<strong>età evolutiva</strong>. Mi occupo di consulenze, valutazioni e riabilitazione del linguaggio, potenziamento degli apprendimenti scolastici e rieducazione delle funzioni orali.
+          </p>
+
+          <p>
+            Contestualmente, la formazione specialistica in ambito miofunzionale mi permette di estendere la presa in carico anche agli <strong>adulti</strong>, offrendo percorsi mirati per la prevenzione, la valutazione e la riabilitazione delle disfunzioni del distretto oro-bucco-facciale (come deglutizione disfunzionale, respirazione orale e difficoltà masticatorie).
+          </p>
+
+          <p>
+            Oltre all'attività in studio, ho avuto modo di prendere parte a progetti di screening nelle scuole e organizzo incontri informativi e di sensibilizzazione rivolti alle famiglie e laboratori di potenziamento dei prerequisiti scolastici dedicati ai bambini della scuola dell'infanzia e primaria.
           </p>
 
           <div className="signature-box">
             <span className="signature-name">Dott.ssa Eleonora Mariotti</span>
-            <span className="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP di Ancona, Ascoli Piceno, Fermo, Macerata</span>
+            <span className="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP della Provincia di Ancona</span>
           </div>
         </div>
       </FadeUp>
@@ -338,64 +329,7 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 3. I TRE PRESIDI SUL TERRITORIO              */}
-      {/* ============================================ */}
-      <FadeUp as="section" className="territory-section editorial-section">
-        <div className="section-intro">
-          <h2>Presenza Radicata &amp; Continuità di Cura nelle Marche</h2>
-          <p className="section-intro-sub">
-            Credo fermamente in una sanità di prossimità: per questo ho scelto di accogliere pazienti e famiglie in tre centri specialistici complementari sul territorio anconetano.
-          </p>
-        </div>
-
-        <div className="territory-grid">
-          {LOCATIONS.map((loc) => (
-            <FadeUp as="article" key={loc.city} className="territory-card card">
-              <div className="card-top">
-                <div className="city-badge">
-                  <MapPin size={16} />
-                  <span>{loc.city}</span>
-                </div>
-                <span className="role-badge">{loc.role}</span>
-              </div>
-              <h3>{loc.facility}</h3>
-              <span className="facility-address">{loc.address}</span>
-              <h4 className="focus-title">{loc.focus}</h4>
-              <p>{loc.desc}</p>
-
-              {/* Mappa Google Embed Interattiva */}
-              <div className="territory-map-container">
-                <iframe
-                  title={`Mappa Google - ${loc.city} - ${loc.facility}`}
-                  src={loc.mapEmbedUrl}
-                  className="territory-map-iframe"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-
-              {/* Pulsante Diretto Google Maps */}
-              <div className="territory-card-footer">
-                <a
-                  href={loc.gmapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="directions-btn"
-                  title={`Apri ${loc.facility} su Google Maps`}
-                >
-                  <Navigation size={15} />
-                  <span>Apri su Google Maps</span>
-                  <ExternalLink size={13} className="ext-icon" />
-                </a>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
-      </FadeUp>
-
-      {/* ============================================ */}
-      {/* 4. AMBITI DI ALTA SPECIALIZZAZIONE CLINICA    */}
+      {/* 3. AMBITI DI ALTA SPECIALIZZAZIONE CLINICA    */}
       {/* ============================================ */}
       <FadeUp as="section" className="specializations-section editorial-section">
         <div className="section-intro">
@@ -437,32 +371,7 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 5. SCUOLA, SCREENING & SUPPORTO GENITORIALE  */}
-      {/* ============================================ */}
-      <FadeUp as="section" className="school-projects-section editorial-section">
-        <div className="section-intro">
-          <h2>Prevenzione, Screening nelle Scuole &amp; Cura della Famiglia</h2>
-          <p className="section-intro-sub">
-            La prevenzione è la prima forma di tutela: progetti attivi sul territorio per sostenere insegnanti, bambini e genitori prima che le difficoltà si consolidino.
-          </p>
-        </div>
-
-        <div className="projects-grid">
-          {SCHOOL_PROJECTS.map((proj) => (
-            <FadeUp key={proj.title} className="project-card card">
-              <div className="project-icon-circle">
-                <School size={24} />
-              </div>
-              <h3>{proj.title}</h3>
-              <span className="project-sub">{proj.subtitle}</span>
-              <p>{proj.desc}</p>
-            </FadeUp>
-          ))}
-        </div>
-      </FadeUp>
-
-      {/* ============================================ */}
-      {/* 6. I TRE PILASTRI VALORIALI                   */}
+      {/* 4. I TRE PILASTRI VALORIALI                   */}
       {/* ============================================ */}
       <FadeUp as="section" className="values-section editorial-section">
         <div className="section-intro">
@@ -556,7 +465,64 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 8. CTA FINALE RASSICURANTE                    */}
+      {/* 6. LE TRE SEDI SUL TERRITORIO (DOPO I CORSI)  */}
+      {/* ============================================ */}
+      <FadeUp as="section" className="territory-section editorial-section">
+        <div className="section-intro">
+          <h2>Le Mie Sedi sul Territorio</h2>
+          <p className="section-intro-sub">
+            Credo fermamente in una sanità di prossimità: per questo ho scelto di accogliere pazienti e famiglie in tre centri specialistici complementari sul territorio anconetano.
+          </p>
+        </div>
+
+        <div className="territory-grid">
+          {LOCATIONS.map((loc) => (
+            <FadeUp as="article" key={loc.city} className="territory-card card">
+              <div className="card-top">
+                <div className="city-badge">
+                  <MapPin size={16} />
+                  <span>{loc.city}</span>
+                </div>
+                <span className="role-badge">{loc.role}</span>
+              </div>
+              <h3>{loc.facility}</h3>
+              <span className="facility-address">{loc.address}</span>
+              <h4 className="focus-title">{loc.focus}</h4>
+              <p>{loc.desc}</p>
+
+              {/* Mappa Google Embed Interattiva */}
+              <div className="territory-map-container">
+                <iframe
+                  title={`Mappa Google - ${loc.city} - ${loc.facility}`}
+                  src={loc.mapEmbedUrl}
+                  className="territory-map-iframe"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+              {/* Pulsante Diretto Google Maps */}
+              <div className="territory-card-footer">
+                <a
+                  href={loc.gmapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="directions-btn"
+                  title={`Apri ${loc.facility} su Google Maps`}
+                >
+                  <Navigation size={15} />
+                  <span>Apri su Google Maps</span>
+                  <ExternalLink size={13} className="ext-icon" />
+                </a>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </FadeUp>
+
+      {/* ============================================ */}
+      {/* 7. CTA FINALE RASSICURANTE                    */}
       {/* ============================================ */}
       <FadeUp as="section" className="about-cta-section">
         <div className="about-cta-card card">
