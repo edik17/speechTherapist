@@ -24,8 +24,8 @@ export interface SedeLocation {
   hours: string;
   dayIndices: number[];
   role: string;
-  focus: string;
-  desc: string;
+  focus?: string;
+  desc?: string;
   gmapsUrl: string;
   mapEmbedUrl: string;
 }
@@ -154,9 +154,6 @@ export function SediPage() {
                   <span><strong>Orario:</strong> {sede.hours} (su appuntamento)</span>
                 </div>
               </div>
-
-              <h3 className="focus-heading">{sede.focus}</h3>
-              <p className="facility-desc">{sede.desc}</p>
 
               {/* Mappa Google Interattiva */}
               <div className="sede-map-wrapper">
