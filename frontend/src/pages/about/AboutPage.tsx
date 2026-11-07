@@ -3,9 +3,7 @@ import {
   Heart,
   ShieldCheck,
   Users,
-  GraduationCap,
   CalendarCheck,
-  Award,
   MapPin,
   Activity,
   BookOpen,
@@ -19,16 +17,6 @@ import { PageHero } from '../../shared/components/PageHero';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { MatButton } from '../../shared/ui/MatButton';
 import './AboutPage.scss';
-
-export interface Milestone {
-  year: string;
-  badge: string;
-  title: string;
-  institute: string;
-  grade?: string;
-  thesis?: string;
-  desc: string;
-}
 
 export interface TrainingItem {
   title: string;
@@ -79,42 +67,6 @@ const SPECIALIZATIONS: SpecializationArea[] = [
     subtitle: 'Igiene e riabilitazione pneumo-fono-articolatoria',
     desc: 'Prevenzione e cura delle disfonie organiche e funzionali (noduli, corditi, affaticamento da surmenage vocale) per bambini, adulti e professionisti della voce (insegnanti, formatori, attori) tramite il Protocollo Miovocale, integrando postura, dinamica respiratoria e risonanza.',
     tags: ['Protocollo Miovocale', 'Disfonia Professionale', 'Igiene Vocale', 'Controllo Pneumo-Fonico'],
-  },
-];
-
-const MILESTONES: Milestone[] = [
-  {
-    year: 'Febbraio 2024 – Marzo 2025',
-    badge: 'Master Universitario I Livello',
-    title: 'Motricità Orofacciale: Valutazione e Riabilitazione Logopedica',
-    institute: 'Formazione Post-Laurea Specialistica',
-    grade: '110 / 110',
-    thesis: 'Tesi: "Stress genitoriale nel percorso terapeutico di terapia miofunzionale"',
-    desc: 'Studio clinico avanzato sullo squilibrio muscolare orofacciale e ricerca specifica sull\'impatto relazionale della terapia: come coinvolgere attivamente mamma e papà senza sovraccaricarli, trasformando la cura in un\'alleanza serena.',
-  },
-  {
-    year: 'Ottobre 2019 – Novembre 2022',
-    badge: 'Laurea delle Professioni Sanitarie',
-    title: 'Laurea Triennale in Logopedia',
-    institute: 'Università Politecnica delle Marche — Facoltà di Medicina e Chirurgia',
-    grade: '110 / 110 e LODE',
-    thesis: 'Tesi: "Malocclusioni di II classe: L\'uso della terapia miofunzionale in un paziente adulto e proposta questionario per la QOL (Qualità della Vita)"',
-    desc: 'Corso di laurea concluso con la lode accademica. Il lavoro di tesi sperimentale ha collegato la rieducazione miofunzionale dell\'adulto con questionari standardizzati sulla qualità di vita percepita, unendo rigore quantitativo ed empatia clinica.',
-  },
-  {
-    year: 'Maggio 2023 – Settembre 2023',
-    badge: 'Esperienza Ospedaliera & Complessa',
-    title: 'Logopedista Clinica presso Villa Adria',
-    institute: 'Santo Stefano Riabilitazione — Torrette di Ancona',
-    desc: 'Attività riabilitativa intensiva in contesto clinico-ospedaliero multidisciplinare a contatto con quadri neuromotori e funzionali complessi, collaborando fianco a fianco con medici fisiatri, foniatri, fisioterapisti e terapisti della neuro e psicomotricità.',
-  },
-  {
-    year: 'Settembre 2014 – Luglio 2019',
-    badge: 'Maturità Umanistica',
-    title: 'Diploma di Maturità Classica a Indirizzo Scienze Umane',
-    institute: 'Liceo Classico "Vittorio Emanuele II" — Jesi (AN)',
-    grade: '100 / 100',
-    desc: 'Cinque anni dedicati allo studio della psicologia, della pedagogia e dell\'antropologia: la matrice culturale che guida tuttora la mia dedizione all\'ascolto autentico, all\'accoglienza priva di giudizio e alla centralità della persona.',
   },
 ];
 
@@ -349,73 +301,30 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 7. FORMAZIONE ACCADEMICA & CONTINUA (ECM)     */}
+      {/* 5. ALTA FORMAZIONE CONTINUA (ECM)            */}
       {/* ============================================ */}
-      <FadeUp as="section" className="education-section editorial-section">
+      <FadeUp as="section" className="trainings-section editorial-section">
         <div className="section-intro">
-          <h2>Formazione Accademica &amp; Ricerca Clinica</h2>
-          <p className="section-intro-sub">Il percorso di studio certificato che garantisce il rigore scientifico di ogni intervento.</p>
+          <h2>Alta Formazione Specialistica Continua (ECM)</h2>
+          <p className="section-intro-sub">
+            Seminari intensivi, protocolli clinici e aggiornamento metodologico costante con i massimi docenti ed esperti del settore:
+          </p>
         </div>
 
-        <div className="timeline-container">
-          <div className="timeline">
-            {MILESTONES.map((item) => (
-              <FadeUp key={item.title} className="timeline-item">
-                <div className="timeline-marker">
-                  <GraduationCap size={18} />
-                </div>
-                <div className="timeline-content card">
-                  <div className="timeline-top">
-                    <span className="timeline-year">{item.year}</span>
-                    <span className="badge-type">{item.badge}</span>
-                  </div>
-
-                  <h3>{item.title}</h3>
-                  <span className="timeline-institute">{item.institute}</span>
-
-                  {item.grade && (
-                    <div className="grade-highlight">
-                      <Award size={16} />
-                      <span>Votazione Conseguita: <strong>{item.grade}</strong></span>
-                    </div>
-                  )}
-
-                  {item.thesis && (
-                    <div className="thesis-box">
-                      <span className="thesis-label">Progetto di Ricerca &amp; Tesi</span>
-                      <p className="thesis-text">{item.thesis}</p>
-                    </div>
-                  )}
-
-                  <p className="timeline-desc">{item.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-
-        {/* Corsi Specialistici & Convegni ECM */}
-        <FadeUp className="trainings-wrap">
-          <div className="trainings-header">
-            <h3>Alta Formazione Specialistica Continua (ECM)</h3>
-            <p>Seminari intensivi, protocolli clinici e aggiornamento metodologico costante con i massimi docenti ed esperti del settore:</p>
-          </div>
-
-          <div className="trainings-grid">
-            {TRAININGS.map((t) => (
-              <div key={t.title} className="training-card card">
-                <div className="training-icon">
-                  <CheckCircle2 size={18} />
-                </div>
-                <div className="training-info">
-                  <h4>{t.title}</h4>
-                  <span className="training-docente">Docente / Ente: {t.docente}</span>
-                  <p className="training-focus">{t.focus}</p>
-                </div>
+        <div className="trainings-grid">
+          {TRAININGS.map((t) => (
+            <div key={t.title} className="training-card card">
+              <div className="training-icon">
+                <CheckCircle2 size={18} />
               </div>
-            ))}
-          </div>
-        </FadeUp>
+              <div className="training-info">
+                <h4>{t.title}</h4>
+                <span className="training-docente">Docente / Ente: {t.docente}</span>
+                <p className="training-focus">{t.focus}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </FadeUp>
 
       {/* ============================================ */}
