@@ -11,7 +11,6 @@ import {
   Sparkles,
   Star,
   ExternalLink,
-  Tv,
   Users,
   FileText,
 } from 'lucide-react';
@@ -185,10 +184,6 @@ export function HomePage() {
       {/* ============================================ */}
       <FadeUp as="section" className="interview-section editorial-section">
         <div className="section-intro-header">
-          <div className="interview-tag-pill">
-            <Tv size={15} />
-            <span>Intervista TV &amp; Approfondimento</span>
-          </div>
           <h2>La logopedia raccontata con il cuore</h2>
           <p className="section-intro-p">
             Ospite negli studi di <strong>Story Time su Canale Italia</strong>, racconto la mia visione: l'importanza dell'intervento precoce, l'ascolto privo di giudizio e l'alleanza fondamentale con la famiglia e la scuola.
@@ -209,20 +204,6 @@ export function HomePage() {
           </div>
 
           <div className="video-card-meta">
-            <div className="video-tags-row">
-              <span className="v-tag">
-                <Tv size={14} />
-                Story Time — Canale Italia
-              </span>
-              <span className="v-tag">
-                <Heart size={14} />
-                Metodo Clinico &amp; Famiglia
-              </span>
-              <span className="v-tag">
-                <Sparkles size={14} />
-                Intervista Completa (8 min)
-              </span>
-            </div>
             <p className="video-quote">
               «Parlare di logopedia significa innanzitutto parlare di relazione, accoglienza e valorizzazione della persona.»
             </p>

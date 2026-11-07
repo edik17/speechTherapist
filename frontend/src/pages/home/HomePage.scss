@@ -228,26 +228,6 @@
 // SEZIONE INTERVISTA STORY TIME
 // ============================================
 .interview-section {
-  .interview-tag-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(212, 106, 78, 0.1);
-    color: var(--accent-primary);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    border: 1px solid rgba(212, 106, 78, 0.2);
-
-    svg {
-      color: var(--accent-primary);
-    }
-  }
-
   .interview-video-card {
     max-width: 920px;
     margin: 0 auto;
@@ -290,30 +270,6 @@
     gap: 12px;
   }
 
-  .video-tags-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-
-    .v-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-
-      svg {
-        color: var(--accent-secondary);
-      }
-    }
-  }
-
   .video-quote {
     font-size: 0.95rem;
     font-style: italic;
@@ -354,11 +310,6 @@ body.dark-mode .interview-section {
   .interview-video-card {
     background: var(--bg-elevated);
     box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.45);
-  }
-
-  .interview-tag-pill {
-    background: rgba(212, 106, 78, 0.18);
-    border-color: rgba(212, 106, 78, 0.35);
   }
 
   .video-player-wrapper {
