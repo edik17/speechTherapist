@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import * as L from 'leaflet';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import {
   Phone,
@@ -8,8 +8,7 @@ import {
   Send,
   Clock,
   Calendar,
-  Navigation,
-  ExternalLink,
+  ArrowRight,
 } from 'lucide-react';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { MatFormField, MatInput, MatTextarea, MatSelect } from '../../shared/ui/MatFormField';
@@ -17,19 +16,6 @@ import { MatCheckbox } from '../../shared/ui/MatCheckbox';
 import { MatButton } from '../../shared/ui/MatButton';
 import { matSnackBar } from '../../shared/ui/MatSnackBar';
 import './ContattiPage.scss';
-
-export interface Studio {
-  id: string;
-  name: string;
-  facility: string;
-  city: string;
-  days: string;
-  hours: string;
-  address: string;
-  coords: [number, number];
-  gmapsUrl: string;
-  badgeColor?: string;
-}
 
 const WEEKLY_SCHEDULE = [
   { day: 'Lunedì', location: 'Sassoferrato', hours: '09:00 - 20:00', dayIndex: 1, note: 'Studio a Modo Mio — Via Roma 39' },
@@ -39,50 +25,18 @@ const WEEKLY_SCHEDULE = [
   { day: 'Venerdì', location: 'Ancona', hours: '09:00 - 20:00', dayIndex: 5, note: 'DSA E NON SOLO — Via Rossa Guido, 8' },
 ];
 
-const STUDIOS: Studio[] = [
-  {
-    id: 'sassoferrato',
-    name: 'Studio di Sassoferrato',
-    facility: 'Studio a Modo Mio',
-    city: 'Sassoferrato (AN)',
-    days: 'Lunedì & Giovedì',
-    hours: '09:00 - 20:00',
-    address: 'Via Roma 39, 60041 Sassoferrato (AN)',
-    coords: [43.4262, 12.8564],
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Roma+39+Sassoferrato+AN',
-    badgeColor: '#0F4C5C',
-  },
-  {
-    id: 'ancona',
-    name: 'Studio di Ancona',
-    facility: 'Centro multispecialistico DSA E NON SOLO',
-    city: 'Ancona (AN)',
-    days: 'Martedì & Venerdì',
-    hours: '09:00 - 20:00',
-    address: 'Via Rossa Guido, 8, 60131 Ancona AN',
-    coords: [43.5679, 13.507],
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Rossa+Guido+8+60131+Ancona+AN',
-    badgeColor: '#E76F51',
-  },
-  {
-    id: 'jesi',
-    name: 'Studio di Jesi',
-    facility: 'e-Movere, Centro Pedagogico Ludico Formativo',
-    city: 'Jesi (AN)',
-    days: 'Mercoledì',
-    hours: '09:00 - 20:00',
-    address: 'Viale Gallodoro, 70/a, 60035 Jesi AN',
-    coords: [43.5182, 13.2434],
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70a+60035+Jesi+AN',
-    badgeColor: '#2A9D8F',
-  },
-];
-
 export function ContattiPage() {
+  const [searchParams] = useSearchParams();
+  const sedeParam = searchParams.get('sede');
+  const validSedi = ['Ancona', 'Jesi', 'Sassoferrato', 'Online / Da concordare'];
+  const matchedSede = validSedi.find(
+    (s) => s.toLowerCase() === (sedeParam || '').toLowerCase()
+  );
+
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
-    sede: 'Ancona',
+    sede: matchedSede || 'Ancona',
     messaggio: '',
     privacyAccepted: false,
     website: '', // Honeypot
@@ -90,78 +44,10 @@ export function ContattiPage() {
 
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const mapsRef = useRef<L.Map[]>([]);
 
   const isToday = (dayIndex: number): boolean => {
     return new Date().getDay() === dayIndex;
   };
-
-  useEffect(() => {
-    // Leaflet default icon setup
-    const defaultIcon = L.icon({
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41],
-    });
-    L.Marker.prototype.options.icon = defaultIcon;
-
-    const timer = setTimeout(() => {
-      STUDIOS.forEach((studio) => {
-        const container = document.getElementById(`map-${studio.id}`);
-        if (container) {
-          if ((container as any)._leaflet_id) {
-            try {
-              delete (container as any)._leaflet_id;
-            } catch (e) {}
-          }
-          try {
-            const map = L.map(container, {
-              scrollWheelZoom: false,
-            }).setView(studio.coords, 15);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '&copy; OpenStreetMap',
-            }).addTo(map);
-
-            L.marker(studio.coords).addTo(map).bindPopup(`
-              <div style="font-family: inherit; font-size: 13px; line-height: 1.45; padding: 2px;">
-                <strong style="color: #0F4C5C; font-size: 14px; display: block; margin-bottom: 3px;">${studio.name}</strong>
-                <span style="display: block; color: #555; font-size: 12px; margin-bottom: 4px;">${studio.facility}</span>
-                <span style="display: block; color: #2B2D42; font-size: 12px; margin-bottom: 4px;">📍 ${studio.address}</span>
-                <span style="color: #888; font-size: 11px;">⏰ ${studio.hours}</span>
-              </div>
-            `);
-
-            mapsRef.current.push(map);
-            setTimeout(() => {
-              try {
-                map.invalidateSize();
-              } catch (e) {}
-            }, 300);
-          } catch (err) {
-            console.warn('Map initialization failed for', studio.id, err);
-          }
-        }
-      });
-    }, 150);
-
-    return () => {
-      clearTimeout(timer);
-      mapsRef.current.forEach((m) => {
-        try {
-          m.remove();
-        } catch (e) {
-          console.warn('Error removing map:', e);
-        }
-      });
-      mapsRef.current = [];
-    };
-  }, []);
 
   const handleBlur = (field: string) => {
     setTouched((prev) => ({ ...prev, [field]: true }));
@@ -329,54 +215,24 @@ export function ContattiPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* SEZIONE 2: LE 3 MAPPE INDIPENDENTI           */}
+      {/* BANNER DI RINVIO ALLA PAGINA SEDI            */}
       {/* ============================================ */}
-      <FadeUp as="section" className="studios-section">
-        <div className="studios-header">
-          <h2>Dove Ricevo</h2>
-          <p>
-            Ogni studio è un ambiente silenzioso, accogliente e studiato per favorire la concentrazione e la serenità dei pazienti.
-          </p>
+      <FadeUp className="sedi-reference-banner card">
+        <div className="banner-content">
+          <div className="banner-icon-wrap">
+            <MapPin size={24} />
+          </div>
+          <div className="banner-text">
+            <h3>Cerchi la posizione esatta e le indicazioni stradali delle strutture?</h3>
+            <p>
+              Consulta le schede dettagliate delle 3 sedi operative (Ancona, Jesi, Sassoferrato) con mappe interattive Google Maps e navigazione GPS rapida.
+            </p>
+          </div>
         </div>
-
-        <div className="studios-grid">
-          {STUDIOS.map((studio) => (
-            <FadeUp as="article" key={studio.id} className="studio-card card">
-              <div className="studio-header">
-                <h3>{studio.name}</h3>
-                {studio.facility && (
-                  <div className="studio-facility-name">{studio.facility}</div>
-                )}
-                <div className="studio-meta">
-                  <div className="meta-row">
-                    <MapPin size={16} className="meta-icon" />
-                    <span className="studio-address-text">{studio.address}</span>
-                  </div>
-                  <div className="meta-row">
-                    <Clock size={16} className="meta-icon" />
-                    <span>{studio.hours}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mappa Leaflet dedicata */}
-              <div id={`map-${studio.id}`} className="studio-map"></div>
-
-              <div className="studio-footer">
-                <a
-                  href={studio.gmapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="directions-btn"
-                >
-                  <Navigation size={15} />
-                  <span>Apri su Google Maps</span>
-                  <ExternalLink size={13} className="ext-icon" />
-                </a>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
+        <MatButton variant="stroked" to="/sedi" className="btn-sedi-link">
+          <span>Consulta le Sedi sul Territorio</span>
+          <ArrowRight size={16} />
+        </MatButton>
       </FadeUp>
 
       {/* ============================================ */}
