@@ -2,15 +2,31 @@
   publish = "dist/my-logopedia/browser"
   command = "npm run build"
 
-# Gestione Single Page Application Angular (evita 404 ricaricando le pagine)
+# Reindirizza le chiamate API alla Netlify Serverless Function per le Recensioni Google
+[[redirects]]
+  from = "/api/reviews"
+  to = "/.netlify/functions/reviews"
+  status = 200
+
+# Reindirizza le chiamate API alla Netlify Serverless Function per i Contatti
+[[redirects]]
+  from = "/api/contacts"
+  to = "/.netlify/functions/contacts"
+  status = 200
+
+# Gestione SPA (evita errori 404 al refresh delle pagine)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Impedisce l'indicizzazione su Google e motori di ricerca
-# Il sito sarà visibile ESCLUSIVAMENTE a chi possiede il link diretto!
+# Protezione e Header di Sicurezza HTTP
 [[headers]]
   for = "/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(self)"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://*.tile.openstreetmap.org https://tile.openstreetmap.org https://maps.googleapis.com https://*.google.com https://*.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https: http://localhost:8080 http://127.0.0.1:8080;"

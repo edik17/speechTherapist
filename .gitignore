@@ -17,6 +17,9 @@ frontend/node_modules/
 frontend/dist/
 dist/
 .angular/
+frontend-angular-backup/
+scratch_doc.md
+clean_doc.md
 
 # Scratch and debug files
 scratch/
