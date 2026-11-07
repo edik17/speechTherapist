@@ -26,8 +26,8 @@ export interface SedeLocation {
   role: string;
   focus?: string;
   desc?: string;
-  gmapsUrl: string;
   mapEmbedUrl: string;
+  osmUrl: string;
 }
 
 const SEDI: SedeLocation[] = [
@@ -40,10 +40,8 @@ const SEDI: SedeLocation[] = [
     hours: '09:00 - 20:00',
     dayIndices: [2, 5],
     role: 'Logopedista in Equipe Multidisciplinare',
-    focus: 'Apprendimento (DSA), Linguaggio & Motricità Orofacciale',
-    desc: 'Valutazione e potenziamento clinico integrato a stretto contatto con neuropsichiatri infantili e psicologi, supportando studenti e famiglie nella sfera scolastica, fono-articolatoria ed evolutiva.',
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Rossa+Guido+8+60131+Ancona+AN',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Via+Rossa+Guido+8+60131+Ancona+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    mapEmbedUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=13.5020%2C43.5649%2C13.5120%2C43.5709&layer=mapnik&marker=43.5679%2C13.5070',
+    osmUrl: 'https://www.openstreetmap.org/?mlat=43.5679&mlon=13.5070#map=17/43.5679/13.5070',
   },
   {
     city: 'Jesi',
@@ -53,10 +51,8 @@ const SEDI: SedeLocation[] = [
     hours: '09:00 - 20:00',
     dayIndices: [3],
     role: 'Logopedista Clinica Referente',
-    focus: 'Età Evolutiva, Linguaggio & Rieducazione Miofunzionale',
-    desc: 'Presa in carico personalizzata per bambini e ragazzi con disturbi di linguaggio, squilibri miofunzionali e balbuzie, in un contesto pedagogico e ludico-formativo accogliente e stimolante.',
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70a+60035+Jesi+AN',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Viale+Gallodoro+70a+60035+Jesi+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    mapEmbedUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=13.2384%2C43.5152%2C13.2484%2C43.5212&layer=mapnik&marker=43.5182%2C13.2434',
+    osmUrl: 'https://www.openstreetmap.org/?mlat=43.5182&mlon=13.2434#map=17/43.5182/13.2434',
   },
   {
     city: 'Sassoferrato',
@@ -66,10 +62,8 @@ const SEDI: SedeLocation[] = [
     hours: '09:00 - 20:00',
     dayIndices: [1, 4],
     role: 'Logopedista Titolare del Servizio',
-    focus: 'Cura del Linguaggio, Voce & Deglutizione nell\'Entroterra',
-    desc: 'Presidio riabilitativo essenziale per le comunità dell\'entroterra anconetano, per garantire a famiglie, bambini e adulti cure specialistiche di eccellenza vicine e senza lunghi spostamenti.',
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Roma+39+60041+Sassoferrato+AN',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Via+Roma+39+60041+Sassoferrato+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    mapEmbedUrl: 'https://www.openstreetmap.org/export/embed.html?bbox=12.8514%2C43.4232%2C12.8614%2C43.4292&layer=mapnik&marker=43.4262%2C12.8564',
+    osmUrl: 'https://www.openstreetmap.org/?mlat=43.4262&mlon=12.8564#map=17/43.4262/12.8564',
   },
 ];
 
@@ -155,28 +149,27 @@ export function SediPage() {
                 </div>
               </div>
 
-              {/* Mappa Google Interattiva */}
+              {/* Mappa OpenStreetMap Interattiva */}
               <div className="sede-map-wrapper">
                 <iframe
-                  title={`Mappa Google - ${sede.city} - ${sede.facility}`}
+                  title={`Mappa OpenStreetMap - ${sede.city} - ${sede.facility}`}
                   src={sede.mapEmbedUrl}
                   className="sede-map-iframe"
                   loading="lazy"
-                  allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
 
               <div className="sede-card-actions">
                 <a
-                  href={sede.gmapsUrl}
+                  href={sede.osmUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-directions"
-                  title={`Apri ${sede.facility} su Google Maps`}
+                  title={`Apri ${sede.facility} su OpenStreetMap`}
                 >
                   <Navigation size={15} />
-                  <span>Apri su Google Maps</span>
+                  <span>Apri su OpenStreetMap</span>
                   <ExternalLink size={13} />
                 </a>
 
