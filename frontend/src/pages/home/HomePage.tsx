@@ -184,7 +184,7 @@ export function HomePage() {
       {/* ============================================ */}
       <FadeUp as="section" className="interview-section editorial-section">
         <div className="section-intro-header">
-          <h2>La logopedia raccontata con il cuore</h2>
+          <h2>La logopedia raccontata in radio</h2>
           <p className="section-intro-p">
             Ospite negli studi di <strong>Story Time su Canale Italia</strong>, racconto la mia visione: l'importanza dell'intervento precoce, l'ascolto privo di giudizio e l'alleanza fondamentale con la famiglia e la scuola.
           </p>
