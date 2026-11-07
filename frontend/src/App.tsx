@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { Sun, Moon, CalendarCheck } from 'lucide-react';
 import { MatSnackBarContainer } from './shared/ui/MatSnackBar';
@@ -45,14 +45,14 @@ export default function App() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-      document.body.classList.add('dark-mode');
-      document.documentElement.classList.add('dark-mode');
-    } else {
+    if (savedTheme === 'light') {
       setIsDarkMode(false);
       document.body.classList.remove('dark-mode');
       document.documentElement.classList.remove('dark-mode');
+    } else {
+      setIsDarkMode(true);
+      document.body.classList.add('dark-mode');
+      document.documentElement.classList.add('dark-mode');
     }
   }, []);
 
@@ -257,7 +257,9 @@ export default function App() {
       </header>
 
       <main className="main-content" id="main-content">
-        <Outlet />
+        <Suspense fallback={<div style={{ minHeight: '60vh' }}></div>}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <MatSnackBarContainer />
