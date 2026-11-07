@@ -31,11 +31,8 @@ export interface SpecializationArea {
   tags: string[];
 }
 
-const MANIFESTO_QUOTE = {
-  text: 'Ogni percorso parte da una valutazione attenta e personalizzata. Il mio obiettivo non è semplicemente intervenire sulla difficoltà, ma valorizzare le potenzialità di ogni individuo, in un clima di fiducia e collaborazione.',
-  author: 'Dott.ssa Eleonora Mariotti',
-  role: 'Logopedista — Master in Motricità Orofacciale',
-};
+const MANIFESTO_QUOTE =
+  'Ogni percorso parte da una valutazione attenta e personalizzata. Il mio obiettivo non è semplicemente intervenire sulla difficoltà, ma valorizzare le potenzialità di ogni individuo, in un clima di fiducia e collaborazione.';
 
 const SPECIALIZATIONS: SpecializationArea[] = [
   {
@@ -184,11 +181,6 @@ export function AboutPage() {
           <p>
             Contestualmente, la formazione specialistica in ambito miofunzionale mi permette di estendere la presa in carico anche agli <strong>adulti</strong>, offrendo percorsi mirati per la prevenzione, la valutazione e la riabilitazione delle disfunzioni del distretto oro-bucco-facciale (come deglutizione disfunzionale, respirazione orale e difficoltà masticatorie).
           </p>
-
-          <div className="signature-box">
-            <span className="signature-name">Dott.ssa Eleonora Mariotti</span>
-            <span className="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP della Provincia di Ancona</span>
-          </div>
         </div>
       </FadeUp>
 
@@ -201,12 +193,8 @@ export function AboutPage() {
             <Quote size={34} />
           </div>
           <blockquote className="manifesto-text">
-            « {MANIFESTO_QUOTE.text} »
+            « {MANIFESTO_QUOTE} »
           </blockquote>
-          <div className="manifesto-author">
-            <strong>{MANIFESTO_QUOTE.author}</strong>
-            <span>{MANIFESTO_QUOTE.role}</span>
-          </div>
         </div>
       </FadeUp>
 
