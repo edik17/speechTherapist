@@ -14,4 +14,8 @@ export interface Article {
   tags: string[];
   keyPoints: string[];
   content: string; // HTML formatted content
+  slidesDownloadUrl?: string;
+  slidesPdfUrl?: string;
+  slidesCount?: number;
+  slidesFolder?: string;
 }

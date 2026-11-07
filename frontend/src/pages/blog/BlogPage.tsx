@@ -8,6 +8,11 @@ import {
   CheckCircle2,
   BookOpen,
   Sparkles,
+  Download,
+  Eye,
+  ChevronLeft,
+  ChevronRight,
+  Presentation,
 } from 'lucide-react';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { MatButton } from '../../shared/ui/MatButton';
@@ -20,18 +25,20 @@ export function BlogPage() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
   const [currentArticle, setCurrentArticle] = useState<Article | undefined>(undefined);
-  const [selectedCategory, setSelectedCategory] = useState<'ALL' | ArticleCategory>('ALL');
+  const [selectedCategory, setSelectedCategory] = useState<'ALL' | ArticleCategory>('Tesi Accademica');
+  const [activeSlide, setActiveSlide] = useState(1);
 
   useEffect(() => {
     const list = blogService.getArticlesSync();
     setArticles(list);
-    setFilteredArticles(list);
+    setFilteredArticles(list.filter((a) => a.category === 'Tesi Accademica'));
   }, []);
 
   useEffect(() => {
     if (slug) {
       const art = blogService.getArticleBySlugSync(slug);
       setCurrentArticle(art);
+      setActiveSlide(1);
     } else {
       setCurrentArticle(undefined);
     }
@@ -47,6 +54,14 @@ export function BlogPage() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+  };
+
+  const handlePrevSlide = (total: number) => {
+    setActiveSlide((prev) => (prev > 1 ? prev - 1 : total));
+  };
+
+  const handleNextSlide = (total: number) => {
+    setActiveSlide((prev) => (prev < total ? prev + 1 : 1));
   };
 
   const getBadgeClass = (category: ArticleCategory): string => {
@@ -101,6 +116,103 @@ export function BlogPage() {
           </div>
         </header>
 
+        {/* CORPO DELL'ARTICOLO CON TIPOGRAFIA EDITORIALE (TITOLO UFFICIALE & INTRODUZIONE) */}
+        <section
+          className="article-body reading-prose"
+          dangerouslySetInnerHTML={{ __html: currentArticle.content }}
+        />
+
+        {/* SLIDE DELLA DISCUSSIONE ASSOCIATE ALL'INTRODUZIONE */}
+        {currentArticle.slidesFolder && currentArticle.slidesCount && (
+          <div className="slides-presentation-card card" aria-label="Slide della Discussione di Tesi">
+            <div className="slides-card-header">
+              <div className="slides-icon-wrap">
+                <Presentation size={24} />
+              </div>
+              <div>
+                <h3>Slide Ufficiali della Discussione di Tesi</h3>
+                <p>Sfoglia la presentazione proiettata in sede di commissione accademica o scarica il file completo.</p>
+              </div>
+            </div>
+
+            {/* Interactive Slide Viewer */}
+            <div className="slide-viewer-box">
+              <div className="slide-image-wrapper">
+                <img
+                  src={`${currentArticle.slidesFolder}/slide-${activeSlide}.jpg`}
+                  alt={`Diapositiva ${activeSlide} di ${currentArticle.slidesCount} - ${currentArticle.title}`}
+                  className="slide-active-img"
+                  loading="eager"
+                />
+
+                <button
+                  type="button"
+                  className="slide-nav-btn prev-btn"
+                  onClick={() => handlePrevSlide(currentArticle.slidesCount!)}
+                  aria-label="Diapositiva precedente"
+                  title="Diapositiva precedente"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+
+                <button
+                  type="button"
+                  className="slide-nav-btn next-btn"
+                  onClick={() => handleNextSlide(currentArticle.slidesCount!)}
+                  aria-label="Diapositiva successiva"
+                  title="Diapositiva successiva"
+                >
+                  <ChevronRight size={24} />
+                </button>
+
+                <div className="slide-counter-badge">
+                  Slide {activeSlide} di {currentArticle.slidesCount}
+                </div>
+              </div>
+
+              {/* Slide Dots Pagination */}
+              <div className="slide-dots-pagination">
+                {Array.from({ length: currentArticle.slidesCount }, (_, i) => i + 1).map((num) => (
+                  <button
+                    key={num}
+                    type="button"
+                    className={`slide-dot ${activeSlide === num ? 'active' : ''}`}
+                    onClick={() => setActiveSlide(num)}
+                    aria-label={`Vai alla slide ${num}`}
+                    title={`Slide ${num}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Azioni Download e Visualizzazione */}
+            <div className="slides-actions-row">
+              {currentArticle.slidesPdfUrl && (
+                <a
+                  href={currentArticle.slidesPdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-slide-action btn-pdf"
+                >
+                  <Eye size={16} />
+                  <span>Visualizza Presentazione Completa (PDF)</span>
+                </a>
+              )}
+
+              {currentArticle.slidesDownloadUrl && (
+                <a
+                  href={currentArticle.slidesDownloadUrl}
+                  download
+                  className="btn-slide-action btn-pptx"
+                >
+                  <Download size={16} />
+                  <span>Scarica File Presentazione (.pptx)</span>
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* BOX PUNTI CHIAVE */}
         {currentArticle.keyPoints && currentArticle.keyPoints.length > 0 && (
           <aside className="key-points-box" aria-label="Punti chiave dell'articolo">
@@ -118,12 +230,6 @@ export function BlogPage() {
             </ul>
           </aside>
         )}
-
-        {/* CORPO DELL'ARTICOLO CON TIPOGRAFIA EDITORIALE */}
-        <section
-          className="article-body reading-prose"
-          dangerouslySetInnerHTML={{ __html: currentArticle.content }}
-        />
 
         {/* TAGS DELL'ARTICOLO */}
         <footer className="article-footer">
@@ -172,19 +278,19 @@ export function BlogPage() {
         <div className="category-filters" role="tablist">
           <button
             type="button"
-            className={`filter-tab ${selectedCategory === 'ALL' ? 'active' : ''}`}
-            onClick={() => setCategory('ALL')}
-          >
-            Tutti i contenuti
-          </button>
-          <button
-            type="button"
             className={`filter-tab thesis-tab ${
               selectedCategory === 'Tesi Accademica' ? 'active' : ''
             }`}
             onClick={() => setCategory('Tesi Accademica')}
           >
             Le Mie Tesi
+          </button>
+          <button
+            type="button"
+            className={`filter-tab ${selectedCategory === 'ALL' ? 'active' : ''}`}
+            onClick={() => setCategory('ALL')}
+          >
+            Tutti i contenuti
           </button>
           <button
             type="button"
@@ -223,6 +329,13 @@ export function BlogPage() {
               <Link to={`/blog/${art.slug}`}>{art.title}</Link>
             </h2>
 
+            {art.slidesCount && (
+              <div className="card-slides-badge">
+                <Presentation size={14} />
+                <span>Include Slide della Discussione ({art.slidesCount} slide)</span>
+              </div>
+            )}
+
             <p className="card-excerpt">{art.excerpt}</p>
 
             <div className="card-footer">
@@ -234,7 +347,7 @@ export function BlogPage() {
                 className="read-more-link"
                 aria-label={`Leggi l'articolo: ${art.title}`}
               >
-                <span>Leggi</span>
+                <span>Leggi Introduzione &amp; Slide</span>
                 <ArrowRight size={16} />
               </Link>
             </div>
