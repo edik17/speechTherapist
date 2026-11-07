@@ -1,0 +1,378 @@
+.sedi-page-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+// Trust Bar
+.sedi-trust-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 24px 32px;
+  margin-top: -24px;
+  margin-bottom: 40px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+
+  .trust-col {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .trust-icon {
+      color: #D46A4E;
+      flex-shrink: 0;
+    }
+
+    strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    span {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Sedi Grid
+.sedi-list-section {
+  .sedi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 32px;
+    align-items: stretch;
+  }
+}
+
+.sede-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -8px rgba(27, 59, 54, 0.12);
+  }
+
+  .sede-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+
+    .city-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(212, 106, 78, 0.12);
+      color: #D46A4E;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .role-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+    }
+  }
+
+  .facility-title {
+    font-size: 1.45rem;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  .facility-address {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .schedule-meta-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .schedule-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+
+      strong {
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  .focus-heading {
+    font-size: 1.05rem;
+    color: #0F4C5C;
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+
+  .facility-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 20px;
+    flex-grow: 1;
+  }
+
+  .sede-map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 20px;
+    background: #e5e3df;
+
+    .sede-map-iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+  }
+
+  .sede-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: auto;
+
+    .btn-directions {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: var(--border-subtle);
+        transform: translateY(-1px);
+      }
+    }
+
+    .btn-book-here {
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+  }
+}
+
+// Weekly Calendar Section
+.weekly-calendar-section {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 32px;
+  margin: 40px 0;
+
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    .icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(212, 106, 78, 0.12);
+      color: #D46A4E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin: 0 0 4px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+  }
+
+  .calendar-days-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+
+    .calendar-day-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color 0.2s ease;
+
+      &.is-today {
+        border-color: #D46A4E;
+        box-shadow: 0 0 0 1px #D46A4E;
+      }
+
+      .today-badge {
+        position: absolute;
+        top: -10px;
+        right: 12px;
+        background: #D46A4E;
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 999px;
+        letter-spacing: 0.04em;
+      }
+
+      .day-name {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .day-city {
+        font-size: 1.15rem;
+        color: var(--text-primary);
+      }
+
+      .day-studio {
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        line-height: 1.3;
+      }
+
+      .day-hours {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-top: auto;
+        padding-top: 8px;
+      }
+    }
+  }
+}
+
+// CTA Sedi
+.sedi-cta-section {
+  .sedi-cta-card {
+    background: radial-gradient(circle at 100% 0%, rgba(212, 106, 78, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 0% 100%, rgba(124, 157, 142, 0.15) 0%, transparent 60%),
+                var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+
+    h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      color: var(--text-primary);
+      margin: 0 0 14px;
+    }
+
+    p {
+      font-size: 1.08rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// Dark Mode Adjustments
+body.dark-mode {
+  .focus-heading {
+    color: #48CAE4;
+  }
+
+  .sede-map-wrapper {
+    background: #1e2624;
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .sedi-trust-bar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .weekly-calendar-section .calendar-days-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sedi-list-section .sedi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-calendar-section .calendar-days-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sede-card .sede-card-actions {
+    grid-template-columns: 1fr;
+  }
+}

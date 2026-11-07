@@ -12,6 +12,7 @@ const ServicesPage = React.lazy(() => import('./pages/services/ServicesPage').th
 const BlogPage = React.lazy(() => import('./pages/blog/BlogPage').then(m => ({ default: m.BlogPage })));
 const TestimonialsPage = React.lazy(() => import('./pages/testimonials/TestimonialsPage').then(m => ({ default: m.TestimonialsPage })));
 const FaqPage = React.lazy(() => import('./pages/faq/FaqPage').then(m => ({ default: m.FaqPage })));
+const SediPage = React.lazy(() => import('./pages/sedi/SediPage').then(m => ({ default: m.SediPage })));
 const ContattiPage = React.lazy(() => import('./pages/contatti/ContattiPage').then(m => ({ default: m.ContattiPage })));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -22,9 +23,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route index element={<HomePage />} />
           <Route path="chi-sono" element={<AboutPage />} />
           <Route path="servizi" element={<ServicesPage />} />
-          <Route path="faq" element={<FaqPage />} />
+          <Route path="sedi" element={<SediPage />} />
           <Route path="contatti" element={<ContattiPage />} />
           <Route path="contact" element={<Navigate to="/contatti" replace />} />
+          <Route path="faq" element={<FaqPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:slug" element={<BlogPage />} />
           <Route path="testimonianze" element={<TestimonialsPage />} />

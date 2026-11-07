@@ -14,8 +14,6 @@ import {
   Download,
   FileText,
   Quote,
-  Navigation,
-  ExternalLink,
 } from 'lucide-react';
 import { PageHero } from '../../shared/components/PageHero';
 import { FadeUp } from '../../shared/directives/FadeUp';
@@ -39,17 +37,6 @@ export interface TrainingItem {
   focus: string;
 }
 
-export interface ClinicalLocation {
-  city: string;
-  facility: string;
-  address: string;
-  role: string;
-  focus: string;
-  desc: string;
-  gmapsUrl: string;
-  mapEmbedUrl: string;
-}
-
 export interface SpecializationArea {
   type: 'activity' | 'book' | 'heart' | 'sparkles';
   title: string;
@@ -63,39 +50,6 @@ const MANIFESTO_QUOTE = {
   author: 'Dott.ssa Eleonora Mariotti',
   role: 'Logopedista — Master in Motricità Orofacciale',
 };
-
-const LOCATIONS: ClinicalLocation[] = [
-  {
-    city: 'Ancona',
-    facility: 'Centro multispecialistico DSA E NON SOLO',
-    address: 'Via Rossa Guido, 8, 60131 Ancona AN',
-    role: 'Logopedista in Equipe Multidisciplinare',
-    focus: 'Apprendimento (DSA), Linguaggio & Motricità Orofacciale',
-    desc: 'Valutazione e potenziamento clinico integrato a stretto contatto con neuropsichiatri infantili e psicologi, supportando studenti e famiglie nella sfera scolastica, fono-articolatoria ed evolutiva.',
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Rossa+Guido+8+60131+Ancona+AN',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Via+Rossa+Guido+8+60131+Ancona+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
-  },
-  {
-    city: 'Jesi',
-    facility: 'e-Movere, Centro Pedagogico Ludico Formativo',
-    address: 'Viale Gallodoro, 70/a, 60035 Jesi AN',
-    role: 'Logopedista Clinica Referente',
-    focus: 'Età Evolutiva, Linguaggio & Rieducazione Miofunzionale',
-    desc: 'Presa in carico personalizzata per bambini e ragazzi con disturbi di linguaggio, squilibri miofunzionali e balbuzie, valorizzando anche le precedenti esperienze con Logopedia for Heart e Centro Contatto.',
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70a+60035+Jesi+AN',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Viale+Gallodoro+70a+60035+Jesi+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
-  },
-  {
-    city: 'Sassoferrato',
-    facility: 'Studio a Modo Mio',
-    address: 'Via Roma 39, 60041 Sassoferrato (AN)',
-    role: 'Logopedista Titolare del Servizio',
-    focus: 'Cura del Linguaggio, Voce & Deglutizione nell\'Entroterra',
-    desc: 'Presidio riabilitativo essenziale per le comunità dell\'entroterra anconetano, per garantire a famiglie, bambini e adulti cure specialistiche vicine e senza lunghi spostamenti.',
-    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Roma+39+60041+Sassoferrato+AN',
-    mapEmbedUrl: 'https://maps.google.com/maps?q=Via+Roma+39+60041+Sassoferrato+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
-  },
-];
 
 const SPECIALIZATIONS: SpecializationArea[] = [
   {
@@ -465,64 +419,7 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 6. LE TRE SEDI SUL TERRITORIO (DOPO I CORSI)  */}
-      {/* ============================================ */}
-      <FadeUp as="section" className="territory-section editorial-section">
-        <div className="section-intro">
-          <h2>Le Mie Sedi sul Territorio</h2>
-          <p className="section-intro-sub">
-            Credo fermamente in una sanità di prossimità: per questo ho scelto di accogliere pazienti e famiglie in tre centri specialistici complementari sul territorio anconetano.
-          </p>
-        </div>
-
-        <div className="territory-grid">
-          {LOCATIONS.map((loc) => (
-            <FadeUp as="article" key={loc.city} className="territory-card card">
-              <div className="card-top">
-                <div className="city-badge">
-                  <MapPin size={16} />
-                  <span>{loc.city}</span>
-                </div>
-                <span className="role-badge">{loc.role}</span>
-              </div>
-              <h3>{loc.facility}</h3>
-              <span className="facility-address">{loc.address}</span>
-              <h4 className="focus-title">{loc.focus}</h4>
-              <p>{loc.desc}</p>
-
-              {/* Mappa Google Embed Interattiva */}
-              <div className="territory-map-container">
-                <iframe
-                  title={`Mappa Google - ${loc.city} - ${loc.facility}`}
-                  src={loc.mapEmbedUrl}
-                  className="territory-map-iframe"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-
-              {/* Pulsante Diretto Google Maps */}
-              <div className="territory-card-footer">
-                <a
-                  href={loc.gmapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="directions-btn"
-                  title={`Apri ${loc.facility} su Google Maps`}
-                >
-                  <Navigation size={15} />
-                  <span>Apri su Google Maps</span>
-                  <ExternalLink size={13} className="ext-icon" />
-                </a>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
-      </FadeUp>
-
-      {/* ============================================ */}
-      {/* 7. CTA FINALE RASSICURANTE                    */}
+      {/* 6. CTA FINALE RASSICURANTE                    */}
       {/* ============================================ */}
       <FadeUp as="section" className="about-cta-section">
         <div className="about-cta-card card">
@@ -534,6 +431,10 @@ export function AboutPage() {
             <MatButton variant="raised" to="/contatti" className="about-btn-cta">
               <CalendarCheck size={18} />
               <span>Contattami o Prenota una Valutazione</span>
+            </MatButton>
+            <MatButton variant="stroked" to="/sedi" className="about-btn-ghost">
+              <MapPin size={18} />
+              <span>Visualizza le Sedi sul Territorio</span>
             </MatButton>
             <a
               href="/assets/cv-eleonora-mariotti.pdf"

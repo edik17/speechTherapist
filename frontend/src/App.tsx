@@ -20,10 +20,12 @@ export function ScrollToTopAndTitle() {
       document.title = 'Chi sono – Logopedista';
     } else if (pathname === '/servizi') {
       document.title = 'Servizi – Logopedia';
+    } else if (pathname === '/sedi') {
+      document.title = 'Le Mie Sedi – Logopedista Ancona, Jesi, Sassoferrato';
+    } else if (pathname === '/contatti') {
+      document.title = 'Contatti & Prenotazioni – Logopedista';
     } else if (pathname === '/faq') {
       document.title = 'FAQ – Logopedia';
-    } else if (pathname === '/contatti') {
-      document.title = 'Contatti & Sedi – Logopedista';
     } else if (pathname.startsWith('/blog/')) {
       document.title = 'Tesi & Approfondimento – Logopedista';
     } else if (pathname === '/blog') {
@@ -119,6 +121,20 @@ export default function App() {
               className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
             >
               Servizi
+            </NavLink>
+            <NavLink
+              to="/sedi"
+              onClick={scrollToTop}
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
+              Sedi
+            </NavLink>
+            <NavLink
+              to="/contatti"
+              onClick={scrollToTop}
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
+              Contatti
             </NavLink>
             <NavLink
               to="/blog"
@@ -221,7 +237,21 @@ export default function App() {
               onClick={() => { setOpen(false); scrollToTop(); }}
               className={({ isActive }) => isActive ? 'active' : ''}
             >
-              Servizi &amp; Metodo
+              Servizi
+            </NavLink>
+            <NavLink
+              to="/sedi"
+              onClick={() => { setOpen(false); scrollToTop(); }}
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Le Mie Sedi
+            </NavLink>
+            <NavLink
+              to="/contatti"
+              onClick={() => { setOpen(false); scrollToTop(); }}
+              className={({ isActive }) => isActive ? 'active' : ''}
+            >
+              Contatti &amp; Ricevimento
             </NavLink>
             <NavLink
               to="/blog"
@@ -274,9 +304,12 @@ export default function App() {
           <div className="footer-links-col">
             <span className="col-title">Navigazione</span>
             <Link to="/chi-sono" onClick={scrollToTop}>Chi sono</Link>
-            <Link to="/servizi" onClick={scrollToTop}>Aree di intervento</Link>
+            <Link to="/servizi" onClick={scrollToTop}>Servizi</Link>
+            <Link to="/sedi" onClick={scrollToTop}>Le Sedi</Link>
+            <Link to="/contatti" onClick={scrollToTop}>Contatti</Link>
             <Link to="/blog" onClick={scrollToTop}>Le mie tesi</Link>
-            <Link to="/contatti" onClick={scrollToTop}>Sedi e Orari</Link>
+            <Link to="/testimonianze" onClick={scrollToTop}>Testimonianze</Link>
+            <Link to="/faq" onClick={scrollToTop}>FAQ</Link>
           </div>
 
           <div className="footer-links-col">

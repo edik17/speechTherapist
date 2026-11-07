@@ -21,7 +21,6 @@ export interface ServiceItem {
   title: string;
   description: string;
   iconType: 'speech' | 'book' | 'mic' | 'activity' | 'waves';
-  tags: string[];
 }
 
 const SERVICES_EVOLUTIVA: ServiceItem[] = [
@@ -33,7 +32,6 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     description:
       'Valutazione e trattamento di ritardi di linguaggio, parlatori tardivi (Late Talkers), disturbi fonetico-fonologici e difficoltà di comprensione in età evolutiva.',
     iconType: 'speech',
-    tags: ['Bambini', 'Età Prescolare', 'Scolari'],
   },
   {
     id: 'apprendimento',
@@ -43,7 +41,6 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     description:
       'Interventi personalizzati su lettura, scrittura, ortografia e calcolo (Dislessia, Disortografia, Disgrafia, Discalculia) con potenziamento delle strategie di studio e autonomia con strumenti compensativi.',
     iconType: 'book',
-    tags: ['DSA', 'Scuola Primaria', 'Adolescenti'],
   },
   {
     id: 'funzioni-orali-evolutiva',
@@ -53,7 +50,6 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     description:
       'Valutazione e terapia degli squilibri muscolari orofacciali, deglutizione atipica/deviata, respirazione orale e postura linguale in stretta sinergia con l\'ortodonzia.',
     iconType: 'activity',
-    tags: ['Bambini', 'Età Evolutiva', 'Ortodonzia'],
   },
   {
     id: 'fluenza-evolutiva',
@@ -63,7 +59,6 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     description:
       'Percorsi mirati alla gestione dell\'eloquio e dell\'ansia da prestazione comunicativa, con coinvolgimento attivo di famiglia e scuola per un clima sereno.',
     iconType: 'waves',
-    tags: ['Bambini', 'Adolescenti', 'Famiglia'],
   },
 ];
 
@@ -76,7 +71,6 @@ const SERVICES_ADULTI: ServiceItem[] = [
     description:
       'Valutazione e terapia degli squilibri muscolari orofacciali, deglutizione disfunzionale, respirazione orale, difficoltà masticatorie e postura linguale in stretta sinergia con l\'ortodonzia.',
     iconType: 'activity',
-    tags: ['Adulti', 'Ortodonzia', 'Deglutizione'],
   },
   {
     id: 'fluenza-adulti',
@@ -86,7 +80,6 @@ const SERVICES_ADULTI: ServiceItem[] = [
     description:
       'Percorsi specialistici mirati alla gestione dell\'eloquio, della tensione comunicativa e dei blocchi nell\'adulto, con attenzione specifica alla dimensione emotiva.',
     iconType: 'waves',
-    tags: ['Adulti', 'Comunicazione', 'Fluenza'],
   },
   {
     id: 'voce-reflusso',
@@ -96,7 +89,6 @@ const SERVICES_ADULTI: ServiceItem[] = [
     description:
       'Igiene vocale, educazione e riabilitazione della voce per noduli, polipi, sforzo fonatorio, reflusso faringo-laringeo o supporto specifico a insegnanti, cantanti e professionisti della voce.',
     iconType: 'mic',
-    tags: ['Adulti', 'Insegnanti', 'Professionisti'],
   },
 ];
 
@@ -135,7 +127,7 @@ export function ServicesPage() {
             onClick={() => setFilter('adulta')}
           >
             <User size={16} />
-            <span>Età Adulta (Adulti &amp; Professionisti)</span>
+            <span>Età Adulta</span>
           </button>
         </div>
       </header>
@@ -170,16 +162,6 @@ export function ServicesPage() {
                   </div>
                   <h3>{s.title}</h3>
                   <p>{s.description}</p>
-
-                  {s.tags && s.tags.length > 0 && (
-                    <div className="tags-container">
-                      {s.tags.map((t) => (
-                        <span key={t} className="service-chip">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </FadeUp>
             ))}
@@ -216,16 +198,6 @@ export function ServicesPage() {
                   </div>
                   <h3>{s.title}</h3>
                   <p>{s.description}</p>
-
-                  {s.tags && s.tags.length > 0 && (
-                    <div className="tags-container">
-                      {s.tags.map((t) => (
-                        <span key={t} className="service-chip">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </FadeUp>
             ))}
