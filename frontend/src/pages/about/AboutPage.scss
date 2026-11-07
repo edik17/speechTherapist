@@ -472,66 +472,6 @@
 }
 
 // ============================================
-// 5. PROGETTI SCUOLA & SUPPORTO GENITORIALE
-// ============================================
-.school-projects-section {
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-
-    .project-card {
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 36px -8px rgba(27, 59, 54, 0.12);
-      }
-
-      .project-icon-circle {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: rgba(212, 106, 78, 0.12);
-        color: var(--accent-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 18px;
-      }
-
-      h3 {
-        font-size: 1.2rem;
-        color: var(--text-primary);
-        margin: 0 0 6px;
-        line-height: 1.3;
-      }
-
-      .project-sub {
-        font-size: 0.84rem;
-        color: var(--accent-secondary);
-        font-weight: 700;
-        margin-bottom: 14px;
-        display: block;
-      }
-
-      p {
-        color: var(--text-secondary);
-        font-size: 0.94rem;
-        line-height: 1.65;
-        margin: 0;
-      }
-    }
-  }
-}
-
-// ============================================
 // 5. ALTA FORMAZIONE CONTINUA (ECM)
 // ============================================
 .trainings-section {
@@ -704,10 +644,5 @@ body.dark-mode {
   .specializations-section .specializations-grid .spec-card .spec-header .spec-icon-box {
     background: rgba(142, 175, 159, 0.2);
     color: #D3EAE1;
-  }
-
-  .school-projects-section .projects-grid .project-card .project-icon-circle {
-    background: rgba(226, 125, 96, 0.2);
-    color: #F8B4A2;
   }
 }

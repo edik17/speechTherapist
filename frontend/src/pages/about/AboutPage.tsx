@@ -185,10 +185,6 @@ export function AboutPage() {
             Contestualmente, la formazione specialistica in ambito miofunzionale mi permette di estendere la presa in carico anche agli <strong>adulti</strong>, offrendo percorsi mirati per la prevenzione, la valutazione e la riabilitazione delle disfunzioni del distretto oro-bucco-facciale (come deglutizione disfunzionale, respirazione orale e difficoltà masticatorie).
           </p>
 
-          <p>
-            Oltre all'attività in studio, ho avuto modo di prendere parte a progetti di screening nelle scuole e organizzo incontri informativi e di sensibilizzazione rivolti alle famiglie e laboratori di potenziamento dei prerequisiti scolastici dedicati ai bambini della scuola dell'infanzia e primaria.
-          </p>
-
           <div className="signature-box">
             <span className="signature-name">Dott.ssa Eleonora Mariotti</span>
             <span className="signature-title">Logopedista • Iscritta all'Albo TSRM-PSTRP della Provincia di Ancona</span>
