@@ -242,6 +242,21 @@ export function ContattiPage() {
         <div className="contact-grid">
           {/* Colonna Recapiti Diretti */}
           <div className="info-card card">
+            <div className="contact-doctor-portrait">
+              <img
+                src="/assets/images/foto-eleonora-doc1.png"
+                alt="Dott.ssa Eleonora Mariotti Logopedista in studio"
+                className="doctor-photo"
+                loading="lazy"
+              />
+              <div className="doctor-info-overlay">
+                <span className="doc-role-badge">Dott.ssa Eleonora Mariotti</span>
+                <p className="doc-quote">
+                  «Ricevo su appuntamento ad Ancona, Jesi e Sassoferrato con la massima cura e ascolto.»
+                </p>
+              </div>
+            </div>
+
             <div className="info-card-header">
               <h3>Recapiti Rapidi</h3>
               <p>Se preferisci un contatto telefonico immediato o un messaggio WhatsApp:</p>

@@ -188,7 +188,60 @@ export function SediPage() {
       </section>
 
       {/* ============================================ */}
-      {/* 3. CALENDARIO SETTIMANALE DI PRESENZA        */}
+      {/* 3. GLI SPAZI DELLO STUDIO: ACCOGLIENZA E CURA */}
+      {/* ============================================ */}
+      <FadeUp as="section" className="studio-showcase-section card">
+        <div className="showcase-content">
+          <div className="showcase-header">
+            <span className="showcase-badge">SPAZI DI ASCOLTO E RIABILITAZIONE</span>
+            <h2>Uno Sguardo all'Interno dello Studio</h2>
+            <p className="showcase-desc">
+              Gli ambienti terapeutici di Sassoferrato, Ancona e Jesi sono pensati per accogliere ogni persona in un clima protetto, privo di giudizio e stimolante. Ogni dettaglio — dai materiali per il potenziamento degli apprendimenti alla lavagna per la precisione fono-articolatoria — è studiato per costruire un'alleanza terapeutica solida ed efficace.
+            </p>
+          </div>
+
+          <div className="showcase-gallery">
+            <div className="gallery-card">
+              <div className="gallery-img-wrap">
+                <img
+                  src="/assets/images/foto-eleonora-doc1.png"
+                  alt="Dott.ssa Eleonora Mariotti - Valutazione e potenziamento logopedico"
+                  className="showcase-photo"
+                  loading="lazy"
+                />
+                <span className="photo-tag">Attività Clinica &amp; Potenziamento</span>
+              </div>
+              <div className="gallery-card-body">
+                <h3>Valutazione &amp; Pratica Clinica</h3>
+                <p>
+                  Dalla motricità orofacciale al potenziamento dei prerequisiti scolastici: attività mirate e personalizzate svolte con il supporto di materiali visuo-spaziali e strumenti standardizzati.
+                </p>
+              </div>
+            </div>
+
+            <div className="gallery-card">
+              <div className="gallery-img-wrap">
+                <img
+                  src="/assets/images/foto-eleonora-doc2.png"
+                  alt="Dott.ssa Eleonora Mariotti nel suo studio di logopedia"
+                  className="showcase-photo"
+                  loading="lazy"
+                />
+                <span className="photo-tag">Ambiente Accogliente &amp; Protetto</span>
+              </div>
+              <div className="gallery-card-body">
+                <h3>Setting Terapeutico Su Misura</h3>
+                <p>
+                  Uno spazio rilassante e luminoso dove bambini, adolescenti e adulti possono sentirsi liberi di esprimersi, sperimentare il successo comunicativo e consolidare nuovi traguardi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeUp>
+
+      {/* ============================================ */}
+      {/* 4. CALENDARIO SETTIMANALE DI PRESENZA        */}
       {/* ============================================ */}
       <FadeUp as="section" className="weekly-calendar-section card">
         <div className="calendar-header">
