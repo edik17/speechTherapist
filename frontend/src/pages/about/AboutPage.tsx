@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   Heart,
-  ShieldCheck,
-  Users,
   CalendarCheck,
   MapPin,
   Activity,
@@ -113,24 +111,6 @@ const TRAININGS: TrainingItem[] = [
     title: 'Approccio sillabico al disordine fonologico & Terapia del Cluttering',
     docente: 'Dott.ssa Lara Abram & Dott.ssa Roberta Perosa',
     focus: 'Pianificazione fonotattica sillabica e controllo del ritmo verbale',
-  },
-];
-
-const VALUES = [
-  {
-    type: 'heart',
-    title: 'Empatia & De-colpevolizzazione Familiare',
-    text: 'Nessun percorso terapeutico ha successo se i genitori si sentono sotto esame. La mia ricerca universitaria sullo stress genitoriale mi ricorda ogni giorno di accogliere la famiglia come primo alleato, offrendo ascolto, rassicurazione e strategie concrete da vivere con serenità a casa.',
-  },
-  {
-    type: 'science',
-    title: 'Rigore Scientifico & Pratica Basata sulle Prove (EBP)',
-    text: 'Dalla lode accademica al Master universitario, continuo a formarmi con i maggiori esperti nazionali. Ogni diagnosi e ogni esercizio rispondono ai protocolli scientifici più aggiornati della letteratura internazionale.',
-  },
-  {
-    type: 'users',
-    title: 'Lavoro di Rete Multidisciplinare',
-    text: 'Il benessere del bambino e dell\'adulto si costruisce insieme. Collaboro costantemente con insegnanti, pediatri di libera scelta, neuropsichiatri infantili, ortodontisti e psicologi per garantire un\'evoluzione solida e condivisa.',
   },
 ];
 
@@ -277,31 +257,7 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 4. I TRE PILASTRI VALORIALI                   */}
-      {/* ============================================ */}
-      <FadeUp as="section" className="values-section editorial-section">
-        <div className="section-intro">
-          <h2>I Tre Pilastri del Mio Operato Clinico</h2>
-          <p className="section-intro-sub">Cosa guida ogni mia singola seduta, dalla prima valutazione alla conclusione del percorso.</p>
-        </div>
-
-        <div className="values-grid">
-          {VALUES.map((val) => (
-            <FadeUp key={val.title} className="value-card card">
-              <div className="value-icon-circle">
-                {val.type === 'heart' && <Heart size={26} />}
-                {val.type === 'science' && <ShieldCheck size={26} />}
-                {val.type === 'users' && <Users size={26} />}
-              </div>
-              <h3>{val.title}</h3>
-              <p>{val.text}</p>
-            </FadeUp>
-          ))}
-        </div>
-      </FadeUp>
-
-      {/* ============================================ */}
-      {/* 5. ALTA FORMAZIONE CONTINUA (ECM)            */}
+      {/* 4. ALTA FORMAZIONE CONTINUA (ECM)            */}
       {/* ============================================ */}
       <FadeUp as="section" className="trainings-section editorial-section">
         <div className="section-intro">

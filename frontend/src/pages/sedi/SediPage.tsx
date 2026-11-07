@@ -8,7 +8,6 @@ import {
   CalendarCheck,
   Building2,
   ShieldCheck,
-  Heart,
   ArrowRight,
 } from 'lucide-react';
 import { PageHero } from '../../shared/components/PageHero';
@@ -113,7 +112,7 @@ export function SediPage() {
         <div className="trust-col">
           <ShieldCheck size={20} className="trust-icon" />
           <div>
-            <strong>Spazi Protettti &amp; Accoglienti</strong>
+            <strong>Spazi Protetti &amp; Accoglienti</strong>
             <span>Massima riservatezza ed ergonomia clinica</span>
           </div>
         </div>
@@ -140,7 +139,7 @@ export function SediPage() {
               <div className="schedule-meta-box">
                 <div className="schedule-row">
                   <Calendar size={15} />
-                  <span><strong>Giorni:</strong> {sede.days}</span>
+                  <span><strong>{sede.dayIndices?.length === 1 ? 'Giorno:' : 'Giorni:'}</strong> {sede.days}</span>
                 </div>
                 <div className="schedule-row">
                   <Clock size={15} />
