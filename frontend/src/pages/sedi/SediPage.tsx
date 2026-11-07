@@ -18,6 +18,7 @@ import './SediPage.scss';
 export interface SedeLocation {
   city: string;
   facility: string;
+  accreditation?: string;
   address: string;
   days: string;
   hours: string;
@@ -33,6 +34,7 @@ const SEDI: SedeLocation[] = [
   {
     city: 'Ancona',
     facility: 'Centro multispecialistico DSA E NON SOLO',
+    accreditation: 'Centro ACCREDITATO DALLA REGIONE MARCHE per la diagnosi e la certificazione dei Disturbi Specifici dell’Apprendimento (DSA) in età evolutiva e adulta.',
     address: 'Via Rossa Guido, 8, 60131 Ancona AN',
     days: 'Martedì & Venerdì',
     hours: '09:00 - 20:00',
@@ -134,6 +136,12 @@ export function SediPage() {
               </div>
 
               <h2 className="facility-title">{sede.facility}</h2>
+              {sede.accreditation && (
+                <div className="facility-accreditation">
+                  <ShieldCheck size={16} className="accreditation-icon" />
+                  <span>{sede.accreditation}</span>
+                </div>
+              )}
               <p className="facility-address">{sede.address}</p>
 
               <div className="schedule-meta-box">
