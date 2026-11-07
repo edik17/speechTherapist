@@ -197,7 +197,7 @@ export function AboutPage() {
         <div className="bio-image-col">
           <div className="bio-frame">
             <img
-              src="/assets/images/EleLogopedista.jpg"
+              src="/assets/images/ImmagineEle.jpeg"
               alt="Dott.ssa Eleonora Mariotti Logopedista"
               className="profile-img"
             />
