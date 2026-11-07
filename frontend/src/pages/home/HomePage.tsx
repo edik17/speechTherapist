@@ -195,7 +195,7 @@ export function HomePage() {
             <video
               controls
               preload="metadata"
-              poster="/assets/videos/intervista-eleonora-poster.jpg"
+              poster="/assets/videos/intervista-eleonora-poster.jpg?v=2"
               className="interview-video"
             >
               <source src="/assets/videos/intervista-eleonora.mp4" type="video/mp4" />
