@@ -31,7 +31,7 @@
       inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
       inset 0 -2px 4px 0 rgba(124, 157, 142, 0.08);
 
-    /* Sfumature di vetro: fascio di luce salvia (in alto a sinistra) */
+    /* Sfumature di vetro: fascio di luce lilla acceso (in alto a sinistra) */
     &::before {
       content: '';
       position: absolute;
@@ -39,7 +39,7 @@
       left: -15%;
       width: 65%;
       height: 140%;
-      background: radial-gradient(circle at 30% 30%, rgba(124, 157, 142, 0.32) 0%, rgba(124, 157, 142, 0.1) 50%, transparent 75%);
+      background: radial-gradient(circle at 30% 30%, rgba(186, 148, 226, 0.36) 0%, rgba(186, 148, 226, 0.12) 50%, transparent 75%);
       pointer-events: none;
       filter: blur(40px);
       z-index: 0;

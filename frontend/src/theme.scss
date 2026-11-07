@@ -47,9 +47,9 @@ body.dark-mode {
 }
 
 :root {
-  // Editorial Healthcare Design Tokens
-  --bg-primary: #FAF7F2;
-  --bg-surface: #F2ECE4;
+  // Editorial Healthcare Design Tokens (con raffinato tocco lilla acceso nello sfondo)
+  --bg-primary: #F4ECF8;
+  --bg-surface: #EDE0F4;
   --bg-elevated: #FFFFFF;
   --text-primary: #1B3B36;
   --text-secondary: #4A635E;
@@ -63,8 +63,8 @@ body.dark-mode {
   --radius-lg: 32px;
 
   // Semantic Bridge Variables
-  --bg-soft: #F2ECE4;
-  --bg-gradient: linear-gradient(180deg, #FAF7F2 0%, #F5EFE7 100%);
+  --bg-soft: #EDE0F4;
+  --bg-gradient: linear-gradient(180deg, #F8F2FB 0%, #EFE3F5 45%, #E6D5F0 100%);
   --card-bg: #FFFFFF;
   --card-border: rgba(27, 59, 54, 0.08);
   --ink: #1B3B36;
@@ -73,8 +73,8 @@ body.dark-mode {
   --primary: #1B3B36;
   --primary-gradient: linear-gradient(145deg, #1B3B36 0%, #132A26 100%);
   --accent-gradient: linear-gradient(135deg, #D46A4E 0%, #BC563B 100%);
-  --ring: rgba(124, 157, 142, 0.4);
-  --toolbar-bg: rgba(250, 247, 242, 0.88);
+  --ring: rgba(186, 148, 226, 0.4);
+  --toolbar-bg: rgba(246, 240, 250, 0.92);
   --footer-bg: #122623;
 }
 
