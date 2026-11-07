@@ -245,7 +245,7 @@ export function HomePage() {
         <div className="steps-cta-row">
           <MatButton variant="stroked" to="/contatti" className="steps-action-btn">
             <CalendarCheck size={16} />
-            <span>Contattami per un primo orientamento gratuito</span>
+            <span>Contattami per un primo colloquio conoscitivo</span>
           </MatButton>
         </div>
       </FadeUp>

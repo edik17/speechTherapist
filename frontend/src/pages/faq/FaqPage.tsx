@@ -72,7 +72,7 @@ export function FaqPage() {
           </div>
           <h3>Non hai trovato risposta alla tua situazione?</h3>
           <p>
-            Ogni persona è unica. Scrivimi un messaggio descrivendo la tua esigenza: sarò felice di darti un primo orientamento gratuito.
+            Ogni persona è unica. Scrivimi un messaggio descrivendo la tua esigenza: sarò felice di darti un primo orientamento e concordare un colloquio conoscitivo.
           </p>
           <MatButton variant="raised" to="/contatti" className="faq-cta-btn">
             <MessageSquare size={16} />
