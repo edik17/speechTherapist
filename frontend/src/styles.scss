@@ -226,9 +226,9 @@ body:not(.dark-mode) {
   }
 }
 
-// Editorial Section Spacing
+// Editorial Section Spacing - spaziatura armoniosa ed equilibrata tra tutte le sezioni
 .editorial-section {
-  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 // Category Pills / Badges

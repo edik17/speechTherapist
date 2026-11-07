@@ -168,24 +168,29 @@
 .section-intro-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 40px;
+  margin: 0 auto 24px;
 
   h2 {
-    font-size: clamp(2rem, 3.8vw, 2.75rem);
+    font-size: clamp(1.85rem, 3.5vw, 2.5rem);
     color: var(--text-primary);
-    margin: 12px 0 16px;
+    margin: 8px 0 12px;
   }
 
   .section-intro-p {
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     color: var(--text-secondary);
-    line-height: 1.65;
+    line-height: 1.6;
   }
 }
 
 // ============================================
 // METODO & PILASTRI CLINICI
 // ============================================
+.method-section.editorial-section {
+  padding-block-start: clamp(1.5rem, 2.8vw, 2.25rem);
+  padding-block-end: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -227,7 +232,22 @@
 // ============================================
 // SEZIONE INTERVISTA STORY TIME
 // ============================================
-.interview-section {
+.interview-section.editorial-section {
+  padding-block-start: clamp(0.5rem, 1.2vw, 1rem);
+  padding-block-end: clamp(1.25rem, 2.5vw, 2rem);
+
+  .section-intro-header {
+    margin: 0 auto 16px;
+
+    h2 {
+      margin: 0 0 8px;
+    }
+
+    .section-intro-p {
+      margin: 0;
+    }
+  }
+
   .interview-video-card {
     max-width: 920px;
     margin: 0 auto;
