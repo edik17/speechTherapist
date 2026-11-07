@@ -15,6 +15,8 @@ import {
   FileText,
   School,
   Quote,
+  Navigation,
+  ExternalLink,
 } from 'lucide-react';
 import { PageHero } from '../../shared/components/PageHero';
 import { FadeUp } from '../../shared/directives/FadeUp';
@@ -45,6 +47,8 @@ export interface ClinicalLocation {
   role: string;
   focus: string;
   desc: string;
+  gmapsUrl: string;
+  mapEmbedUrl: string;
 }
 
 export interface SpecializationArea {
@@ -75,6 +79,8 @@ const LOCATIONS: ClinicalLocation[] = [
     role: 'Logopedista in Equipe Multidisciplinare',
     focus: 'Apprendimento (DSA), Linguaggio & Motricità Orofacciale',
     desc: 'Valutazione e potenziamento clinico integrato a stretto contatto con neuropsichiatri infantili e psicologi, supportando studenti e famiglie nella sfera scolastica, fono-articolatoria ed evolutiva.',
+    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Rossa+Guido+8+60131+Ancona+AN',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Via+Rossa+Guido+8+60131+Ancona+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
   },
   {
     city: 'Jesi',
@@ -83,6 +89,8 @@ const LOCATIONS: ClinicalLocation[] = [
     role: 'Logopedista Clinica Referente',
     focus: 'Età Evolutiva, Linguaggio & Rieducazione Miofunzionale',
     desc: 'Presa in carico personalizzata per bambini e ragazzi con disturbi di linguaggio, squilibri miofunzionali e balbuzie, valorizzando anche le precedenti esperienze con Logopedia for Heart e Centro Contatto.',
+    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Viale+Gallodoro+70a+60035+Jesi+AN',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Viale+Gallodoro+70a+60035+Jesi+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
   },
   {
     city: 'Sassoferrato',
@@ -91,6 +99,8 @@ const LOCATIONS: ClinicalLocation[] = [
     role: 'Logopedista Titolare del Servizio',
     focus: 'Cura del Linguaggio, Voce & Deglutizione nell\'Entroterra',
     desc: 'Presidio riabilitativo essenziale per le comunità dell\'entroterra anconetano, per garantire a famiglie, bambini e adulti cure specialistiche vicine e senza lunghi spostamenti.',
+    gmapsUrl: 'https://www.google.com/maps/search/?api=1&query=Via+Roma+39+60041+Sassoferrato+AN',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Via+Roma+39+60041+Sassoferrato+AN&t=&z=15&ie=UTF8&iwloc=&output=embed',
   },
 ];
 
@@ -352,6 +362,33 @@ export function AboutPage() {
               <span className="facility-address">{loc.address}</span>
               <h4 className="focus-title">{loc.focus}</h4>
               <p>{loc.desc}</p>
+
+              {/* Mappa Google Embed Interattiva */}
+              <div className="territory-map-container">
+                <iframe
+                  title={`Mappa Google - ${loc.city} - ${loc.facility}`}
+                  src={loc.mapEmbedUrl}
+                  className="territory-map-iframe"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+              {/* Pulsante Diretto Google Maps */}
+              <div className="territory-card-footer">
+                <a
+                  href={loc.gmapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="directions-btn"
+                  title={`Apri ${loc.facility} su Google Maps`}
+                >
+                  <Navigation size={15} />
+                  <span>Apri su Google Maps</span>
+                  <ExternalLink size={13} className="ext-icon" />
+                </a>
+              </div>
             </FadeUp>
           ))}
         </div>
