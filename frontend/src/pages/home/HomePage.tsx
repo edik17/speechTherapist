@@ -207,12 +207,6 @@ export function HomePage() {
             <p className="video-quote">
               «Parlare di logopedia significa innanzitutto parlare di relazione, accoglienza e valorizzazione della persona.»
             </p>
-            <div className="video-services-link-row">
-              <MatButton variant="basic" to="/servizi" className="view-all-services-link">
-                <span>Esplora tutti i servizi e gli ambiti di intervento</span>
-                <ArrowRight size={16} />
-              </MatButton>
-            </div>
           </div>
         </FadeUp>
       </FadeUp>
