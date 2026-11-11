@@ -30,7 +30,7 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     categoryLabel: 'Età Evolutiva',
     title: 'Disturbi del Linguaggio',
     description:
-      'Valutazione e trattamento di ritardi di linguaggio, parlatori tardivi (Late Talkers), disturbi fonetico-fonologici e difficoltà di comprensione in età evolutiva.',
+      'Consulenza, valutazione e trattamento in caso di: ritardo nello sviluppo del linguaggio, disturbo di linguaggio e difficoltà di pronuncia dei suoni.',
     iconType: 'speech',
   },
   {
@@ -39,7 +39,7 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     categoryLabel: 'Età Evolutiva',
     title: 'Apprendimento (DSA)',
     description:
-      'Interventi personalizzati su lettura, scrittura, ortografia e calcolo (Dislessia, Disortografia, Disgrafia, Discalculia) con potenziamento delle strategie di studio e autonomia con strumenti compensativi.',
+      'Valutazione e potenziamento delle abilità di apprendimento (lettura, scrittura e calcolo).',
     iconType: 'book',
   },
   {
@@ -48,16 +48,16 @@ const SERVICES_EVOLUTIVA: ServiceItem[] = [
     categoryLabel: 'Età Evolutiva',
     title: 'Funzioni Orali & Deglutizione',
     description:
-      'Valutazione e terapia degli squilibri muscolari orofacciali, deglutizione atipica/deviata, respirazione orale e postura linguale in stretta sinergia con l\'ortodonzia.',
+      'Valutazione e terapia degli squilibri muscolari orofacciali: deglutizione disfunzionale, respirazione orale e postura linguale inadeguata.',
     iconType: 'activity',
   },
   {
     id: 'fluenza-evolutiva',
     category: 'evolutiva',
     categoryLabel: 'Età Evolutiva',
-    title: 'Fluenza e Balbuzie',
+    title: 'Balbuzie e disturbi della fluenza',
     description:
-      'Percorsi mirati alla gestione dell\'eloquio e dell\'ansia da prestazione comunicativa, con coinvolgimento attivo di famiglia e scuola per un clima sereno.',
+      'Percorso mirato per migliorare la fluenza verbale con coinvolgimento attivo della famiglia e della scuola per favorire il benessere comunicativo.',
     iconType: 'waves',
   },
 ];
@@ -69,16 +69,16 @@ const SERVICES_ADULTI: ServiceItem[] = [
     categoryLabel: 'Età Adulta',
     title: 'Funzioni Orali & Deglutizione',
     description:
-      'Valutazione e terapia degli squilibri muscolari orofacciali, deglutizione disfunzionale, respirazione orale, difficoltà masticatorie e postura linguale in stretta sinergia con l\'ortodonzia.',
+      'Valutazione e terapia degli squilibri muscolari orofacciali: deglutizione disfunzionale, respirazione orale, postura linguale inadeguata e difficoltà masticatorie.',
     iconType: 'activity',
   },
   {
     id: 'fluenza-adulti',
     category: 'adulta',
     categoryLabel: 'Età Adulta',
-    title: 'Fluenza e Balbuzie',
+    title: 'Balbuzie e disturbi della fluenza',
     description:
-      'Percorsi specialistici mirati alla gestione dell\'eloquio, della tensione comunicativa e dei blocchi nell\'adulto, con attenzione specifica alla dimensione emotiva.',
+      'Percorso mirato per migliorare la fluenza verbale, per ridurre l’impatto emotivo nei confronti della comunicazione e favorire il benessere e l’efficacia comunicativa.',
     iconType: 'waves',
   },
   {
@@ -87,7 +87,7 @@ const SERVICES_ADULTI: ServiceItem[] = [
     categoryLabel: 'Età Adulta',
     title: 'Voce e Reflusso Faringo-Laringeo',
     description:
-      'Igiene vocale, educazione e riabilitazione della voce per noduli, polipi, sforzo fonatorio, reflusso faringo-laringeo o supporto specifico a insegnanti, cantanti e professionisti della voce.',
+      'Igiene vocale, educazione e riabilitazione della voce per noduli, polipi, sforzo fonatorio o supporto specifico a insegnanti, cantanti e professionisti della voce.',
     iconType: 'mic',
   },
 ];
