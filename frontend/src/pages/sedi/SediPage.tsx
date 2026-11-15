@@ -94,7 +94,7 @@ export function SediPage() {
       {/* ============================================ */}
       <PageHero
         title="Le Mie Sedi sul Territorio"
-        subtitle="Credo fermamente in una sanità di prossimità: ricevo su appuntamento ad Ancona, Jesi e Sassoferrato in strutture specializzate, accoglienti e pensate per il benessere di ogni persona."
+        subtitle="Ricevo su appuntamento ad Ancona, Jesi e Sassoferrato in strutture accoglienti e pensate per il benessere di ogni persona."
       />
 
       {/* Trust bar */}
