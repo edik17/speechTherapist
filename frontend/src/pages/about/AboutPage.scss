@@ -51,10 +51,10 @@
       overflow: hidden;
       border: 5px solid var(--bg-elevated);
       box-shadow: 0 24px 60px -12px rgba(27, 59, 54, 0.18);
-      max-width: 840px;
+      max-width: 780px;
       width: 100%;
-      aspect-ratio: 16 / 10;
-      max-height: 490px;
+      aspect-ratio: 4 / 3;
+      max-height: 585px;
       margin: 0 auto;
 
       .profile-img {
@@ -62,7 +62,7 @@
         height: 100%;
         display: block;
         object-fit: cover;
-        object-position: center 60%;
+        object-position: center 44%;
       }
 
       .bio-quote-overlay {
