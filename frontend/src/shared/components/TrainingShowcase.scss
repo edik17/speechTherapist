@@ -1,21 +1,4 @@
 .training-showcase-section {
-  .training-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: var(--liquid-glass-bg);
-    backdrop-filter: var(--liquid-glass-blur);
-    -webkit-backdrop-filter: var(--liquid-glass-blur);
-    border: 1px solid var(--liquid-glass-border);
-    box-shadow: var(--liquid-glass-shadow);
-    color: var(--accent-primary);
-    font-size: 0.82rem;
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
-
   .training-cv-inline {
     margin-top: 18px;
     display: flex;

@@ -5,7 +5,6 @@ import {
   Calendar,
   CheckCircle2,
   FileText,
-  GraduationCap,
 } from 'lucide-react';
 import './TrainingShowcase.scss';
 
@@ -74,11 +73,6 @@ export function TrainingShowcase({ courses, cvUrl }: TrainingShowcaseProps) {
       aria-labelledby="training-showcase-heading"
     >
       <div className="section-intro">
-        <div className="training-eyebrow">
-          <GraduationCap size={16} />
-          <span>{courses.length} Percorsi di Formazione Documentati</span>
-        </div>
-
         <h2 id="training-showcase-heading">
           Corsi di Formazione, Seminari &amp; Aggiornamento Continuo
         </h2>

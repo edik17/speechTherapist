@@ -5,13 +5,11 @@ import './StudioPhotoShowcase.scss';
 export interface StudioPhotoItem {
   src: string;
   alt: string;
-  tag: string;
   title: string;
   description: string;
 }
 
 export interface StudioPhotoShowcaseProps {
-  badge: string;
   title: string;
   description: string;
   photos: StudioPhotoItem[];
@@ -23,7 +21,6 @@ export interface StudioPhotoShowcaseProps {
  * momenti di attività clinica e ricerca applicata in studio.
  */
 export function StudioPhotoShowcase({
-  badge,
   title,
   description,
   photos,
@@ -32,7 +29,6 @@ export function StudioPhotoShowcase({
   return (
     <FadeUp as="section" className={`studio-photo-showcase card ${className}`.trim()}>
       <div className="showcase-header">
-        <span className="showcase-badge">{badge}</span>
         <h2>{title}</h2>
         <p className="showcase-desc">{description}</p>
       </div>
@@ -47,7 +43,6 @@ export function StudioPhotoShowcase({
                 className="showcase-photo"
                 loading="lazy"
               />
-              <span className="showcase-tag">{photo.tag}</span>
             </div>
             <div className="showcase-card-body">
               <h3>{photo.title}</h3>

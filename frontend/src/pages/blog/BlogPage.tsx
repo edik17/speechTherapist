@@ -24,7 +24,6 @@ const THESIS_SHOWCASE_PHOTOS: StudioPhotoItem[] = [
   {
     src: '/assets/images/foto-eleonora-doc1.png',
     alt: 'Dott.ssa Eleonora Mariotti - Ricerca clinica e potenziamento logopedico',
-    tag: "Pratica Basata sull'Evidenza (EBP)",
     title: 'Strumenti & Protocolli Validati',
     description:
       'Tradurre i dati della ricerca clinica in attività mirate e motivanti per il potenziamento linguistico, fono-articolatorio e degli apprendimenti.',
@@ -32,7 +31,6 @@ const THESIS_SHOWCASE_PHOTOS: StudioPhotoItem[] = [
   {
     src: '/assets/images/foto-eleonora-doc2.png',
     alt: 'Dott.ssa Eleonora Mariotti nel suo studio di logopedia',
-    tag: 'Ascolto, Famiglia & Benessere',
     title: 'Qualità della Vita & Alleanza Terapeutica',
     description:
       "Al centro dei lavori di tesi c'è la persona nella sua globalità: l'accoglienza empatica in studio sostiene la motivazione del paziente e la serenità genitoriale.",
@@ -373,7 +371,6 @@ export function BlogPage() {
 
       {/* DALLA RICERCA ALLA PRATICA CLINICA: LE FOTO IN STUDIO */}
       <StudioPhotoShowcase
-        badge="DALLA RICERCA ALLA CLINICA"
         title="L'Evidenza Scientifica Applicata in Studio"
         description="Ogni progetto di ricerca accademica prende vita nel lavoro quotidiano in studio: dalla valutazione standardizzata alla costruzione di materiali riabilitativi personalizzati per bambini, famiglie e adulti."
         photos={THESIS_SHOWCASE_PHOTOS}
