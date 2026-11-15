@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "site": "eleonora-mariotti-logopedista",
+    "public": "frontend/dist/my-logopedia/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+}
