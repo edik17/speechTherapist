@@ -126,17 +126,16 @@ export function SediPage() {
                   <MapPin size={16} />
                   <span>{sede.city}</span>
                 </div>
-                <span className="role-pill">{sede.role}</span>
               </div>
 
               <h2 className="facility-title">{sede.facility}</h2>
+              <p className="facility-address">{sede.address}</p>
               {sede.accreditation && (
                 <div className="facility-accreditation">
                   <ShieldCheck size={16} className="accreditation-icon" />
                   <span>{sede.accreditation}</span>
                 </div>
               )}
-              <p className="facility-address">{sede.address}</p>
 
               <div className="schedule-meta-box">
                 <div className="schedule-row">

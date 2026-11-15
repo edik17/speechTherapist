@@ -84,16 +84,6 @@
       font-weight: 700;
       font-size: 0.85rem;
     }
-
-    .role-pill {
-      font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      background: var(--bg-surface);
-      padding: 4px 8px;
-      border-radius: 6px;
-      border: 1px solid var(--border-subtle);
-    }
   }
 
   .facility-title {
@@ -116,7 +106,7 @@
     font-size: 0.78rem;
     line-height: 1.4;
     font-weight: 600;
-    margin: 4px 0 10px;
+    margin: 0 0 16px;
 
     body.dark-mode & {
       background: rgba(124, 157, 142, 0.18);
