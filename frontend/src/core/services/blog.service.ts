@@ -5,7 +5,7 @@ const ARTICLES: Article[] = [
     id: 'tesi-master',
     slug: 'stress-genitoriale-terapia-miofunzionale',
     title: 'STRESS GENITORIALE NEL PERCORSO TERAPEUTICO DI TERAPIA MIOFUNZIONALE',
-    subtitle: 'Tesi di Master Universitario di I Livello in Motricità Orofacciale (110/110) – Dott.ssa Eleonora Mariotti',
+    subtitle: 'Master Universitario di I Livello in «Motricità Orofacciale: Valutazione e Trattamento Logopedico» — A.A. 2023/2024 (110/110)',
     excerpt: 'Indagine empirica sull\'impatto emotivo e sui livelli di stress dei genitori durante il trattamento delle disfunzioni orofacciali (SMOF). Perché la rassicurazione e il coinvolgimento sereno della famiglia sono la prima garanzia di successo riabilitativo.',
     category: 'Tesi Accademica',
     readTime: '6 min di lettura',
@@ -17,20 +17,7 @@ const ARTICLES: Article[] = [
     slidesPdfUrl: '/assets/tesi/slide-discussione-eleonora-mariotti-master.pdf',
     slidesCount: 9,
     slidesFolder: '/assets/tesi/slides-master',
-    keyPoints: [
-      'La terapia miofunzionale richiede l\'esecuzione quotidiana di esercizi a casa: se percepiti come fonte di conflitto o pressione, l\'aderenza crolla.',
-      'I dati della ricerca evidenziano che i genitori sperimentano spesso un senso di colpa per non aver colto prima le difficoltà orali del figlio (respirazione orale, deglutizione deviata).',
-      'Un approccio di counseling integrato riduce lo stress familiare, trasformando il momento degli esercizi da "compito imposto" a gioco interattivo gratificante.',
-      'La compliance e l\'automatizzazione del nuovo schema neuromotorio risultano significativamente superiori quando la famiglia è rassicurata e non giudicata.'
-    ],
     content: `
-      <div class="thesis-official-title-block">
-        <span class="thesis-institution">Master Universitario di I Livello</span>
-        <span class="thesis-degree">«Motricità Orofacciale: Valutazione e Trattamento Logopedico» — A.A. 2023/2024 (110/110)</span>
-        <h2 class="thesis-official-title">STRESS GENITORIALE NEL PERCORSO TERAPEUTICO DI TERAPIA MIOFUNZIONALE</h2>
-        <span class="thesis-candidate">Candidata: Dott.ssa Eleonora Mariotti</span>
-      </div>
-
       <h3 class="intro-section-title">Introduzione</h3>
 
       <p>La terapia miofunzionale, in quanto approccio olistico preventivo, valutativo e riabilitativo volto al recupero dell’equilibrio miofunzionale del complesso maxillo-facciale, prevede l’effettuazione di training di tipo attivo e passivo, al fine di agire sui meccanismi di controllo superiore per generare un cambiamento sfruttando la neuroplasticità cerebrale.</p>
@@ -76,20 +63,7 @@ const ARTICLES: Article[] = [
     slidesPdfUrl: '/assets/tesi/mariotti-eleonora-tesi-laurea.pdf',
     slidesCount: 15,
     slidesFolder: '/assets/tesi/slides-laurea',
-    keyPoints: [
-      'Nel paziente adulto i compensi muscolari patologici sono instaurati da decenni, ma la neuroplasticità consente comunque una completa riprogrammazione funzionale.',
-      'La spinta linguale scorretta esercita fino a 1-2 kg di forza continua sui denti, vanificando spesso terapie ortodontiche o interventi chirurgici ortognatici.',
-      'Il protocollo di terapia miofunzionale restituisce equilibrio alla catena muscolare cervico-occlusale, con sensibile riduzione di tensioni e cefalee.',
-      'L\'introduzione di un questionario validato sulla Qualità della Vita (QOL) dimostra benefici significativi sulla sicurezza relazionale e il benessere generale.'
-    ],
     content: `
-      <div class="thesis-official-title-block">
-        <span class="thesis-institution">Università Politecnica delle Marche • Facoltà di Medicina e Chirurgia</span>
-        <span class="thesis-degree">Corso di Laurea in Logopedia — Votazione 110/110 e Lode</span>
-        <h2 class="thesis-official-title">MALOCCLUSIONI DI II CLASSE: L’USO DELLA TERAPIA MIOFUNZIONALE IN UN PAZIENTE ADULTO E PROPOSTA QUESTIONARIO PER LA QOL</h2>
-        <span class="thesis-candidate">Candidata: Dott.ssa Eleonora Mariotti</span>
-      </div>
-
       <h3 class="intro-section-title">Introduzione</h3>
 
       <p>Secondo l’Organizzazione Mondiale della Sanità le malocclusioni rappresentano la terza priorità al mondo per quanto riguarda le malattie della salute orale (Varun Pratap Singh &amp; Amita Sharma, 2004).</p>
@@ -117,12 +91,6 @@ const ARTICLES: Article[] = [
     author: 'Dott.ssa Eleonora Mariotti',
     authorRole: 'Logopedista Clinica',
     tags: ['Età Evolutiva', 'Linguaggio', 'Prevenzione', 'Genitori'],
-    keyPoints: [
-      'A 24 mesi un vocabolario inferiore a 50 parole o l\'assenza di combinazioni di due parole ("mamma acqua") è un indicatore predittivo da monitorare.',
-      'La formula del "aspettiamo che tanto poi parlerà" è superata dalla ricerca neuropsicologica: l\'intervento precoce sfrutta la massima neuroplasticità cerebrale.',
-      'Una valutazione logopedica non è un\'etichetta: è prima di tutto uno spazio di ascolto e orientamento per la famiglia.',
-      'Il gioco condiviso e l\'interazione faccia a faccia restano gli strumenti più potenti di stimolazione linguistica quotidiana.'
-    ],
     content: `
       <p>Ogni bambino attraversa tappe evolutive con tempi personali. Tuttavia, la ricerca scientifica e le linee guida cliniche hanno individuato finestre temporali precise entro le quali determinate competenze linguistiche e comunicative dovrebbero emergere spontaneamente.</p>
       
@@ -147,12 +115,6 @@ const ARTICLES: Article[] = [
     author: 'Dott.ssa Eleonora Mariotti',
     authorRole: 'Logopedista Clinica',
     tags: ['Terapia Miofunzionale', 'Deglutizione', 'Ortodonzia', 'Respirazione'],
-    keyPoints: [
-      'Deglutiamo in media circa 1.500-2.000 volte al giorno: una spinta linguale scorretta esercita forze continue sui denti capaci di spostarli.',
-      'La terapia miofunzionale rieduca la postura a riposo della lingua contro lo spot palatino e il sigillo labiale.',
-      'Respirazione orale e deglutizione atipica sono spesso strettamente collegate, influenzando la postura cervicale e la qualità del sonno.',
-      'La collaborazione precoce tra dentista/ortodontista e logopedista garantisce la stabilità a lungo termine del sorriso.'
-    ],
     content: `
       <p>Spesso si pensa al logopedista unicamente in relazione alla parola e alla pronuncia dei suoni. In realtà, una branca clinica centrale è la Terapia Miofunzionale (TMF), volta a correggere gli squilibri della muscolatura orofacciale e le disfunzioni deglutitorie.</p>
 
@@ -177,12 +139,6 @@ const ARTICLES: Article[] = [
     author: 'Dott.ssa Eleonora Mariotti',
     authorRole: 'Logopedista Clinica',
     tags: ['Relazione Terapeutica', 'Empatia', 'Benessere Emotivo', 'Clinica'],
-    keyPoints: [
-      'Le difficoltà comunicative toccano il nucleo della sicurezza personale e dell\'autostima, sia nel bambino che nell\'adulto.',
-      'La stanza di terapia deve rappresentare prima di tutto un luogo sicuro in cui l\'errore non è mai giudicato, ma diventa occasione di scoperta.',
-      'L\'alleanza terapeutica con i genitori è l\'ingrediente decisivo: comprendere le loro preoccupazioni sostiene l\'intero percorso.',
-      'La tecnica senza empatia resta un esercizio; l\'empatia guidata dal rigore scientifico genera trasformazione duratura.'
-    ],
     content: `
       <p>In ogni incontro clinico, dietro una difficoltà di articolazione, un inceppo nella fluenza verbale o una disfonia da sforzo, c'è un vissuto emotivo che chiede di essere ascoltato con delicatezza.</p>
 
@@ -207,12 +163,6 @@ const ARTICLES: Article[] = [
     author: 'Dott.ssa Eleonora Mariotti',
     authorRole: 'Logopedista Clinica',
     tags: ['DSA', 'Dislessia', 'Scuola', 'Metodo di Studio'],
-    keyPoints: [
-      'I Disturbi Specifici dell\'Apprendimento non derivano da scarso impegno o deficit intellettivo, ma da un differente neuro-funzionamento.',
-      'Gli strumenti compensativi (sintesi vocale, mappe concettuali, calcolatrice) non sono "favoritismi", ma occhiali per chi è miope.',
-      'Lavorare sulle strategie metacognitive restituisce al ragazzo il controllo del proprio metodo di studio.',
-      'Il dialogo costruttivo tra scuola, famiglia e specialista previene il burnout scolastico e tutela il benessere psicologico.'
-    ],
     content: `
       <p>Ricevere una diagnosi di DSA (Disturbo Specifico dell\'Apprendimento) suscita frequentemente sentimenti contrastanti nella famiglia: da un lato sollievo per aver dato un nome a fatiche prolungate, dall'altro timore per il futuro accademico del proprio figlio.</p>
 

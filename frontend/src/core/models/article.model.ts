@@ -12,7 +12,6 @@ export interface Article {
   author: string;
   authorRole: string;
   tags: string[];
-  keyPoints: string[];
   content: string; // HTML formatted content
   slidesDownloadUrl?: string;
   slidesPdfUrl?: string;
