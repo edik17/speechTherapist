@@ -5,9 +5,7 @@ import {
   Calendar,
   ArrowLeft,
   ArrowRight,
-  CheckCircle2,
   BookOpen,
-  Sparkles,
   Download,
   Eye,
   ChevronLeft,
@@ -231,24 +229,6 @@ export function BlogPage() {
               )}
             </div>
           </div>
-        )}
-
-        {/* BOX PUNTI CHIAVE */}
-        {currentArticle.keyPoints && currentArticle.keyPoints.length > 0 && (
-          <aside className="key-points-box" aria-label="Punti chiave dell'articolo">
-            <div className="key-points-header">
-              <Sparkles size={20} className="sparkle-icon" />
-              <h3>Punti Chiave &amp; Evidenze Cliniche</h3>
-            </div>
-            <ul className="key-points-list">
-              {currentArticle.keyPoints.map((point) => (
-                <li key={point}>
-                  <CheckCircle2 size={18} className="check-icon" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
         )}
 
         {/* TAGS DELL'ARTICOLO */}
