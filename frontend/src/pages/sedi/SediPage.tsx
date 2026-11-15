@@ -18,6 +18,8 @@ import './SediPage.scss';
 export interface SedeLocation {
   city: string;
   facility: string;
+  facilityName: string;
+  facilityType: string;
   accreditation?: string;
   address: string;
   days: string;
@@ -34,6 +36,8 @@ const SEDI: SedeLocation[] = [
   {
     city: 'Ancona',
     facility: 'Centro multispecialistico DSA E NON SOLO',
+    facilityName: 'DSA E NON SOLO',
+    facilityType: 'Centro Multispecialistico',
     accreditation: 'Centro ACCREDITATO DALLA REGIONE MARCHE per la diagnosi e la certificazione dei Disturbi Specifici dell’Apprendimento (DSA) in età evolutiva e adulta.',
     address: 'Via Rossa Guido, 8, 60131 Ancona AN',
     days: 'Martedì & Venerdì',
@@ -46,6 +50,8 @@ const SEDI: SedeLocation[] = [
   {
     city: 'Jesi',
     facility: 'e-Movere, Centro Pedagogico Ludico Formativo',
+    facilityName: 'e-Movere',
+    facilityType: 'Centro Pedagogico Ludico Formativo',
     address: 'Viale Gallodoro, 70/a, 60035 Jesi AN',
     days: 'Mercoledì',
     hours: '09:00 - 20:00',
@@ -57,6 +63,8 @@ const SEDI: SedeLocation[] = [
   {
     city: 'Sassoferrato',
     facility: 'Studio a Modo Mio',
+    facilityName: 'Studio a Modo Mio',
+    facilityType: 'Studio Professionale di Logopedia',
     address: 'Via Roma 39, 60041 Sassoferrato (AN)',
     days: 'Lunedì & Giovedì',
     hours: '09:00 - 20:00',
@@ -128,8 +136,19 @@ export function SediPage() {
                 </div>
               </div>
 
-              <h2 className="facility-title">{sede.facility}</h2>
-              <p className="facility-address">{sede.address}</p>
+              <div className="facility-identity-box">
+                <div className="facility-emblem" aria-hidden="true">
+                  <Building2 size={22} />
+                </div>
+                <div className="facility-identity-text">
+                  <span className="facility-type-label">{sede.facilityType}</span>
+                  <h2 className="facility-title">{sede.facilityName}</h2>
+                  <p className="facility-address">
+                    <MapPin size={14} className="address-pin-icon" />
+                    <span>{sede.address}</span>
+                  </p>
+                </div>
+              </div>
               {sede.accreditation && (
                 <div className="facility-accreditation">
                   <ShieldCheck size={16} className="accreditation-icon" />
@@ -211,7 +230,10 @@ export function SediPage() {
                 {isToday && <span className="today-badge">📍 OGGI IN SEDE</span>}
                 <div className="day-name">{plan.day}</div>
                 <strong className="day-city">{plan.city}</strong>
-                <span className="day-studio">{plan.studio}</span>
+                <span className="day-studio">
+                  <Building2 size={13} />
+                  <span>{plan.studio}</span>
+                </span>
                 <div className="day-hours">
                   <Clock size={13} />
                   <span>{plan.hours}</span>
