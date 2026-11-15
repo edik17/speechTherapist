@@ -74,8 +74,37 @@ body.dark-mode {
   --primary-gradient: linear-gradient(145deg, #1B3B36 0%, #132A26 100%);
   --accent-gradient: linear-gradient(135deg, #D46A4E 0%, #BC563B 100%);
   --ring: rgba(186, 148, 226, 0.4);
-  --toolbar-bg: rgba(246, 240, 250, 0.92);
+  --toolbar-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(246, 238, 252, 0.56) 100%);
   --footer-bg: #122623;
+
+  // Liquid Glass Tokens (Light Mode)
+  --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.74) 0%, rgba(255, 255, 255, 0.38) 42%, rgba(246, 236, 252, 0.54) 72%, rgba(255, 255, 255, 0.80) 100%),
+                     radial-gradient(120% 100% at 10% 0%, rgba(255, 255, 255, 0.88) 0%, transparent 55%),
+                     radial-gradient(100% 100% at 90% 100%, rgba(198, 162, 230, 0.22) 0%, rgba(124, 157, 142, 0.12) 55%, transparent 85%);
+  --liquid-glass-hero-bg: linear-gradient(130deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.42) 38%, rgba(244, 232, 252, 0.56) 68%, rgba(240, 248, 245, 0.78) 100%),
+                          radial-gradient(110% 90% at 12% 8%, rgba(255, 255, 255, 0.92) 0%, transparent 50%),
+                          radial-gradient(100% 90% at 88% 92%, rgba(186, 148, 226, 0.26) 0%, rgba(212, 106, 78, 0.10) 60%, transparent 85%);
+  --liquid-glass-blur: blur(22px) saturate(200%) brightness(1.03);
+  --liquid-glass-hero-blur: blur(30px) saturate(215%) brightness(1.04);
+  --liquid-glass-border: rgba(255, 255, 255, 0.82);
+  --liquid-glass-shadow: 0 20px 44px -12px rgba(27, 59, 54, 0.10),
+                         0 6px 18px -4px rgba(186, 148, 226, 0.14),
+                         inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98),
+                         inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.80),
+                         inset 0 10px 24px -6px rgba(255, 255, 255, 0.55),
+                         inset 0 -1.5px 2px 0 rgba(186, 148, 226, 0.26);
+  --liquid-glass-shadow-hover: 0 26px 54px -12px rgba(27, 59, 54, 0.15),
+                               0 10px 24px -6px rgba(186, 148, 226, 0.22),
+                               inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+                               inset 1.5px 0 1.5px 0 rgba(255, 255, 255, 0.90),
+                               inset 0 14px 30px -6px rgba(255, 255, 255, 0.68),
+                               inset 0 -2px 3px 0 rgba(124, 157, 142, 0.28);
+  --liquid-glass-hero-shadow: 0 28px 60px -12px rgba(27, 59, 54, 0.13),
+                              0 10px 28px -6px rgba(186, 148, 226, 0.18),
+                              inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+                              inset 2px 0 2px 0 rgba(255, 255, 255, 0.88),
+                              inset 0 16px 36px -8px rgba(255, 255, 255, 0.62),
+                              inset 0 -2px 4px 0 rgba(124, 157, 142, 0.22);
 }
 
 body.dark-mode {
@@ -101,6 +130,32 @@ body.dark-mode {
   --primary-gradient: linear-gradient(145deg, #152B27 0%, #0F1E1B 100%);
   --accent-gradient: linear-gradient(135deg, #E27D60 0%, #C8644A 100%);
   --ring: rgba(142, 175, 159, 0.4);
-  --toolbar-bg: rgba(15, 30, 27, 0.9);
+  --toolbar-bg: linear-gradient(180deg, rgba(21, 43, 39, 0.72) 0%, rgba(15, 30, 27, 0.58) 100%);
   --footer-bg: #091311;
+
+  // Liquid Glass Tokens (Dark Mode)
+  --liquid-glass-bg: linear-gradient(135deg, rgba(29, 55, 49, 0.68) 0%, rgba(18, 36, 32, 0.42) 45%, rgba(25, 48, 43, 0.62) 100%),
+                     radial-gradient(120% 100% at 10% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
+                     radial-gradient(100% 100% at 90% 100%, rgba(142, 175, 159, 0.14) 0%, transparent 75%);
+  --liquid-glass-hero-bg: linear-gradient(130deg, rgba(29, 55, 49, 0.72) 0%, rgba(16, 33, 29, 0.48) 45%, rgba(22, 44, 39, 0.68) 100%),
+                          radial-gradient(110% 90% at 12% 8%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                          radial-gradient(100% 90% at 88% 92%, rgba(142, 175, 159, 0.18) 0%, rgba(226, 125, 96, 0.10) 60%, transparent 85%);
+  --liquid-glass-blur: blur(22px) saturate(190%) brightness(1.06);
+  --liquid-glass-hero-blur: blur(30px) saturate(200%) brightness(1.08);
+  --liquid-glass-border: rgba(255, 255, 255, 0.18);
+  --liquid-glass-shadow: 0 20px 44px -12px rgba(0, 0, 0, 0.50),
+                         inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.26),
+                         inset 1px 0 1px 0 rgba(255, 255, 255, 0.14),
+                         inset 0 10px 24px -6px rgba(255, 255, 255, 0.06),
+                         inset 0 -1.5px 2px 0 rgba(142, 175, 159, 0.16);
+  --liquid-glass-shadow-hover: 0 26px 54px -12px rgba(0, 0, 0, 0.65),
+                               inset 0 2px 2px 0 rgba(255, 255, 255, 0.36),
+                               inset 1.5px 0 1.5px 0 rgba(255, 255, 255, 0.20),
+                               inset 0 14px 30px -6px rgba(255, 255, 255, 0.10),
+                               inset 0 -2px 3px 0 rgba(142, 175, 159, 0.24);
+  --liquid-glass-hero-shadow: 0 28px 60px -12px rgba(0, 0, 0, 0.60),
+                              inset 0 2px 2px 0 rgba(255, 255, 255, 0.30),
+                              inset 1.5px 0 1.5px 0 rgba(255, 255, 255, 0.18),
+                              inset 0 16px 36px -8px rgba(255, 255, 255, 0.08),
+                              inset 0 -2px 4px 0 rgba(142, 175, 159, 0.20);
 }

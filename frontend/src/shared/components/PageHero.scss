@@ -9,27 +9,18 @@
     border-radius: 28px;
     overflow: hidden;
 
-    /* Sfumature di vetro (Glassmorphism satinato) */
-    background: linear-gradient(
-      135deg, 
-      rgba(255, 255, 255, 0.85) 0%, 
-      rgba(250, 246, 240, 0.65) 45%, 
-      rgba(240, 248, 245, 0.8) 100%
-    );
-    backdrop-filter: blur(24px) saturate(190%);
-    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    /* Liquid Glass (Vetro Liquido con menisco speculare e caustiche) */
+    background: var(--liquid-glass-hero-bg);
+    backdrop-filter: var(--liquid-glass-hero-blur);
+    -webkit-backdrop-filter: var(--liquid-glass-hero-blur);
 
     /* Bordo effetto vetro con doppia rifrazione */
-    border: 1.5px solid rgba(124, 157, 142, 0.35);
-    outline: 1.5px solid rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--liquid-glass-border);
+    outline: 1px solid rgba(255, 255, 255, 0.45);
     outline-offset: -3px;
 
-    /* Ombra di elevazione vetro e riflessi interni */
-    box-shadow: 
-      0 24px 50px -12px rgba(27, 59, 54, 0.12),
-      0 8px 24px -4px rgba(212, 106, 78, 0.08),
-      inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -2px 4px 0 rgba(124, 157, 142, 0.08);
+    /* Ombra di elevazione vetro e menisco interno */
+    box-shadow: var(--liquid-glass-hero-shadow);
 
     /* Sfumature di vetro: fascio di luce lilla acceso (in alto a sinistra) */
     &::before {
@@ -39,9 +30,10 @@
       left: -15%;
       width: 65%;
       height: 140%;
-      background: radial-gradient(circle at 30% 30%, rgba(186, 148, 226, 0.36) 0%, rgba(186, 148, 226, 0.12) 50%, transparent 75%);
+      background: radial-gradient(circle at 30% 30%, rgba(186, 148, 226, 0.38) 0%, rgba(186, 148, 226, 0.14) 50%, transparent 75%);
       pointer-events: none;
       filter: blur(40px);
+      animation: liquidCausticDrift 14s ease-in-out infinite alternate;
       z-index: 0;
     }
 
@@ -56,6 +48,8 @@
       background: radial-gradient(circle at 70% 70%, rgba(212, 106, 78, 0.25) 0%, rgba(226, 125, 96, 0.08) 50%, transparent 75%);
       pointer-events: none;
       filter: blur(40px);
+      animation: liquidCausticDrift 14s ease-in-out infinite alternate;
+      animation-delay: -7s;
       z-index: 0;
     }
   }
@@ -69,9 +63,13 @@
 
   .hero-badge {
     display: inline-block;
-    background: rgba(124, 157, 142, 0.18);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(124, 157, 142, 0.18) 100%);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
     color: #2D5A4C;
-    border: 1px solid rgba(124, 157, 142, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85),
+                0 4px 12px rgba(27, 59, 54, 0.06);
     padding: 4px 14px;
     border-radius: 999px;
     font-size: 0.82rem;
@@ -104,18 +102,11 @@
 
 /* Modalità Scura (Dark Mode) */
 body.dark-mode .page-hero-wrapper .page-hero {
-  background: linear-gradient(
-    135deg, 
-    rgba(29, 55, 49, 0.8) 0%, 
-    rgba(21, 43, 39, 0.65) 50%, 
-    rgba(15, 30, 27, 0.85) 100%
-  );
-  border: 1.5px solid rgba(142, 175, 159, 0.28);
-  outline: 1.5px solid rgba(250, 247, 242, 0.08);
+  background: var(--liquid-glass-hero-bg);
+  border: 1px solid var(--liquid-glass-border);
+  outline: 1px solid rgba(255, 255, 255, 0.10);
   outline-offset: -3px;
-  box-shadow: 
-    0 24px 50px -12px rgba(0, 0, 0, 0.55),
-    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  box-shadow: var(--liquid-glass-hero-shadow);
 
   &::before {
     background: radial-gradient(circle at 30% 30%, rgba(142, 175, 159, 0.22) 0%, transparent 70%);
@@ -131,7 +122,9 @@ body.dark-mode .page-hero-wrapper .page-hero {
 
   .hero-badge {
     color: #A8D5C2;
-    background: rgba(142, 175, 159, 0.2);
-    border-color: rgba(142, 175, 159, 0.35);
+    background: linear-gradient(135deg, rgba(142, 175, 159, 0.28) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25),
+                0 4px 12px rgba(0, 0, 0, 0.25);
   }
 }

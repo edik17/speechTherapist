@@ -32,24 +32,18 @@
   gap: 16px;
 }
 
-::ng-deep .faq-panel {
+.faq-panel {
   border-radius: var(--radius-sm) !important;
-  background-color: var(--bg-elevated) !important;
-  border: 1px solid var(--border-subtle) !important;
-  box-shadow: var(--shadow-soft) !important;
+  background: var(--liquid-glass-bg) !important;
+  backdrop-filter: var(--liquid-glass-blur) !important;
+  -webkit-backdrop-filter: var(--liquid-glass-blur) !important;
+  border: 1px solid var(--liquid-glass-border) !important;
+  box-shadow: var(--liquid-glass-shadow) !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  body:not(.dark-mode) & {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.65) 100%) !important;
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 10px 28px -8px rgba(27, 59, 54, 0.06), inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
-  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px -6px rgba(27, 59, 54, 0.1) !important;
+    box-shadow: var(--liquid-glass-shadow-hover) !important;
   }
 
   .mat-expansion-panel-header {

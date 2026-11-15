@@ -128,12 +128,14 @@ select:focus-visible,
   margin-inline: auto;
 }
 
-// Reusable Soft Cards
+// Reusable Soft Cards (Liquid Glass)
 .card {
-  background: var(--card-bg);
+  background: var(--liquid-glass-bg);
+  backdrop-filter: var(--liquid-glass-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-blur);
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-shadow);
   padding: clamp(1.25rem, 2.5vw, 2rem);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
@@ -141,93 +143,131 @@ select:focus-visible,
               border-color 0.3s ease;
 }
 
-// In White Mode: Riquadri in stile Sfumature di Vetro (Glassmorphism satinato con rifrazioni)
-body:not(.dark-mode) {
+@keyframes liquidCausticDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, 6%) scale(1.08);
+  }
+  100% {
+    transform: translate(-3%, -4%) scale(0.96);
+  }
+}
+
+// Liquid Glass (Vetro Liquido con menisco speculare, rifrazioni caustiche e traslucenza profonda)
+.page-hero,
+.contact-header,
+.services-header,
+.magazine-hero,
+.testimonials-header {
+  position: relative;
+  background: var(--liquid-glass-hero-bg) !important;
+  backdrop-filter: var(--liquid-glass-hero-blur) !important;
+  -webkit-backdrop-filter: var(--liquid-glass-hero-blur) !important;
+  border: 1px solid var(--liquid-glass-border) !important;
+  outline: 1px solid rgba(255, 255, 255, 0.45);
+  outline-offset: -3px;
+  border-radius: 28px !important;
+  box-shadow: var(--liquid-glass-hero-shadow) !important;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -15%;
+    width: 65%;
+    height: 140%;
+    background: radial-gradient(circle at 30% 30%, rgba(186, 148, 226, 0.38) 0%, rgba(186, 148, 226, 0.14) 50%, transparent 75%);
+    pointer-events: none;
+    filter: blur(40px);
+    animation: liquidCausticDrift 14s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -15%;
+    width: 65%;
+    height: 140%;
+    background: radial-gradient(circle at 70% 70%, rgba(212, 106, 78, 0.25) 0%, rgba(226, 125, 96, 0.08) 50%, transparent 75%);
+    pointer-events: none;
+    filter: blur(40px);
+    animation: liquidCausticDrift 14s ease-in-out infinite alternate;
+    animation-delay: -7s;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+body.dark-mode {
   .page-hero,
   .contact-header,
   .services-header,
   .magazine-hero,
   .testimonials-header {
-    position: relative;
-    background: linear-gradient(
-      135deg, 
-      rgba(255, 255, 255, 0.88) 0%, 
-      rgba(250, 246, 240, 0.65) 45%, 
-      rgba(240, 248, 245, 0.8) 100%
-    ) !important;
-    backdrop-filter: blur(24px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-    border: 1.5px solid rgba(124, 157, 142, 0.35) !important;
-    outline: 1.5px solid rgba(255, 255, 255, 0.95);
-    outline-offset: -3px;
-    border-radius: 28px !important;
-    box-shadow: 
-      0 24px 50px -12px rgba(27, 59, 54, 0.12),
-      0 8px 24px -4px rgba(212, 106, 78, 0.08),
-      inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -2px 4px 0 rgba(124, 157, 142, 0.08) !important;
-    overflow: hidden;
+    outline-color: rgba(255, 255, 255, 0.10);
 
     &::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      left: -15%;
-      width: 65%;
-      height: 140%;
-      background: radial-gradient(circle at 30% 30%, rgba(186, 148, 226, 0.36) 0%, rgba(186, 148, 226, 0.12) 50%, transparent 75%);
-      pointer-events: none;
-      filter: blur(40px);
-      z-index: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(142, 175, 159, 0.22) 0%, transparent 70%);
     }
 
     &::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      right: -15%;
-      width: 65%;
-      height: 140%;
-      background: radial-gradient(circle at 70% 70%, rgba(212, 106, 78, 0.25) 0%, rgba(226, 125, 96, 0.08) 50%, transparent 75%);
-      pointer-events: none;
-      filter: blur(40px);
-      z-index: 0;
-    }
-
-    > * {
-      position: relative;
-      z-index: 1;
+      background: radial-gradient(circle at 70% 70%, rgba(226, 125, 96, 0.18) 0%, transparent 70%);
     }
   }
+}
 
-  .card,
-  .bento-card,
-  .step-card,
-  .studio-card,
-  .territory-card,
-  .spec-card,
-  .value-card,
-  .service-card,
-  .review-card,
-  .timeline-content,
-  .cv-download-box {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.65) 100%) !important;
-    backdrop-filter: blur(14px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
-    border: 1px solid rgba(124, 157, 142, 0.2) !important;
-    box-shadow: 0 14px 34px -10px rgba(27, 59, 54, 0.07),
-                0 2px 6px rgba(27, 59, 54, 0.02),
-                inset 0 1px 2px rgba(255, 255, 255, 0.95),
-                inset 0 -1px 2px rgba(124, 157, 142, 0.04) !important;
-  }
+.card,
+.bento-card,
+.step-card,
+.studio-card,
+.sede-card,
+.territory-card,
+.spec-card,
+.training-card,
+.value-card,
+.service-card,
+.review-card,
+.home-review-card,
+.testimonial-card,
+.article-card,
+.gallery-card,
+.interview-video-card,
+.timeline-content,
+.cv-download-box,
+.google-summary-bar,
+.sedi-trust-bar,
+.reassuring-banner,
+.about-cta-card,
+.faq-cta-box {
+  background: var(--liquid-glass-bg) !important;
+  backdrop-filter: var(--liquid-glass-blur) !important;
+  -webkit-backdrop-filter: var(--liquid-glass-blur) !important;
+  border: 1px solid var(--liquid-glass-border) !important;
+  box-shadow: var(--liquid-glass-shadow) !important;
+}
 
-  .google-summary-bar {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.58) 100%) !important;
-    backdrop-filter: blur(14px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
-    border: 1px solid rgba(124, 157, 142, 0.22) !important;
-    box-shadow: 0 14px 34px -10px rgba(27, 59, 54, 0.07),
-                inset 0 1px 2px rgba(255, 255, 255, 0.95) !important;
+.bento-card,
+.step-card,
+.sede-card,
+.territory-card,
+.spec-card,
+.training-card,
+.service-card,
+.home-review-card,
+.testimonial-card,
+.article-card,
+.gallery-card {
+  &:hover {
+    box-shadow: var(--liquid-glass-shadow-hover) !important;
   }
 }
 

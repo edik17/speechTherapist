@@ -3,10 +3,13 @@
   top: 0;
   z-index: 1000;
   background: var(--toolbar-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-subtle);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(26px) saturate(210%) brightness(1.04);
+  -webkit-backdrop-filter: blur(26px) saturate(210%) brightness(1.04);
+  border-bottom: 1px solid var(--liquid-glass-border);
+  box-shadow: 0 8px 30px -6px rgba(27, 59, 54, 0.08),
+              inset 0 1px 1px rgba(255, 255, 255, 0.85),
+              inset 0 -1px 1px rgba(186, 148, 226, 0.20);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .editorial-nav {
@@ -71,12 +74,20 @@
 
     &:hover {
       color: var(--text-primary);
-      background: rgba(124, 157, 142, 0.12);
+      background: rgba(124, 157, 142, 0.14);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8),
+                  0 4px 12px -2px rgba(27, 59, 54, 0.06);
     }
 
     &.active {
       color: var(--text-primary);
-      background: rgba(124, 157, 142, 0.16);
+      background: rgba(124, 157, 142, 0.18);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8),
+                  0 4px 12px -2px rgba(27, 59, 54, 0.06);
       font-weight: 700;
 
       &::after {
@@ -125,8 +136,11 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--liquid-glass-border);
+  background: var(--liquid-glass-bg);
+  backdrop-filter: var(--liquid-glass-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-blur);
+  box-shadow: var(--liquid-glass-shadow);
   color: var(--text-primary);
   display: inline-flex;
   align-items: center;
@@ -136,7 +150,8 @@
   transition: all 0.2s ease;
 
   &:hover {
-    background: var(--bg-elevated);
+    background: var(--liquid-glass-bg);
+    box-shadow: var(--liquid-glass-shadow-hover);
     transform: scale(1.06);
   }
 
@@ -188,8 +203,11 @@
 .mobile-menu-drawer {
   display: flex;
   flex-direction: column;
-  background: var(--bg-primary);
-  border-bottom: 1px solid var(--border-subtle);
+  background: var(--liquid-glass-hero-bg);
+  backdrop-filter: var(--liquid-glass-hero-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-hero-blur);
+  border-bottom: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-shadow);
   padding: 16px 24px 24px;
   gap: 8px;
 
