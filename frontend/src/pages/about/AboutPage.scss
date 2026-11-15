@@ -434,64 +434,6 @@
 }
 
 // ============================================
-// 5. ALTA FORMAZIONE CONTINUA (ECM)
-// ============================================
-.trainings-section {
-  .trainings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 20px;
-    margin-top: 24px;
-
-    .training-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 28px -6px rgba(27, 59, 54, 0.1);
-      }
-
-      .training-icon {
-        color: var(--accent-secondary);
-        margin-top: 2px;
-        flex-shrink: 0;
-      }
-
-      .training-info {
-        h4 {
-          font-size: 1.05rem;
-          color: var(--text-primary);
-          margin: 0 0 6px;
-          line-height: 1.35;
-        }
-
-        .training-docente {
-          display: block;
-          font-size: 0.85rem;
-          color: #D46A4E;
-          font-weight: 600;
-          margin-bottom: 6px;
-        }
-
-        .training-focus {
-          font-size: 0.9rem;
-          color: var(--text-secondary);
-          line-height: 1.5;
-          margin: 0;
-        }
-      }
-    }
-  }
-}
-
-// ============================================
 // 8. CTA FINALE
 // ============================================
 .about-cta-section {
@@ -575,10 +517,6 @@
 // Responsive
 @media (max-width: 900px) {
   .specializations-section .specializations-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .trainings-section .trainings-grid {
     grid-template-columns: 1fr;
   }
 

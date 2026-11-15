@@ -12,16 +12,10 @@ import {
   Quote,
 } from 'lucide-react';
 import { PageHero } from '../../shared/components/PageHero';
+import { TrainingShowcase, TrainingCourseItem } from '../../shared/components/TrainingShowcase';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { MatButton } from '../../shared/ui/MatButton';
 import './AboutPage.scss';
-
-export interface TrainingItem {
-  title: string;
-  docente: string;
-  year?: string;
-  focus: string;
-}
 
 export interface SpecializationArea {
   type: 'activity' | 'book' | 'heart' | 'sparkles';
@@ -65,49 +59,139 @@ const SPECIALIZATIONS: SpecializationArea[] = [
   },
 ];
 
-const TRAININGS: TrainingItem[] = [
+const TRAININGS: TrainingCourseItem[] = [
   {
-    title: 'Metodo ARM (Approccio Ritmico Motorio) — 1° e 2° Livello',
+    id: 'arm-clinica',
+    title: 'ARM CLINICA — 1° e 2° Livello (Approccio Ritmico Motorio)',
     docente: 'Dott. Lorenzo Coccia',
-    year: '2026',
-    focus: 'Rieducazione e stimolazione articolatoria neuromotoria per DSA e linguaggio',
+    date: 'Marzo – Aprile 2026',
+    group: 'ecm',
+    category: 'fonologia',
+    categoryLabel: 'Fonologia & Metodo ARM',
+    focus: 'Rieducazione e stimolazione articolatoria neuromotoria per disturbi del linguaggio e DSA.',
   },
   {
+    id: 'disordine-fonologico',
     title: 'Il disordine fonologico: gli approcci di intervento',
     docente: 'Dott.ssa Caterina Apruzzese',
-    year: '2026',
-    focus: 'Metodi evidence-based per disturbi di comprensione e produzione fonologica, approccio sillabico, tratti motori verbali, rotacismo e interdentalità',
+    date: '10–11 Gennaio 2026',
+    group: 'ecm',
+    category: 'fonologia',
+    categoryLabel: 'Fonologia & Metodo ARM',
+    focus: 'Protocolli evidence-based per la valutazione e il trattamento dei disturbi fonologici in età evolutiva.',
   },
   {
-    title: 'Valutazione e terapia dello squilibrio miofunzionale oro-facciale',
+    id: 'squilibrio-miofunzionale',
+    title: 'La valutazione e la terapia dello squilibrio miofunzionale oro-facciale: una visione teorico-pratica',
     docente: 'Dott.ssa Claudia Ferreira (Roma)',
-    year: '2024',
-    focus: 'Visione teorico-pratica avanzata e protocolli applicati',
+    date: '7–8 Settembre 2024',
+    group: 'ecm',
+    category: 'miofunzionale',
+    categoryLabel: 'Motricità Orofacciale',
+    focus: 'Valutazione avanzata e rieducazione miofunzionale applicata a deglutizione disfunzionale e funzioni orali.',
   },
   {
-    title: 'Valutazione e trattamento degli aspetti Covert della Balbuzie',
-    docente: 'Dott.ssa Maria Silvia Mazzocchi e Dott.ssa Roberta Perosa',
-    focus: 'Presa in carico della sofferenza emotiva e delle strategie di evitamento in età evolutiva e nell\'adulto',
+    id: 'bambino-ipoacusico',
+    title: 'Corso Webinar: La riabilitazione del bambino ipoacusico',
+    docente: 'Dott.ssa Letizia Guerzoni',
+    date: '4–5 Febbraio 2023',
+    group: 'ecm',
+    category: 'voce-evolutiva',
+    categoryLabel: 'Voce & Età Evolutiva',
+    focus: 'Percorsi logopedici per lo sviluppo percettivo-uditivo e comunicativo-linguistico nel deficit uditivo infantile.',
   },
   {
-    title: 'Protocollo Miovocale per la voce parlata, cantata e reflusso faringo-laringeo',
-    docente: 'Dott.ssa Federica Avolio e Milena D\'Aniello',
-    focus: 'Terapia delle disfonie, coordinazione pneumofonica e gestione del reflusso faringo-laringeo',
+    id: 'smile-house',
+    title: 'Convegno Ambulatorio Smile House sulle malformazioni cranio-facciali',
+    docente: 'Ambulatorio Smile House Ancona (AN)',
+    date: '4 Novembre 2022',
+    group: 'ecm',
+    category: 'miofunzionale',
+    categoryLabel: 'Motricità Orofacciale',
+    focus: 'Presa in carico multidisciplinare logopedica, chirurgica e ortodontica delle malformazioni cranio-facciali.',
   },
   {
-    title: 'Tratti Motori Orali e Verbali',
+    id: 'autismo-oggi',
+    title: 'Convegno Autismo Oggi: la presa in carico dei disturbi autistici dalla diagnosi precoce all\'età adulta',
+    docente: 'Convegno Specialistico',
+    date: '27–28 Maggio 2022',
+    group: 'ecm',
+    category: 'voce-evolutiva',
+    categoryLabel: 'Voce & Età Evolutiva',
+    focus: 'Strategie comunicative e relazionali lungo tutto l\'arco di vita per i disturbi dello spettro autistico.',
+  },
+  {
+    id: 'tratti-motori',
+    title: 'Tratti motori Orali e Verbali, un ponte tra competenze non verbali e aspetti fono-articolatori',
     docente: 'Dott.ssa Giulia Tombari',
-    focus: 'Ponte tra competenze motorie non verbali e precisione fono-articolatoria',
+    date: '7, 14, 17 Settembre 2021',
+    group: 'ecm',
+    category: 'fonologia',
+    categoryLabel: 'Fonologia & Metodo ARM',
+    focus: 'Integrazione delle abilità motorie orali e verbali per l\'impostazione e l\'automatizzazione articolatoria.',
   },
   {
-    title: 'La riabilitazione del bambino ipoacusico & Convegno Smile House',
-    docente: 'Dott.ssa Letizia Guerzoni & Ambulatorio Smile House Ancona',
-    focus: 'Malformazioni cranio-facciali e presa in carico del deficit uditivo',
+    id: 'approccio-sillabico',
+    title: 'Quando qualquadra non cosa: approccio sillabico al disordine fonologico',
+    docente: 'Dott.ssa Lara Abram',
+    group: 'specialist',
+    category: 'fonologia',
+    categoryLabel: 'Fonologia & Metodo ARM',
+    focus: 'Pianificazione fonotattica a partire dalla struttura sillabica per favorire una generalizzazione rapida dei suoni.',
   },
   {
-    title: 'Approccio sillabico al disordine fonologico & Terapia del Cluttering',
-    docente: 'Dott.ssa Lara Abram & Dott.ssa Roberta Perosa',
-    focus: 'Pianificazione fonotattica sillabica e controllo del ritmo verbale',
+    id: 'balbuzie-valutazione',
+    title: 'Valutazione degli aspetti sintomatologici della balbuzie',
+    docente: 'Dott.ssa Maria Silvia Mazzocchi',
+    group: 'specialist',
+    category: 'fluenza',
+    categoryLabel: 'Balbuzie & Fluenza',
+    focus: 'Inquadramento clinico delle disfluenze manifeste, frequenze e profili di fluenza verbale.',
+  },
+  {
+    id: 'balbuzie-covert',
+    title: 'Trattamento degli aspetti sintomatologici e degli aspetti Covert della balbuzie — età evolutiva',
+    docente: 'Dott.ssa Maria Silvia Mazzocchi',
+    group: 'specialist',
+    category: 'fluenza',
+    categoryLabel: 'Balbuzie & Fluenza',
+    focus: 'Intervento integrato su blocchi verbali, vissuti emotivi sommersi, evitamenti e alleanza con la famiglia.',
+  },
+  {
+    id: 'terapia-cluttering',
+    title: 'Terapia del Cluttering',
+    docente: 'Dott.ssa Roberta Perosa',
+    group: 'specialist',
+    category: 'fluenza',
+    categoryLabel: 'Balbuzie & Fluenza',
+    focus: 'Regolazione della velocità d\'eloquio, chiarezza articolatoria e monitoraggio comunicativo nel cluttering.',
+  },
+  {
+    id: 'sibilanti',
+    title: 'Interdentalizzazione e lateralizzazione dei fonemi sibilanti',
+    docente: 'Dott.ssa Chiara Castellani',
+    group: 'specialist',
+    category: 'fonologia',
+    categoryLabel: 'Fonologia & Metodo ARM',
+    focus: 'Correzione mirata delle distorsioni dei fonemi /s/ e /z/ in sinergia tra impostazione articolatoria e postura linguale.',
+  },
+  {
+    id: 'rotacismo',
+    title: 'Rotacismo',
+    docente: 'Dott.ssa Chiara Castellani',
+    group: 'specialist',
+    category: 'fonologia',
+    categoryLabel: 'Fonologia & Metodo ARM',
+    focus: 'Tecniche specifiche di facilitazione vibratoria, impostazione e consolidamento del fonema /r/.',
+  },
+  {
+    id: 'protocollo-miovocale',
+    title: 'Protocollo Miovocale',
+    docente: 'Dott.ssa Federica Avolio e Dott.ssa Milena D\'Aniello',
+    group: 'specialist',
+    category: 'voce-evolutiva',
+    categoryLabel: 'Voce & Età Evolutiva',
+    focus: 'Rieducazione miofunzionale applicata alla voce parlata, cantata e alla gestione del reflusso faringo-laringeo.',
   },
 ];
 
@@ -241,30 +325,10 @@ export function AboutPage() {
       </FadeUp>
 
       {/* ============================================ */}
-      {/* 4. ALTA FORMAZIONE CONTINUA (ECM)            */}
+      {/* 4. CORSI DI FORMAZIONE, SEMINARI & ECM       */}
       {/* ============================================ */}
-      <FadeUp as="section" className="trainings-section editorial-section">
-        <div className="section-intro">
-          <h2>Alta Formazione Specialistica Continua (ECM)</h2>
-          <p className="section-intro-sub">
-            Seminari intensivi, protocolli clinici e aggiornamento metodologico costante con i massimi docenti ed esperti del settore:
-          </p>
-        </div>
-
-        <div className="trainings-grid">
-          {TRAININGS.map((t) => (
-            <div key={t.title} className="training-card card">
-              <div className="training-icon">
-                <CheckCircle2 size={18} />
-              </div>
-              <div className="training-info">
-                <h4>{t.title}</h4>
-                <span className="training-docente">Docente / Ente: {t.docente}</span>
-                <p className="training-focus">{t.focus}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+      <FadeUp as="div">
+        <TrainingShowcase courses={TRAININGS} cvUrl="/assets/cv-eleonora-mariotti.pdf" />
       </FadeUp>
 
       {/* ============================================ */}
