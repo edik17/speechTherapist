@@ -1,0 +1,183 @@
+.seasonal-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+
+  &.mobile-season {
+    margin-left: 0;
+  }
+}
+
+.season-trigger-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--liquid-glass-border);
+  background: var(--liquid-glass-bg);
+  backdrop-filter: var(--liquid-glass-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-blur);
+  box-shadow: var(--liquid-glass-shadow);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &.is-open {
+    box-shadow: var(--liquid-glass-shadow-hover);
+    transform: scale(1.06);
+  }
+
+  &.season-autumn .season-icon {
+    color: #D46A4E;
+  }
+  &.season-winter .season-icon {
+    color: #38BDF8;
+  }
+  &.season-spring .season-icon {
+    color: #EC4899;
+  }
+  &.season-summer .season-icon {
+    color: #F59E0B;
+  }
+  &.season-off .season-icon {
+    color: var(--text-secondary);
+    opacity: 0.55;
+  }
+}
+
+.season-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 248px;
+  max-width: calc(100vw - 32px);
+  z-index: 1050;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: var(--liquid-glass-hero-bg);
+  backdrop-filter: var(--liquid-glass-hero-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-hero-blur);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-hero-shadow);
+  animation: seasonPopoverIn 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+
+  .popover-header {
+    padding: 4px 8px 10px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .popover-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .popover-subtitle {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+  }
+
+  .popover-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .season-option-btn {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    transition: background 0.18s ease, border-color 0.18s ease;
+
+    &:hover {
+      background: rgba(186, 148, 226, 0.14);
+    }
+
+    &.is-active {
+      background: rgba(186, 148, 226, 0.22);
+      border-color: rgba(186, 148, 226, 0.42);
+    }
+
+    .option-icon-wrap {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    &.season-autumn .option-icon-wrap {
+      color: #D46A4E;
+    }
+    &.season-winter .option-icon-wrap {
+      color: #38BDF8;
+    }
+    &.season-spring .option-icon-wrap {
+      color: #EC4899;
+    }
+    &.season-summer .option-icon-wrap {
+      color: #F59E0B;
+    }
+    &.season-off .option-icon-wrap {
+      color: var(--text-secondary);
+    }
+
+    .option-text {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+
+      strong {
+        font-size: 0.86rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.25;
+      }
+
+      small {
+        font-size: 0.72rem;
+        color: var(--text-secondary);
+        line-height: 1.25;
+      }
+    }
+
+    .option-check {
+      color: var(--accent-primary);
+      flex-shrink: 0;
+    }
+  }
+}
+
+@keyframes seasonPopoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

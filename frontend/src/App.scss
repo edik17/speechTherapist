@@ -132,8 +132,7 @@
   }
 }
 
-.theme-toggle,
-.season-toggle {
+.theme-toggle {
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -161,25 +160,6 @@
   }
   .moon-icon {
     color: var(--text-secondary);
-  }
-}
-
-.season-toggle {
-  &.season-autumn .season-icon {
-    color: #D46A4E;
-  }
-  &.season-winter .season-icon {
-    color: #38BDF8;
-  }
-  &.season-spring .season-icon {
-    color: #EC4899;
-  }
-  &.season-summer .season-icon {
-    color: #F59E0B;
-  }
-  &.season-off .season-icon {
-    color: var(--text-secondary);
-    opacity: 0.48;
   }
 }
 

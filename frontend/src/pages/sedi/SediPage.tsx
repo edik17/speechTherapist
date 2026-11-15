@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { PageHero } from '../../shared/components/PageHero';
+import { FacilityIdentityBanner } from '../../shared/components/FacilityIdentityBanner';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { MatButton } from '../../shared/ui/MatButton';
 import './SediPage.scss';
@@ -136,25 +137,12 @@ export function SediPage() {
                 </div>
               </div>
 
-              <div className="facility-identity-box">
-                <div className="facility-emblem" aria-hidden="true">
-                  <Building2 size={22} />
-                </div>
-                <div className="facility-identity-text">
-                  <span className="facility-type-label">{sede.facilityType}</span>
-                  <h2 className="facility-title">{sede.facilityName}</h2>
-                  <p className="facility-address">
-                    <MapPin size={14} className="address-pin-icon" />
-                    <span>{sede.address}</span>
-                  </p>
-                </div>
-              </div>
-              {sede.accreditation && (
-                <div className="facility-accreditation">
-                  <ShieldCheck size={16} className="accreditation-icon" />
-                  <span>{sede.accreditation}</span>
-                </div>
-              )}
+              <FacilityIdentityBanner
+                facilityType={sede.facilityType}
+                facilityName={sede.facilityName}
+                address={sede.address}
+                accreditation={sede.accreditation}
+              />
 
               <div className="schedule-meta-box">
                 <div className="schedule-row">
