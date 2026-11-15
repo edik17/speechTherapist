@@ -20,14 +20,23 @@ export const MatButton = React.forwardRef<any, MatButtonProps>(({
   children,
   ...props
 }, ref) => {
-  const isPrimary = variant === 'raised' || variant === 'flat';
-  const tsClass = isPrimary ? 'ts-btn ts-btn--primary' : 'ts-btn ts-btn--secondary';
-  const fullClassName = `${tsClass} ${className}`.trim();
+  const variantClass = variant === 'raised'
+    ? 'mat-mdc-raised-button'
+    : variant === 'stroked'
+    ? 'mat-mdc-outlined-button'
+    : variant === 'flat'
+    ? 'mat-mdc-unelevated-button'
+    : 'mat-mdc-button';
+
+  const colorClass = color ? `mat-${color}` : '';
+  const fullClassName = `mat-mdc-button-base ${variantClass} ${colorClass} ${className}`.trim();
+
+  const content = <span className="mdc-button__label">{children}</span>;
 
   if (to) {
     return (
       <Link to={to} className={fullClassName} ref={ref} {...(props as any)}>
-        {children}
+        {content}
       </Link>
     );
   }
@@ -35,14 +44,14 @@ export const MatButton = React.forwardRef<any, MatButtonProps>(({
   if (href) {
     return (
       <a href={href} className={fullClassName} ref={ref} {...(props as any)}>
-        {children}
+        {content}
       </a>
     );
   }
 
   return (
     <button type={props.type || 'button'} className={fullClassName} ref={ref} {...props}>
-      {children}
+      {content}
     </button>
   );
 });

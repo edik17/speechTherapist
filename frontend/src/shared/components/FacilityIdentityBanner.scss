@@ -9,21 +9,32 @@
   gap: 14px;
   padding: 16px 18px;
   margin-bottom: 16px;
-  border-radius: var(--r-md, 8px);
-  background: var(--p-surface, #f4f4f4);
-  border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
-  border-left: 3px solid var(--p-action, #1a4be0);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(243, 232, 255, 0.52) 100%);
+  backdrop-filter: var(--liquid-glass-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-blur);
+  border: 1px solid rgba(212, 106, 78, 0.28);
+  border-left: 4px solid #D46A4E;
+  box-shadow: 0 10px 24px -8px rgba(107, 59, 167, 0.14);
+
+  body.dark-mode & {
+    background: linear-gradient(135deg, rgba(46, 36, 68, 0.72) 0%, rgba(30, 38, 36, 0.65) 100%);
+    border-color: var(--liquid-glass-border);
+    border-left: 4px solid #E5876C;
+    box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.45);
+  }
 
   .facility-emblem {
-    width: 42px;
-    height: 42px;
-    border-radius: var(--r-sm, 4px);
-    background: var(--p-ink, #111111);
-    color: var(--p-inv-ink, #ffffff);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #D46A4E 0%, #B85238 100%);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 6px 14px rgba(212, 106, 78, 0.3);
   }
 
   .facility-identity-text {
@@ -33,37 +44,44 @@
 
   .facility-type-label {
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--p-action, #1a4be0);
+    color: #7E22CE;
     margin-bottom: 3px;
     display: block;
+
+    body.dark-mode & {
+      color: #D8B4FE;
+    }
   }
 
   .facility-title {
-    font-family: var(--font-display);
     font-size: clamp(1.38rem, 1.8vw, 1.62rem);
-    font-weight: 400;
-    color: var(--p-ink, #111111);
+    font-weight: 800;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
     line-height: 1.18;
     margin: 0 0 8px;
+
+    body.dark-mode & {
+      color: #FAF7F2;
+    }
   }
 
   .facility-address {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-weight: 500;
-    color: var(--p-muted, #6b6b6b);
+    color: var(--text-secondary);
     margin: 0;
     display: flex;
     align-items: flex-start;
     gap: 6px;
-    line-height: 1.45;
+    line-height: 1.4;
 
     .address-pin-icon {
       flex-shrink: 0;
-      color: var(--p-ink, #111111);
+      color: #D46A4E;
       margin-top: 2px;
     }
   }
@@ -73,19 +91,25 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 8px;
-  padding: 8px 12px;
-  background: var(--p-bg, #ffffff);
-  border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
-  border-radius: var(--r-sm, 4px);
-  color: var(--p-ink, #111111);
-  font-size: 0.8rem;
-  line-height: 1.45;
-  font-weight: 500;
+  padding: 7px 10px;
+  background: rgba(124, 157, 142, 0.12);
+  border: 1px solid rgba(124, 157, 142, 0.35);
+  border-radius: var(--radius-sm);
+  color: #1f5043;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  font-weight: 600;
   margin: 0 0 16px;
+
+  body.dark-mode & {
+    background: rgba(124, 157, 142, 0.18);
+    border-color: rgba(124, 157, 142, 0.45);
+    color: #b3d7c7;
+  }
 
   .accreditation-icon {
     flex-shrink: 0;
-    color: var(--p-action, #1a4be0);
+    color: var(--accent-secondary);
     margin-top: 2px;
   }
 }
