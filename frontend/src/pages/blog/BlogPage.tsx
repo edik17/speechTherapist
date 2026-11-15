@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { StudioPhotoShowcase, StudioPhotoItem } from '../../shared/components/StudioPhotoShowcase';
+import { ThesisBookReader } from '../../shared/components/ThesisBookReader';
 import { MatButton } from '../../shared/ui/MatButton';
 import { blogService } from '../../core/services/blog.service';
 import { Article, ArticleCategory } from '../../core/models/article.model';
@@ -134,10 +135,14 @@ export function BlogPage() {
           </div>
         </header>
 
-        {/* CORPO DELL'ARTICOLO CON TIPOGRAFIA EDITORIALE (TITOLO UFFICIALE & INTRODUZIONE) */}
-        <section
-          className="article-body reading-prose"
-          dangerouslySetInnerHTML={{ __html: currentArticle.content }}
+        {/* LIBRO INTERATTIVO SFOGLIABILE IN 3D */}
+        <ThesisBookReader
+          title={currentArticle.title}
+          subtitle={currentArticle.subtitle}
+          badge={currentArticle.publishedAt}
+          author={currentArticle.author}
+          authorRole={currentArticle.authorRole}
+          htmlContent={currentArticle.content}
         />
 
         {/* SLIDE DELLA DISCUSSIONE ASSOCIATE ALL'INTRODUZIONE */}
@@ -329,12 +334,23 @@ export function BlogPage() {
               <Link to={`/blog/${art.slug}`}>{art.title}</Link>
             </h2>
 
-            {art.slidesCount && (
-              <div className="card-slides-badge">
-                <Presentation size={14} />
-                <span>Include Slide della Discussione ({art.slidesCount} slide)</span>
+            <div className="card-badges">
+              <div className="card-book-badge" aria-hidden="true">
+                <span className="mini-book-3d">
+                  <span className="mini-book-cover-back" />
+                  <span className="mini-book-pages" />
+                  <span className="mini-book-cover-front" />
+                </span>
+                <span>Edizione Libro 3D</span>
               </div>
-            )}
+
+              {art.slidesCount && (
+                <div className="card-slides-badge">
+                  <Presentation size={14} />
+                  <span>Include Slide ({art.slidesCount} slide)</span>
+                </div>
+              )}
+            </div>
 
             <p className="card-excerpt">{art.excerpt}</p>
 
@@ -345,9 +361,9 @@ export function BlogPage() {
               <Link
                 to={`/blog/${art.slug}`}
                 className="read-more-link"
-                aria-label={`Leggi l'articolo: ${art.title}`}
+                aria-label={`Sfoglia l'articolo: ${art.title}`}
               >
-                <span>Leggi Introduzione &amp; Slide</span>
+                <span>{art.slidesCount ? 'Sfoglia il Libro & Slide' : 'Sfoglia il Libro'}</span>
                 <ArrowRight size={16} />
               </Link>
             </div>

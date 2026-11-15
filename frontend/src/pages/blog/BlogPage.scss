@@ -143,6 +143,88 @@ body.dark-mode .magazine-hero {
     }
   }
 
+  .card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .card-book-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(216, 122, 86, 0.12);
+    border: 1px solid rgba(216, 122, 86, 0.3);
+    color: #9e4728;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    width: fit-content;
+    perspective: 180px;
+
+    .mini-book-3d {
+      position: relative;
+      display: inline-block;
+      width: 16px;
+      height: 18px;
+      transform-style: preserve-3d;
+    }
+
+    .mini-book-cover-back,
+    .mini-book-pages,
+    .mini-book-cover-front {
+      position: absolute;
+      inset: 0;
+      border-radius: 1px 3px 3px 1px;
+      transform-origin: left center;
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mini-book-cover-back {
+      background: #2d5c4e;
+      transform: translateZ(-2px);
+    }
+
+    .mini-book-pages {
+      background: #fbf6ec;
+      border: 1px solid rgba(45, 92, 78, 0.28);
+      transform: rotateY(-10deg);
+    }
+
+    .mini-book-cover-front {
+      background: linear-gradient(135deg, #d87a56 0%, #b85d3c 100%);
+      border-left: 2px solid #8a3f24;
+      transform: rotateY(-18deg);
+    }
+
+    .article-card:hover & {
+      .mini-book-pages {
+        transform: rotateY(-32deg);
+      }
+
+      .mini-book-cover-front {
+        transform: rotateY(-64deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mini-book-cover-back,
+      .mini-book-pages,
+      .mini-book-cover-front {
+        transition: none;
+      }
+    }
+
+    body.dark-mode & {
+      color: #f0a489;
+      background: rgba(216, 122, 86, 0.18);
+      border-color: rgba(240, 164, 137, 0.28);
+    }
+  }
+
   .card-slides-badge {
     display: inline-flex;
     align-items: center;
@@ -154,7 +236,6 @@ body.dark-mode .magazine-hero {
     border-radius: 6px;
     font-size: 0.78rem;
     font-weight: 600;
-    margin-bottom: 12px;
     width: fit-content;
 
     body.dark-mode & {
@@ -200,9 +281,9 @@ body.dark-mode .magazine-hero {
   }
 }
 
-/* Detail View Styles (Centered 720px) */
+/* Detail View Styles (Centered 980px to accommodate 3D Open Book Spread) */
 .article-detail-view {
-  max-width: 720px;
+  max-width: 980px;
   margin: 0 auto 60px;
 
   .back-nav {
