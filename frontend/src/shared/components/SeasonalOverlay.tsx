@@ -56,20 +56,20 @@ function createParticle(
   const isWinter = season === 'winter';
 
   const size = isWinter
-    ? randomBetween(5, 11)
+    ? randomBetween(4, 8.5)
     : isSummer
-    ? randomBetween(4, 9)
-    : randomBetween(7, 13);
+    ? randomBetween(3.5, 7.5)
+    : randomBetween(5.5, 10);
 
   const vy = isSummer
-    ? randomBetween(-0.28, 0.22)
+    ? randomBetween(-0.18, 0.16)
     : isWinter
-    ? randomBetween(0.55, 1.35)
-    : randomBetween(0.6, 1.45);
+    ? randomBetween(0.38, 0.9)
+    : randomBetween(0.42, 0.95);
 
   const vx = isSummer
-    ? randomBetween(-0.32, 0.32)
-    : randomBetween(-0.25, 0.35);
+    ? randomBetween(-0.2, 0.2)
+    : randomBetween(-0.18, 0.22);
 
   return {
     x: randomBetween(0, width),
@@ -78,17 +78,17 @@ function createParticle(
     vy,
     size,
     angle: randomBetween(0, Math.PI * 2),
-    spin: randomBetween(-0.022, 0.022),
-    swayAmp: isSummer ? randomBetween(0.25, 0.7) : randomBetween(0.35, 1.15),
-    swaySpeed: randomBetween(0.012, 0.028),
+    spin: randomBetween(-0.014, 0.014),
+    swayAmp: isSummer ? randomBetween(0.18, 0.5) : randomBetween(0.25, 0.75),
+    swaySpeed: randomBetween(0.008, 0.018),
     phase: randomBetween(0, Math.PI * 2),
     flip: randomBetween(0, Math.PI * 2),
-    flipSpeed: randomBetween(0.015, 0.04),
+    flipSpeed: randomBetween(0.01, 0.024),
     alpha: isWinter
-      ? randomBetween(0.55, 0.9)
+      ? randomBetween(0.35, 0.65)
       : isSummer
-      ? randomBetween(0.45, 0.85)
-      : randomBetween(0.55, 0.85),
+      ? randomBetween(0.3, 0.6)
+      : randomBetween(0.35, 0.62),
     color,
     variant: Math.random() > 0.45 ? 0 : 1,
   };
@@ -248,14 +248,16 @@ export function SeasonalOverlay({ season }: SeasonalOverlayProps) {
 
     configureCanvas();
 
-    const targetCount = width < 768 ? 18 : 32;
+    const getParticleCount = (viewportWidth: number) => (viewportWidth < 768 ? 7 : 12);
+
+    const targetCount = getParticleCount(width);
     const particles: Particle[] = Array.from({ length: targetCount }, () =>
       createParticle(season, width, height, true)
     );
 
     const handleResize = () => {
       configureCanvas();
-      const desired = width < 768 ? 18 : 32;
+      const desired = getParticleCount(width);
       while (particles.length < desired) {
         particles.push(createParticle(season, width, height, true));
       }
