@@ -71,7 +71,7 @@ export function SeasonalControl({
 
   const activeOption =
     SEASON_OPTIONS.find((opt) => opt.value === season) ?? SEASON_OPTIONS[0];
-  const ActiveIcon = activeOption.icon;
+  const ActiveIcon = season === 'off' ? Sparkles : activeOption.icon;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -126,7 +126,7 @@ export function SeasonalControl({
         >
           <div className="popover-header">
             <span className="popover-title">Atmosfera Stagionale</span>
-            <span className="popover-subtitle">Automatica in base al mese</span>
+            <span className="popover-subtitle">Disattivata di default · Scegli un tema</span>
           </div>
 
           <div className="popover-options">

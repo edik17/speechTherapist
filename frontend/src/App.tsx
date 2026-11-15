@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
 import { Sun, Moon, CalendarCheck } from 'lucide-react';
 import { MatSnackBarContainer } from './shared/ui/MatSnackBar';
-import { SeasonalOverlay, getCurrentSeason, SeasonType } from './shared/components/SeasonalOverlay';
+import { SeasonalOverlay, SeasonType } from './shared/components/SeasonalOverlay';
 import { SeasonalControl } from './shared/components/SeasonalControl';
 import './App.scss';
 
@@ -42,20 +42,14 @@ export function ScrollToTopAndTitle() {
   return null;
 }
 
-const VALID_SEASONS: SeasonType[] = ['autumn', 'winter', 'spring', 'summer', 'off'];
-
 export default function App() {
   const [open, setOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [season, setSeason] = useState<SeasonType>(() => {
-    const saved = localStorage.getItem('seasonalEffect') as SeasonType | null;
-    return saved && VALID_SEASONS.includes(saved) ? saved : getCurrentSeason();
-  });
+  const [season, setSeason] = useState<SeasonType>('off');
   const year = new Date().getFullYear();
 
   const handleSeasonChange = (nextSeason: SeasonType) => {
     setSeason(nextSeason);
-    localStorage.setItem('seasonalEffect', nextSeason);
   };
 
   useEffect(() => {
@@ -96,6 +90,7 @@ export default function App() {
   return (
     <div className="app-container">
       <SeasonalOverlay season={season} />
+      <SeasonalControl season={season} onChange={handleSeasonChange} />
       <ScrollToTopAndTitle />
       <header className="navbar-wrapper">
         <nav className="editorial-nav" aria-label="Navigazione principale">
@@ -196,9 +191,6 @@ export default function App() {
                 <Moon size={18} className="moon-icon" />
               )}
             </button>
-
-            {/* Seasonal effect selector */}
-            <SeasonalControl season={season} onChange={handleSeasonChange} />
           </div>
 
           {/* Mobile controls */}
@@ -216,12 +208,6 @@ export default function App() {
                 <Moon size={18} className="moon-icon" />
               )}
             </button>
-
-            <SeasonalControl
-              season={season}
-              onChange={handleSeasonChange}
-              className="mobile-season"
-            />
 
             <button
               type="button"
