@@ -1,90 +1,68 @@
-/* Magazine Listing Styles */
+/* Magazine Listing & Detail Styles - Sheet & Biro */
 .blog-magazine-container {
-  max-width: 1100px;
+  max-width: var(--max, 1180px);
   margin: 0 auto;
-  padding-bottom: 60px;
+  padding-bottom: 64px;
 }
 
 .magazine-hero {
-  text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: clamp(2.5rem, 5vw, 3.5rem) 2rem clamp(2rem, 4vw, 2.5rem);
-  background: var(--liquid-glass-hero-bg);
-  backdrop-filter: var(--liquid-glass-hero-blur);
-  -webkit-backdrop-filter: var(--liquid-glass-hero-blur);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--liquid-glass-border);
-  box-shadow: var(--liquid-glass-hero-shadow);
+  align-items: flex-start;
+  padding: clamp(28px, 4.5vw, 44px) clamp(20px, 4vw, 40px);
+  background: var(--p-surface, #f4f4f4);
+  border-radius: var(--r-lg, 12px);
+  border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
 
   h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
     margin: 0 0 12px;
-    font-size: clamp(2.2rem, 4.5vw, 3.25rem);
-    color: var(--text-primary);
+    font-size: clamp(2.1rem, 4.2vw, 3.1rem);
+    letter-spacing: -0.025em;
+    color: var(--p-ink, #111111);
   }
 
   .magazine-subtitle {
-    max-width: 650px;
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 28px;
+    max-width: 62ch;
+    font-size: 1.06rem;
+    color: var(--p-muted, #6b6b6b);
+    line-height: 1.62;
+    margin: 0 0 24px;
   }
-}
-
-body.dark-mode .magazine-hero {
-  background: var(--liquid-glass-hero-bg);
-  border: 1px solid var(--liquid-glass-border);
-  box-shadow: var(--liquid-glass-hero-shadow);
 }
 
 .category-filters {
   display: inline-flex;
-  background: var(--liquid-glass-bg);
-  backdrop-filter: var(--liquid-glass-blur);
-  -webkit-backdrop-filter: var(--liquid-glass-blur);
-  padding: 6px;
+  background: var(--p-bg, #ffffff);
+  padding: 5px;
   border-radius: 999px;
   gap: 6px;
-  border: 1px solid var(--liquid-glass-border);
-  box-shadow: var(--liquid-glass-shadow);
+  border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
   flex-wrap: wrap;
-  justify-content: center;
 
   .filter-tab {
-    border: none;
+    border: 1px solid transparent;
     background: transparent;
-    color: var(--text-secondary);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 8px 18px;
+    color: var(--p-muted, #6b6b6b);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 500;
+    min-height: 40px;
+    padding: 7px 16px;
     border-radius: 999px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 
     &:hover {
-      color: var(--text-primary);
+      color: var(--p-ink, #111111);
     }
 
     &.active {
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      box-shadow: 0 4px 12px rgba(27, 59, 54, 0.08);
-    }
-
-    &.thesis-tab.active {
-      color: #0F4C5C;
-    }
-
-    &.evidence-tab.active {
-      color: #2D5A4C;
-    }
-
-    &.reflection-tab.active {
-      color: #B24E35;
+      background: var(--p-ink, #111111);
+      color: var(--p-inv-ink, #ffffff);
+      border-color: var(--p-ink, #111111);
     }
   }
 }
@@ -92,7 +70,7 @@ body.dark-mode .magazine-hero {
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 28px;
+  gap: 24px;
 }
 
 .article-card {
@@ -100,19 +78,17 @@ body.dark-mode .magazine-hero {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  background: var(--bg-elevated);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  border: 1px solid var(--border-subtle);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  background: var(--p-bg, #ffffff);
+  border-radius: var(--r-md, 8px);
+  padding: 26px;
+  border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+  transition: border-color 0.2s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px -8px rgba(27, 59, 54, 0.12);
+    border-color: var(--p-ink, #111111);
 
     .card-title a {
-      color: var(--accent-primary);
+      color: var(--p-action, #1a4be0);
     }
   }
 
@@ -120,7 +96,7 @@ body.dark-mode .magazine-hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .read-time-pill {
@@ -128,18 +104,20 @@ body.dark-mode .magazine-hero {
     align-items: center;
     gap: 5px;
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: var(--p-muted, #6b6b6b);
   }
 
   .card-title {
-    font-size: 1.4rem;
-    line-height: 1.3;
-    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.42rem;
+    line-height: 1.26;
+    margin: 0 0 12px;
 
     a {
-      color: var(--text-primary);
+      color: var(--p-ink, #111111);
       text-decoration: none;
-      transition: color 0.2s ease;
+      transition: color 0.18s ease;
     }
   }
 
@@ -155,11 +133,11 @@ body.dark-mode .magazine-hero {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(216, 122, 86, 0.12);
-    border: 1px solid rgba(216, 122, 86, 0.3);
-    color: #9e4728;
+    background: var(--p-surface, #f4f4f4);
+    border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+    color: var(--p-ink, #111111);
     padding: 4px 10px;
-    border-radius: 6px;
+    border-radius: var(--r-sm, 4px);
     font-size: 0.78rem;
     font-weight: 600;
     width: fit-content;
@@ -180,33 +158,33 @@ body.dark-mode .magazine-hero {
       inset: 0;
       border-radius: 1px 3px 3px 1px;
       transform-origin: left center;
-      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.36s ease;
     }
 
     .mini-book-cover-back {
-      background: #2d5c4e;
+      background: #111111;
       transform: translateZ(-2px);
     }
 
     .mini-book-pages {
-      background: #fbf6ec;
-      border: 1px solid rgba(45, 92, 78, 0.28);
+      background: #ffffff;
+      border: 1px solid rgba(17, 17, 17, 0.2);
       transform: rotateY(-10deg);
     }
 
     .mini-book-cover-front {
-      background: linear-gradient(135deg, #d87a56 0%, #b85d3c 100%);
-      border-left: 2px solid #8a3f24;
+      background: var(--p-action, #1a4be0);
+      border-left: 2px solid #111111;
       transform: rotateY(-18deg);
     }
 
     .article-card:hover & {
       .mini-book-pages {
-        transform: rotateY(-32deg);
+        transform: rotateY(-30deg);
       }
 
       .mini-book-cover-front {
-        transform: rotateY(-64deg);
+        transform: rotateY(-60deg);
       }
     }
 
@@ -217,38 +195,27 @@ body.dark-mode .magazine-hero {
         transition: none;
       }
     }
-
-    body.dark-mode & {
-      color: #f0a489;
-      background: rgba(216, 122, 86, 0.18);
-      border-color: rgba(240, 164, 137, 0.28);
-    }
   }
 
   .card-slides-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(124, 157, 142, 0.12);
-    border: 1px solid rgba(124, 157, 142, 0.3);
-    color: #245648;
+    background: rgba(26, 75, 224, 0.08);
+    border: 1px solid rgba(26, 75, 224, 0.22);
+    color: var(--p-action, #1a4be0);
     padding: 4px 10px;
-    border-radius: 6px;
+    border-radius: var(--r-sm, 4px);
     font-size: 0.78rem;
     font-weight: 600;
     width: fit-content;
-
-    body.dark-mode & {
-      color: #A3C9B8;
-      background: rgba(124, 157, 142, 0.18);
-    }
   }
 
   .card-excerpt {
-    color: var(--text-secondary);
+    color: var(--p-muted, #6b6b6b);
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 24px;
+    line-height: 1.62;
+    margin: 0 0 22px;
     flex-grow: 1;
   }
 
@@ -256,52 +223,49 @@ body.dark-mode .magazine-hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--line, rgba(17, 17, 17, 0.14));
     padding-top: 16px;
 
     .publish-date {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
+      font-size: 0.84rem;
+      color: var(--p-muted, #6b6b6b);
     }
 
     .read-more-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--accent-primary);
-      font-weight: 700;
+      color: var(--p-action, #1a4be0);
+      font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
-      transition: transform 0.2s ease;
 
       &:hover {
-        transform: translateX(4px);
+        text-decoration: underline;
       }
     }
   }
 }
 
-/* Detail View Styles (Centered 980px to accommodate 3D Open Book Spread) */
 .article-detail-view {
   max-width: 980px;
-  margin: 0 auto 60px;
+  margin: 0 auto 64px;
 
   .back-nav {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
 
     .back-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--text-secondary);
+      color: var(--p-muted, #6b6b6b);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s ease, transform 0.2s ease;
+      font-weight: 500;
+      font-size: 0.94rem;
+      min-height: 40px;
 
       &:hover {
-        color: var(--accent-primary);
-        transform: translateX(-3px);
+        color: var(--p-action, #1a4be0);
       }
     }
   }
@@ -321,22 +285,25 @@ body.dark-mode .magazine-hero {
         align-items: center;
         gap: 5px;
         font-size: 0.85rem;
-        color: var(--text-secondary);
+        color: var(--p-muted, #6b6b6b);
       }
     }
 
     .article-title {
-      font-size: clamp(2rem, 4vw, 2.85rem);
-      line-height: 1.2;
-      margin-bottom: 16px;
-      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin: 0 0 16px;
+      color: var(--p-ink, #111111);
     }
 
     .article-lead {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
+      font-size: 1.15rem;
+      line-height: 1.62;
+      color: var(--p-muted, #6b6b6b);
+      margin: 0 0 24px;
     }
 
     .author-byline {
@@ -344,21 +311,22 @@ body.dark-mode .magazine-hero {
       align-items: center;
       gap: 12px;
       padding-block: 14px;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
+      border-top: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+      border-bottom: 1px solid var(--line, rgba(17, 17, 17, 0.14));
 
       .author-avatar-badge {
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: var(--primary-gradient);
-        color: #FAF7F2;
+        background: var(--p-ink, #111111);
+        color: var(--p-inv-ink, #ffffff);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 700;
-        font-family: 'Fraunces', serif;
+        font-weight: 400;
+        font-family: var(--font-display);
         font-size: 1rem;
+        flex-shrink: 0;
       }
 
       .author-text {
@@ -366,62 +334,64 @@ body.dark-mode .magazine-hero {
         flex-direction: column;
 
         strong {
-          color: var(--text-primary);
+          color: var(--p-ink, #111111);
           font-size: 0.95rem;
+          font-weight: 600;
         }
 
         span {
-          color: var(--text-secondary);
-          font-size: 0.82rem;
+          color: var(--p-muted, #6b6b6b);
+          font-size: 0.84rem;
         }
       }
     }
   }
 
-  /* Article body */
   .article-body {
     margin-bottom: 48px;
 
     .intro-section-title {
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: 1.6rem;
-      color: var(--text-primary);
+      color: var(--p-ink, #111111);
       margin: 32px 0 16px;
       padding-bottom: 8px;
-      border-bottom: 2px solid rgba(124, 157, 142, 0.25);
+      border-bottom: 1px solid var(--line, rgba(17, 17, 17, 0.14));
     }
 
     .footnote {
-      font-size: 0.85rem !important;
-      color: var(--text-secondary);
-      border-top: 1px dashed var(--border-subtle);
+      font-size: 0.85rem;
+      color: var(--p-muted, #6b6b6b);
+      border-top: 1px dashed var(--line, rgba(17, 17, 17, 0.14));
       padding-top: 8px;
       margin-top: -8px;
       margin-bottom: 1.5rem;
     }
 
     p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      margin-bottom: 1.5rem;
+      font-size: 1.04rem;
+      line-height: 1.72;
+      color: var(--p-ink, #111111);
+      margin-bottom: 1.4rem;
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.45rem;
       margin-top: 2rem;
       margin-bottom: 1rem;
-      color: var(--text-primary);
+      color: var(--p-ink, #111111);
     }
   }
 
-  /* Slide Presentation Card */
   .slides-presentation-card {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: 28px;
+    background: var(--p-surface, #f4f4f4);
+    border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+    border-radius: var(--r-lg, 12px);
+    padding: 26px;
     margin: 36px 0;
-    box-shadow: 0 12px 32px -6px rgba(27, 59, 54, 0.08);
 
     .slides-card-header {
       display: flex;
@@ -430,11 +400,12 @@ body.dark-mode .magazine-hero {
       margin-bottom: 20px;
 
       .slides-icon-wrap {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        background: rgba(124, 157, 142, 0.15);
-        color: var(--accent-secondary);
+        width: 46px;
+        height: 46px;
+        border-radius: var(--r-sm, 4px);
+        background: var(--p-bg, #ffffff);
+        border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+        color: var(--p-action, #1a4be0);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -442,24 +413,26 @@ body.dark-mode .magazine-hero {
       }
 
       h3 {
+        font-family: var(--font-display);
+        font-weight: 400;
         margin: 0 0 4px;
-        font-size: 1.25rem;
-        color: var(--text-primary);
+        font-size: 1.28rem;
+        color: var(--p-ink, #111111);
       }
 
       p {
         margin: 0;
-        font-size: 0.88rem;
-        color: var(--text-secondary);
+        font-size: 0.9rem;
+        color: var(--p-muted, #6b6b6b);
       }
     }
 
     .slide-viewer-box {
-      background: #111827;
-      border-radius: var(--radius-md);
+      background: #111111;
+      border-radius: var(--r-md, 8px);
       overflow: hidden;
       margin-bottom: 20px;
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
 
       .slide-image-wrapper {
         position: relative;
@@ -468,7 +441,7 @@ body.dark-mode .magazine-hero {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #000;
+        background: #111111;
 
         .slide-active-img {
           width: 100%;
@@ -484,23 +457,19 @@ body.dark-mode .magazine-hero {
           width: 44px;
           height: 44px;
           border-radius: 50%;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(16, 32, 28, 0.58) 100%);
-          backdrop-filter: blur(16px) saturate(190%);
-          -webkit-backdrop-filter: blur(16px) saturate(190%);
-          color: #fff;
-          border: 1px solid rgba(255, 255, 255, 0.42);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28),
-                      inset 0 1px 1px rgba(255, 255, 255, 0.55);
+          background: #111111;
+          color: #ffffff;
+          border: 1px solid rgba(255, 255, 255, 0.35);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: background 0.18s ease, border-color 0.18s ease;
           z-index: 2;
 
           &:hover {
-            background: rgba(212, 106, 78, 0.95);
-            transform: translateY(-50%) scale(1.08);
+            background: var(--p-action, #1a4be0);
+            border-color: var(--p-action, #1a4be0);
           }
 
           &.prev-btn {
@@ -516,17 +485,13 @@ body.dark-mode .magazine-hero {
           position: absolute;
           bottom: 12px;
           right: 12px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(16, 32, 28, 0.68) 100%);
-          backdrop-filter: blur(16px) saturate(190%);
-          -webkit-backdrop-filter: blur(16px) saturate(190%);
-          color: #fff;
+          background: #111111;
+          color: #ffffff;
           font-size: 0.78rem;
           font-weight: 600;
           padding: 4px 12px;
           border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.40);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28),
-                      inset 0 1px 1px rgba(255, 255, 255, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.25);
         }
       }
 
@@ -536,25 +501,25 @@ body.dark-mode .magazine-hero {
         justify-content: center;
         gap: 6px;
         padding: 12px;
-        background: rgba(17, 24, 39, 0.95);
+        background: #141414;
         flex-wrap: wrap;
 
         .slide-dot {
           width: 9px;
           height: 9px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.32);
           border: none;
           cursor: pointer;
           padding: 0;
-          transition: all 0.2s ease;
+          transition: background 0.18s ease, transform 0.18s ease;
 
           &:hover {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.72);
           }
 
           &.active {
-            background: var(--accent-primary);
+            background: var(--p-action, #1a4be0);
             transform: scale(1.25);
           }
         }
@@ -570,32 +535,34 @@ body.dark-mode .magazine-hero {
         display: inline-flex;
         align-items: center;
         gap: 8px;
+        min-height: 44px;
         padding: 10px 18px;
-        border-radius: 8px;
+        border-radius: 999px;
         font-size: 0.88rem;
-        font-weight: 600;
+        font-weight: 500;
         text-decoration: none;
-        transition: all 0.2s ease;
+        transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 
         &.btn-pdf {
-          background: var(--bg-surface);
-          border: 1px solid var(--border-subtle);
-          color: var(--text-primary);
+          background: var(--p-bg, #ffffff);
+          border: 1px solid var(--line-strong, rgba(17, 17, 17, 0.28));
+          color: var(--p-ink, #111111);
 
           &:hover {
-            background: var(--border-subtle);
-            color: var(--accent-primary);
+            border-color: var(--p-ink, #111111);
+            background: var(--p-ink, #111111);
+            color: var(--p-inv-ink, #ffffff);
           }
         }
 
         &.btn-pptx {
-          background: var(--accent-secondary);
-          color: #fff;
-          border: 1px solid var(--accent-secondary);
+          background: var(--p-action, #1a4be0);
+          color: #ffffff;
+          border: 1px solid var(--p-action, #1a4be0);
 
           &:hover {
-            background: #245648;
-            transform: translateY(-1px);
+            background: var(--p-ink, #111111);
+            border-color: var(--p-ink, #111111);
           }
         }
       }
@@ -603,7 +570,7 @@ body.dark-mode .magazine-hero {
   }
 
   .article-footer {
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--line, rgba(17, 17, 17, 0.14));
     padding-top: 28px;
 
     .article-tags {
@@ -613,21 +580,24 @@ body.dark-mode .magazine-hero {
       margin-bottom: 32px;
 
       .tag-chip {
-        background: var(--bg-surface);
-        color: var(--text-secondary);
+        background: var(--p-surface, #f4f4f4);
+        border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+        color: var(--p-ink, #111111);
         padding: 4px 12px;
-        border-radius: 999px;
+        border-radius: var(--r-sm, 4px);
         font-size: 0.8rem;
         font-weight: 500;
       }
     }
 
     .article-cta-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      padding: 32px;
+      background: var(--p-surface, #f4f4f4);
+      border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+      border-radius: var(--r-lg, 12px);
+      padding: 28px;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       gap: 20px;
 
       .cta-inner {
@@ -636,11 +606,12 @@ body.dark-mode .magazine-hero {
         gap: 16px;
 
         .cta-icon-wrap {
-          width: 52px;
-          height: 52px;
-          border-radius: 14px;
-          background: rgba(212, 106, 78, 0.12);
-          color: var(--accent-primary);
+          width: 48px;
+          height: 48px;
+          border-radius: var(--r-sm, 4px);
+          background: var(--p-bg, #ffffff);
+          border: 1px solid var(--line, rgba(17, 17, 17, 0.14));
+          color: var(--p-action, #1a4be0);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -648,33 +619,27 @@ body.dark-mode .magazine-hero {
         }
 
         h3 {
+          font-family: var(--font-display);
+          font-weight: 400;
           margin: 0 0 6px;
-          font-size: 1.25rem;
-          color: var(--text-primary);
+          font-size: 1.32rem;
+          color: var(--p-ink, #111111);
         }
 
         p {
           margin: 0;
-          font-size: 0.95rem;
-          color: var(--text-secondary);
+          font-size: 0.96rem;
+          color: var(--p-muted, #6b6b6b);
+          line-height: 1.55;
         }
       }
 
       .article-consult-btn {
-        background: var(--accent-primary) !important;
-        color: #ffffff !important;
-        border-radius: 999px !important;
-        font-weight: 700 !important;
-        padding: 10px 24px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        text-decoration: none !important;
-
-        &:hover {
-          background: var(--accent-primary-hover) !important;
-          transform: translateY(-2px);
-        }
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
       }
     }
   }

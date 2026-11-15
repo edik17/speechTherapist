@@ -57,17 +57,16 @@ export function MatSnackBarContainer() {
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 9999,
-        background: '#1B3B36',
-        color: '#FAF7F2',
-        padding: '12px 24px',
-        borderRadius: 12,
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)',
+        background: '#111111',
+        color: '#ffffff',
+        padding: '12px 20px',
+        borderRadius: 'var(--r-md, 8px)',
+        border: '1px solid rgba(255, 255, 255, 0.16)',
         display: 'flex',
         alignItems: 'center',
         gap: 16,
-        fontSize: '0.95rem',
+        fontSize: '0.94rem',
         maxWidth: '90vw',
-        animation: 'fadeInUp 0.3s ease',
       }}
     >
       <span>{snack.message}</span>

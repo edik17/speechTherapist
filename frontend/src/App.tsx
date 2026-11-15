@@ -1,354 +1,352 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
-import { Sun, Moon, CalendarCheck } from 'lucide-react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
+import { Routes, Route, Link, NavLink, useLocation, Navigate } from 'react-router-dom';
+import { Phone, Menu, X } from 'lucide-react';
 import { MatSnackBarContainer } from './shared/ui/MatSnackBar';
-import { SeasonalOverlay, SeasonType } from './shared/components/SeasonalOverlay';
-import { SeasonalControl } from './shared/components/SeasonalControl';
+import { ArrowIcon, ArcMark } from './shared/ui/ArrowIcon';
 import './App.scss';
 
-// Scroll to top and title update on navigation
-export function ScrollToTopAndTitle() {
-  const { pathname } = useLocation();
+const HomePage = lazy(() => import('./pages/home/HomePage').then((m) => ({ default: m.HomePage })));
+const AboutPage = lazy(() => import('./pages/about/AboutPage').then((m) => ({ default: m.AboutPage })));
+const ServicesPage = lazy(() => import('./pages/services/ServicesPage').then((m) => ({ default: m.ServicesPage })));
+const TestimonialsPage = lazy(() => import('./pages/testimonials/TestimonialsPage').then((m) => ({ default: m.TestimonialsPage })));
+const BlogPage = lazy(() => import('./pages/blog/BlogPage').then((m) => ({ default: m.BlogPage })));
+const FaqPage = lazy(() => import('./pages/faq/FaqPage').then((m) => ({ default: m.FaqPage })));
+const ContattiPage = lazy(() => import('./pages/contatti/ContattiPage').then((m) => ({ default: m.ContattiPage })));
+const SediPage = lazy(() => import('./pages/sedi/SediPage').then((m) => ({ default: m.SediPage })));
+
+const PAGE_TITLES: Record<string, string> = {
+  '/': 'Dott.ssa Eleonora Mariotti: Logopedia per bambini, ragazzi e adulti nelle Marche',
+  '/chi-sono': 'Chi Sono e Formazione Clinica | Dott.ssa Eleonora Mariotti',
+  '/servizi': 'Ambiti Clinici e Servizi di Logopedia | Dott.ssa Eleonora Mariotti',
+  '/sedi': 'Sedi e Orari di Ricevimento: Ancona, Jesi, Sassoferrato',
+  '/testimonianze': 'Testimonianze e Recensioni dei Pazienti | Dott.ssa Eleonora Mariotti',
+  '/blog': 'Tesi, Ricerche ed Evidenze Cliniche | Dott.ssa Eleonora Mariotti',
+  '/faq': 'Domande Frequenti sulla Logopedia | Dott.ssa Eleonora Mariotti',
+  '/contatti': 'Contatti e Prenotazioni | Dott.ssa Eleonora Mariotti',
+};
+
+const NAV_LINKS_LEFT = [
+  { to: '/chi-sono', label: 'Chi sono' },
+  { to: '/servizi', label: 'Servizi' },
+  { to: '/sedi', label: 'Sedi' },
+  { to: '/blog', label: 'Tesi & Ricerca' },
+];
+
+const NAV_LINKS_RIGHT = [
+  { to: '/testimonianze', label: 'Recensioni' },
+  { to: '/faq', label: 'FAQ' },
+  { to: '/contatti', label: 'Contatti' },
+];
+
+const ALL_MOBILE_LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/chi-sono', label: 'Chi sono e formazione' },
+  { to: '/servizi', label: 'Ambiti di intervento' },
+  { to: '/sedi', label: 'Sedi e orari (Ancona, Jesi, Sassoferrato)' },
+  { to: '/testimonianze', label: 'Testimonianze e recensioni' },
+  { to: '/blog', label: 'Tesi ed evidenze cliniche' },
+  { to: '/faq', label: 'Domande frequenti' },
+  { to: '/contatti', label: 'Contatti e prenotazione' },
+];
+
+export function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-
-    // Route title update
-    if (pathname === '/') {
-      document.title = 'Home – Logopedista';
-    } else if (pathname === '/chi-sono') {
-      document.title = 'Chi sono – Logopedista';
-    } else if (pathname === '/servizi') {
-      document.title = 'Servizi – Logopedia';
-    } else if (pathname === '/sedi') {
-      document.title = 'Le Mie Sedi – Logopedista Ancona, Jesi, Sassoferrato';
-    } else if (pathname === '/contatti') {
-      document.title = 'Contatti & Prenotazioni – Logopedista';
-    } else if (pathname === '/faq') {
-      document.title = 'FAQ – Logopedia';
-    } else if (pathname.startsWith('/blog/')) {
-      document.title = 'Tesi & Approfondimento – Logopedista';
-    } else if (pathname === '/blog') {
-      document.title = 'Le mie tesi – Logopedista';
-    } else if (pathname === '/testimonianze') {
-      document.title = 'Cosa dicono di me – Logopedista';
-    } else {
-      document.title = 'Dott.ssa Eleonora Mariotti – Logopedista';
-    }
-  }, [pathname]);
-
-  return null;
-}
-
-export default function App() {
-  const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [season, setSeason] = useState<SeasonType>('off');
-  const year = new Date().getFullYear();
-
-  const handleSeasonChange = (nextSeason: SeasonType) => {
-    setSeason(nextSeason);
-  };
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      setIsDarkMode(false);
-      document.body.classList.remove('dark-mode');
-      document.documentElement.classList.remove('dark-mode');
-    } else {
-      setIsDarkMode(true);
-      document.body.classList.add('dark-mode');
-      document.documentElement.classList.add('dark-mode');
-    }
+    document.body.classList.remove('dark-mode');
+    document.documentElement.classList.remove('dark-mode');
   }, []);
 
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => {
-      const next = !prev;
-      if (next) {
-        document.body.classList.add('dark-mode');
-        document.documentElement.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.body.classList.remove('dark-mode');
-        document.documentElement.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light');
-      }
-      return next;
-    });
-  };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    setMobileMenuOpen(false);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  };
+    const exact = PAGE_TITLES[location.pathname];
+    if (exact) {
+      document.title = exact;
+    } else if (location.pathname.startsWith('/blog/')) {
+      document.title = 'Approfondimento Clinico | Dott.ssa Eleonora Mariotti';
+    } else {
+      document.title = PAGE_TITLES['/'];
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [mobileMenuOpen]);
+
+  const isHome = location.pathname === '/';
 
   return (
-    <div className="app-container">
-      <SeasonalOverlay season={season} />
-      <SeasonalControl season={season} onChange={handleSeasonChange} />
-      <ScrollToTopAndTitle />
-      <header className="navbar-wrapper">
-        <nav className="editorial-nav" aria-label="Navigazione principale">
-          {/* Logo / Brand con stile editoriale */}
-          <Link
-            to="/"
-            onClick={scrollToTop}
-            className="brand-link"
-            aria-label="Home page Dott.ssa Eleonora Mariotti"
-          >
-            <div className="brand-text">
-              <span className="brand-name">Dott.ssa Eleonora Mariotti</span>
-              <span className="brand-tagline">Logopedista • Sassoferrato • Ancona • Jesi</span>
-            </div>
+    <>
+      <a className="skip-link" href="#main-content">
+        Vai al contenuto
+      </a>
+
+      <header className="ts-nav">
+        <div className="wrap ts-nav__bar">
+          <div className="ts-nav__left">
+            <button
+              type="button"
+              className="ts-nav__burger"
+              aria-label={mobileMenuOpen ? 'Chiudi menu di navigazione' : 'Apri menu di navigazione'}
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+            >
+              {mobileMenuOpen ? <X size={20} strokeWidth={1.8} /> : <Menu size={20} strokeWidth={1.8} />}
+            </button>
+
+            <nav className="ts-nav__links" aria-label="Sezioni principali">
+              {NAV_LINKS_LEFT.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) => `ts-nav__link${isActive ? ' is-active' : ''}`}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
+
+          <Link to="/" className="ts-nav__logo" aria-label="Dott.ssa Eleonora Mariotti, Logopedista - Torna alla Home">
+            <ArcMark className="ts-nav__mark" />
+            <span className="ts-nav__brand-name">Eleonora Mariotti</span>
           </Link>
 
-          {/* Menu Desktop */}
-          <div className="nav-links">
-            <NavLink
-              to="/"
-              end
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/chi-sono"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Chi sono
-            </NavLink>
-            <NavLink
-              to="/servizi"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Servizi
-            </NavLink>
-            <NavLink
-              to="/sedi"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Sedi
-            </NavLink>
-            <NavLink
-              to="/contatti"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Contatti
-            </NavLink>
-            <NavLink
-              to="/blog"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Le mie tesi
-            </NavLink>
-            <NavLink
-              to="/testimonianze"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              Cosa dicono di me
-            </NavLink>
-            <NavLink
-              to="/faq"
-              onClick={scrollToTop}
-              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-              FAQ
-            </NavLink>
+          <div className="ts-nav__actions">
+            <nav className="ts-nav__links ts-nav__links--right" aria-label="Informazioni e contatti">
+              {NAV_LINKS_RIGHT.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) => `ts-nav__link${isActive ? ' is-active' : ''}`}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
 
-            {/* CTA Prenota un colloquio in Terracotta */}
-            <NavLink
-              to="/contatti"
-              onClick={scrollToTop}
-              className={({ isActive }) => `cta-colloquio-btn ${isActive ? 'active' : ''}`}
-            >
-              <CalendarCheck size={16} className="btn-icon" />
-              <span>Prenota un colloquio</span>
-            </NavLink>
-
-            {/* Theme toggle */}
-            <button
-              type="button"
-              className="theme-toggle"
-              onClick={toggleTheme}
-              aria-label={isDarkMode ? 'Passa alla modalità chiara' : 'Passa alla modalità scura'}
-              title={isDarkMode ? 'Passa alla modalità chiara' : 'Passa alla modalità scura'}
-            >
-              {isDarkMode ? (
-                <Sun size={18} className="sun-icon" />
-              ) : (
-                <Moon size={18} className="moon-icon" />
-              )}
-            </button>
+            <Link to="/contatti" className="ts-btn ts-btn--primary ts-btn--sm ts-nav__cta">
+              <span>Prenota una Valutazione</span>
+              <ArrowIcon />
+            </Link>
           </div>
-
-          {/* Mobile controls */}
-          <div className="mobile-actions">
-            <button
-              type="button"
-              className="theme-toggle mobile-theme"
-              onClick={toggleTheme}
-              aria-label={isDarkMode ? 'Passa alla modalità chiara' : 'Passa alla modalità scura'}
-              title={isDarkMode ? 'Passa alla modalità chiara' : 'Passa alla modalità scura'}
-            >
-              {isDarkMode ? (
-                <Sun size={18} className="sun-icon" />
-              ) : (
-                <Moon size={18} className="moon-icon" />
-              )}
-            </button>
-
-            <button
-              type="button"
-              className="hamburger-btn"
-              onClick={() => setOpen(!open)}
-              aria-expanded={open}
-              aria-label="Apri menu di navigazione"
-            >
-              <span className={`bar ${open ? 'open' : ''}`}></span>
-              <span className={`bar ${open ? 'open' : ''}`}></span>
-              <span className={`bar ${open ? 'open' : ''}`}></span>
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile drawer con transizione fluida */}
-        {open && (
-          <div className="mobile-menu-drawer" role="dialog" aria-modal="true" aria-label="Menu da mobile">
-            <NavLink
-              to="/"
-              end
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/chi-sono"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Chi sono
-            </NavLink>
-            <NavLink
-              to="/servizi"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Servizi
-            </NavLink>
-            <NavLink
-              to="/sedi"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Le Mie Sedi
-            </NavLink>
-            <NavLink
-              to="/contatti"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Contatti &amp; Ricevimento
-            </NavLink>
-            <NavLink
-              to="/blog"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Le mie tesi
-            </NavLink>
-            <NavLink
-              to="/testimonianze"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Cosa dicono di me
-            </NavLink>
-            <NavLink
-              to="/faq"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className={({ isActive }) => isActive ? 'active' : ''}
-            >
-              Domande Frequenti
-            </NavLink>
-            <NavLink
-              to="/contatti"
-              onClick={() => { setOpen(false); scrollToTop(); }}
-              className="mobile-cta-link"
-            >
-              <span>Prenota un colloquio</span>
-              <CalendarCheck size={16} />
-            </NavLink>
-          </div>
-        )}
+        </div>
       </header>
 
-      <main className="main-content" id="main-content">
-        <Suspense fallback={<div style={{ minHeight: '60vh' }}></div>}>
-          <Outlet />
+      {mobileMenuOpen && (
+        <div className="ts-drawer" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
+          <div className="ts-drawer__head wrap">
+            <span className="ts-drawer__title">Dott.ssa Eleonora Mariotti · Logopedista</span>
+            <button
+              type="button"
+              className="ts-drawer__close"
+              aria-label="Chiudi menu"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X size={20} strokeWidth={1.8} />
+            </button>
+          </div>
+
+          <nav className="ts-drawer__nav wrap" aria-label="Menu mobile completo">
+            {ALL_MOBILE_LINKS.map((item, idx) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === '/'}
+                className={({ isActive }) => `ts-drawer__link${isActive ? ' is-active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="ts-drawer__num">{String(idx + 1).padStart(2, '0')}</span>
+                <span>{item.label}</span>
+                <ArrowIcon />
+              </NavLink>
+            ))}
+          </nav>
+
+          <div className="ts-drawer__foot wrap">
+            <div className="ts-drawer__visit">
+              <strong>Sedi &amp; Orari</strong>
+              <span>Lun – Ven · 08:30 – 19:30</span>
+              <span>Jesi · Ancona · Sassoferrato</span>
+            </div>
+            <Link
+              to="/contatti"
+              className="ts-btn ts-btn--primary ts-drawer__cta"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span>Prenota una Valutazione</span>
+              <ArrowIcon />
+            </Link>
+          </div>
+        </div>
+      )}
+
+      <main id="main-content" className={`main-content${isHome ? ' main-content--home' : ''}`}>
+        <Suspense
+          fallback={
+            <div className="route-loading" role="status" aria-live="polite">
+              <span>Caricamento della pagina...</span>
+            </div>
+          }
+        >
+          {isHome ? (
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+            </Routes>
+          ) : (
+            <div className="subpage-shell">
+              <Routes>
+                <Route path="/chi-sono" element={<AboutPage />} />
+                <Route path="/servizi" element={<ServicesPage />} />
+                <Route path="/sedi" element={<SediPage />} />
+                <Route path="/testimonianze" element={<TestimonialsPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:id" element={<BlogPage />} />
+                <Route path="/faq" element={<FaqPage />} />
+                <Route path="/contatti" element={<ContattiPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </div>
+          )}
         </Suspense>
       </main>
 
-      <MatSnackBarContainer />
+      <footer className="ts-footer ground-inverse">
+        <div className="wrap">
+          <div className="ts-close">
+            <div className="ts-close__text">
+              <span className="eyebrow-label eyebrow-label--inverse">Primo Colloquio Conoscitivo</span>
+              <h2 className="ts-close__heading">Prenota una valutazione logopedica in studio.</h2>
+              <p className="ts-close__lead">
+                Ricevo su appuntamento ad Ancona, Jesi e Sassoferrato dal lunedì al venerdì (08:30 – 19:30). Il primo
+                colloquio telefonico serve a inquadrare il bisogno clinico senza impegno.
+              </p>
+              <div className="ts-close__actions">
+                <Link to="/contatti" className="ts-btn ts-btn--primary">
+                  <span>Prenota una Valutazione</span>
+                  <ArrowIcon />
+                </Link>
+                <a href="tel:+393661460520" className="ts-btn ts-btn--secondary ts-btn--on-dark">
+                  <Phone size={16} strokeWidth={1.8} />
+                  <span>Chiama lo studio</span>
+                </a>
+              </div>
+            </div>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <h3>Dott.ssa Eleonora Mariotti</h3>
-            <p>Logopedista iscritta all'albo TSRM-PSTRP. Percorsi clinici personalizzati a Sassoferrato, Ancona e Jesi.</p>
+            <div className="ts-close__media">
+              <img
+                src="/assets/images/foto-eleonora-doc1.png"
+                alt="Seduta di valutazione logopedica presso lo studio della Dott.ssa Eleonora Mariotti"
+                loading="lazy"
+              />
+            </div>
           </div>
 
-          <div className="footer-links-col">
-            <span className="col-title">Navigazione</span>
-            <Link to="/chi-sono" onClick={scrollToTop}>Chi sono</Link>
-            <Link to="/servizi" onClick={scrollToTop}>Servizi</Link>
-            <Link to="/sedi" onClick={scrollToTop}>Le Sedi</Link>
-            <Link to="/contatti" onClick={scrollToTop}>Contatti</Link>
-            <Link to="/blog" onClick={scrollToTop}>Le mie tesi</Link>
-            <Link to="/testimonianze" onClick={scrollToTop}>Testimonianze</Link>
-            <Link to="/faq" onClick={scrollToTop}>FAQ</Link>
+          <div className="ts-footer__directory">
+            <div className="ts-footer__brand">
+              <Link to="/" className="ts-footer__mark">
+                <ArcMark className="ts-nav__mark" />
+                <span>Dott.ssa Eleonora Mariotti</span>
+              </Link>
+              <p>
+                Logopedista · Albo TSRM-PSTRP AN-AP-FM-MC n. 415. Percorsi riabilitativi ed educativi basati su evidenze
+                scientifiche (EBP) per età evolutiva, adolescenti e adulti.
+              </p>
+              <div className="ts-footer__socials">
+                <a
+                  href="https://www.instagram.com/eleonora.logopedista?igsh=ZDFnbDJ1czJ2YWRh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram Dott.ssa Eleonora Mariotti"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.9">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=eleonoramariottilogopedista@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Scrivi email via Gmail"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.9">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="ts-footer__col">
+              <h3>Navigazione</h3>
+              <ul>
+                <li><Link to="/chi-sono">Chi Sono e Formazione</Link></li>
+                <li><Link to="/servizi">Ambiti Clinici e Servizi</Link></li>
+                <li><Link to="/blog">Tesi ed Evidenze Cliniche</Link></li>
+                <li><Link to="/testimonianze">Testimonianze</Link></li>
+                <li><Link to="/faq">Domande Frequenti</Link></li>
+              </ul>
+            </div>
+
+            <div className="ts-footer__col">
+              <h3>Studi &amp; Orari</h3>
+              <ul>
+                <li>
+                  <span className="ts-footer__item-label">Lun – Mar · Jesi (Fisiomedica)</span>
+                </li>
+                <li>
+                  <span className="ts-footer__item-label">Mer &amp; Ven · Ancona (San Paolo)</span>
+                </li>
+                <li>
+                  <span className="ts-footer__item-label">Giovedì · Sassoferrato (Appennino)</span>
+                </li>
+                <li>
+                  <Link to="/sedi">Vedi mappe e dettagli</Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="ts-footer__col">
+              <h3>Contatti Diretti</h3>
+              <ul>
+                <li>
+                  <a href="tel:+393661460520">Tel. +39 366 146 0520</a>
+                </li>
+                <li>
+                  <a href="mailto:eleonoramariottilogopedista@gmail.com">eleonoramariottilogopedista@gmail.com</a>
+                </li>
+                <li>
+                  <Link to="/contatti">Modulo di richiesta colloquio</Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div className="footer-links-col">
-            <span className="col-title">Contatto Rapido</span>
-            <a href="tel:+393661460520">+39 366 146 0520</a>
-            <a href="mailto:mariotti.eleonora14@gmail.com">mariotti.eleonora14&#64;gmail.com</a>
-            <span>Lun - Ven: 09:00 - 20:00</span>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>&copy; {year} Dott.ssa Eleonora Mariotti — P.IVA 02062460429 — Tutti i diritti riservati</span>
-          <div className="social-links">
-            <a
-              href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Segui su Instagram"
-            >
-              <img src="/assets/images/instagram.png" alt="Instagram" width="20" height="20" />
-            </a>
-            <a
-              href="mailto:mariotti.eleonora14@gmail.com"
-              aria-label="Scrivi un'email"
-            >
-              <img src="/assets/images/gmail.png" alt="Gmail" width="20" height="20" />
-            </a>
+          <div className="ts-footer__legal">
+            <span>© {currentYear} Dott.ssa Eleonora Mariotti · Logopedista · P.IVA 02062460429</span>
+            <span>Prestazioni sanitarie detraibili ai sensi di legge · Dati trattati ai sensi del GDPR</span>
           </div>
         </div>
       </footer>
-    </div>
+
+      <MatSnackBarContainer />
+    </>
   );
 }
+
+export default App;
