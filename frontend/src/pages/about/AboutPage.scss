@@ -47,14 +47,14 @@
 
     .bio-frame {
       position: relative;
-      border-radius: 36px 36px 64px 36px;
+      border-radius: 32px;
       overflow: hidden;
       border: 5px solid var(--bg-elevated);
       box-shadow: 0 24px 60px -12px rgba(27, 59, 54, 0.18);
-      max-width: 520px;
+      max-width: 840px;
       width: 100%;
-      aspect-ratio: 3 / 4;
-      max-height: 640px;
+      aspect-ratio: 16 / 10;
+      max-height: 490px;
       margin: 0 auto;
 
       .profile-img {
@@ -62,14 +62,16 @@
         height: 100%;
         display: block;
         object-fit: cover;
-        object-position: center top;
+        object-position: center 60%;
       }
 
       .bio-quote-overlay {
         position: absolute;
-        bottom: 20px;
+        bottom: 18px;
         left: 20px;
         right: 20px;
+        max-width: 640px;
+        margin: 0 auto;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(248, 240, 255, 0.52) 50%, rgba(255, 255, 255, 0.82) 100%);
         backdrop-filter: blur(22px) saturate(200%) brightness(1.04);
         -webkit-backdrop-filter: blur(22px) saturate(200%) brightness(1.04);
@@ -582,6 +584,21 @@
 
     .manifesto-text {
       font-size: 1.15rem;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .bio-section .bio-image-col .bio-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+
+    .bio-quote-overlay {
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
     }
   }
 }
