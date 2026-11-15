@@ -7,7 +7,6 @@ import {
   ExternalLink,
   CalendarCheck,
   Building2,
-  ShieldCheck,
   ArrowRight,
 } from 'lucide-react';
 import { PageHero } from '../../shared/components/PageHero';
@@ -111,13 +110,6 @@ export function SediPage() {
           <div>
             <strong>Ricevimento Programmato</strong>
             <span>Dal lunedì al venerdì su appuntamento</span>
-          </div>
-        </div>
-        <div className="trust-col">
-          <ShieldCheck size={20} className="trust-icon" />
-          <div>
-            <strong>Spazi Protetti &amp; Accoglienti</strong>
-            <span>Massima riservatezza ed ergonomia clinica</span>
           </div>
         </div>
       </FadeUp>
