@@ -7,7 +7,11 @@
     "frontend": "cd frontend && npm start",
     "backend": "cd beckend && npm start",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "build": "npm --prefix frontend run build"
+    "build": "npm --prefix frontend run build",
+    "clinical": "cd clinical-app && npm run dev",
+    "clinical:build": "npm --prefix clinical-app run build",
+    "clinical:app": "concurrently \"npm run backend\" \"npm run clinical\"",
+    "test:clinical": "node beckend/tests/clinical.test.js"
   },
   "repository": {
     "type": "git",

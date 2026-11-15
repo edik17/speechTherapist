@@ -46,9 +46,22 @@ const DEFAULT_FALLBACK_REVIEWS = [
   }
 ];
 
+function resolveAllowedOrigin(requestOrigin) {
+  const configured = (process.env.ALLOWED_ORIGINS || 'https://eleonora-mariotti-logopedista.web.app')
+    .split(',')
+    .map(o => o.trim())
+    .filter(Boolean);
+  if (requestOrigin && configured.includes(requestOrigin)) {
+    return requestOrigin;
+  }
+  return configured[0] || 'https://eleonora-mariotti-logopedista.web.app';
+}
+
 exports.handler = async function (event, context) {
+  const requestOrigin = event.headers?.origin || event.headers?.Origin || '';
   const headers = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': resolveAllowedOrigin(requestOrigin),
+    'Vary': 'Origin',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Content-Type': 'application/json',

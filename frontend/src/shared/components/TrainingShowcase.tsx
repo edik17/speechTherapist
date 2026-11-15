@@ -87,7 +87,7 @@ export function TrainingShowcase({ courses, cvUrl }: TrainingShowcaseProps) {
             <a
               href={cvUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="training-cv-link"
               title="Apri il Curriculum Vitae completo in formato PDF"
             >

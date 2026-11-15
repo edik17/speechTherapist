@@ -225,7 +225,7 @@ export function AboutPage() {
             <a
               href="/assets/cv-eleonora-mariotti.pdf"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="download-cv-btn"
               title="Scarica il Curriculum Vitae in formato europeo (PDF)"
             >
@@ -352,7 +352,7 @@ export function AboutPage() {
             <a
               href="/assets/cv-eleonora-mariotti.pdf"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="about-btn-ghost"
             >
               <FileText size={18} />

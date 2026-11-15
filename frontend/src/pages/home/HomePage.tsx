@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { FadeUp } from '../../shared/directives/FadeUp';
 import { MatButton } from '../../shared/ui/MatButton';
+import { toSafeHttpsUrl } from '../../shared/utils/url';
 import { testimonialsService } from '../../core/services/testimonials.service';
 import { Testimonial, GoogleReviewsSummary } from '../../core/models/testimonial.model';
 import './HomePage.scss';
@@ -287,7 +288,7 @@ export function HomePage() {
           </div>
 
           <div className="google-summary-right">
-            <a href={summary.writeReviewUrl} target="_blank" rel="noopener noreferrer" className="google-cta-btn">
+            <a href={toSafeHttpsUrl(summary.writeReviewUrl)} target="_blank" rel="noopener noreferrer" className="google-cta-btn">
               <ExternalLink size={15} />
               <span>Scrivi una recensione su Google</span>
             </a>

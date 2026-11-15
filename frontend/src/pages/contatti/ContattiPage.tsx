@@ -120,9 +120,11 @@ export function ContattiPage() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok || !contentType.includes('application/json')) {
         throw new Error(`HTTP ${response.status}`);
       }
+      await response.json();
 
       setIsSubmitting(false);
       matSnackBar.open('Grazie per averci scritto! Ti risponderemo al più presto. 📩', 'Chiudi');

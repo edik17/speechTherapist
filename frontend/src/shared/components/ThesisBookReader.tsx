@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
+import DOMPurify from 'dompurify';
 import {
   BookOpen,
   ChevronLeft,
@@ -270,7 +271,8 @@ export const ThesisBookReader: React.FC<ThesisBookReaderProps> = ({
   authorRole,
   htmlContent,
 }) => {
-  const pages = useMemo(() => paginateBookPages(htmlContent), [htmlContent]);
+  const safeHtmlContent = useMemo(() => DOMPurify.sanitize(htmlContent), [htmlContent]);
+  const pages = useMemo(() => paginateBookPages(safeHtmlContent), [safeHtmlContent]);
   const totalSpreads = Math.max(1, Math.ceil(pages.length / 2));
 
   const [isMobile, setIsMobile] = useState<boolean>(() =>
@@ -543,7 +545,7 @@ export const ThesisBookReader: React.FC<ThesisBookReaderProps> = ({
       {continuousMode ? (
         <div
           className="article-body reading-prose continuous-fallback liquid-glass-panel"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
+          dangerouslySetInnerHTML={{ __html: safeHtmlContent }}
         />
       ) : (
         <>

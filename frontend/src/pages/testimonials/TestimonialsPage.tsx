@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Swiper from 'swiper/bundle';
 import { Star, Quote, ExternalLink } from 'lucide-react';
 import { FadeUp } from '../../shared/directives/FadeUp';
+import { toSafeHttpsUrl } from '../../shared/utils/url';
 import { testimonialsService } from '../../core/services/testimonials.service';
 import { Testimonial, GoogleReviewsSummary } from '../../core/models/testimonial.model';
 import './TestimonialsPage.scss';
@@ -164,7 +165,7 @@ export function TestimonialsPage() {
 
         <div className="google-cta">
           <a
-            href={summary.writeReviewUrl || summary.placeUrl}
+            href={toSafeHttpsUrl(summary.writeReviewUrl || summary.placeUrl)}
             target="_blank"
             rel="noopener noreferrer"
             className="google-review-btn"

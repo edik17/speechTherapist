@@ -335,7 +335,7 @@ export default function App() {
             <a
               href="https://www.instagram.com/logopedista_eleonora_mariotti?igsh=OGI2NzF1ZG92bmhm"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="Segui su Instagram"
             >
               <img src="/assets/images/instagram.png" alt="Instagram" width="20" height="20" />
