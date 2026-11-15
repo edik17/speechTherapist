@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
-import { Sun, Moon, CalendarCheck } from 'lucide-react';
+import { Sun, Moon, CalendarCheck, Leaf, Snowflake, Flower2, Sparkles } from 'lucide-react';
 import { MatSnackBarContainer } from './shared/ui/MatSnackBar';
+import { SeasonalOverlay, getCurrentSeason, SeasonType } from './shared/components/SeasonalOverlay';
 import './App.scss';
 
 // Scroll to top and title update on navigation
@@ -40,10 +41,46 @@ export function ScrollToTopAndTitle() {
   return null;
 }
 
+const SEASON_ORDER: SeasonType[] = ['autumn', 'winter', 'spring', 'summer', 'off'];
+
+const SEASON_LABELS: Record<SeasonType, string> = {
+  autumn: 'Autunno',
+  winter: 'Inverno',
+  spring: 'Primavera',
+  summer: 'Estate',
+  off: 'Disattivato',
+};
+
+function renderSeasonIcon(season: SeasonType) {
+  switch (season) {
+    case 'autumn':
+      return <Leaf size={18} className="season-icon" />;
+    case 'winter':
+      return <Snowflake size={18} className="season-icon" />;
+    case 'spring':
+      return <Flower2 size={18} className="season-icon" />;
+    case 'summer':
+    case 'off':
+      return <Sparkles size={18} className="season-icon" />;
+  }
+}
+
 export default function App() {
   const [open, setOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [season, setSeason] = useState<SeasonType>(() => {
+    const saved = localStorage.getItem('seasonalEffect') as SeasonType | null;
+    return saved && SEASON_ORDER.includes(saved) ? saved : getCurrentSeason();
+  });
   const year = new Date().getFullYear();
+
+  const cycleSeason = () => {
+    setSeason((prev) => {
+      const next = SEASON_ORDER[(SEASON_ORDER.indexOf(prev) + 1) % SEASON_ORDER.length];
+      localStorage.setItem('seasonalEffect', next);
+      return next;
+    });
+  };
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -82,6 +119,7 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <SeasonalOverlay season={season} />
       <ScrollToTopAndTitle />
       <header className="navbar-wrapper">
         <nav className="editorial-nav" aria-label="Navigazione principale">
@@ -182,6 +220,17 @@ export default function App() {
                 <Moon size={18} className="moon-icon" />
               )}
             </button>
+
+            {/* Seasonal effect toggle */}
+            <button
+              type="button"
+              className={`season-toggle season-${season}`}
+              onClick={cycleSeason}
+              aria-label={`Effetto stagionale: ${SEASON_LABELS[season]} (clicca per cambiare)`}
+              title={`Effetto stagionale: ${SEASON_LABELS[season]} (clicca per cambiare)`}
+            >
+              {renderSeasonIcon(season)}
+            </button>
           </div>
 
           {/* Mobile controls */}
@@ -198,6 +247,16 @@ export default function App() {
               ) : (
                 <Moon size={18} className="moon-icon" />
               )}
+            </button>
+
+            <button
+              type="button"
+              className={`season-toggle mobile-season season-${season}`}
+              onClick={cycleSeason}
+              aria-label={`Effetto stagionale: ${SEASON_LABELS[season]} (clicca per cambiare)`}
+              title={`Effetto stagionale: ${SEASON_LABELS[season]} (clicca per cambiare)`}
+            >
+              {renderSeasonIcon(season)}
             </button>
 
             <button
