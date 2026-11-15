@@ -354,6 +354,55 @@ export function BlogPage() {
           </FadeUp>
         ))}
       </div>
+
+      {/* DALLA RICERCA ALLA PRATICA CLINICA: LE FOTO IN STUDIO */}
+      <FadeUp as="section" className="thesis-studio-gallery card">
+        <div className="thesis-gallery-header">
+          <span className="thesis-gallery-badge">DALLA RICERCA ALLA CLINICA</span>
+          <h2>L&apos;Evidenza Scientifica Applicata in Studio</h2>
+          <p className="thesis-gallery-desc">
+            Ogni progetto di ricerca accademica prende vita nel lavoro quotidiano in studio: dalla valutazione standardizzata alla costruzione di materiali riabilitativi personalizzati per bambini, famiglie e adulti.
+          </p>
+        </div>
+
+        <div className="thesis-gallery-grid">
+          <div className="thesis-photo-card">
+            <div className="thesis-photo-wrap">
+              <img
+                src="/assets/images/foto-eleonora-doc1.png"
+                alt="Dott.ssa Eleonora Mariotti - Ricerca clinica e potenziamento logopedico"
+                className="thesis-photo"
+                loading="lazy"
+              />
+              <span className="thesis-photo-tag">Pratica Basata sull&apos;Evidenza (EBP)</span>
+            </div>
+            <div className="thesis-photo-body">
+              <h3>Strumenti &amp; Protocolli Validati</h3>
+              <p>
+                Tradurre i dati della ricerca clinica in attività mirate e motivanti per il potenziamento linguistico, fono-articolatorio e degli apprendimenti.
+              </p>
+            </div>
+          </div>
+
+          <div className="thesis-photo-card">
+            <div className="thesis-photo-wrap">
+              <img
+                src="/assets/images/foto-eleonora-doc2.png"
+                alt="Dott.ssa Eleonora Mariotti nel suo studio di logopedia"
+                className="thesis-photo"
+                loading="lazy"
+              />
+              <span className="thesis-photo-tag">Ascolto, Famiglia &amp; Benessere</span>
+            </div>
+            <div className="thesis-photo-body">
+              <h3>Qualità della Vita &amp; Alleanza Terapeutica</h3>
+              <p>
+                Al centro dei lavori di tesi c&apos;è la persona nella sua globalità: l&apos;accoglienza empatica in studio sostiene la motivazione del paziente e la serenità genitoriale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </FadeUp>
     </section>
   );
 }
